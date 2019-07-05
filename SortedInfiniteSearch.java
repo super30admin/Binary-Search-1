@@ -19,20 +19,34 @@ class SortedInfiniteSearch {
     public int search(int[] nums, int target){
         
         int low = 0; int high = 1;
-        int val = nums[high];
-
-        while(val < target){
-            low = high;
-
-            if(2*high < nums.length-1){
-                high = high * 2;
+        
+        try{
+            int val = nums[high];
+            while(val < target){
+                low = high;
+                high = 2*high;
+                val = nums[high];
             }
-            else{
-                high = nums.length-1;
-            }
-
-            val = nums[high];
         }
+        catch(Exception e){
+            System.out.println("Out of bounds exception...");
+            int index = low;
+            try{
+                while(nums[index] <= target){
+                    if(nums[index] == target){
+                        return index;
+                    }
+    
+                    index++;
+                }
+                return -1;
+            }
+            catch(Exception ex){
+                return -1;
+            }
+            
+        }
+        
         
         
         return binarySearch(nums, low, high, target);

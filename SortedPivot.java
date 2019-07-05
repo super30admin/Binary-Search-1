@@ -63,12 +63,80 @@ class SortedPivot {
         }             
          
     }
+
+    public int recursiveSearchHelper(int[] nums, int low, int high, int target){
+        
+        if(low > high){
+            return -1;
+        }
+        int mid = low + (high - low)/2;
+        if(nums[mid] == target){
+            return mid;
+        }
+
+        if(nums[low] <= nums[mid]){
+            if(nums[low] <= target && nums[mid] >= target){
+                high = mid-1;
+            }
+            else{
+                low = mid + 1; 
+            }
+        }
+        else{
+            if(nums[mid] <= target && nums[high] >= target){
+                low = mid + 1;
+            }
+            else{
+                high = mid -1;
+            }
+        }
+   
+        return recursiveSearchHelper(nums, low, high, target);
+    }
+
+    public int recursiveSearch(int[] nums, int target){
+        int low = 0;
+        int high = nums.length - 1;
+        return recursiveSearchHelper(nums, low, high, target);
+        // return 0;
+    }
+    
+    public int iterativeSearch(int[] nums, int target){
+        
+        int low = 0;
+        int high = nums.length-1;
+        int mid;
+        while(low <= high){
+            mid = low + (high - low)/2;
+            if(nums[mid] == target) return mid;
+            //left sorted 
+            if(nums[low] <= nums[mid]){
+                if(nums[low] <= target && nums[mid] >= target){
+                    high = mid-1;
+                }
+                else{
+                    low = mid + 1; 
+                }
+            }
+            else{
+                if(nums[mid] <= target && nums[high] >= target){
+                    low = mid + 1;
+                }
+                else{
+                    high = mid -1;
+                }
+            }
+        }
+        
+        return -1;
+    }
     public static void main(String[] args){
         System.out.println("Inside Sorted Pivot Implementation");
-        int[] arr = {1};
-        int target = 0;
+        int[] arr = {4,5,6,7,0,1};
+        int target = 1;
         SortedPivot obj = new SortedPivot();
 
-        System.out.println(obj.search(arr, target));
+        System.out.println(obj.iterativeSearch(arr, target));
+        System.out.println(obj.recursiveSearch(arr, target));
     }
 } 

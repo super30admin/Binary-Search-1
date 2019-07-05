@@ -15,22 +15,29 @@ public class SearchArrayUnknown {
     public int find(int[] nums,int value){
         int low = 0;
         int high = 1;
-        int end = nums[high];
-        while(end<value){
+        try{
+        while(nums[high]<=value){
             low = high;
-            if(2*high<nums.length)
-                high = 2*high;
-            else
-                high = nums.length-1;
-            end = nums[high];
-
+            high =2*high;
+        }}
+        catch (Exception e){
+            try{
+                while(true){
+                    if(nums[low]==value)
+                        return low;
+                    low++;
+                }
+            }
+            catch(Exception ee){
+                return -1;
+            }
         }
         return search(nums,low,high,value);
     }
     public static void main(String[] args) {
-        SearchRSA obj = new SearchRSA();
+        SearchArrayUnknown obj = new SearchArrayUnknown();
         int[] nums = new int[]{3, 5, 7, 9, 10, 90, 100, 130, 140, 160, 170};
-        int x  = obj.find(nums,10);
+        int x  = obj.find(nums,90);
         System.out.println(x);
     }
 }

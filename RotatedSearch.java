@@ -14,7 +14,7 @@ class Solution {
             return mid;
         }
         
-        if(nums[low]<=nums[mid])
+        if(nums[low]<=nums[mid]) 
         {
             if(target>=nums[low] && target<nums[mid])
             {

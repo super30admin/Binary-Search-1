@@ -3,44 +3,48 @@
 
 using namespace std;
 
+
+//Recursive solution
+
 class Solution{
     public:
-        int Search(vector<int>& arr, int target)
+        int Binary(vector<int>& arr, int target, int start, int end)
         {   
-            int start = 0;
-            int end = arr.size() - 1;
-            int middle;
             
-            while(start <= end)
-            {
-               middle = start + (end - start)/2;
-               
-               if(arr[middle] == target) return middle;
-               
-               //left sorted
-               if(arr[start] <= arr[middle])
+            int middle = start + (end - start)/2;
+            if(start > end) return -1;
+            
+            else if(arr[middle] == target) return middle;
+            
+            else
+            {   //left sorted
+                if(arr[start] <= arr[middle])
                {
                     if(arr[start] <= target && arr[middle] >= target)
-                        end = middle -1;
+                        return Binary(arr, target, start, middle-1);
                     else    
-                        start = middle + 1;
+                       return Binary(arr, target, middle + 1, end);
                }
                
-               //right sorted
-               else
-               {
+                //right sorted
+                else
+                {
                     if(arr[middle] <= target && arr[end] >= target)
-                        start = middle + 1;
+                        return Binary(arr, target, middle + 1, end);
                     else
-                        end = middle - 1;
-               }
-            
+                        return Binary(arr, target, start, middle-1);
+                }
+               
+               
             }
             
-            return -1;
+        }
+        
+        int Search(vector<int> &arr, int target)
+        {
+            return Binary(arr, target, 0, arr.size() - 1);
         }
 };
-
 
 int main() {
 	//code

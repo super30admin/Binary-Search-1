@@ -1,0 +1,101 @@
+class Demo
+
+{
+
+    public static int binarySearch(int[] arr,int low,int high,int target)
+
+    {
+
+        int mid;
+
+        while(low<=high)
+
+        {
+
+            mid=low+(high-low)/2;
+
+            if(arr[mid]==target)
+
+                return mid;
+
+            else if(target>arr[mid])
+
+                low=mid+1;
+
+            else
+
+                high=mid-1;
+
+        }
+
+        return -1;
+
+    }
+
+    public static void main (String[] args)
+ 
+    {
+
+        int [] a=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13};
+
+        int slow=0,fast=2,target=0;
+
+        try
+ 
+        {
+
+             while(a[fast]<target)
+
+            {
+
+                slow=fast;
+
+                fast=fast*2;
+
+            }
+    
+        }
+ 
+        catch(Exception e)
+ 
+        {
+
+            try
+
+            {
+
+                while(slow>0)
+
+                {
+
+                    if(a[slow]==target)
+
+                    {
+
+                     System.out.println(slow);
+
+                     break;
+
+                    }
+
+                    slow++;
+
+                }
+
+            }
+
+            catch(Exception ex)
+
+            {
+
+                System.out.println(-1);
+
+            }
+
+        }
+
+        System.out.println(binarySearch(a,slow,fast,target));
+
+    }
+
+}

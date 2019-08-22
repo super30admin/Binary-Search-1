@@ -19,7 +19,7 @@ class SearchUnknownLengthSortedArray {
                 // within range, binary search
                 return binarySearch(reader, low, high, target);
             }
-            low = high;
+            low = high + 1;
             high = 2 * high;
         }
     }

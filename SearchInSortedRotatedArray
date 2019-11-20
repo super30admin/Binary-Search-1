@@ -1,0 +1,43 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this : little bit confusion when try to understand conditions
+
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+  public int search(int[] nums, int target) {
+    int start = 0, end = nums.length - 1;
+    //do serach until start is lesser than end
+    while (start <= end) {
+    
+      int pivot = (start + end) / 2;
+      //if the item is found at mid pivot index
+      if (nums[pivot] == target) 
+        return pivot;
+        //if starting element is lesser than pivot than we know that first half is increasing sequence until pivot index , we can serach target in this
+      else if (nums[start] <= nums[pivot]) {
+      //now check for target if lies in between start and pivot  : start......target.....pivot.........end
+      //set end and which seraches target in first half
+        if (target >= nums[start] && target < nums[pivot]) 
+            end = pivot - 1;
+        else 
+        //else go to right half
+            start = pivot + 1;
+      }
+      //if we know that start is not lesser than pivot then increasing sequence can lie in second half, we search target here
+      else {
+      // if target between pivot and end : start...........pivot.....target......end
+        if (target <= nums[end] && target > nums[pivot]) 
+              //serach in second half
+            start = pivot + 1;
+        else 
+            //serach in first half
+            end = pivot - 1;
+      }
+    }
+    //if element not found
+    return -1;
+  }
+}

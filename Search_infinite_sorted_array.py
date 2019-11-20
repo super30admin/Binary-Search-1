@@ -60,8 +60,36 @@ nums = []
 for i in range(1000000):
     if i%13==0:
         nums.append(i)
-print("results for 507")
-infinite(nums,507)
-print()
-print("results for 52")
-infinite(nums,52)
+        
+import random
+
+a = 0
+while(a<5):
+    i = random.choice(nums)
+    print("results for",i)
+    infinite(nums,i)
+    print()
+    a+=1
+    
+    
+'''
+results for 718731
+check between 32768 and  65536 indexes
+-1
+
+results for 183027
+check between 8192 and  16384 indexes
+-1
+
+results for 215917
+check between 16384 and  32768 indexes
+-1
+
+results for 910572
+check between index 65536  and last index
+-1
+
+results for 726154
+check between 32768 and  65536 indexes
+-1
+'''

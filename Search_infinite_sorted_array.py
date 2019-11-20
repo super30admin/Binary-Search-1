@@ -1,18 +1,16 @@
-# Binary search is not working properly, but the indexes from helper function returned are correct
+# working properly
 # runtime-- O(logn)  memory--
 
 #binary search 
 def binary_search (arr, l, r, x): 
     if r >= l: 
-        mid = l + (r - l)/2
+        mid = int(l + (r - l)/2)
         if arr[mid] == x: 
             return mid 
         elif arr[mid] > x: 
-            return binarySearch(arr, l, mid-1, x) 
+            return binary_search(arr, l, mid-1, x) 
         elif arr[mid]<x:
-            return binarySearch(arr, mid + 1, r, x) 
-        else:
-            return -1
+            return binary_search(arr, mid + 1, r, x) 
     return -1
 
 '''
@@ -57,12 +55,11 @@ def infinite(nums,target):
 
 #creating a big array
 nums = []
-for i in range(1000000):
+for i in range(1000):
     if i%13==0:
         nums.append(i)
-        
+print(nums)        
 import random
-
 a = 0
 while(a<5):
     i = random.choice(nums)
@@ -73,23 +70,27 @@ while(a<5):
     
     
 '''
-results for 718731
-check between 32768 and  65536 indexes
--1
+[0, 13, 26, 39, 52, 65, 78, 91, 104, 117, 130, 143, 156, 169, 182, 195, 208, 221, 234, 247, 260, 273, 286, 299, 312, 325, 338,
+351, 364, 377, 390, 403, 416, 429, 442, 455, 468, 481, 494, 507, 520, 533, 546, 559, 572, 585, 598, 611, 624, 637, 650, 663, 
+676, 689, 702, 715, 728, 741, 754, 767, 780, 793, 806, 819, 832, 845, 858, 871, 884, 897, 910, 923, 936, 949, 962, 975, 988]
 
-results for 183027
-check between 8192 and  16384 indexes
--1
+results for 143
+check between 8 and  16 indexes
+11
 
-results for 215917
-check between 16384 and  32768 indexes
--1
+results for 897
+check between index 64  and last index
+69
 
-results for 910572
-check between index 65536  and last index
--1
+results for 611
+check between 32 and  64 indexes
+47
 
-results for 726154
-check between 32768 and  65536 indexes
--1
+results for 156
+check between 8 and  16 indexes
+12
+
+results for 650
+check between 32 and  64 indexes
+50
 '''

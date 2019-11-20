@@ -8,6 +8,10 @@ package demo;
 public class FindInRotatedArray {
 //implementing binary search
 	public int search(int[] nums, int target) {
+		
+		//edge case
+		if(nums == null || nums.length ==0) return -1;
+		
 		int left = 0;
 		int right = nums.length - 1;
 		while (left <= right) {

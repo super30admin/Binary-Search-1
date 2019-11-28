@@ -15,10 +15,11 @@ public class FindInRotatedArray {
 		int left = 0;
 		int right = nums.length - 1;
 		while (left <= right) {
-			//to avoid overflow;
+			//to avoid integer overflow;
 			int mid = left + (right - left) / 2;
 			if (nums[mid] == target) {
 				return mid;
+				//
 			} else if (nums[mid] > target) {
 				if (nums[left] <= nums[mid] && nums[left] > target) { 
 					left = mid + 1;

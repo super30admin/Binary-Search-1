@@ -1,6 +1,6 @@
 """
     Approach 1
-    Wrong Time Complexity
+    Wrong Time Complexity O(n)
 """
 # class Solution:
 #     def search(self, nums: List[int], target: int) -> int:

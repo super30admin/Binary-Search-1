@@ -2,6 +2,8 @@
     Approach 1
     Wrong Time Complexity O(n)
 """
+
+
 # class Solution:
 #     def search(self, nums: List[int], target: int) -> int:
 #         if not nums:
@@ -91,7 +93,8 @@ class Solution:
         return -1
 
 
-h = Solution()
-print(h.search([4, 5, 6, 7, 0, 1, 2], 4))
-print(h.search([4, 5, 6, 7, 0, 1, 2], 2))
-print(h.search([4, 5, 6, 7, 0, 1, 2], 7))
+if __name__ == '__main__':
+    h = Solution()
+    print(h.search([4, 5, 6, 7, 0, 1, 2], 4))
+    print(h.search([4, 5, 6, 7, 0, 1, 2], 2))
+    print(h.search([4, 5, 6, 7, 0, 1, 2], 7))

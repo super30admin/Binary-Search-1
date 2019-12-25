@@ -45,6 +45,9 @@ class Solution:
         end = len(nums) - 1
         """
             First we do a binary seach to find the pivot
+            Loop breaks when start and end both are equal
+            index at which both start and end are equal 
+            is the no of steps the array is rotated by
         """
         while start < end:
             mid = (start + end) // 2

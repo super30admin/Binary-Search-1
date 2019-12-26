@@ -1,7 +1,44 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+======================================== Rotated Sorted Array ======================================================
+// Time Complexity : O(logN)
+// Space Complexity : O(logN)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
+class Solution {
+    public int search(int[] nums, int target) {
+        int result;
+        int low=0, high=nums.length-1; /* Calculating the start and end point of the array */
+        return searchBST(nums, target, low, high); /* helper function */
+    }
+
+    static int searchBST(int[] nums, int target, int low, int high) { /* helper function */
+        if(!(low<=high)){ /* Not found */
+            return -1;
+        }
+
+        int mid=(low+high)/2; /* Middle element in BST */
+        if(nums[mid]==target) return mid;
+
+        if (nums[low] <= nums[mid]) { 
+            if (nums[low] <= target  && target < nums[mid]) /* Case 1: Target is between start and mid of the array */
+            {
+                return searchBST(nums, target, low, mid-1);
+            }
+            else {
+                return searchBST(nums, target, mid+1, high); /* Case 2: Target is between mid and end of the array */
+            }
+        }
+        else {
+            if (target > nums[mid] && target <= nums[high]) { /* Case 3: Target is between mid and end of the array*/
+                return searchBST(nums, target, mid+1, high);
+            }
+            else{
+                return searchBST(nums, target, low, mid-1); /* Case 4: Target is between start and mid of the array*/
+            }
+        }
+    }
+}
+
+======================================== Rotated Sorted Array ======================================================

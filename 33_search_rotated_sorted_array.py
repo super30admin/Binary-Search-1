@@ -31,6 +31,7 @@
 class Solution:
     def search(self, nums: list, target: int) -> int:
         """
+            Updated as per discussion in class
             // Time Complexity: O(logn)
             We are cutting the problem size in to half each time recursively.
             // Space Complexity: O(1)
@@ -38,8 +39,9 @@ class Solution:
             // Did this code successfully run on Leetcode :
              Yes
             // Any problem you faced while coding this :
-            I initially used the min() and list.index() inbuilt python function.
-            Later realised min and index takes O(n).
+             It took me realise that we are recursively making decision
+             only from the sorted array each time because we cannot go wrong
+             if we decide from there.
         """
         if not nums:
             return -1
@@ -63,6 +65,18 @@ class Solution:
                 else:
                     end = mid - 1
         return -1
+
+    """
+        // Time Complexity: O(logn)
+        We are cutting the problem size in to half each time recursively.
+        // Space Complexity: O(1)
+        We don't allocate extra space even when the input size grows.
+        // Did this code successfully run on Leetcode :
+         Yes
+        // Any problem you faced while coding this :
+        I initially used the min() and list.index() inbuilt python function.
+        Later realised min and index takes O(n).
+    """
 
     #     """
     #         First we do a binary seach to find the pivot
@@ -100,23 +114,21 @@ class Solution:
     #         return self._binary_search(nums, start, len(nums) - 1, target)
     #     return self._binary_search(nums, 0, start - 1, target)
     #
-    # def _binary_search(self, nums: list, start: int, end: int, target: int) -> int:
-    #     while start < end:
-    #         mid = (start + end) // 2
-    #         if nums[mid] == target:
-    #             return mid
-    #         elif target < nums[mid]:
-    #             end = mid - 1
-    #         else:
-    #             start = mid + 1
-    #     return -1
+    def _binary_search(self, nums: list, start: int, end: int, target: int) -> int:
+        while start < end:
+            mid = (start + end) // 2
+            if nums[mid] == target:
+                return mid
+            elif target < nums[mid]:
+                end = mid - 1
+            else:
+                start = mid + 1
+        return -1
 
 
 if __name__ == '__main__':
     h = Solution()
     print(h.search([4, 5, 6, 7, 0, 1, 2], 4))
     print(h.search([4, 5, 6, 7, 0, 1, 2], 2))
-    print(h.search([4, 5, 6, 7, 0, 1, 2, 3], 3))
+    print(h.search([4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3], 3))
     print(h.search([3, 1], 1))
-
-    # h._binary_search([1, 2, 3, 4, 5], 0, 4, 2)

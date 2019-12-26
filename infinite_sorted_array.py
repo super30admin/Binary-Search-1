@@ -11,6 +11,7 @@ class Solution:
 
     def infinite_sorted_array(self, nums: list, target: int) -> int:
         """
+        UPDATED AS PER CLASS DISCUSSION
         // Time Complexity :
                             O(logn) 'n' is the target value
         // Space Complexity :
@@ -18,29 +19,57 @@ class Solution:
         // Did this code successfully run on Leetcode :
                             N/A
         // Any problem you faced while coding this :
-                            Took time to do the nested exception trick
-        // Your code here along with comments explaining your approach
-            Since we do not know the end of the array, we start from the second index and
-            multiply the end index by 2 to reach at a point when the current value is less than
-            the target. Then we do a binary search from the start and end index.
-            If we get an exception at any point we traverse the list in a linear fashion from the previous 'start'.
-            If we encounter an exception for the second time the value does not exist.
+                            No
+        // Your code here along with comments explaining the approach
+            We don't need to check for nums[start] > target because the start
+            is adjusted each time. The element to be searched for is for sure
+            greater than start because if it was lesser or equal the while loop
+            would have exited
         """
-        try:
-            start = 0
-            end = 2
-            while nums[end] < target:
-                start = end
-                end *= 2
-            return self.binarySearch(nums, start, end, target)
-        except IndexError:
-            try:
-                while True:
-                    if nums[start] == target:
-                        return start
-                    start += 1
-            except IndexError:
-                return -1
+        start = 0
+        end = 2
+        # break when end is greater or equal to target
+        # else search for the range
+        # if we have nums[end] <= target we don't have any
+        # problem its just the number of elements search for is more
+        while nums[end] < target:
+            # until we reach end number is lesser we keep increasing the range
+            start = end
+            end *= 2
+        return self.binarySearch(nums, start, end, target)
+
+    # def infinite_sorted_array(self, nums: list, target: int) -> int:
+    #     """
+    #     // Time Complexity :
+    #                         O(logn) 'n' is the target value
+    #     // Space Complexity :
+    #                         O(1)
+    #     // Did this code successfully run on Leetcode :
+    #                         N/A
+    #     // Any problem you faced while coding this :
+    #                         Took time to do the nested exception trick
+    #     // Your code here along with comments explaining your approach
+    #         Since we do not know the end of the array, we start from the second index and
+    #         multiply the end index by 2 to reach at a point when the current value is less than
+    #         the target. Then we do a binary search from the start and end index.
+    #         If we get an exception at any point we traverse the list in a linear fashion from the previous 'start'.
+    #         If we encounter an exception for the second time the value does not exist.
+    #     """
+    #     try:
+    #         start = 0
+    #         end = 2
+    #         while nums[end] < target:
+    #             start = end
+    #             end *= 2
+    #         return self.binarySearch(nums, start, end, target)
+    #     except IndexError:
+    #         try:
+    #             while True:
+    #                 if nums[start] == target:
+    #                     return start
+    #                 start += 1
+    #         except IndexError:
+    #             return -1
 
     def binarySearch(self, nums: list, start: int, end: int, target: int) -> int:
         while start <= end:
@@ -58,8 +87,8 @@ if __name__ == '__main__':
     h = Solution()
     print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 4))
     print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 2))
-    print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 7))
-    print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 100))
-    print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 6))
-    print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 1))
-    print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], -11))
+    # print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 7))
+    # print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 100))
+    # print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 6))
+    # print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], 1))
+    # print(h.infinite_sorted_array([0, 1, 2, 4, 5, 6, 7], -11))

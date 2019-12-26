@@ -1,3 +1,7 @@
+Time Complexity- O(log n)
+Space Complexity-O(n)
+Did the code run successfully on Leetcode? Yes
+
 #include <iostream>
 #include<vector>
 using namespace std;

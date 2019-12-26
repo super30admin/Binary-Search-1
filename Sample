@@ -41,4 +41,35 @@ class Solution {
     }
 }
 
-======================================== Rotated Sorted Array ======================================================
+======================================== Infinite Sorted Array ======================================================
+
+public class InfiniteSortedArray {
+    static public int search(int[] nums, int target) {
+        int result;
+        int low = 0, high = nums.length - 1;
+        return searchBST(nums, target, low, high);
+    }
+    
+    /* Using BST Recursive method */
+    static int searchBST(int[] nums, int target, int low, int high) {
+        if (!(low <= high)) { /* Searched entire list but not found */
+            return -1;
+        }
+
+        int mid = (low + high) / 2; 
+        if (nums[mid] == target) return mid; /* If middle most element, in that case it would be O(1) best case */
+
+        if(nums[mid]>target){
+            return searchBST(nums, target, low, mid-1); /* Case 1: Target between start and middle of the array */
+        }
+        else{
+            return searchBST(nums, target, mid+1, high); /* Case 2: Target between middle and end of the array */
+        }
+    }
+
+/* My test cases */
+    public static void main(String... args) {
+        int[] nums = {1,2,3,4};
+        System.out.println(search(nums, 1));
+    }
+}

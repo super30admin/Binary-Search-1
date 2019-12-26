@@ -1,6 +1,4 @@
-// Time Complexity : O(N)
-    // for loop - O(N)
-    // if condition - O(1)
+// Time Complexity : O(logN)
 // Space Complexity : O(N)
 // Did this code successfully run on Leetcode : N/A
 // Any problem you faced while coding this : No
@@ -15,12 +13,21 @@ public class Main {
     }
 
     public static int search(int[] nums, int target) {
-        int index = 0;  // index to return if the value is found
-        for ( int numbers : nums) {         // using the foreach loop, considers all the elements and goes through one after another
-            if(numbers == target){          // if the target element is found, return the index
-                return index;
+        int low = 0;
+        int high = 1;
+        while(target >= nums[high]){
+            low = high;
+            high = high * 2;
+        }
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] > target){
+                high = mid - 1;
+            }else if (nums[mid] == target){
+                return mid;
+            }else{
+                low = mid + 1;
             }
-            index++;        // increment the index after each comparison
         }
         return -1;          // return -1 if the element is not found
     }

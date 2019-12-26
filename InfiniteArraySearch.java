@@ -1,3 +1,8 @@
+// Time Complexity : O(logN)
+// Space Complexity : O(1) in iterative method
+// Did this code successfully run on GeeksForGeeks : Yes
+// Any problem you faced while coding this : No
+
 public class InfiniteSortedArray {
     // Java program to demonstrate working of an algorithm that finds an element in an array of infinite size
 

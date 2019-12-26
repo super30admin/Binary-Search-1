@@ -9,6 +9,7 @@
 // Your code here along with comments explaining your approach
 // Recursive solution
 class Solution {
+    
     public int search(int[] nums, int target) {
         if(nums==null || nums.length==0) return -1;
         int low=0;
@@ -21,7 +22,7 @@ class Solution {
         if(high<low) return -1;
         if(nums[mid]==target) return mid;
         if(nums[mid]>=nums[low]){//left array ->sorted
-            if(nums[mid]<target && nums[low]<=target){
+            if(nums[mid]>target && nums[low]<=target){
                 high=mid-1;
             }
             else{
@@ -35,6 +36,6 @@ class Solution {
                 high=mid-1;
             }  
         }
-        return -1;
+        return helper(nums,target,low,high);
     }
 }

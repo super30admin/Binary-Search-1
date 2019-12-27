@@ -22,7 +22,7 @@ public class Solution{
 	
 	private static int mbsearch(int[] nums, int target){
 	    int low=0;
-	    int high=nums.length-1;
+	    int high=1;
 	    //logic O(n) type
 	    while(target>nums[high]){
 	        low=high;

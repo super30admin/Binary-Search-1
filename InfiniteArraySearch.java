@@ -5,6 +5,7 @@
 											//Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 16
 											//at InfiniteArraySearch.search(InfiniteArraySearch.java:5)
 											//at Main.main(InfiniteArraySearch.java:32)
+//Update: Solved the error. Figured out what I was doing wrong in the 2nd Problem. My program was correct because my code logic was assuming it to be an infinite array. So when my target element was near the end of the sample array that I provided, the high pointer was being set to an index out of the array. So it was giving an error. But in theory if we assume it to be an infinite array, it should not give the error.													
 
 
 class InfiniteArraySearch{ 
@@ -37,7 +38,7 @@ class Main
     {
     InfiniteArraySearch obj = new InfiniteArraySearch();
     int[] input_array = {2,4,6,8,9,10,12,14,16,18,20,22,24,26};  //Sample input array rotated
-    int target = 22; 
+    int target = 4; 
     System.out.println(target + " is present in the input array at index - " + obj.search(input_array, target)); // returns 11
     target = 5;
     System.out.println(target + " is present in the input array at index - " + obj.search(input_array, target)); // returns -1

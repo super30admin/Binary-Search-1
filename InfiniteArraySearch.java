@@ -13,7 +13,7 @@ class InfiniteArraySearch{
 		int low = 0;
 		int high = 1;
 		if(nums == null || nums.length == 0) return -1; //check base case if array is empty or null, then return -1. no point in searching
-		while(target > nums[high])
+		while(target >= nums[high])
 		{ // until the target is not contained between low and high, keep doubling high and setting new low to previous high
 		low = high;
 		high = high * 2;

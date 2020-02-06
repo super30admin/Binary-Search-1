@@ -16,15 +16,17 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        
+
         left, right = 0, 1
-        maxValue = 999999999
+        '''For unknown length
+        maxValue = 2147483647'''
         
-        while left < right:
+        while left <= right:
             middle = left + (right-left) // 2   # handles integer overflow problem
             
+            '''For unknown length
             if middle >= maxValue:
-                raise Exception('Out of bounds')
+                raise Exception('Out of bounds')'''
                 
             if reader.get(middle) == target:
                 return middle

@@ -1,4 +1,4 @@
-//
+//o(log(target)) is time complexity
 //o(n) space complexity
 // not in leet code
 // follwed the approach discussed in class (changing high and low from beginning)(recurssive)

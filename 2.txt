@@ -10,3 +10,17 @@ approach : start with low = 0 and high = infinity.
  If mid throws out of bounds exception or arr[mid] > target, high = mid - 1. if arr[mid] < target: low = mid + 1.
   if arr[mid] == target: return mid
 
+def infinite_arr(arr, target):
+    low, high = 0, float('inf')
+
+    while low <= high:
+        mid = (low + high) // 2
+        try:
+            if arr[mid] > target:
+                high = mid - 1
+            elif arr[mid] < target:
+                low = mid + 1
+            else:
+                return mid
+        except OutOfBoundsException:
+            high = mid - 1

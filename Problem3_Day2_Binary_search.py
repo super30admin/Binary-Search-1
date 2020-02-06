@@ -12,6 +12,7 @@ any of the 2 sides. Once target is found, we re-adjust left or right value and n
 middle value unitl we have found the target value.
 
 class Solution(object):
+
     def search(self, nums, target):
         """
         :type nums: List[int]
@@ -19,15 +20,21 @@ class Solution(object):
         :rtype: int
         """
         
+        // Sanity checks
+        if len(nums) == 0 or not nums:
+            return -1
+        
         n = len(nums)
         left, right = 0, n-1
         while left <= right:
             
-            middle = left + ((right-left)//2)
+            // Find the middle index and check if it is the target
+            middle = left + ((right-left)//2)           # Formula to counter integer overflow problem
             if nums[middle] == target: 
                 return middle
             
-            if middle+1 < n and nums[middle + 1] <= nums[right]: 
+            // right-sorted?
+            if nums[middle + 1] <= nums[right]: 
                 if nums[middle + 1] <= target <= nums[right]:
                     left = middle + 1
                     continue
@@ -35,7 +42,8 @@ class Solution(object):
                     right = middle - 1
                     continue                    
             
-            if middle-1 >= 0 and nums[left] <= nums[middle - 1]:
+            //left-sorted?
+            if nums[left] <= nums[middle - 1]:
                 if nums[left] <= target <= nums[middle - 1]:
                     right = middle - 1
                     continue

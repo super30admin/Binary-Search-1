@@ -1,0 +1,57 @@
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : None
+
+
+// Your code here along with comments explaining your approach
+
+approach : first find the index of the highest element. After that we run separate binary searches on the 2 parts of the array.
+
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        def bin_search(l, r, target, nums):
+            while l <= r:
+                mid = l + (r - l) // 2
+
+                if nums[mid] == target:
+                    return mid
+                elif nums[mid] < target:
+                    l = mid + 1
+                elif nums[mid] > target:
+                    r = mid - 1
+            return -1
+
+        if not nums or (len(nums) == 1 and nums[0] != target):
+            return -1
+        if len(nums) == 1 and nums[0] == target:
+            return 0
+
+        l, r = 0, len(nums) - 1
+        highest_index = None
+        while l <= r:
+            mid = l + (r - l) // 2
+
+            if mid != len(nums) - 1 and nums[mid] > nums[mid + 1]:
+                highest_index = mid
+                break
+
+            if nums[mid] > nums[-1]:
+                l = mid + 1
+            elif nums[mid] < nums[-1]:
+                r = mid - 1
+        if highest_index is None:
+            highest_index = len(nums) - 1
+
+        index = -1
+        if nums[0] <= target <= nums[highest_index]:
+            index = bin_search(0, highest_index, target, nums)
+        elif highest_index + 1 < len(nums) and nums[highest_index + 1] <= target <= nums[-1]:
+            index = bin_search(highest_index + 1, len(nums) - 1, target, nums)
+
+        return index

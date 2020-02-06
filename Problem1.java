@@ -1,7 +1,7 @@
 // Time Complexity :
 // Space Complexity :
 // Did this code successfully run on Leetcode : No
-// Any problem you faced while coding this : 153/196 cases passed on leetcode
+// Any problem you faced while coding this : 162/196 cases passed on leetcode
 
 // Your code here along with comments explaining your approach: Find the pivot which sees the division of exact rotation. Further, use binary search for the side where the number can be found. If pivot is greater than target search behind else search forward
 
@@ -26,6 +26,13 @@ class Solution {
                 break;
             }
             i++;
+        }
+        if (nums[i] == target) {
+            return i;
+        }
+
+        if (pivot == 0) {
+            return binarySearch(nums, 0, nums.length - 1, target);
         }
 
         if (nums[pivot] == target) {

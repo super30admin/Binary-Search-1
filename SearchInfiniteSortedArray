@@ -1,0 +1,71 @@
+// Time Complexity  - O(log n)
+// Space Complexity - 0(1) - Constant space
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this : Input - {3, 5, 7, 9, 10, 90, 100, 130, 140, 160, 170}
+// Yes, when I passed 160 and 170, I am getting ArrayIndexOutofBoundsException
+
+
+/* Your code here along with comments explaining your approach
+
+Since I am searching in an infinite sorted array, I do not haver the length of the array.
+Hence I am initially choosing low = 0 and high = 1. I am searching for a range of elements where
+the target element has to be lesser than the last element of the range. In order to find this range,
+I am having a condition of while loop where the last element of the range is lesser than the target.
+On each iteration low becomes high and high becomes twice as that of high. 
+
+Once this range is found, I am passing to a binary search function to check the index of the element.
+
+
+
+*/
+
+
+
+public class InfiniteSortedArray {
+
+	
+	
+	public int search(int[] nums, int target) {
+		
+		int low = 0, high =1;	
+		while(nums[high] < target) {
+			low = high;
+			high = 2*high;
+		}
+		
+		return binarySearch(low, high, nums, target);
+		
+	}
+	
+	
+	private int binarySearch(int low, int high, int[] nums, int target) {
+		
+		while(low <=high) {
+			int mid = (low+high) /2;
+			if(nums[mid]==target)
+				return mid;
+			if(target < nums[mid]) {
+				high = mid-1;
+			}else {
+				low = mid+1;
+			}
+		}
+		
+		return -1;
+	}
+	
+	
+	public static void main(String[] args) {
+	
+		int[] nums = {3, 5, 7, 9, 10, 90,  
+                100, 130, 140, 160, 170};
+		int target = 170;
+
+		InfiniteSortedArray r = new InfiniteSortedArray();
+		int index = r.search(nums, target);
+
+		System.out.println(index);
+
+	}
+
+}

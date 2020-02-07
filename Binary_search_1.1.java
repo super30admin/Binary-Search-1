@@ -38,7 +38,8 @@ return -1;
     
     }
 }
-
+//Adding the recursive function
+    
 class Solution1 {
     public int search(int[] nums, int target) {
         if(nums == null || nums.length == 0){

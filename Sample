@@ -1,7 +1,16 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+Search in a Rotated Sorted Array
+// Time Complexity : O(log(n))
+// Space Complexity : O(1) for iterative code and O(log(n)) for recursion
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach : Proceed with normal BS algorithm, if the target is either in 
+upper half or lower half check for its sortedness [arr[low]<=arr[mid] or arr[mid]<=arr[high]]. And recursively BS on the upper 
+and lower half repeatedly depending on the target alignment. Else return -1. 
 
-
-// Your code here along with comments explaining your approach
+Search in Infinite sorted array:
+// Time Complexity : O(log(n))
+// Space Complexity : O(1) since i have used iterative BS
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach : Proceed with normal binary search by incrementing low and 
+doubling high till arr[high] is less then the target. 

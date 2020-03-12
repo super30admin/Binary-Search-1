@@ -1,0 +1,47 @@
+// Time Complexity : O(log(T)) --> T is index of target element
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : First of all had problem while understanding the problem, 
+                                             then had difficulties about how to access the elements from the array.
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        
+        //1.Define the boundaries first for the search operation
+            //a) if target value is greater than the right element: left = right and right = right*2
+        //2.Do binary search on it
+        
+        //1.Finding boundaries
+        int left=0, right=1;
+        
+        while(reader.get(right)<target){
+            left=right;
+            right=right*2;
+        }
+        
+        
+        //2.Binary search
+        int mid,num;
+        
+        while(left<=right){
+            mid=(left+right)/2;
+            num=reader.get(mid);
+            
+            if (num == target) 
+                return mid;
+            if (num > target) 
+                right = mid - 1;
+            else 
+                left = mid + 1; 
+        }
+       return -1; 
+    }
+}

@@ -1,6 +1,6 @@
 // Time Complexity : O(Log t) Where t is the index of target value
 // Space Complexity : O(1)- Since the search is in place
-// Did this code successfully run on Leetcode : yes
+// Did this code successfully run on Leetcode : yes but i have to see the solution in leetcode to understand this problem.
 // Any problem you faced while coding this : Undertsanding the ArrayReader was new to me.  
 
 

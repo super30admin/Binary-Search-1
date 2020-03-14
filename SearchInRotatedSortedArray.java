@@ -6,35 +6,28 @@
 
 class SearchInRotatedSortedArray {
     public int search(int[] nums, int target) {
-	
-	// Find the starting point of sorted array
         int low = 0;
-        int len = nums.length;
-        int high = len - 1;
+        int high = nums.length - 1;
         
-        while(low < high){
-            int mid = (low + high)/2;
-            if(nums[mid] > nums[high]){
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
-        }
-        
-	// Find target element using binary search
-        int start = low;
-        low = 0;
-        high = len -1;
         while(low <= high){
-            int mid = (low + high)/2;
-            int mid1 = (mid + start) % len;
+            int mid = low + (high - low)/2;
             
-            if(nums[mid1] == target){
-                return mid1;
-            } else if(nums[mid1] < target){
-                low = mid + 1;
-            } else {
-                high = mid - 1;
+            if(nums[mid] == target){
+                return mid;
+            } else if (nums[low] <= nums[mid]){ // left array is sorted
+                // target lies in left half
+                if(target >= nums[low] && target <= nums[mid]){
+                    high = mid - 1; 
+                } else { // target lies in right half
+                    low = mid + 1;
+                }
+            } else { // right array is sorted
+                // target lies in right half
+                if(target >= nums[mid] && target <= nums[high]){
+                    low = mid + 1;
+                } else { // target lies in left half
+                    high = mid - 1;
+                }
             }
         }
         

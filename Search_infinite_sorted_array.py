@@ -16,7 +16,7 @@ def binary_search (arr, l, r, x):
 '''
 main idea
 
-To start two pointers first ans second from first and second index of list
+To start two pointers first and second from first and second index of list
 
 Checking if target value is present between 2^n indexes. Which means checking for array values at 0 th, 2 nd, 4 th, 8 th so on 
 positions.

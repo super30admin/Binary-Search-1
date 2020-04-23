@@ -1,0 +1,52 @@
+class rotatedArray {
+    
+   
+    public int search(int[] nums, int target) {
+        
+        
+         int n = nums.length;
+        int pivot = findPivot(nums, 0, n-1);
+        
+        if(pivot == -1) return binarySearch(nums, 0, n-1, target);
+        
+        if(nums[pivot] == target)
+            return pivot;
+        if(nums[0] <= target )
+            return binarySearch(nums, 0, pivot-1,target);
+        return binarySearch(nums, pivot+1,n-1, target); 
+    }
+    
+    public int findPivot(int[] nums, int low, int high)
+    {
+         
+        if(high < low) return -1;
+        if(low == high) return low;
+        
+        int mid = (low+high)/2;
+        
+        if(mid < high && nums[mid] > nums[mid+1])
+            return mid;
+        if(mid > low && nums[mid] < nums[mid-1])
+            return (mid-1);
+        
+        if(nums[mid] <= nums[low])
+            return findPivot(nums,low, mid-1);
+        else
+            return findPivot(nums, mid+1, high);
+    }
+    
+    public int binarySearch(int[] nums, int low, int high, int target)
+    {
+         
+        if(high<low) return -1; 
+        
+        int mid = (low+high)/2;
+        
+        if(target == nums[mid]) return mid;
+        
+        if(target > nums[mid]) return binarySearch(nums, mid+1, high,target);
+        else return binarySearch(nums, low, mid-1, target);
+        
+    }
+    
+}

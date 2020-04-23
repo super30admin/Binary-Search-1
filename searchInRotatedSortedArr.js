@@ -1,9 +1,10 @@
 // Time Complexity : O(n log(n))
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : Finding a proper algorithm was really hard
+// Any problem you faced while coding this : Finding a proper algorithm
 
 /**
+ * 
  * @param {number[]} nums
  * @param {number} target
  * @return {number}
@@ -32,7 +33,7 @@ var search = function(nums, target) {
     }
     while(left <= right) {
         mid = Math.floor((right + left)/2);
-        if(nums[mid] == target) return mid;
+        if(nums[mid] === target) return mid;
         else if(nums[mid] > target) {
             right = mid - 1;
         }

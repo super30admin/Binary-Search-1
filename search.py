@@ -1,6 +1,6 @@
 
 # // Time Complexity :O(log n)
-# // Space Complexity :O(n), since in worst case it goes 1/2 n times the array.
+# // Space Complexity :O(1)
 # // Did this code successfully run on Leetcode :Yes
 # // Any problem you faced while coding this :
 

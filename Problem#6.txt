@@ -1,0 +1,65 @@
+public class HelloWorld{
+
+     // main function calls search function to find element in sorted array
+     public static void main(String []args){
+        System.out.println("Search element in sorted array");
+        int arr[] = new int[]{3, 5, 7, 9, 10, 90,  
+                            100, 130, 140, 160, 170};
+        int target = 10;
+        int index = SearchElement(arr, target);
+        System.out.println("Target found at "+  index);
+     }
+     
+     // As the array is of infinite length , we cannot directly perform binary
+     // search on the sorted, we need to do in on specific part of the array where the
+     // value is.
+     public static int SearchElement(int[] arr, int target){
+        
+        // 3 varaibles are defined to hold start and end position of array in which element is to be searched
+        int start = 0;
+        int end = 1;
+        int val = arr[start];
+        
+        // while the val if lesser than the target we keep on moving the start and end pointers ahead
+        
+        while( val < target){
+            
+            start = end;   // new start is equal to end
+            
+            // Here we are going to assign end as 2 times of end or array length which ever is smaller
+            
+            if( 2*end < arr.length -1)
+                    end = arr.length -1;
+            else
+                end = 2*end;
+                
+            // new val is the value at the new end of the array
+            val = arr[end];
+            
+        }
+        
+        // now performing binary search on specific part of array
+        return Search( arr,  start, end,  target);
+     }
+     
+     public static int Search(int[] arr, int start, int end, int target){
+         
+         // itterate till start is less than end
+          while(start < end){
+              
+              // here mid should be between start and end so start is added to (start+end)/2
+              int mid  = start + ((start + end) / 2);
+              
+              if(arr[mid] == target)  // target found return mid
+                return mid;
+                
+              if( arr[mid] < target) // if arr[mid] less than target then change start else change end
+                start = mid+1;
+              else
+                end = mid -1;
+          }
+         
+         // value not found so return -1
+         return -1;
+     }
+}

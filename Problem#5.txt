@@ -1,0 +1,35 @@
+  
+// Time Complexity : 0(logn)
+// Space Complexity : 0(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums.length == 0) return -1; // edge case if the array is null
+        
+        int i =0,j= nums.length-1; // two pointer to indicate start and end of array
+        while(i<=j){               // while start point is less than or equal to end
+            int mid = (i+j)/2;       
+            if(nums[mid] == target)   // if nums[mid] is equal to target return mid
+                return mid;
+            if(nums[i] <= nums[mid]){     // if start value is less than mid
+                if(target<nums[mid] && target>= nums[i])  // if target value is between start and mid then shift the end to mid -1 else shift start to mid+1
+                    j = mid-1;
+                else 
+                    i = mid+1;
+            }
+            if(nums[mid] <= nums[j]){ // if mid value is less than end value
+                 if (target > nums[mid] && target <= nums[j]) // if target value is between mid and end then shift start to mid+1 else shift end to mid-1
+                    i = mid + 1;
+                 else
+                    j = mid - 1;
+            }
+                
+
+        }
+        
+        return -1;    // value not found so return -1
+    }
+}

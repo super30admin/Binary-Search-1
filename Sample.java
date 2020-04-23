@@ -41,14 +41,9 @@ class Solution {
 
 ---------------------------------------------------------------------------------
 
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
-
-
+// Time Complexity :O(log n)
+// Space Complexity :O(1)
 // Your code here along with comments explaining your approach
-
 import java.io.*;
 import java.util.*;
 public class InfSearch {

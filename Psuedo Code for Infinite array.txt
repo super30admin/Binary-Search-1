@@ -1,0 +1,10 @@
+1) Time Complexity O(N)
+2) Space Complexity O(1)
+2) Approach:
+consider list a = [2,4,6,7,21,33,......] is sorted array since upper bound is not there
+k is the element to be found
+
+1) run a while loop a[i] <= k:
+2) if a[i] == k:
+3)   return i
+4)return -1

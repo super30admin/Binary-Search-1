@@ -37,3 +37,42 @@ class Solution {
         return -1;
     }
 }
+
+
+
+
+
+//Binary Search 2 .. find an element in an array of unwon length
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int left = 0;
+        int right = left+1;
+        
+        while(reader.get(right) < target){
+            right = right*2;
+            if(reader.get(right) > target)
+                break;
+            left = right;
+         }
+        
+        while(left<=right){
+            int mid = (left+right)/2;
+            
+            if(reader.get(mid) == target)
+                return mid;
+            else if(reader.get(mid) < target)
+                left = mid+1;
+            else right = mid-1;
+         }
+    
+        return -1;
+    }
+}

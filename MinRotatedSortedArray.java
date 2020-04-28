@@ -49,28 +49,3 @@ class Solution {
     
     }
 }
-
-
-static int findIndex(int arr[],int target)  
-    { 
-        int low = 0, high = 1; 
-        int val = arr[0]; 
-  
-        while (arr[high] < target) 
-        { 
-            low = high; 
-            high*=2;
-        } 
-  
-        while (low<=high) 
-        { 
-            int mid = low + (high - low)/2; 
-            if (arr[mid] == target) 
-                return mid; 
-            if (arr[mid] <= target) 
-                low=mid+1;
-            else
-                high=mid-1;
-        } 
-        return -1;  
-    } 

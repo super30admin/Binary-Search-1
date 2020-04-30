@@ -1,7 +1,87 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+/**
+ * // Time Complexity : O(logn)
+ * // Space Complexity : O(1)
+ * // Did this code successfully run on Leetcode : yes
+ * // Any problem you faced while coding this : no
+ *
+ * // Your code here along with comments explaining your approach
+ */
+public class searchInRotatedSorted {
+    private int search(int[] nums, int start, int end, int target){
+        for(int i=start; i<=end; i++){
+            if(nums[i]==target){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    public int search(int[] nums, int target) {
+
+        int low = 0;
+        int high = nums.length-1;
+
+        while(low <= high){
+            int mid = (low +high)/2;
+            if(nums[mid] == target){return mid;}
+
+            if(nums[mid] <= nums[high]){ // right half is sorted
+//                 then check if the target lies in between the right half of arr
+                if(target > nums[mid] && target <= nums[high]){
+                    low = mid+1;
+                }else{
+                    high = mid-1;
+                }
+            }else if( nums[mid] > nums[high]) {// then we can say for sure left half would be sorted from the current starting point
+                if( target >= nums[low] && target < nums[mid]){
+                    high = mid -1;
+                }else{
+                    low = mid+1;
+                }
+            }
+
+        }
+
+        return -1;
+
+    }
+}
+/**
+ * // Time Complexity : O(n)
+ * // Space Complexity : O(1)
+ * // Did this code successfully run on Leetcode : yes
+ * // Any problem you faced while coding this : no
+ *
+ * // Your code here along with comments explaining your approach
+ */
+class infiniteSortedArray {
+    public int search(ArrayReader reader, int target) {
+
+        int cur=1;
+        int prev=0;
+        int res=0;
+
+        if(reader.get(0) == target) {
+            return 0;
+        }
 
 
-// Your code here along with comments explaining your approach
+        while ( prev < cur) {
+            int val = reader.get(cur);
+
+            if( val == target){
+                return cur;
+            }else if( val > target){
+                cur= ( prev+cur)/2;
+            }else if( val < target){
+                prev=cur;
+                cur*=2;
+            }else if( val == Integer.MAX_VALUE){
+                cur = (prev+cur)/2;
+            }
+        }
+
+        return reader.get(cur) == target ? cur : -1;
+    }
+
+}

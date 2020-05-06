@@ -1,0 +1,40 @@
+// Time Complexity :O(log n)
+// Space Complexity :
+// Did this code successfully run on Leetcode :Yes
+
+class Solution {
+    func search(_ nums: [Int], _ target: Int) -> Int {
+
+        // 1 - find minimum value to calculate rotation
+        
+        var low = 0, high = nums.count - 1
+        while low < high {
+            let middle = low + (high - low) / 2
+            if nums[middle] > nums[high] {  // smaller numbers are to the right side
+                low = middle + 1
+            } else {        // smaller numbers are to the left side including middle
+                high = middle
+            }
+        }
+        
+        let rot = low // number of elements that were rotated
+        
+        // 2 - do a binary search, correcting for rotation
+        
+        low = 0
+        high = nums.count - 1
+        while low <= high {
+            let middle = low + (high - low) / 2
+            let idx = (middle + rot) % nums.count   // correcting for rotation
+            if nums[idx] == target {
+                return idx
+            }
+            if target < nums[idx] {
+                high = middle - 1
+            } else {
+                low = middle + 1
+            }
+        }
+        return -1
+    }
+}

@@ -1,10 +1,36 @@
 // Time Complexity :O(log n)
-// Space Complexity :o(n) n-length of the array
+// Space Complexity :o(1) As array is not an Auxiliary  space
 // Did this code successfully run on Leetcode : N/A
 // Any problem you faced while coding this : -
 
+class SearchInfiniteArray {
+    public int search(ArrayReader reader, int target) {
+		int low=0;
+		int high=1;
+		if(reader.get(high)<target)
+		{
+			low=high;
+			high=2*high;
+		}
+		//binary search
+		while(low<=high)
+		{
+			int mid=low+(high-low)/2;
+			if(reader.get(mid)==target)
+				return mid;
+			else if(reader.get(mid)<target)
+				low=mid+1;
+			else
+				high=mid-1;
+			
+		}
+		return -1;
+		
+	}
+	
+}
 
-// Your code here along with comments explaining your approach
+/* Old Approach
 class SearchInfiniteArray
 {
 public int end(int arr[],int target)
@@ -44,7 +70,7 @@ public int search(int arr[],int target)
 }
 
 public static void main(String args[])
-{
+    {
 	SearchInfiniteArray s=new SearchInfiniteArray();
 	int arr[]={2,4,8,12,15,19,23,26,50,55,57,60,70,300,400};
 	int target=577;
@@ -54,5 +80,6 @@ public static void main(String args[])
 	else
 	System.out.println("Element not found");
 		
-}
-}
+    }
+*/
+

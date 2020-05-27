@@ -4,7 +4,7 @@
 // Any problem you faced while coding this : none
 
 
-// Your code here along with comments explaining your approach
+// Your code here along with comments explaining your approach.
 class SearchRotatedArray {
     /**
      * Find the mid and check which half is sorted and if the target belongs to that half - call binary search on it else repeat the same for the other half

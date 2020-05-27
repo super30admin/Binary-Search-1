@@ -1,5 +1,5 @@
 def interval_det(arr, lower_bound, upper_bound, target):
-	if target<upper_bound and target>lower_bound:
+	if target<arr[upper_bound] and target>arr[lower_bound]:
 		return binary_search(arr, lower_bound, upper_bound, target)
 	else:
 		return interval_det(arr, lower_bound+200, upper_bound+200, target)

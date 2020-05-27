@@ -1,3 +1,11 @@
+/*
+    Time Complexity : 
+        O(log(n)) because in each iteration we will reduce the input size by half (avoiding the other half because element is not in that half)
+    Space Complexity : 
+        O(1) we are not using any auxilary space
+        
+*/
+
 public class Search_InRotated_sorted_Array {
     public int search(int[] nums, int target) {
         int left = 0;

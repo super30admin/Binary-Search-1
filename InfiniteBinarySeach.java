@@ -2,7 +2,7 @@
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : When I try to find an element which
-   is not present in the array after the 1st index, StackOverflowError is shown by the compiler.
+//   is not present in the array after the 1st index, StackOverflowError is shown by the compiler.
 
 // Your code here along with comments explaining your approach
 

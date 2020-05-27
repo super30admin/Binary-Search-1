@@ -3,7 +3,11 @@
         O(log(n)) because in each iteration we will reduce the input size by half (avoiding the other half because element is not in that half)
     Space Complexity : 
         O(1) we are not using any auxilary space
-        
+
+    Did this code successfully run on Leetcode : YES
+    
+    Any problem you faced while coding this :
+        Handling edge case was tricky
 */
 
 public class Search_InRotated_sorted_Array {

@@ -19,3 +19,6 @@ def binary_search(arr, low, high, target):
 array = [......]#infinite array
 target = x
 print(interval_det(array, 0, 200, target))
+
+#timecomplexity = O(n) for interval and O(logn) for target search
+#spacecomplexity = O(1)

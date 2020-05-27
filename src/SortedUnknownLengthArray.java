@@ -21,29 +21,34 @@ class Solution {
      */
     public int search(ArrayReader reader, int target) {
         int left=0,right=1,mid=0;
-        while(reader.get(right) != 2147483647){                             // until we get the subarray where the right end is out of bounds
-            if(reader.get(left) <= target && reader.get(right) >= target)   // if target is in between the subarray , left and right
-                return find(reader,target,left,right);                      // find the index of the target using normal binary search and return
-            else if(reader.get(right) < target)                             // if target is above right end, increase the subarray by movinf left to right and increasing right by 2
-            {
-                left = right;
-                right >>= 1;
-            }else{
-                return -1;
-            }
-        }
-        while(left <= right && reader.get(right) == 2147483647)           // after stmbling upon the last subarray and checking if the target lies here
+//        while(reader.get(right) != 2147483647){                             // until we get the subarray where the right end is out of bounds
+//            if(reader.get(left) <= target && reader.get(right) >= target)   // if target is in between the subarray , left and right
+//                return find(reader,target,left,right);                      // find the index of the target using normal binary search and return
+//            else if(reader.get(right) < target)                             // if target is above right end, increase the subarray by movinf left to right and increasing right by 2
+//            {
+//                left = right;
+//                right >>= 1;
+//            }else{
+//                return -1;
+//            }
+//        }
+//        while(left <= right && reader.get(right) == 2147483647)           // after stmbling upon the last subarray and checking if the target lies here
+//        {
+//            mid = left + (right-left)/2;
+//
+//            if(reader.get(mid) == 2147483647)                             // if mid is out of bounds then move the right to mid-1
+//                right = mid-1;
+//            else if(reader.get(left) <= target && reader.get(mid) >= target)   // if target is in between the subarray , left and mid
+//                return find(reader,target,left,mid);                           // find the index of the target using normal binary search and return
+//            else if(target > reader.get(mid))                                  // if target is above mid end, increase the subarray by movinf left to mid
+//                left = mid+1;
+//            else
+//                return -1;
+//        }
+        while(reader.get(right)<target)                        //Assuming the ArrayReader as the stream of integers and if the right element is less than target move it ahead by 2 else exit and do binary search on that subarray
         {
-            mid = left + (right-left)/2;
-
-            if(reader.get(mid) == 2147483647)                             // if mid is out of bounds then move the right to mid-1
-                right = mid-1;
-            else if(reader.get(left) <= target && reader.get(mid) >= target)   // if target is in between the subarray , left and mid
-                return find(reader,target,left,mid);                           // find the index of the target using normal binary search and return
-            else if(target > reader.get(mid))                                  // if target is above mid end, increase the subarray by movinf left to mid
-                left = mid+1;
-            else
-                return -1;
+            left = right;
+            right <<= 1;
         }
         return find(reader,target,left,right);
     }

@@ -1,3 +1,17 @@
+/*
+ * https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/
+ * 
+ * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+
+You are given a target value to search. If found in the array return its index, otherwise return -1.
+
+You may assume no duplicate exists in the array.
+
+Your algorithm's runtime complexity must be in the order of O(log n).
+ */
+
 // Time Complexity : O(logn)
 // Space Complexity : O(logn) considering stack usage for recursion
 // Did this code successfully run on Leetcode : Yes
@@ -7,70 +21,32 @@
 // Your code here along with comments explaining your approach
 
 class Solution {
-    
-    /*
-       find pivot recursively, if pivot not present, use simple binary search
-       if pivot found, do simple binary search in one of the half of an array
-    */
-    
     public int search(int[] nums, int target) {
-        int pivot = pivot(nums, 0, nums.length - 1);
+     
+        if(nums == null || nums.length == 0) return -1;
         
-        if(pivot == -1) {
-            return binarySearch(nums, 0, nums.length - 1, target);
+        int low =0, high = nums.length - 1;
+        
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+            
+            if(nums[mid] == target) return mid;
+            
+            if(nums[low] <= nums[mid]) {
+               if(target >= nums[low] && target < nums[mid]) {
+                   high = mid - 1;
+               }else {
+                   low = mid + 1;
+               }
+            } else {
+                 if(target > nums[mid] && target <= nums[high]) {
+                   low = mid + 1;
+               }else {
+                   high = mid - 1;
+               }
+            }
         }
         
-        if(nums[pivot] == target)
-            return pivot;
-        
-        if( target >= nums[0])
-            return binarySearch(nums, 0, pivot - 1, target);
-        else
-            return binarySearch(nums, pivot + 1, nums.length - 1, target);
-        
-    }
-    
-    //simple binary search using recursion
-    public int binarySearch(int[] nums, int low, int high, int key) {
-        
-        if(low <= high){
-            int mid = (low + high)/2;
-            
-            if(nums[mid] == key){
-                return mid;
-            }
-            
-            if(key < nums[mid]) {
-                return binarySearch(nums, low, mid - 1, key);
-            } else
-                return binarySearch(nums, mid + 1, high, key);
-        } else
-            return -1;
-    }
-    
-    private int pivot(int[] nums, int low, int high) {
-        
-    		//pivot not found
-        if(high < low)
-            return -1;
-        
-        if(high == low)
-            return high;
-        
-        int mid = (low + high) / 2;
-        
-        if(mid < high && nums[mid] > nums[mid + 1])
-            return mid;
-        
-        if(mid > low && nums[mid] < nums[mid - 1])
-            return mid - 1;
-        
-        //pivot is on the right side of mid
-        if(nums[mid] >= nums[low]) 
-            return pivot(nums, mid + 1, high);
-        //pivot is on the left side of the mid
-        else
-            return pivot(nums, low, mid - 1);
-        
+        return -1;
     }
 }

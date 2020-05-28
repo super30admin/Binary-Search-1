@@ -1,3 +1,8 @@
+// Time Complexity : O(logn)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
+
 /*
  * https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/
  * 
@@ -12,10 +17,6 @@ You may assume no duplicate exists in the array.
 Your algorithm's runtime complexity must be in the order of O(log n).
  */
 
-// Time Complexity : O(logn)
-// Space Complexity : O(logn) considering stack usage for recursion
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach

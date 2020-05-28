@@ -1,5 +1,5 @@
 // Time Complexity :O(log n)
-// Space Complexity :o(1) As array is not an Auxiliary  space
+// Space Complexity :O(1) As array is not an Auxiliary  space
 // Did this code successfully run on Leetcode : N/A
 // Any problem you faced while coding this : -
 

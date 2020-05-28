@@ -1,5 +1,5 @@
 /*
-    Time Complexity :  O(log(N)) N =Size of input
+    Time Complexity :  O(log(N)) N = position where target is 
     Space Complexity :  O(1) No Auxilary Space is used
     is Tested on Leetcode : No because it is locked, I dont have premium subscription
     Difficulty faced : No I find it easier after class discussion

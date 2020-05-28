@@ -32,17 +32,17 @@ class Solution {
             
             if(nums[mid] == target) return mid;
             
-            if(nums[low] <= nums[mid]) {
-               if(target >= nums[low] && target < nums[mid]) {
+            if(nums[low] <= nums[mid]) { //left array is sorted
+               if(target >= nums[low] && target < nums[mid]) { // target lies between left array
                    high = mid - 1;
                }else {
-                   low = mid + 1;
+                   low = mid + 1; // target lies outside left sorted array
                }
-            } else {
-                 if(target > nums[mid] && target <= nums[high]) {
+            } else { // right array is sorted
+                 if(target > nums[mid] && target <= nums[high]) { //target lies between right sorted array
                    low = mid + 1;
                }else {
-                   high = mid - 1;
+                   high = mid - 1; // target lies outside right sorted array
                }
             }
         }

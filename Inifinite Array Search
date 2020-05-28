@@ -1,0 +1,30 @@
+// Time Complexity :O(log n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+
+class Solution:
+    def search(self,arr,target):
+        arr = []
+        low = 0
+        high = 1
+        target = 0
+        while(target > arr[high]):
+            low=high
+            high  = high*2
+
+        return binary_search(arr,low,high,target)
+def binary_search(arr,low,high, target):
+    while(low<=high):
+        mid = low+ (high-low)/2
+        if(arr[mid]==target):
+            return mid
+        elif (arr[mid]<target):
+            low = mid+1
+        else:
+            high = mid-1
+    return -1        
+

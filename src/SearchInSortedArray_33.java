@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/submissions/
 // Time Complexity : O(logn)
 // Space Complexity : O(logn) considering stack usage for recursion
 // Did this code successfully run on Leetcode : Yes
@@ -7,70 +8,67 @@
 // Your code here along with comments explaining your approach
 
 class Solution {
-    
-    /*
-       find pivot recursively, if pivot not present, use simple binary search
-       if pivot found, do simple binary search in one of the half of an array
-    */
-    
-    public int search(int[] nums, int target) {
-        int pivot = pivot(nums, 0, nums.length - 1);
+    public int[] searchRange(int[] nums, int target) {
         
-        if(pivot == -1) {
-            return binarySearch(nums, 0, nums.length - 1, target);
+    	   //base conditions
+       if(nums == null || nums.length == 0) return new int[]{-1, -1};
+       if(nums[0] == target && nums[nums.length -1] == target) return new int[]{0, nums.length - 1};
+        
+       int leftIndex = binarySearchLeft(nums, target);
+       int rightIndex = binarySearchRight(nums, target);
+       return new int[]{leftIndex, rightIndex};
+        
+    }
+    
+    private int binarySearchLeft(int[] nums, int target){
+        int low = 0, high = nums.length - 1;
+        
+        while(low <= high) {
+            int mid = low + (high - low)/2;
+            
+            if(nums[mid] == target) {
+            	    //if mid is 0 or greater than previous then its first instance of target
+                if(mid == 0 || nums[mid] > nums[mid - 1]) {
+                    return mid;
+                //else if is non first instance and first instance is to the left    
+                }else if (nums[mid] == nums[mid - 1]) {
+                    high = mid - 1;
+                }
+            }
+            //first instance is to the right    
+            if(nums[mid] < target) {
+                low = mid + 1;
+            //first instance is to the left    
+            } else if (nums[mid] > target) {
+                high = mid - 1;
+            }
         }
         
-        if(nums[pivot] == target)
-            return pivot;
-        
-        if( target >= nums[0])
-            return binarySearch(nums, 0, pivot - 1, target);
-        else
-            return binarySearch(nums, pivot + 1, nums.length - 1, target);
+        return -1;
         
     }
     
-    //simple binary search using recursion
-    public int binarySearch(int[] nums, int low, int high, int key) {
+    private int binarySearchRight(int[] nums, int target){
+        int low = 0, high = nums.length - 1;
         
-        if(low <= high){
-            int mid = (low + high)/2;
+        while(low <= high) {
+            int mid = low + (high - low)/2;
             
-            if(nums[mid] == key){
-                return mid;
+            if(nums[mid] == target) {
+                if(mid == nums.length - 1 || nums[mid] < nums[mid + 1]) {
+                    return mid;
+                }else if (nums[mid] == nums[mid + 1]) {
+                    low = mid + 1;
+                }
             }
-            
-            if(key < nums[mid]) {
-                return binarySearch(nums, low, mid - 1, key);
-            } else
-                return binarySearch(nums, mid + 1, high, key);
-        } else
-            return -1;
-    }
-    
-    private int pivot(int[] nums, int low, int high) {
+                
+            if(nums[mid] < target) {
+                low = mid + 1;
+            } else if (nums[mid] > target) {
+                high = mid - 1;
+            }
+        }
         
-    		//pivot not found
-        if(high < low)
-            return -1;
-        
-        if(high == low)
-            return high;
-        
-        int mid = (low + high) / 2;
-        
-        if(mid < high && nums[mid] > nums[mid + 1])
-            return mid;
-        
-        if(mid > low && nums[mid] < nums[mid - 1])
-            return mid - 1;
-        
-        //pivot is on the right side of mid
-        if(nums[mid] >= nums[low]) 
-            return pivot(nums, mid + 1, high);
-        //pivot is on the left side of the mid
-        else
-            return pivot(nums, low, mid - 1);
-        
+        return -1;
     }
 }

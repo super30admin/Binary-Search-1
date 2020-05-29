@@ -1,4 +1,4 @@
-// Time Complexity : O(log n) --> where n is size of input
+// Time Complexity : O(log n) --> where n is index of the target element
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : Didn't aware of this approach

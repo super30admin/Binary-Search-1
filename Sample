@@ -1,7 +1,14 @@
-// Time Complexity :
+//Rotated Sorted Array
+// Time Complexity : o(logN)
+// Space Complexity :o(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :No
+
+//Infinite array serach
+// Time Complexity : o(logN)
 // Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
 
 
 // Your code here along with comments explaining your approach

@@ -3,7 +3,18 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
+// Your code here along with comments explaining your approach
+// - Mid of array is computed. If target is equal to middle element mid is 
+// returned as index
+// - Check if the target is in the sorted or unsorted portion of the array.
+// - If the target is in sorted portion, perform the binary search
+// - If the target is in unsorted portion, the algorithm continues as above until 
+// it finds the target in sorted portion and performs binary search.
+// */
 
+// Search in Infinite sorted array:
+
+// Given a sorted array of unknown length and a number to search for, return the index of the number in the array. Accessing an element out of bounds throws exception. If the number occurs multiple times, return the index of any occurrence. If it isn’t present, return -1.
 
 
 class BSPROBLEM2{

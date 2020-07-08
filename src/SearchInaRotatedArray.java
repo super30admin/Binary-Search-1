@@ -30,7 +30,7 @@ class SearchInaRotatedArray {
 					high = mid -1;									// search in left half
 			}
 			
-			//case 2: if left half is sorted array
+			//case 3: if left half is sorted array
 			else if(nums[low] <= nums[mid]) {
 				if(target >= nums[low] && target < nums[mid])		// search in left sorted half array
 					high = mid - 1;

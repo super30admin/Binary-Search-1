@@ -1,7 +1,44 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(logn)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
 
 
 // Your code here along with comments explaining your approach
+
+// 1. Finding the target using binary search, in which the start, end and mid points are calculated
+//2. Binary search carried out using iteration. after finding the mid point, checking left and right portion to find which one is in increasing order.
+//3. Proceed in the side where the numbers are placed in increasing order.
+
+class Solution{
+    public int search(int[] nums, int target){
+        int start = 0;
+        int end = nums.length;
+
+        while(start <= end){
+            int mid = start + (end-start)/2;
+            if (nums[mid] == target){
+                return mid;
+            }
+
+            if (nums[start] <= nums[mid]){
+                if(nums[start] <= target && nums[mid] < target){
+                    end = mid-1;
+                }
+                else{
+                    start = mid+1;
+                }
+            }
+            else{
+                if(nums[mid] < target && nums[end] >= target){
+                    start = mid+1;
+                }
+                else{
+                    end = mid-1;
+                }
+            }
+        }
+
+        return -1;
+    }
+}

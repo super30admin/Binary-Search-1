@@ -51,3 +51,52 @@ class SearchInaRotatedArray {
 			System.out.println("Found at index " +index);
 	}
 }
+
+/*-----------------------------------------Recursive Approach-------------------------------------------------------*/
+
+/*
+ class Solution {
+    public int search(int[] nums, int target) {
+        
+        if(nums == null || nums.length == 0)
+            return -1;
+        
+        return binarySearch(nums, 0, nums.length-1, target);
+    }
+    
+    public int binarySearch(int[] nums, int low, int high, int target){
+         while(low <= high){
+             int mid = (low + (high-low) / 2);
+             
+             if(nums[mid] ==  target)
+                return mid;
+             
+             else if(nums[mid] <= nums[high]){
+                if(target > nums[mid] && target <=nums[high])
+                    return binarySearch(nums, mid+1, high, target);
+                else
+                    return binarySearch(nums, low, mid-1, target);
+            }
+            else if( nums[low] <= nums[mid]){
+                if(target >= nums[low] & target < nums[mid])
+                    return binarySearch(nums, low, mid-1, target);
+                else
+                    return binarySearch(nums, mid+1, high, target);    
+            }
+        }
+        return -1;
+    }
+    
+    public static void main (String[] args) {
+		int nums[] = {4,5,6,7,0,1,2};
+		int target = 0;
+		int index = search(nums, target);
+		if(index == -1)
+			System.out.println("Not found");
+		else
+			System.out.println("Found at index " +index);
+	}
+}
+
+*/
+

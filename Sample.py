@@ -59,3 +59,34 @@ elif target<nums[0]:
 else:
     print(search(nums, 0,rotation,target))
 
+
+#PROBLEM 2: Search in Infinite sorted array:
+'''
+1. we will proceed with 2 pointer named low and high with initial values of 0 and 1 
+2. the objective of these 2 pointers is to get a range where the target can be found
+3. after finding the range, we can apply binary seach on the range to find the target
+'''
+class solution:
+
+    def decideRange()
+        low=0
+        high=1  
+
+        while(nums[high]<target):
+            low=high
+            high*=2
+
+        return self.binarySearch(nums, low, high, target)
+
+    def binarySearch(self,nums, low, high, target):
+        
+        while(start<=end):
+            mid=(end+start)//2
+            if nums[mid]==target:
+                return mid
+            else:
+                if nums[mid]>target:
+                    end=mid-1
+                else:
+                    start=mid+1
+        return -1

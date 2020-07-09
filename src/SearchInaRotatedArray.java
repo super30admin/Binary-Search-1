@@ -65,7 +65,7 @@ class SearchInaRotatedArray {
     }
     
     public int binarySearch(int[] nums, int low, int high, int target){
-         while(low <= high){
+         if(low <= high){
              int mid = (low + (high-low) / 2);
              
              if(nums[mid] ==  target)

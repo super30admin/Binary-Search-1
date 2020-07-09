@@ -19,6 +19,7 @@ class Solution:
         high = 1
         
         while reader.get(high) < target:
+            low=high
             high *= 2
         
         while low <= high:

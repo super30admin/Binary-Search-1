@@ -1,3 +1,5 @@
+#Time Complexity-O(logn)
+#Space Complexity-O(n)
 class Solution:
     def search(self, nums, target):
         if not nums:
@@ -24,3 +26,4 @@ class Solution:
 obj=Solution()
 output=obj.search([4,5,6,7,0,1,2],0)
 print(output)
+

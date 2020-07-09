@@ -1,4 +1,4 @@
-APPROACH - 1 (Finding pivot and then do Binary Search)
+# APPROACH - 1 (Finding pivot and then do Binary Search)
 # Time Complexity : O(lg n) - find_pivot, binarySearch
 # Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
@@ -62,7 +62,7 @@ class Solution:
         
         
         
-  APPROACH - 2 (Single Binary Search - Iterative)
+#  APPROACH - 2 (Single Binary Search - Iterative)
 # Time Complexity : O(lg n)
 # Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
@@ -100,7 +100,7 @@ class Solution:
         
 
 
-APPROACH - 3 (Single Binary Search - Recusrsive)
+# APPROACH - 3 (Single Binary Search - Recusrsive)
 # Time Complexity : O(lg n)
 # Space Complexity : O(1) - not considering the space taken up by recursive call stack
 # Did this code successfully run on Leetcode : Yes

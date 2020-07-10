@@ -102,7 +102,8 @@ class Solution:
 
 # APPROACH - 3 (Single Binary Search - Recusrsive)
 # Time Complexity : O(lg n)
-# Space Complexity : O(1) - not considering the space taken up by recursive call stack
+# Space Complexity : O(1) - not considering the space taken up by recursive call stack - WRONG
+#                    O(lg n) - MUST consider recursive stack calls in SC. Here, there are O(lg n ) calls to recursiveBinarySearch(). 
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : None
 

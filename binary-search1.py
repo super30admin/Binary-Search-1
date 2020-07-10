@@ -57,7 +57,7 @@ class Solution:
 # Any problem you faced while coding this : None
 
 ## First finding the window where the target should be by increasing the high index to double of high and low to high.
-## Once the window id found applying binary search.
+## Once the window is found applying binary search.
 class Solution:
     def search(self, reader, target):
         """

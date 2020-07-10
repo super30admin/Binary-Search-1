@@ -50,3 +50,32 @@ class Solution:
         #             else:
         #                 return searchTarget(l, mid - 1)
         # return searchTarget(0, len(nums) - 1)                 
+
+# Time Complexity : O(log M). Here M is the index of the target in the array.
+# Space Complexity : O(1) 
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : None
+
+## First finding the window where the target should be by increasing the high index to double of high and low to high.
+## Once the window id found applying binary search.
+class Solution:
+    def search(self, reader, target):
+        """
+        :type reader: ArrayReader
+        :type target: int
+        :rtype: int
+        """
+        low, high = 0, 1
+        while reader.get(high) < target:
+            low, high = high, 2*high
+        
+        while low <= high:
+            mid = low + (high-low) // 2
+            if reader.get(mid) == target:
+                return mid
+            if reader.get(mid) < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return -1
+        

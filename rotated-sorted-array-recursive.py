@@ -1,3 +1,14 @@
+# Time Complexity : O(log(n)) 
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : No
+
+#Approach:
+#1. We will use binary search. This is the recursive solution for binary search.
+# We know that from the mid point of the array, either of the left or the right part of the array has to be sorted.
+#2. If the left part of the array is sorted, we apply binary search in there, to find the element in the left subpart of the array, or same for right sub array. 
+
+
 class Solution(object):
     def search(self, nums, target):
         """

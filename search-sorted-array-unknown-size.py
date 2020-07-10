@@ -1,3 +1,13 @@
+# Time Complexity : O(n), worst case, may be. Not sure, as the array is of unknown size.
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : No
+
+#Approach:
+#1. We will use binary search. Using two pointers, slow and fast, we try to identify our search space, where we are sure that this is where the target is.
+#2. Once we know the start and end of the search space, we apply binary search to find the exact index of the target in the array.
+
+
 # """
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation

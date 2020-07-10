@@ -1,4 +1,4 @@
-//Time complexity=O(1)
+//Time complexity=O(log N)
 //Spacecomplexity=O(N)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no

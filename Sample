@@ -1,7 +1,90 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+# Binary-Search-1
+
+## Problem1 
+#Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+
+
+#Time Complexity: O (log n) Since the search space if reduce by half, we only traverse half the array
+#Space Complexity: O (1) 
+#Did this code successfully run on Leetcode : Yes
+#Any problem you faced while coding this : None
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+
+        #Brute force solution: traverse the entire array but we end up with O(n) time complexity
+        #Since the array is sorted, we can use binary search method which reduces the time complexity to O(log n)
+        low = 0
+        high = len(nums) - 1
+        while(low <= high):
+            mid = low + (high - low)//2
+            if nums[mid] == target:
+                return mid
+            elif nums[low] <= nums[mid]: # target is on the left part of the array
+                if nums[low] <= target and target <= nums[mid]:
+                    high = mid - 1
+                else:
+                    low = mid + 1                 
+            else: # target is on the right part of the array
+                if nums[mid] <= target and target <= nums[h]:
+                    low = mid + 1                  
+                else:
+                    high = mid - 1
+        return -1
+
+
+
+
+
+
+
+
+## Problem2
+Search in Infinite sorted array: 
+
+#Time Complexity: O (log n) Since the search space if reduce by half, we only traverse half the array
+#Space Complexity: O (1) 
+#Did this code successfully run on Leetcode : Yes
+#Any problem you faced while coding this : None
+
 
 
 // Your code here along with comments explaining your approach
+
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+
+class Solution:
+    def search(self, reader, target):
+        """
+        :type reader: ArrayReader
+        :type target: int
+        :rtype: int
+        """
+        # if the target does not exists, return -1
+        if reader.get(0)==2147483647 or target<reader.get(0):
+            return -1
+        if reader.get(0) == target:
+            return 0
+        i=0
+        j=1 # since we do not know the length of array,
+        while i < j:
+            if reader.get(j) == target:
+                return j 
+            #if we access the array out of bounds, reduce the j value 
+            elif reader.get(j) == 2147483647:
+                j = (i + j)//2
+            elif reader.get(j)<target: #  we increase j by 2 each time we don't find the target and update the i 
+                i=j
+                j=j*2
+            elif reader.get(j)>target:
+                j=(i + j)//2
+        
+
+        return -1

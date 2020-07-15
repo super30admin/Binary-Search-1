@@ -8,24 +8,25 @@ class Solution:
 
     def search(self, nums: List[int], target: int) -> int:
 
-        #Intializing the left and right values which is start and end, In python we can give this by 0(start) and len(nums)-1 (end)
+        # Initializing the left and right values which is start and end, In python we can give this by 0(start) and
+        # len(nums)-1 (end)
         left = 0
         right = len(nums) - 1
 
-        #If this case fails means we reached end of the list and no numbers to search and we will return -1
+        # If this case fails means we reached end of the list and no numbers to search and we will return -1
         while left <= right:
-            #Calculating mid => this way of calculting mid will prevent overflow.
+            # Calculating mid => this way of calculating mid will prevent overflow.
             mid = left + (right - left) // 2
 
-            #If mid is the target we will return it
+            # If mid is the target we will return it
             if nums[mid] == target:
                 return mid
 
-            #If this case pass - means it is left sorted else it is right sorted
+            # If this case pass - means it is left sorted else it is right sorted
             if nums[left] <= nums[mid]:
 
                 # If this case pass - means the target is between this left and mid and we convert it to new range by keeping the left same and right to mid -1
-                #Else vice versa of it
+                # Else vice versa of it
                 if nums[left] <= target <= nums[mid]:
 
                     right = mid - 1
@@ -55,8 +56,7 @@ class Solution:
 # Any problem you faced while coding this : No
 
 
-
-#Instead of while loop we will do recursive function
+# Instead of while loop we will do recursive function
 
 class Solution2:
 

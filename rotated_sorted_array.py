@@ -1,3 +1,6 @@
+# time complexity O(log(n))
+# space complexity O(1)
+
 class Solution:
     def search(self, nums, target,l,r) -> int:
         # method 1: recurrsive
@@ -48,3 +51,4 @@ l=[3,4,5,1,2]
 t=1
 a=Solution()
 print(a.search(l,t,0,len(l)-1))
+# answer should be 3

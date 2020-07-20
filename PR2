@@ -1,0 +1,38 @@
+// Time Complexity : O(logn) - where n is the number of elements in the array.
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach : The approach is simple. We use the second technique of binary search called expanding the search space by twice. We always check if the element at the high pointer is lesser than the target and if it is then, we double our distance between the high and low pointers.
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low=0;
+        int high=1;
+        while(reader.get(high)<target){
+            low=high;
+            high=high*2;
+        }
+        return binarySearch(reader,low,high,target);
+    }
+    private int binarySearch(ArrayReader reader,int low,int high,int target){
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(reader.get(mid)==target)
+                return mid;
+            else if(reader.get(mid)>target)
+                high=mid-1;
+            else
+                low=mid+1;
+        }
+        return -1;
+    }
+}
+

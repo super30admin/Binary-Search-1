@@ -1,0 +1,44 @@
+// Time Complexity : O(logn) - where n is the number of elements in the array.
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach : The approach is to find a mid and check if the element at the mid is equal to the target, if it is then return the mid, otherwise check which side is sorted and check whether the target lied in the sorted side or not.
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums.length<1) return -1;
+        int start=0;
+        int end=nums.length-1;
+        int count;
+        while(start<=end){
+          int mid=start+(end-start)/2;
+            System.out.println(start+ " " +end+" " +mid);
+          if(nums[mid]==target){
+            return mid;
+               }
+           if (nums[start] <= nums[mid]) {
+ 
+             if(target >= nums[start] && target <= nums[mid]) {
+                  end = mid - 1;
+             } else {
+                  start = mid+1;
+             }
+ 
+             } 
+            
+          else {
+ 
+            if(target >= nums[mid] && target <= nums[end]) {
+                start = mid+1;
+            } 
+              
+             else {
+                end = mid-1;
+            
+            }
+          }
+        }
+        return -1;  
+    }
+    }

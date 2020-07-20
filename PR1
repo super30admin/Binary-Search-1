@@ -1,0 +1,57 @@
+// Time Complexity : O(2logn) -> O(long) - where n is the number of elements.
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach : The approach is to perform to binary searches one for the first index of the occurrence and second for the last index of occurrence. This is to make sure that in the worst case the time complexity is not O(n).
+
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        //edge case
+        if(nums==null || nums.length==0) return new int[] {-1,-1};
+        int s=binarySearrchLeft(nums,target,0,nums.length-1);
+        int e=binarySearchRight(nums,target,0,nums.length-1);
+        return new int[] {s,e};
+    }
+    public int binarySearrchLeft(int[] nums, int target,int start,int end){
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(nums[mid]==target){
+                if(mid==start || nums[mid]>nums[mid-1]){
+                    return mid;
+                }
+                else{
+                    end=mid-1;
+                }
+            }
+            else if(nums[mid]>target){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        return -1;
+    }
+    public int binarySearchRight(int[] nums, int target,int start,int end){
+         while(start<=end){
+            int mid=start+(end-start)/2;
+            if(nums[mid]==target){
+                if(mid==end || nums[mid]<nums[mid+1]){
+                    return mid;
+                }
+                else{
+                    start=mid+1;
+                }
+            }
+            else if(nums[mid]>target){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        return -1;
+    }
+    
+}

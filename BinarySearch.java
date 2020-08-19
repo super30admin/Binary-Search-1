@@ -1,18 +1,26 @@
-// Time Complexity : O(log n)
-// Space Complexity : O(1)
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
+//Time Complexity: O(logn) since we keep dividing the array and search in the half arrays
+//Space complexity: O(1)
 
 public class BinarySearch {
     public static int search(int[] nums, int target) {
         int i = 0, j = nums.length - 1;
         while (i <= j) {
-            if (nums[i] == target) 
-                return i;
-            else if (nums[j] == target) 
-                return j;
-            i++;
-            j--;
+            int m = (i+j)/2;
+            System.out.println(m);
+            if (nums[m] == target) 
+                return m;
+            if (nums[i] <= nums[m]) {
+                if(nums[i] <= target && target <= nums[m])    
+                    j = m-1;
+                else
+                    i = m+1;  
+            }
+            else{
+               if(nums[m] <= target && target <= nums[j])    
+                    i = m+1; 
+                else
+                    j = m-1;
+            }
         }
         return -1;     
     }

@@ -1,4 +1,4 @@
-package BinarySearch;
+/*package BinarySearch;
 
 /*Approach 1
  * - found the mid element checked if equal to target
@@ -11,7 +11,7 @@ package BinarySearch;
  * Complexity : O(n)
  * As we do binary search every time we divide the array into halves
  * */
-
+/*
 public class Problem1 {
 	
 	
@@ -54,3 +54,4 @@ public class Problem1 {
 		System.out.println("result:"+res);
 	}
 }
+*/

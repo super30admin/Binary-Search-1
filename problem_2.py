@@ -17,9 +17,9 @@ class solution:
         
 
         # we maintain a difference element that helps us in guessing the size of the array required.
-        # we initialise our adder to 1, then we multiply 2 with each iteration until we find an element greater
+        # we initialise our adder to 1, then we multiply 2 with each iteration  and add to our current size until we find an element greater
         # then the required element. Then we store the size element in a variable and then use binary search in the
-        # new short array to find the target.
+        
         left = 0
         right = 0
         size = 0

@@ -33,13 +33,20 @@
 
  class UnknownLengthSearch {
    public  int search(int []nums,int target){
-       
+       //1
+      //Initially the low pointer would be at 0 and high pointer would be at 1 
       int low=0;
-        int high=1;      
+      int high=1;      
+       
+      //2
+      //Update low pointer to high and double
+      //the value of high pointer until the value in the high index is less than the target
        while(nums[high]<target){
             low = high;
             high = high * 2;
         }
+        //3
+        //Search for the element using binary search
         return binarySearch(nums,target,low,high);
     }
             

@@ -1,0 +1,38 @@
+// Time Complexity : O(log n) - Binary Search and O(log n) - Getting the highest value:    (O(log n) + O(log n)): O(log n)   
+// Space Complexity : O(1) - No extra space is used
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
+
+
+class Solution {
+
+	public int getElement(ArrayReader arrRead, int target){
+		int left = 0;
+		int right = 1;
+		
+		while(right != Integer.MAX_VALUE){
+			right = right * 2;
+		}
+		
+		return search(arrRead,left,right,target);
+	}
+
+
+    private int search(ArrayReader arrRead, int left, int right,int target) {
+        while(left <= right){
+            int mid = left + (right - left)/2;
+            
+            if(arrRead.get(mid) == target){
+                return mid;
+            }else if(arrRead.get(mid) > target){
+                right = mid -1;
+            }else{
+                left = mid +1;
+            }
+        }
+        return -1;
+    }
+}

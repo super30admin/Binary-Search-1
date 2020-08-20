@@ -11,11 +11,12 @@
 
 class Search {
 
+    // normal recursive binary search
     public int binarySearch(int arr[], int l, int r, int target) {
 
         if (r >= l) {
 
-            int mid = l + (r - 1) / 2;
+            int mid = l + (r - l) / 2;
             if (arr[mid] == target)
                 return mid;
             if (arr[mid] > target)
@@ -25,8 +26,12 @@ class Search {
         return -1;
     }
 
+    // find the sub array in an exponential way
     int findArr(int arr[], int target) {
+
+        // Initially we set the array as the first two elements
         int h = 1, l = 0;
+        // find in an exponential way to find the range of array which might have the target by checking the target is smaller than element at high position
         while (target > arr[h]) {
             l = h;
             if (2*h<arr.length-1)

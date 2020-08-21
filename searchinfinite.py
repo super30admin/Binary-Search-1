@@ -5,7 +5,7 @@
 #class ArrayReader:
 #    def get(self, index: int) -> int:
 
-# keep the high pointer on the maximum size 
+# keep the high pointer at the maximum size 
 # Time complexity - O(log n) asymptotically
 # Space complexity - O(1)
 # Did this code run on leetcode? - yes
@@ -69,16 +69,14 @@ class Solution:
         while reader.get(low) <= target <= reader.get(high) and low <= high:
             mid = low + (high-low)//2
             midelem = reader.get(mid)
+            lowelem = reader.get(low)
             # if the mid pointer does not exists, shift it.
             if midelem == target:
                 return mid
-            elif midelem == 2147483647:
+            elif midelem == 2147483647 or lowelem <= target <= midelem:
                 high = mid - 1
             else:
-                lowelem = reader.get(low)
-                if lowelem <= target <= midelem: # check if the value lies in the left side.
-                    high = mid - 1
-                else:
-                    low = mid + 1
+                low = mid + 1
         return -1
+      
       

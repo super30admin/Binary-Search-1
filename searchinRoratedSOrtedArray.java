@@ -1,4 +1,13 @@
-
+    /*  Explanation
+    Time Complexity for operators : log(n) 
+    Extra Space Complexity for operators : o(1) .. No extra space
+    Did this code successfully run on Leetcode : Yes
+    Any problem you faced while coding this : No
+    Initillay it will try go to the mid element. It target founds at mid then it will return.
+    Then it will compare with the lower elemnt that means left most elment in the array.
+    If nums[mid]>=nums[low] then check whether target is in between the range of mid and low.If it is then go to left side else on right side.
+    Similarly for comparing mid with highest element.
+    */
 
 public class searchinRotatedSOrtedArray{
 

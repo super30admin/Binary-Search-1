@@ -1,71 +1,39 @@
 
     /*  Explanation
-    Time Complexity for operators : log(n) + log(n) = log(n) 
+    Time Complexity for operators : log(n) 
     Extra Space Complexity for operators : o(1) .. No extra space
     Did this code successfully run on Leetcode : Yes
     Any problem you faced while coding this : No
-    The implemntation consists dividing array and find the element. Once element is found traverse till left most
-    of the element and same for right side.
+    Initillay it will try to find the max value by just doubling the element and traversing till end.
+    Then, the implemntation consists dividing array and find the element. if not found then compare if it is greater of lesser
+    and  the traverse accordingly.
     */
 
 public class searchinInfiniteSortedArray{
 
-
-    public static void main(String args[]){
-            int arr[] = new int[]{5,7,7,8,8,10};
-            int arr1[] = searchRange(arr,8);
-            System.out.println(arr1[0]);
-            System.out.println(arr1[1]);
-    }
-
-    public static int[] searchRange(int[] nums, int target) {
-        int left = traverseLeft(nums,target);
-        int right = traverseRight(nums,target);
-           
-        return new int[]{left,right};
+   
+    public static int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1;
+       
+        while(reader.get(high)!=Integer.MAX_VALUE)
+            high = high*2;
+       
+        return binarySearch(reader,low,high,target);
     }
    
-    public static int traverseLeft(int[] nums,int target){
-        int low = 0;
-        int high = nums.length-1;
-       
-        while(low <= high){
+    private statuc int binarySearch(ArrayReader reader, int low, int high, int target){
+        while(low<=high){
             int mid = low + (high-low)/2;
            
-            if(nums[mid] == target){
-                if(mid==low || nums[mid-1]!=target){
-                    return mid;
-                }
-                high = mid-1;
-            }else if(nums[mid]>target){
-                high = mid -1;
-            }else{
+            if(reader.get(mid) == target)
+                return mid;
+            else if(reader.get(mid)>target)
+                high = mid - 1;
+            else
                 low = mid + 1;
-            }
         }
-       
         return -1;
     }
-   
-        public static int traverseRight(int[] nums,int target){
-            int low = 0;
-            int high = nums.length-1;
 
-            while(low <= high){
-                int mid = low + (high-low)/2;
-
-                if(nums[mid] == target){
-                    if(mid==high || nums[mid+1]!=target){
-                        return mid;
-                    }
-                    low = mid+1;
-                }else if(nums[mid]>target){
-                    high = mid -1;
-                }else{
-                    low = mid + 1;
-                }
-            }
-       
-        return -1;
-    }
 }

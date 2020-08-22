@@ -8,7 +8,7 @@ class Solution {
         int low=0;
         int high=1;
         
-        while(reader.get(high)<Integer.MAX_VALUE){
+        while(reader.get(high)<target){
             high=high*2;
         }
         

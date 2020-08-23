@@ -22,7 +22,7 @@ public class searchinInfiniteSortedArray{
         return binarySearch(reader,low,high,target);
     }
    
-    private statuc int binarySearch(ArrayReader reader, int low, int high, int target){
+    private static int binarySearch(ArrayReader reader, int low, int high, int target){
         while(low<=high){
             int mid = low + (high-low)/2;
            

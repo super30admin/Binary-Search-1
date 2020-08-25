@@ -1,7 +1,80 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Problem1 - 33. Search in Rotated Sorted Array
+
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : I started late. So I had an idea about 
+// the approach since it was already discusses in class
 
 
-// Your code here along with comments explaining your approach
+class Solution {
+    public int search(int[] nums, int target) {
+        
+		int low = 0;
+		int high = nums.length-1;
+		int mid = 0;
+		while (low <= high) {
+			mid = low + (high-low)/2;
+			if(nums[mid] == target) {
+				return mid;
+			}
+			if(nums[mid] >= nums[low]) {
+				if((nums[mid] > target) && (nums[low] <= target )) {
+					high = mid - 1;
+				}else {
+					low = mid +1;
+				}
+			}
+			else{
+				if((nums[mid] < target) && (nums[high] >= target)) {
+					low = mid + 1;
+				}else {
+					high = mid - 1;
+				}
+			}
+		}
+		return -1;
+	
+    }
+}
+
+
+// Problem2 - 702. Search in a Sorted Array of Unknown Size
+
+// Time Complexity : O(log n) where n is the index of target 
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : I had an idea about 
+// the approach since it was already discusses in class.
+
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1;
+        while(target >= reader.get(high)){
+            low = high;
+            high = high * 2;
+        }
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            if(target == reader.get(mid)){
+                return mid;
+            }
+            if( reader.get(mid) > target){
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }return -1;
+    }
+}

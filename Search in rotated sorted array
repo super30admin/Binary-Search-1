@@ -1,0 +1,32 @@
+//time complexity: O(log n)
+//space complexity: O(1)
+// we use binary search and check target in sorted parts
+// yes I solved on leetcode
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return -1;
+        int low = 0;
+        int high = nums.length-1;
+        
+        while(low <= high){
+            int mid = low + (high-low)/2;
+            
+            if(nums[mid] == target) return mid;
+            
+            // if left is sorted
+            if(nums[low] <= nums[mid]){
+                
+                if(nums[low] <= target && nums[mid] > target) high = mid-1;
+                else
+                    low = mid+1;
+            }
+            else{
+                //right is sorted
+                if(nums[mid] < target && target <= nums[high]) low = mid+1;
+                else
+                    high = mid-1;
+            }
+        }
+        return -1;
+    }
+}

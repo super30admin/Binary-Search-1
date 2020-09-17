@@ -13,7 +13,7 @@ Any problem you faced while coding this : None
 
 */  
 
-// Your code here along with comments explaining your approaches
+// Your code here along with comments explaining your approach
 
 class Solution 
 { 

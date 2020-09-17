@@ -3,7 +3,7 @@
 Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
  */
 
-//Time comlpexity - O(n) 
+//Time comlpexity - O(log n) 
 //space complexity - O(1)
 // Did this code successfully run on Leetcode : Yes
 /*

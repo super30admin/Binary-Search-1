@@ -1,4 +1,4 @@
-# O(n) time and O(1) space where n is the length of nums array
+# O(log(n)) time and O(1) space where n is the length of nums array
 class Solution:
     def search(self, nums,target):
         left = 0

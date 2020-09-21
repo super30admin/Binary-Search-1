@@ -7,7 +7,7 @@ Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotate
 
 
 ## Problem2
-Search in Infinite sorted array: 
+Search in Infinite sorted array: https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
 
 https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
 

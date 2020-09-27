@@ -11,40 +11,40 @@ Solution - Recursive approach
     - Perform Binary Search
 Time Complexity - O(log n), where n is the index of target value
 Space Complexity - O(1)
-// Did this code successfully run on Leetcode : No
-// Any problem you faced while coding this : This problem is returning null on Leetcode.
-Can you help me understand the issue? Thanks.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 """
 
 
-class InfiniteSortedArray():
-    # Function to search number in infinite sorted array
-    def infinite_search(self, reader, target):
-        # to check the first element in the array
+class Solution:
+    def search(self, reader, target):
+        """
+        :type reader: ArrayReader
+        :type target: int
+        :rtype: int
+        """
+        # Base case
         if reader.get(0) == target:
             return 0
 
-        # Search boundaries
+        # search boundaries
         left = 0
         right = 1
         while reader.get(right) < target:
             left = right
             right = right * 2
-        self.binarySearch(reader, target, left, right)
+        return Solution.binary_search(reader, target, left, right)
 
-    # Function for Binary Search
-    def binarySearch(self, reader, target, left, right):
-        # Base case
-        if left > right:
-            return -1
+    def binary_search(reader, target, left, right):
+        while left <= right:
+            mid = left + (right - left) // 2
+            if reader.get(mid) == target:
+                return mid
+            elif reader.get(mid) < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return -1
 
-        # while left <= right:
-        mid = int(left + (right - left)/2)
-        num = reader.get(mid)
 
-        if num == target:
-            return mid
-        elif num > target:
-            return self.binarySearch(reader, target, left, mid - 1)
-        else:
-            return self.binarySearch(reader, target, mid + 1, right)
+

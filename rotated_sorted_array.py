@@ -22,14 +22,14 @@ class RotatedSortedArray:
             # If the sorted numbers are before mid
             elif nums[start] <= nums[mid]:
                 # If the target is before mid
-                if target >= nums[start] and target < nums[mid]:
+                if nums[start] <= target < nums[mid]:
                     end = mid - 1
                 else:
                     start = mid + 1
             # If the sorted numbers are after mid
             else:
                 # If the target is after mid
-                if target > nums[mid] and target <= nums[end]:
+                if nums[mid] < target <= nums[end]:
                     start = mid + 1
                 else:
                     end = mid - 1
@@ -38,4 +38,4 @@ class RotatedSortedArray:
 
 # Driver code
 obj = RotatedSortedArray()
-print(obj.search([4,5,6,7,0,1,2], 0))
+print(obj.search([4,5,5,6,7,0,0,1,2,4], 0))

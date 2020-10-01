@@ -5,8 +5,11 @@
  *     public int get(int index) {}
  * }
  */
+ 
 /*
 Approach: We dont know the endpoint of array so consider inifity elements after the elements we need and increase high pointer by twice
+Time: O(log n)
+Space: O(N)
 */
 class Solution {
     public int search(ArrayReader reader, int target) {

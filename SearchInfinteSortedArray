@@ -1,0 +1,41 @@
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+ 
+/*
+Approach: We dont know the endpoint of array so consider inifity elements after the elements we need and increase high pointer by twice
+Time: O(log n)
+Space: O(N)
+*/
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1; //Increment hte value of high until infinity is found
+     
+        while(reader.get(high) != Integer.MAX_VALUE){ // the range is in -9999 - 9999 so we can assume array has infinity/unknown elements
+            high = high * 2;
+        }
+        
+         return binarySearch(low, high, reader, target);
+    }
+    
+    private int binarySearch(int low, int high, ArrayReader reader, int target){
+        
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            
+            if(reader.get(mid) == target){
+                return mid;
+            } else if(reader.get(mid) > target){
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+}

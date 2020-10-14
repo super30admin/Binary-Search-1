@@ -51,3 +51,6 @@ class Solution(object):
                 else: # target less than mid, move left
                     end = mid - 1
         return -1
+
+# PS:: This is different from the approach discussed in class, we used the first/start element to check if mid and target lies in the left sorted region.
+# I like this approach more because it handles the case of a descending array (rotated n times, where n is length of array) as well.

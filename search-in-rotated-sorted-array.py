@@ -12,7 +12,7 @@
 # orange - Original sorted half
 # EG [4,5,6,7,0,1,2] - Here, 4,5,6,7 are green (Greater than polestar) and 
 # 0,1,2 are orange(Less than polestar)
-# Once we know what region the polestar lies in, we will perform a binary search for the target based on what region mid lies in and what region the target lies in...more comments in-line
+# Once we know what region the target lies in, we will perform a binary search for the target based on what region mid lies in and what region the target lies in...more comments in-line
         
 class Solution(object):
     def search(self, nums, target):

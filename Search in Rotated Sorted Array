@@ -1,0 +1,35 @@
+//Time complexity: O(logn)
+//Space Complexity: O(1)
+//Successfully ran on leetcode
+//No problems while wiritng the solution 
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums.length == 0) return -1;  //checking for edge cases where length of array is 0 or 1
+        if(nums.length == 1) {
+            if(nums[0] == target) return 0;
+            else return -1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while(left <= right) // Performing a binary search
+        {
+            int mid = (left+right)/2;
+            if(nums[mid] == target) return mid; 
+            if(nums[mid] >= nums[left]){ // If left side is sorted
+                if(target >= nums[left] && target < nums[mid]){ //If the element to be searched is on this side 
+                    right = mid - 1; // move the right pointer to mid - 1
+                }
+                else{
+                   left = mid + 1; 
+                }
+            }else{ // If the right side is sorted 
+                if(target > nums[mid] && target <= nums[right]){ // If the element to be searched is on the right side
+                    left = mid+1; // Move the left pointer to mid+1
+                }else{
+                    right = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+}

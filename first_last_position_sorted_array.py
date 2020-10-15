@@ -1,32 +1,55 @@
-def binarySearch(arr, l, r, x): 
-    while(l<=r):
-        mid = int((l+r)/2)
-        if (arr[mid]==x):
-            return mid
-        elif (x>arr[mid]):
-            l = mid + 1
+# The logic bhind solving this problem is binary search modification. As taught in class, I need to do 2 binary searches to find lftmost and right most index.
+# The way it works is, suppose I want to find left most target index, then I do a binary search and move right pointer to mid-1 if arr[mid-1] >= arr[mid].
+# There is also an edge case here, supoose I traverse to left, and go to 0th index then I do not ned to compare I will return the index.
+# On the right subarray, while performing binary search I move high to mid + 1 and keep traversing until mid element is less than next element
+# Time complexity - O(log (n))
+# Space Complexity - O(n)
+
+def binarySearchLeft(arr,target):
+    low = 0
+    high = len(arr)-1
+    while (low <= high):
+        mid = int((low+high)/2)
+        if (arr[mid]==target):
+            if (mid == low or arr[mid]>arr[mid-1]):
+                return mid
+            else:
+                high  = mid - 1
+        elif (arr[mid] > target):
+            high = mid - 1
         else:
-            r = mid - 1
+            low = mid + 1
+    return -1
+
+            
+def binarySearchRight(arr,target):
+    low = 0
+    high = len(arr)-1
+    while (low <= high):
+        mid = int((low+high)/2)
+        if (arr[mid]==target):
+            if (mid == high or arr[mid]<arr[mid+1]):
+                return mid
+            else:
+                high  = mid + 1
+        elif (arr[mid] > target):
+            high = mid - 1
+        else:
+            low = mid + 1
     return -1
 
 def searchArray(arr,target):
-    startIndex = -1
-    endIndex = -1
-    idxList = list()
-    idxList = [startIndex,endIndex]
-    if (len(arr)!=0 and target is not None):
-        startIndex = binarySearch(arr,0,len(arr),target)
-        print("Element start index: ",startIndex)
-        idxList[0] = startIndex
-        for i in range(startIndex,len(arr)):
-            if (arr[i] != target):
-                endIndex = i-1
-                break
-        idxList[1] = endIndex
-        print("End index is: ", endIndex)
-        return idxList
-    else:
-        print("Array is empty or target is None hence  cannot search")
+    if (arr is None or len(arr)==0):
+        return [-1,-1]
+    leftIndex = binarySearchLeft(arr,target)
+    rightIndex = binarySearchRight(arr,target)
+    arr1 = list()
+    arr1.append(leftIndex)
+    arr1.append(rightIndex)
+    print(arr1)
+    return arr1
+    
+    
 
 arr = [5,7,7,8,8,10]
 target = 8

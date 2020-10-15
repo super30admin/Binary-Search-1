@@ -1,12 +1,15 @@
-def binarySearch(arr, l, r, x): 
-    while(l<=r):
-        mid = int((l+r)/2)
-        if (arr[mid]==x):
+# Here in this problem, the lenght of array is unknown, linear search will take O(n) time, but as the array is sorted, I tried to use binary search to solve it in log (n) time.
+# Time Complexiity: O(log(n))
+# Space Complexity: O(n) 
+def binarySearch(arr, low, high, target): 
+    while(low<=high):
+        mid = int((low+high)/2)
+        if (arr[mid]==target):
             return mid
-        elif (x>arr[mid]):
-            l = mid + 1
+        elif (target>arr[mid]):
+            low = mid + 1
         else:
-            r = mid - 1
+            high = mid - 1
     return -1
 
 def searchArray(arr,target):

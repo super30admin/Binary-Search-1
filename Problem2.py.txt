@@ -1,0 +1,30 @@
+# Time Complexity : O(logn) where n is the index of the value we are searching for 
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : No Premium Access
+# Any problem you faced while coding this : Haven't worked with reader class before
+
+class Solution:
+    def search(self, reader, target):
+        """
+        :type reader: ArrayReader
+        :type target: int
+        :rtype: int
+        """
+        start, end = 0, 1
+        #find boundaries
+        while reader.get(end) < target:
+            start = end
+            end = end * 2
+
+        while start <= end:
+            pivot = start + (end - start)//2
+            num = reader.get(pivot)
+
+            if num == target:
+                return pivot
+            if num > target:
+                end = pivot - 1
+            else:
+                start = pivot + 1
+
+        return -1

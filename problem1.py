@@ -3,7 +3,7 @@ class Problem1:
         # 4 5 6 7 0
         # taking two pointer
         #i=0 ,j=length num
-
+        # i will update the code with binary search
         i=0
         j=len(nums)-1
         while i<=j:

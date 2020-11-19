@@ -1,7 +1,42 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
+// Time Complexity :O(n)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode : 
 // Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach
+
+class Solution {
+    public int search(int[] a, int target) {
+
+        int low = 0; //array first element 
+        int high = a.length-1; //array last element
+        int mid =-1; //to find the mid element 
+        while(low<=high){ //condition to chk till low become greater than high
+            mid=(high+low)/2; // it find the mid element of the array
+            if(a[mid]==target){ //if the mid element equal to taget element then it will return the mid element
+                return mid;
+            }
+            if(a[low]<a[mid]){ //to chk if the left side is sorted or not 
+                if(target<a[mid] && target>=a[low]){ //if sorted then the element should be between the range
+                    high=mid-1; // change the high
+                }else{
+                    low=mid+1; //else change the low
+                }
+            }
+            else{
+                if(target>a[mid] && target<=a[high]){ //if the code is enters then the right side of the mid element is sorted
+                    low=mid+1; 
+                }else{
+                    high=mid-1;
+                }
+                
+            }
+            
+       }
+        return -1; //no elements found 
+    }
+
+}
+
+// second code not able to access because of subscription 

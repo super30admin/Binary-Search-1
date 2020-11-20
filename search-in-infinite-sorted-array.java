@@ -1,3 +1,8 @@
+/ Time Complexity :
+// Space Complexity : O(lg n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes took time to understand the expanding solution
+
 /**
  * // This is ArrayReader's API interface.
  * // You should not implement it, or speculate about its implementation

@@ -1,7 +1,7 @@
-/ Time Complexity :
-// Space Complexity : O(lg n)
+// Time Complexity : O(lg n)
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : Yes took time to understand the expanding solution
+// Any problem you faced while coding this : Just took time to understand the expanding boundary solution
 
 /**
  * // This is ArrayReader's API interface.

@@ -8,32 +8,34 @@
 Approach: 1. Use arrayReader API to fetch element and increase high by 2  for O(logN) complexity
 
 class Solution {
-    public int search(int[] nums, int target) {
+    public int search(ArrayReader reader, int target) {
         int low = 0;
-        int high = nums.length - 1;
+        int high = 1;
         
-        if(nums==null || nums.length==0){
+       while(target >= reader.get(high)){
+            low = high;
+            high = high*2;
+       }
+       
+       return binaryUnknownSearch(low, high, target, arrayReader);
+       }
+       
+       public int binaryUnknownSearch(int low, int high, int target, ArrayReader reader){
+            
+            while(low <= high){
+                
+                int mid = low + (high - low)/2;
+                
+                if(target==reader.get(mid)){
+                    return mid;
+                }else if(target > reader.get(mid)){
+                    low = mid + 1;
+                }else{
+                    high = mid - 1;
+                }
+            }
+       
             return -1;
         }
-        
-        while(low <= high){
-            int mid = low + (high - low)/2;
-            
-            if(nums[low]<nums[mid]){
-              return nums[low]
-            }
-            
-            if((mid==low || nums[mid] < nums[mid-1]) && (mid==high || nums[mid] < nums[mid+1])){
-                return nums[mid];
-            }
-
-            }else if(nums[low] <= nums[mid] ){   
-                  low = mid + 1;
-                  }
-            }else{
-                high = mid - 1;
-            }
-        } 
-        return -1;
-    }
+    
 }

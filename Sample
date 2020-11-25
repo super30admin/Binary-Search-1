@@ -1,7 +1,14 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+Q1)
+// Time Complexity : O(Max(log m, lon n)) where m is the size high goes until we find the target and n is the size when we found the bound so log n is binary search in this size. 
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : yes I was not updating low.
+
+Q1)
+// Time Complexity : O(log n) 
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : no.
 
 
 // Your code here along with comments explaining your approach

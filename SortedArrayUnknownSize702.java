@@ -31,3 +31,7 @@ public class SortedArrayUnknownSize702 {
 		return -1;
 	}
 }
+ 
+
+// Time complexity : O (log n )
+// Space complexity : O (1)

@@ -1,5 +1,5 @@
 //Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
-// Time Complexity : O(logn)
+// Time Complexity : O(logm+logn) where m and n are the length of rows and columns respectively
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 

@@ -1,0 +1,42 @@
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def bsearch(self,reader, l, h, target):
+        low,high = l, h;
+        while(low <= high):
+            mid = low + (high - low)//2;
+            curr = reader.get(mid);
+            if(curr == target ):
+                return mid;
+            elif(target > curr):
+                low = mid + 1;
+            else:
+                high = mid - 1;
+        return -1;
+    
+    
+    def search(self, reader, target):
+        """
+        :type reader: ArrayReader
+        :type target: int
+        :rtype: int
+        """
+        if(reader.get(0) == target):
+            return 0;
+        idx = 1;
+        while(idx):
+            curr = reader.get(idx);
+            if(curr == target):
+                return idx;
+            elif(curr > target):
+                return self.bsearch(reader, idx//2, idx,target);
+            idx *= 2;
+        return -1;
+        
+        
+        

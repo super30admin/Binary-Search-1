@@ -1,3 +1,9 @@
+//Time Complexity: O(N) (Using two pointers)
+//Space Complexity: O(1)
+
+//Brute force approach will be to iterate through each and every element till we find our target - O(N^2)
+//Two pointer approach reduces the number of searches by comparing the current element with the required target - O(N)
+
 class MatrixSearch
 {
     public boolean searchMatrix(int[][] matrix, int target)

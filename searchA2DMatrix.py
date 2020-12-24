@@ -1,6 +1,6 @@
 # Time Complexity : O(lgN)
 # Space Complexity : O(1)
-# Did this code successfully run on Leetcode :
+# Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : Yes. with the approach I went, 
 # I had to figure out how to translate 1D index to 2D(to get the rows/columns). 
 # After seeing a pattern I was able to figure it out with a little bit of math.

@@ -22,24 +22,25 @@ class Solution:
         :rtype: int
         """
         """
-        Constraints is that the array is from 1 to 10000..
-        To solve this can't we just do regular binary search where, 
-        left = 0 and right is just 10,000? Well it passed. What if size of data is not known though?
-        """     
+        calculated the highest val I can go to (Just enough where high > target)
+        """
         left = 0
-        right = 10000
+        right = 1
+        while reader.get(right) < target:
+            left = right
+            right = right*2
+            
+        return self.binarySearch(left, right, target, reader)
+    
+    def binarySearch(self, left, right, target, reader):
         
         while left <= right:
-            mid = left+ (right-left) // 2
-            
-            #found
+            mid = left + (right-left) // 2
             if reader.get(mid) == target:
                 return mid
-            #if target is somewhere on the right 
-            elif reader.get(mid) < target:
-                left = mid + 1
-            #target is somewhere on the left
-            else:
+            elif target < reader.get(mid):
                 right = mid - 1
-        
-        return -1 
+            else:
+                left = mid + 1
+                
+        return -1

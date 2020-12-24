@@ -19,3 +19,35 @@ public class RotatedSortedArray {
 
 
 }
+
+
+
+
+/* Will work more on this 
+
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        int length=nums.length;
+        int left = 0;
+        int right = length-1;
+        mid= (right - left)/2;
+        while(left<=right)
+        {
+            if(target == nums[mid]) return mid;
+            else if (target <=nums[mid])
+            {
+                if(nums[left]<nums[right] && nums[mid]>=nums[left] && nums[mid]<=nums[right]) 
+                {
+                    
+                }
+            }
+            else
+            {
+                
+            }
+        }
+    }
+}
+
+*/

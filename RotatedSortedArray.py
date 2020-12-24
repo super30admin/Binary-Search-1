@@ -1,4 +1,4 @@
-# Complexity: O(n)
+# Complexity: O(log(n))
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         # need to find the pivot

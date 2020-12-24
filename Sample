@@ -1,7 +1,86 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(m+log(n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes 
+// Any problem you faced while coding this : Special cases like [] , [[]] , [[1]]
 
 
 // Your code here along with comments explaining your approach
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        // Handle cases like [] and [[]]
+        int row = matrix.length;
+        if(row==0)
+            return false;
+        int col = matrix[0].length;
+        if(col == 0)
+            return false;
+       
+       // Search row in which  to apply binary search  
+       for(int i=0;i<matrix.length;i++)
+       {   
+           row = i;
+           if(matrix[i][0]==target)
+           {
+               return true;
+           }else if(i+1<matrix.length && matrix[i+1][0]>target)
+           {
+               break;
+           }
+       }
+        
+        // Apply binary search in selected row.  
+        int left = 0 ; int right = matrix[row].length-1;
+        while(left<=right)
+        {
+            int mid = left + (right-left)/2;
+            int pivotElement = matrix[row][mid];
+            if(target == pivotElement)
+            {
+                return true;
+            }else if(target< pivotElement){
+                right = mid-1;
+            }else{
+                left = mid+1;
+            }
+        }
+        
+        return false;
+    }
+}
+
+Problem 2 : Search in rotated array 
+// Time Complexity : O(log(n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes 
+class Solution {
+    public int search(int[] nums, int target) {
+       int left = 0 ;
+       int right = nums.length-1;
+       while(left<=right)
+       {
+           int mid = left + (right-left)/2;
+           if(target==nums[mid]) // found 
+           {
+               return mid;
+           }else if (nums[mid]>=nums[left]) // if left part is sorted
+           {
+               if(target>=nums[left] && target<nums[mid]) // Check in sorted part 
+               {
+                   right = mid-1;
+               }else // Move to unsorted part 
+               {
+                   left = mid+1;
+               }
+           }else{                      // right is sorted 
+               if(target<= nums[right] && target>nums[mid]) // check in right 
+               {
+                  left = mid+1;    
+              }else{                 // move to unsorted part 
+                   right = mid-1;
+               }
+           }
+       }
+        
+        return -1;
+    }
+}

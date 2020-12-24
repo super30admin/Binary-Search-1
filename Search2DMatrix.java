@@ -39,3 +39,6 @@ class Search2DMatrix {
         System.out.println(ob.searchMatrix(arr, 4));
     }
 }
+
+//Time complexity - O(logm*n)
+//Space complexity = O(1)

@@ -40,3 +40,6 @@ class SearchRotatedSortedArray  {
         System.out.println(ob.search(nums, target));
     }
 }
+
+//Time complexity : O(logN) N is the number of elements in array
+//Space complexity : O(1)

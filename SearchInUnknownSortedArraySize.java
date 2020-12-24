@@ -30,3 +30,6 @@ class SearchInUnknownSortedArray {
         return -1;
     }
 }
+
+//Time complexity - O(log(n)) n is the index of target value since we double the right index until we reach the upper bound
+//Space complexity - O(1)

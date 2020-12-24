@@ -1,5 +1,5 @@
 # 2 Pointer Solution: Searching in a 2D matrix
-# Complexity: O(m) + O(n)
+# Complexity: O(m+n)
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         if(len(matrix)==0 or len(matrix[0])==0):

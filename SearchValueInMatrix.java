@@ -13,15 +13,18 @@
 
 class Solution {
 
-
+    private final boolean NOT_FOUND = Boolean.FALSE;
+    private final boolean FOUND = Boolean.TRUE;
+    
     public boolean searchMatrix(int[][] matrix, int target) {
     
-        int rowSize matrix[0].length;
+        int rowSize = matrix[0].length;
         int rowCount = matrix.length;
         
         boolean rangePresent = Boolean.FALSE;
         
-        for( int i = i< rowCount; i++ ) {
+        int i;
+        for( i = 0; i< rowCount; i++ ) {
         
             int lowValue = matrix[i][0];
             int highValue = matrix[i][rowSize -1];
@@ -38,13 +41,30 @@ class Solution {
         
         if( rangePresent ) {
         
-            boolean isPresent = 
+            return binarySearch(matrix[i], 0, rowSize -1, target);
+        }
+        else
+        {
+            return NOT_FOUND;
         }
         
     }
     
-    boolean binarySearch(int matrix[], int start, int end) {
-    
-    
+    boolean binarySearch(int matrix[], int low, int high, int target) {
+
+        while ( low <= high ) {
+
+            int mid = low + ( high - low )/ 2;
+
+            if(matrix[mid] == target)
+                return FOUND;
+            else if( matrix[mid] > target)
+                high = mid - 1;
+            else 
+                low = mid + 1;
+        }
+        
+        
+        return NOT_FOUND;
     }
 }

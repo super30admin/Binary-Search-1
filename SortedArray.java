@@ -1,4 +1,3 @@
-package binarySearch1;
 //Time Complexity: O(Log(n))
 //Space Complexity: O(1);
 class SortedArray {

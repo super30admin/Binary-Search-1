@@ -1,4 +1,4 @@
-package binarySearch1;
+
 //Time complexity: O(N);
 //Space Complexity: O(1);
 // Did this code successfully run on Leetcode :yes

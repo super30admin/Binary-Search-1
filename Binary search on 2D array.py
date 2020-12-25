@@ -1,3 +1,8 @@
+# // Time Complexity : O(log n)
+# // Space Complexity :O(1)
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : Searching the row to pick if a quite tricky
+
 class Solution(object):
     
     

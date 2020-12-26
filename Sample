@@ -1,7 +1,112 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : log(mn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : 
 
 
 // Your code here along with comments explaining your approach
+
+1. Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+
+Integers in each row are sorted from left to right.
+The first integer of each row is greater than the last integer of the previous row.
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0) return false;
+        int m = matrix.length; int n = matrix[0].length; int low = 0; int high = m*n -1;
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            int row = mid/n;
+            int col = mid%n;
+            if (matrix[row][col] == target)
+                return true;
+            else if(matrix[row][col]>target) high = mid-1;
+            else low = mid+1;
+        }
+        return false;
+    }
+}
+
+
+// Time Complexity : log(n) base 2
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this : 
+
+
+// Your code here along with comments explaining your approach
+
+2. Suppose you are given a sorted array of unknown length and a number to search for, return the index of the number. 
+Accessing an element out of bounds throws exception. If the number occurs multiple times, return the index of any occurrence. 
+If it isn’t present, return -1.
+
+class Solution {
+	public int search(ArrayReader reader, int target){
+		int low = 0; int high = 1;
+		while(reader.get(high)<Integer.MAX_VALUE && reader.get(high)<target){
+			low = high +1;
+			high = 2*high;
+		}
+		return binarySearch(reader, target, low, high);
+	}
+	
+	private int binarySearch(ArrayReader reader, int target, int low, int high){
+		while(low<=high){
+			int mid = low + (high-low)/2;
+			if(reader.get(mid) == target){
+				return mid;
+			}
+			else if(reader.get(mid)>target){
+				high = mid-1;
+			}
+			else
+				low = mid+1;
+		}
+		return -1;
+	}
+}
+
+
+// Time Complexity : log(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : 
+
+
+// Your code here along with comments explaining your approach
+
+3. Given an sorted array, find the first and last position of a given element.
+
+Your algorithm's runtime complexity must be O(log n).
+
+If the target is not found in the array, return [-1, -1].
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return -1;
+        int n = nums.length;
+        int low = 0;
+        int high = n - 1;
+        while(low <= high){
+            int mid = low + (high-low)/2;
+            if(nums[mid] == target) return mid;
+            // to check whether left side is sorted
+            else if(nums[low]<= nums[mid]){
+                if(nums[low]<=target && nums[mid]>target)
+                    high = mid-1;
+                else
+                    low = mid+1;
+            }
+            // to check whether right side is sorted
+            else if(nums[mid]<= nums[high]){
+                if(nums[mid]<target && nums[high]>=target)
+                    low = mid +1;
+                else
+                    high = mid-1;
+            }     
+        }
+        return -1;
+    }
+}

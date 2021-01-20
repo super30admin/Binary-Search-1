@@ -1,4 +1,4 @@
-# Complexity: O(m+n)
+# Complexity: O(log n*m)
 
 class Solution(object):
     def searchMatrix(self, matrix, target):
@@ -7,11 +7,21 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        row, col = 0, len(matrix[0]) - 1
-        while row < len(matrix) and col >= 0:
-            element = matrix[row][col]
-            if element == target: return True
-            elif element > target: col -= 1
-            elif element < target: row += 1
-        return False
+        n = len(matrix)
+        m = matrix[0].length
         
+        low = 0
+        high = n * m - 1
+        
+        while low <= high:
+            mid = (low + high) // 2
+            i = mid / m
+            j = mid % m
+            
+            if (matrix[i][j] == target):
+                return True
+            elif matrix[i][j] > target:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return False

@@ -8,22 +8,23 @@
 
 
 class Solution {
-    public int search(ArrayReader reader, int target) {
-        int slow = 0;
-        int fast = 1;
-        while (reader.get(fast) < target) {
-            slow = fast;		// this acts like a sliding window where we will get a range where we can find the target
-            fast *= 2;
-        }
-        while (slow <= fast) {
-            int mid = (slow + fast)/2;
-            if (reader.get(mid) == target)		//performing a binary search between indexes slow and fast
+    public int search(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length - 1;
+        while (low <= high) {
+            int mid = (low + high)/2;
+            if (nums[mid] == target)
                 return mid;
-            else if (target < reader.get(mid))
-                fast = mid - 1;
-            else   slow = mid + 1;
+            else if (nums[low] <= nums[mid]) {
+                if (target >= nums[low] && target < nut ms[mid])
+                    high = mid - 1;
+                else low = mid + 1;
+            } else {
+                if (target > nums[mid] && target <= nums[high])
+                    low = mid + 1;
+                else high = mid - 1;
+            }
         }
-        
         return -1;
     }
 }

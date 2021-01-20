@@ -1,61 +1,73 @@
+//Array with unknown length 
 //Step 1 let's assume the input array is arr, where we can not access its length.
 //Step 2 my approach is to double the pointer starting from index i=1 , if it not null we continue else we need to 
 //       find the end index of array which is in beetween i/2 and i.
 //Step 3 if target<arr[i] set low and high variable and do a binary seach from low to high.
 
 //I am not able to build the Step 2 properly.
+
+//Assuming instead of exception we have arrayreader which return Integer.maxvalue
 import java.util.*;
- 
-class Solution3 extends Exception
+
+class ArrayReader
 {
-    public int search(int[] arr, int target)
+    int[] arr;
+    ArrayReader()
+    {}
+    ArrayReader(int [] array)
     {
-        boolean flag=true;
-        int i=1,low=-1,high=-1;
-        try{
-        if(arr[0]==target)
-            return 0;
+        arr=array;
+    }
+    public int get(int index)
+    {
+    try{
+        return arr[index];           
+    }
+    catch(Exception e){
+            return Integer.MAX_VALUE;
+    }
+}
+}
+ 
+class Solution3 extends ArrayReader
+
+{
+public int search(int target,ArrayReader reader)
+    {
+               int low=0;int high=1;
+               while(reader.get(high)<=target){
+                    low=high;
+                    high=high*2;
+               }
+                return binarysearch(reader,target,low,high);
+           
         }
-        catch(Excpetion e)
+
+        public int binarysearch(ArrayReader reader,int target, int low,int high)
         {
+            while(low<=high)
+            {
+                int mid=low+(high-low)/2;
+                if(reader.get(mid)==target)
+                    return mid;
+                if(reader.get(mid)<target)
+                    low=mid+1;
+                else
+                    high=mid-1;
+            }
             return -1;
         }
-        while(flag)
-        {
-            try{
-                if(target>arr[i])
-                    i=i*2;
-                else if(target<arr[i])
-                    {
-                        low=i/2;
-                        high=i;
-                        break;
-                    }
-                else 
-                    return i;
-            
-            }
-            catch(Exception e)
-            {
-                flag=false;
-            }
-        }
 
-
-        if(flag)
+        public static void main(String args[])
         {
-            while(low<high)
-                {
-                    int mid=(low+high)/2;
-                    if(target>arr[mid])
-                        low=mid+1;
-                    else if(target<arr[mid])
-                        high=mid-1;
-                    else
-                        return mid;
-                }
+            Solution3 s= new Solution3();
+           
+            int[] arr=new int[]{1,4,6,8,9,10,40,Integer.MAX_VALUE,Integer.MAX_VALUE ,Integer.MAX_VALUE};
+                ArrayReader reader= new ArrayReader(arr);
+            System.out.println(s.search(11,reader));
         }
 
     }
 
-}
+
+

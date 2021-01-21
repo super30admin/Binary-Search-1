@@ -1,0 +1,28 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : This problem was only available in premium
+// Any problem you faced while coding this : no
+class Solution {
+public:
+    int search(vector<int>& matrix, int target) {
+        int l=0, h=1; 
+        int value = matrix[0]; 
+        while (value<target) 
+    	{ 
+        	l = h;        
+        	h = 2*h;      
+        	val = matrix[h]; 
+    	} 
+        while(l<=r) 
+    	{ 
+        	int mid = l + (r - l)/2; 
+        	if (arr[mid] == target) 
+            	return mid; 
+        	else if (arr[mid] > x) 
+            	h=mid-1; 
+        	else
+        		l=mid+1;
+    }
+    return -1;
+    }
+};

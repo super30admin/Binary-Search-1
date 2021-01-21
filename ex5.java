@@ -1,32 +1,99 @@
-class main{
-    public static int pivotSearch(int array[], int low, int high, int target){
-        if(low>high)
-            return -1;
-        int mid = (low+high)/2;
-        if(array[mid] == target)
-            return mid;
-        if(array[low]<=array[mid]){
-            if(target>=array[low] && target<=array[mid])
-                return pivotSearch(array, low, mid-1, target);
-            return pivotSearch(array, mid+1, high, target);
+//Problem 1
+//Time complexity: O(log n)
+//Space complexity: O(1)
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int n = matrix.length,  m= matrix[0].length;
+        int low =0;
+        int high = n*m -1;
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            
+            int i = mid/m;
+            int j = mid%m;
+            
+            if(matrix[i][j] == target){
+                return true;
+            }
+            else if(matrix[i][j] < target){
+                low = mid + 1;
+            }
+            else
+                high = mid - 1;
         }
-        else{
-        if(target<=array[high] && target >= array[mid])
-            return pivotSearch(array,mid+1, high, target);
-        return pivotSearch(array, low, mid-1, target);
-        }
-    }
-//Driver code
-    public static void main(String args[]) {
-        int array[]={4,5,6,7,0,1,2};
-        int low = 0;
-        int high = array.length-1;
-        int target1=0;
-        int target2=3;
-        int index1 = pivotSearch(array, low, high, target1);
-        System.out.println("Index of "+target1+" in the array is "+index1);
-
-        int index2 = pivotSearch(array, low, high, target2);
-        System.out.println("Index of "+target2+" in the array is "+index2);
+        return false;
     }
 }
+
+
+//Problem 1
+//Time complexity: O(log n)
+//Space complexity: O(1)
+class Solution2 {
+    public int search(int[] nums, int target) {
+        int high = nums.length - 1;
+        
+        return binarySearch2(nums, 0, high, target);
+    }
+    
+    public int binarySearch2(int[] nums, int low, int high, int target){
+        while(low<=high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if(nums[high] > nums[mid]){
+                if(target <= nums[high] && target > nums[mid]){
+                    low = mid + 1;
+                }
+                else
+                    high = mid - 1;
+            }
+            else if(target >= nums[low] && target < nums[mid]){
+                    high = mid-1;
+            }
+                
+            else{
+                    low = mid + 1;
+            }
+            
+        }
+        return -1;
+    }
+}
+
+
+//Problem 1
+//Time complexity: O(log n)
+//Space complexity: O(1)
+class Solution3 {
+    public int search(ArrayReader reader, int target) {
+        
+        int high = 1;
+        while(reader.get(high) != Integer.MAX_VALUE && reader.get(high) <= target){
+            
+            high = high * 2;
+        }
+        
+        return binarySearch(reader, 0, high, target);
+        
+    }
+     public int binarySearch(ArrayReader reader, int low, int high, int target){
+         
+         while(low <= high){
+            int mid = low + (high - low)/2;
+            if(reader.get(mid) == target){
+                return mid;
+            }
+            else if(reader.get(mid) < target){
+                low = mid+1;
+            }
+            else
+                high = mid-1;
+        }
+         return -1;
+         
+     }
+    
+}
+

@@ -5,3 +5,35 @@
 
 
 // Your code here along with comments explaining your approach
+class main{
+    public static int pivotSearch(int array[], int low, int high, int target){
+        if(low>high)
+            return -1;
+        int mid = (low+high)/2;
+        if(array[mid] == target)
+            return mid;
+        if(array[low]<=array[mid]){
+            if(target>=array[low] && target<=array[mid])
+                return pivotSearch(array, low, mid-1, target);
+            return pivotSearch(array, mid+1, high, target);
+        }
+        else{
+        if(target<=array[high] && target >= array[mid])
+            return pivotSearch(array,mid+1, high, target);
+        return pivotSearch(array, low, mid-1, target);
+        }
+    }
+//Driver code
+    public static void main(String args[]) {
+        int array[]={4,5,6,7,0,1,2};
+        int low = 0;
+        int high = array.length-1;
+        int target1=0;
+        int target2=3;
+        int index1 = pivotSearch(array, low, high, target1);
+        System.out.println("Index of "+target1+" in the array is "+index1);
+
+        int index2 = pivotSearch(array, low, high, target2);
+        System.out.println("Index of "+target2+" in the array is "+index2);
+    }
+}

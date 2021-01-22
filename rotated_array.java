@@ -1,3 +1,6 @@
+Time Complexity : log n 
+
+Successfull on Leetcode
 class Solution {
     public int search(int[] nums, int target) {
         

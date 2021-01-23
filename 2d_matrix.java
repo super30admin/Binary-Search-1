@@ -1,3 +1,8 @@
+Time Complexity : log n 
+
+Successfull on Leetcode
+
+
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         

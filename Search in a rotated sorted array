@@ -1,0 +1,37 @@
+import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while(t>0){
+		    int n = sc.nextInt();
+		    int[] arr = new int[n];
+		    for(int i=0;i<n;i++){
+		        arr[i] = sc.nextInt();
+		    }
+		    int k = sc.nextInt();
+		    int index = found(arr, n, k);
+		    System.out.println(index);
+		t--;
+		}
+	}
+	public static int found(int[] arr,int n, int k){
+	    int key=0;
+	    HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+	    for(int i=0;i<n;i++){
+	        map.put(i,arr[i]);
+	    }
+	    for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+	        if(entry.getValue()==k){
+	            key= entry.getKey();
+	            return key;
+	        }
+	    }
+	    return -1;
+	}
+}

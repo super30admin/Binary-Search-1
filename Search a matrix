@@ -1,0 +1,15 @@
+# The below code searches a matrix in python, it treats a matrix as a list of lists and iterates through the first element and then iterates through it to see if the element exits
+# if the element does not exist it returns false
+
+#time complexityO(N^2)
+
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        
+        for i in matrix:
+            for j in i:
+                if j == target:
+                    return True
+                else:
+                    continue
+        return False

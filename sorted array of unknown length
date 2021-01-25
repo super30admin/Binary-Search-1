@@ -1,0 +1,37 @@
+# Time Complexity : log(n)
+# Space Complexity : o(1)
+# Did this code successfully run on Leetcode : yes
+# Any problem you faced while coding this : I refereed to the class video a multiple times while writing the second part of the logic. The techinique i could think of instantly was 
+# burte force with an time complexity of o(n)
+
+#standard Bibary Search
+
+def binarysearch(arr,left,right,x): 
+  
+    if right >= left: 
+        mid = left+(right-left)/2
+  
+        if arr[mid] == x: 
+            return mid 
+  
+        if arr[mid] > x: 
+            return binary_search(arr,left,mid-1,x) 
+  
+        return binary_search(arr,mid+1,right,x) 
+  
+    return -1
+# the high increases by 2 everytime we see that the value is lesser than the key element
+
+def findPos(a, key): 
+  
+    low=0
+    high=1, 
+    val = arr[0] 
+  
+    while val < key: 
+        low = high           
+        high = 2*high          
+        val = arr[high]    
+  
+    
+    return binary_search(a, low, high, key)

@@ -1,0 +1,35 @@
+//Time complexity - o(log(mn))
+//Space complexity- o(1)
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        //edge case if matrix is null return false
+        if(matrix == null || matrix.length == 0) return false;
+        
+        int m = matrix.length,n = matrix[0].length;
+        int l = 0, h= m*n-1;
+        
+        //array is perfectly sortes so we can convert it from 2D-> 1D and do binary search
+        //conversation mess out time complexity 
+        //so figured a way to get the mid pointer r and c value
+        while(l<=h){
+            int mid = l+(h-l)/2;
+            int r = mid/n;
+            int c = mid%n;
+            //if target found return true
+            if(matrix[r][c] == target){
+                return true;
+            }
+            //if target is grater thn the matrix val move low pointer
+            else if(matrix[r][c] < target) {
+                l = mid+1;
+            } 
+            //move high
+            else{
+                h = mid-1;
+            }
+        }
+        //if it didn't hit the true condition return false
+        return false;
+    }
+}

@@ -1,0 +1,41 @@
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+//Time Complexity - log(m) + log(k)
+//Space Complexity - o(1)
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        
+        //start with 0 and 1
+        int l =0, h=1;
+        //increase higher pointer by 2 till we get a range 
+        while(reader.get(h) < Integer.MAX_VALUE && reader.get(h)<target){
+            l = h;
+            h *= 2;
+        }
+        
+        //do binary search on the specific range
+        return binarySearch(reader,target,l,h);
+    }
+    
+    private int binarySearch(ArrayReader reader, int target,int l, int h){
+        while(l<=h){
+            int m = l+(h-l)/2;
+            //if int is equal to target return 
+            if(reader.get(m) == target) {
+                return m;
+            }
+            //if int is grater thn the target move high else move low ponter
+            else if(reader.get(m) > target){
+                h = m-1;
+            } else{
+                l = m+1;
+            }    
+        }
+        return -1;
+    }
+}

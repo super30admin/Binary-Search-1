@@ -1,0 +1,39 @@
+//Time Complexity - o(logn) n is num of elements in array
+//Space Complexity - o(1)
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        if(nums == null || nums.length == 0) return -1;
+        
+        int l =0,h =nums.length-1;
+        
+        while(l<=h){
+            int m = l+(h-l)/2;
+            //if target is mid return
+            if(nums[m] == target)
+                return m;
+            //else check which part is sorted
+            //if between l and mid is sorted check target is grater thn mid and less thn eq to low move high pointer
+            //else move low pointer bcs target may be in unsorted part
+            else if(nums[m]>=nums[l]) {
+                if(nums[m]>target && nums[l]<=target)
+                    h=m-1;
+                else
+                    l=m+1;
+            } 
+            //else means m to h is sorted
+            //check target is less thn m or grater thn eq to h 
+            //move low pointer
+            //else move high pointer
+            else{
+                if(nums[m]<target && nums[h]>=target)
+                    l=m+1;
+                else
+                     h=m-1;
+            }
+            
+        }
+        
+        return -1;
+    }
+}

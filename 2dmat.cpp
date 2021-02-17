@@ -1,4 +1,5 @@
 //TC: O(log(m*n)) where mxn is the dimension of the matrix. 
+//SC: O(1)
 
 class Solution {
 public:

@@ -11,9 +11,6 @@ else low = mid +1
 3) Do the same thing if the right half is sorted.
 */
 
-
-
-
 class Solution {
 public:
     int search(vector<int>& nums, int target) {

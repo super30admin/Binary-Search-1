@@ -2,8 +2,6 @@
 Space Complexity :O(1)
 Did this code successfully run on Leetcode :Yes
 Any problem you faced while coding this :No
-
-
 Your code here along with comments explaining your approach
 The most important step here is to find the range for the binary search.
 we know the array[0] value and the target. Since the arrays is sorted that means that 

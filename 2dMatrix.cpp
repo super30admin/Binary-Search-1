@@ -3,7 +3,6 @@ Space Complexity :O(1)
 Did this code successfully run on Leetcode :Yes
 Any problem you faced while coding this :No
 
-
 Your code here along with comments explaining your approach
 We try to flatten the 2d matrix and then do the usual binary search.
 But if we copy the elements to a new flattened array then it would take O(m*n)->Not useful.
@@ -11,7 +10,6 @@ So we use the row major formula to access a 2d matrix like a 1d matrix.
 If we have to find mid element
 Row -> mid/row_size;
 Col -> mid%row_size;
-
 */
 
 

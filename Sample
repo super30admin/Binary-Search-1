@@ -1,7 +1,37 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(n^2)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : missed few edge cases
 
 
 // Your code here along with comments explaining your approach
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        //lengths of matrix for iteration
+        int m = matrix.length;
+        int n = matrix[0].length;
+        //boolean check to return value
+        boolean check = false;
+        
+
+        //brute force approach to iterate through matrix and check for the target
+        if(m==0 && n==0){
+            if(matrix[0][0]==target){
+                check = true;
+            }
+        }
+        else{
+            for(int i=0;i<=m-1;i++){
+            for(int j=0;j<=n-1;j++){
+                if(matrix[i][j]==target){
+                    check = true;
+                    break;
+                    }
+                }
+            }     
+        }
+        return check;
+    }
+}

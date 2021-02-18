@@ -7,12 +7,16 @@
  * Search in a rotated sorted array.
  */
 class Solution {
+    //1. Init
+    //2. Do Binary search
+    //  2.1 Check if left is sorted
+    //  2.2 Check if right is sorted
     public int search(int[] nums, int target) {
         int i = 0, j = nums.length - 1;
 
         while (i <= j) {
 
-            int mid = (i + j) / 2;
+            int mid = i + (j - i) / 2;
 
             if (nums[mid] == target) return mid;
 

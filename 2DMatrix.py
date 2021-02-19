@@ -20,3 +20,9 @@ class Solution:
                 else:
                     high = mid_index - 1
         return False
+
+
+    """
+    Time Complexity : O(n) since Binary Search
+    Space Complexity: O(1) since we are not rewriting the array into temp array
+    """

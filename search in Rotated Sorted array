@@ -1,0 +1,25 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        low=0
+        high=len(nums)-1
+        while low<=high:
+            mid=(low+high)//2
+            if target==nums[mid]:
+                return mid
+            ##checking which part of the array is soretd
+            elif nums[low]<=nums[mid]:
+                print(mid)
+                if (target>=nums[low]) and (target<nums[mid]):
+                    high=mid-1
+                else:
+                    low=mid+1
+            else:
+                print(mid)
+                if (target>nums[mid]) and (target<=nums[high]):
+                    low=mid+1
+                else:
+                    high=mid-1
+        return -1
+                    
+            
+        

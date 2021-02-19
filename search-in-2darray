@@ -1,0 +1,30 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+       
+    
+        
+        nrows=len(matrix)
+        ncolumns=len(matrix[0])
+        low=0
+        high=nrows*ncolumns-1
+        while low<=high:
+            mid=(low+high)//2
+            rindex=mid//ncolumns
+            cindex=mid%ncolumns
+            print(rindex,cindex)
+            if matrix[rindex][cindex]==target:
+                return True
+            elif matrix[rindex][cindex]>target:
+                high=mid-1
+            else:
+                low=mid+1
+        return False
+                
+                
+        
+        
+            
+            
+            
+        
+        

@@ -10,13 +10,16 @@
 class Solution{
 	
 	public int search(ArrayReader reader, int target){
-		int high=1
-		int low=1
+		int high=1;
+		int low=0;
 		
-		while(reader.get(high)!=INTEGER.MAX_VALUE && reader.get(high)<target){
+		while(reader.get(high)!=INTEGER.MAX_VALUE && reader.get(high)<=target){
+			// We mutiply high pointer by 2 until we find a value greater than target at index high
 			high=high*2;
+			// We increment low pointer by 1 which can reduce the search space even more
 			low=low+1;
 		}
+		// binary search to get the element
 		return binarySearch(reader, low,high, target)
 	}
 	

@@ -20,6 +20,6 @@ class Solution:
         return -1
 
     """
-    Time Complexity : O(n) since Binary Search
+    Time Complexity : O(Log n) since Binary Search
     Space Complexity: O(1) since we are not rewriting the array into temp array
     """

@@ -23,6 +23,6 @@ class Solution:
 
 
     """
-    Time Complexity : O(n) since Binary Search
+    Time Complexity : O(Log mn) since Binary Search
     Space Complexity: O(1) since we are not rewriting the array into temp array
     """

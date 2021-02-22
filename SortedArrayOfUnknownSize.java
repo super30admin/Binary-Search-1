@@ -5,7 +5,8 @@
  *     public int get(int index) {}
  * }
  */
-
+// Time Complexity : O(logn)
+// Space Complexity : 1
 class Solution {
     public int search(ArrayReader reader, int target) {
         int result=0;

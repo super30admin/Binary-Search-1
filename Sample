@@ -1,7 +1,42 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
 
 
-// Your code here along with comments explaining your approach
+// Your code here along with comments explaining your approach--binary search after making 1 d array 
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m=matrix.length;
+        int n =matrix[0].length;
+        //int [] arrayMatr=new array[m*n];
+        
+        int low=0;
+        int high =m*n -1;
+        while(low<=high)
+        {
+           int middle=low + (high-low)/2; 
+            int i = middle/n;
+            int j = middle% n;
+            
+            if (matrix[i][j] == target)
+            {
+                return true;
+            }
+            else if (matrix[i][j] > target)
+            {
+                high=middle-1;
+            }
+            else
+            {
+                low=middle +1;
+            }
+            
+        }
+        return false;
+        
+        
+        
+    }
+}

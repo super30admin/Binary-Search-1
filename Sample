@@ -1,7 +1,103 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+Binary Search 1
+
+Problem 1: Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
+
+
+// Time Complexity : O(log(rc))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not matrix:
+            return
+        r,c=len(matrix),len(matrix[0])
+        left,right=0,r*c-1
+        while left<=right:
+            mid=(left+right)//2
+            pivot=matrix[mid//c][mid%c]
+            if pivot==target:
+                return True
+            if pivot>target:
+                right-=1
+            else:
+                left+=1
+        return False     
+
+
+Problem 2: Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+
+
+// Time Complexity : O(log(n))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if not nums:
+            return 
+        left,right=0,len(nums)-1
+        while left<=right:
+            mid=(left+right)//2
+            if nums[mid]==target:
+                return mid
+            elif nums[mid]>=nums[left]:
+                if nums[mid]>target and target>=nums[left]:
+                    right=mid-1
+                else:
+                    left=mid+1
+            elif nums[mid]<=nums[right]:
+                if nums[mid]<target and target<=nums[right]:
+                    left=mid+1
+                else:
+                    right=mid-1
+        return -1            
+
+Problem 2: Search in Infinite sorted array: (https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/)
+
+
+
+// Time Complexity : O(log(n))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Your code here along with comments explaining your approach
+
+class Solution:
+    def search(self, reader, target):
+        if reader.get(0) == target:
+            return 0
+        
+        # search boundaries
+        left, right = 0, 1
+        while reader.get(right) < target:
+            left = right
+            right <<= 1
+        
+        # binary search
+        while left <= right:
+            pivot = left + ((right - left) >> 1)
+            num = reader.get(pivot)
+            
+            if num == target:
+                return pivot
+            if num > target:
+                right = pivot - 1
+            else:
+                left = pivot + 1
+        
+        # there is no target element
+        return -1
+                
+                
+           
+        

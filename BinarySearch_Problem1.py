@@ -1,4 +1,4 @@
-#complexity - O(mlogn)
+#complexity - O(m + log n)
 # m - number of rows in matrix
 # n - number of columns in matrix
 def searchMatrix(matrix, target) -> bool:

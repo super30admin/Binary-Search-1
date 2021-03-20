@@ -1,0 +1,26 @@
+//Space complexity - O(1)
+//Time complexity - O(n + m)
+//      where n - number of rows in matrix
+//            m - number of columns in matrix
+
+class Solution {
+  public static boolean searchMatrix(int[][] matrix, int target) {
+
+    int row = matrix.length-1, col = 0;
+
+    while(row >= 0 && col < matrix[0].length){
+
+      if(matrix[row][col] == target){
+        return true;
+      }
+
+      if(matrix[row][col] < target){
+        col++;
+      }else{
+        row--;
+      }
+    }
+
+    return false;
+  }
+}

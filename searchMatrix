@@ -1,0 +1,39 @@
+class Solution {
+    
+    //74. Search a 2D Matrix
+    //Time complexity : O(rows * cols)
+    //SPace complexity : O(1)
+    
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        //edge
+        if(matrix ==  null || matrix.length ==0)
+            return false;
+        
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int low = 0;
+        int high = rows*cols -1;
+        
+        while(low<=high){
+            
+            int mid = low + (high-low)/2;
+            int r = mid/cols;
+            int c = mid%cols;
+            int numInMatrix = matrix[r][c];
+            
+            if(target == numInMatrix)
+                return true;
+            
+           else if(target < numInMatrix)
+                high = mid-1;
+            
+            else
+               low = mid + 1;
+            
+        }
+        
+        return false;
+        
+    }
+}

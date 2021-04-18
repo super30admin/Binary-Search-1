@@ -1,7 +1,10 @@
 '''
 Time complexity - O(log(N))
 Space complexity  - O(1) in place search without extra space
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : Yes, the brute force was striaght forward , however, the binary search technique was tricky and getting the hang of inflection point took some time
 
+Your code here along with comments explaining your approach
 '''
 
 

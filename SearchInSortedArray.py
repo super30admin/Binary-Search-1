@@ -1,3 +1,15 @@
+'''
+// Time Complexity :
+ # 1. Find the search scope by using the API to find the lower and upper ends of the array
+ # 2. Once we have the lower and upper ends, its mere binary - search
+
+  I am finding it tricky to pen down the time complexity, operation 2 takes O(Log(N)) for sure, but I am not confident about the first operation
+
+// Space Complexity :
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes while defining the boundaries for the binary search on line 49
+'''
+
 # """
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation

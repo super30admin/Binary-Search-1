@@ -1,12 +1,12 @@
 
 //Problem 3:Search in an infinite sorted array
 
-// Time Complexity : O(log n)
+// Time Complexity : O(log n) + O(range) ;  range = high - low , n = number of steps
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
-
+//Approach : Binary search
 class Solution {
     public int search(ArrayReader reader, int target) {
         int lo = 0;

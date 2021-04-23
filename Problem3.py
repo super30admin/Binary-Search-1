@@ -6,6 +6,12 @@
 # """
 #class ArrayReader:
 #    def get(self, index: int) -> int:
+'''Time complexity : O(log n +log searchspace) n -> number of steps. linear complexity
+Space Complexity: O(1)
+Did this code successfully run on Leetcode :    Yes
+Any problem you faced while coding this: No '''
+#approach - set low = 0  and high as 1. then perform binary search. then increase the search space
+#by 2. high = 2*high and low = high again do binary search in the newly defined search space.
 
 class Solution:
     def search(self, reader, target):

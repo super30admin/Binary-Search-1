@@ -13,7 +13,6 @@ Space Complexity : O(1)
 [class Solution:
     def search(self, nums: List[int], target: int) -> int:
         
-        
         low = 0
         high = len(nums) -1
         
@@ -26,7 +25,7 @@ Space Complexity : O(1)
             
             #Checking if sorted.
             if nums[low] <=nums[mid]:
-                
+
                 #Checking if the number is present within that range.
                 if nums[low]  <= target < nums[mid]:
                     high = mid -1

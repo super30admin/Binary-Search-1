@@ -11,11 +11,6 @@ Space Complexity : O(1)
 
 class Solution:
     def search(self, reader, target):
-        """
-        :type reader: ArrayReader
-        :type target: int
-        :rtype: int
-        """
         
         #we first obtain the left and right index of the array
         

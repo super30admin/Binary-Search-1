@@ -5,6 +5,9 @@ Space Complexity: O(1)
 Did this code successfully run on Leetcode :Yes
 Any problem you faced while coding this :No'''
 
+# approach - Consider the matrix to be a linear sorted array and do binary search. to find middle
+#element index r = mid//col_num and c = mid%col_num
+
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         # get row and col numbers

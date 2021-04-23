@@ -1,9 +1,12 @@
 # Search in Rotated Sorted Array
 
-''' Time complexity : O(log N)
+''' Time complexity : O(log N) 
 Space Complexity: O(1)
 Did this code successfully run on Leetcode :    Yes
-Any problem you faced while coding this: No '''
+Any problem you faced while coding this: No 
+
+approach find mid element. check which part is sorted . and see if element lies in that part else 
+the element will be in the unsorted part'''
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:

@@ -5,27 +5,40 @@
 
 
 class Solution {
-    public int search(ArrayReader reader, int target) {
-        int start = 0, end = 1;
-        while(target > reader.get(end))
+    public int search(int[] nums, int target) {
+        if(nums.length==0)
         {
-            start = end;
-            end = 2*end;        
+            return -1;
         }
+        int start = 0, end = nums.length-1;
         while(start<=end)
         {
             int mid = start+(end-start)/2;
-            if(reader.get(mid) == target)
+            if(nums[mid]==target)
             {
                 return mid;
             }
-            else if(reader.get(mid) < target)
+            else if(nums[start] <= nums[mid])
             {
-                start = mid+1;
+               if(nums[start] <= target && nums[mid] > target)
+               {
+                   end = mid-1;
+               }
+                else
+                {
+                    start = mid+1;
+                }
             }
             else
             {
-                end = mid-1;
+               if(nums[end] >= target && nums[mid] < target)
+               {
+                   start = mid+1;
+               }
+                else
+                {
+                    end = mid-1;
+                }
             }
         }
         return -1;

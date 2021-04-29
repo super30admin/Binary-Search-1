@@ -9,6 +9,9 @@
 """
 Runtime Complexity: O(mlogn)
 Space Compelxity: O(1)
+
+Yes it worked on Leetcode
+I had problems with returning boolean values and finding mid values
 """
 from typing import List
 

@@ -1,3 +1,5 @@
+//Time complexity O(2logn)
+//Space complexity O(1)
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0)

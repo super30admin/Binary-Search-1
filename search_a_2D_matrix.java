@@ -1,4 +1,4 @@
-//Time Complexity: o(n)
+//Time Complexity: log(n)
 
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {

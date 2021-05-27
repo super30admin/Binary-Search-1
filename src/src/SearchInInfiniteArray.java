@@ -2,6 +2,8 @@
 //SC : O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
+
+//Implemented in two approaches
 class SearchInInfiniteArray {
     public int search(ArrayReader reader, int target) {
 

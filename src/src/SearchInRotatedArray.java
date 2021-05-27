@@ -1,3 +1,5 @@
+
+//Implemented in two approaches
 class SearchInRotatedArray {
 
     //TC : TC is O(logN) as all BinarySeach and findRotatedIndex methods used in search_approach_one method have O(logN) TC

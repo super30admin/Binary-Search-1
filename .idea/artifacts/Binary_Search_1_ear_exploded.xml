@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="Binary-Search-1:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Binary_Search_1_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Binary-Search-1/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

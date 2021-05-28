@@ -7,7 +7,7 @@ def unlimitedList(arr,target):
     low = 0
     high = 1
     while True:
-        if arr[high] < target:
+        if arr.get(high) < target:
             low = high
             high = high*2
         else:
@@ -18,9 +18,9 @@ def binarySearch(arr,l,r,t):
     if l>r:
         return False
     mid = (l+r)//2
-    if arr[mid] == t:
+    if arr.get(mid) == t:
         return mid
-    elif arr[mid] < t:
+    elif arr.get(mid) < t:
         return binarySearch(arr,mid+1,r,t)
     return binarySearch(arr,l,mid-1,t)
 

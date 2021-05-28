@@ -1,7 +1,122 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(log(m)+log(n))
+// Space Complexity : O(m*n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no 
 
 
 // Your code here along with comments explaining your approach
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix==null || matrix.length==0) return false; // if there are no elements in the matrix,, return false
+        int m= matrix.length; //calculate the row of the matrix
+        int n= matrix[0].length; // calculate the number of columns in the matrix
+        int low=0; // low is 0 
+        int high= m*n-1; // high is the last element of the 1D array
+        
+        while(low<=high) //until low is not less than equal to high 
+        {
+            int mid= low+(high-low)/2; // calculate the mid point of the 1D array
+            int r= mid/n; //row index in 2D matrix
+            int c= mid%n; //column index in 2D matrix
+            
+            if(matrix[r][c]==target) //if the element in that row and column index in 2D matrix is equal to target 
+            {
+                return true; // return true since the element exists
+            } 
+            else if(matrix[r][c]> target) // else if greater than the target 
+            {
+                high=mid-1; //move the high pointer to mid-1
+                // reduce the search space by half
+            }
+            else{
+                low=mid+1; // else move the low to mid+1
+            }
+        }
+        return false; // else element not found
+    }
+}
+
+// Time Complexity : O(1)
+// Space Complexity : O(N) 
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no 
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums.length==0 || nums == null) return -1; // if the array is empty return -1
+        int low=0; // set low as the first value of the array
+        int high= nums.length-1; // set high as the last value of the array
+        
+        while(low<=high)
+        {
+            int mid= low+(high-low)/2; //calculate mid
+            if(nums[mid]== target) //if the mid element is equal to the target
+            {
+                return mid; //return mid index
+            }
+            else if(nums[low]<= nums[mid]) //left is sorted
+            {
+                if(nums[low]<=target && nums[mid]>target) // if the target is within that range 
+                {
+                    high=mid-1; //bring high to mid-1 to that range
+                }
+                else
+                {
+                    low=mid+1; // else move to the right side
+                }
+            }
+            else{
+                if(nums[mid]<target && nums[high]>= target) // right sorted
+                {
+                    low=mid+1; //bring low to that range
+                }
+                else
+                {
+                    high=mid-1; // else move high to the left 
+                }
+            }
+        }
+        return -1; //return -1 if element not found
+    }
+}
+
+
+// Time Complexity : O(1)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no 
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low=0; //set low to 0
+        int high=1; //set high to the second element
+        
+        while(reader.get(high)<target) // while we are not in the range where target is present
+        {
+            low=high; // move low to high
+            high=high*2; // reduce the search space by doubling high and increasing our search space
+        }
+        return binarySearch(reader,low,high,target); 
+    }
+
+    
+    private int binarySearch(ArrayReader reader,int low, int high, int target)
+    {
+        while(low<=high){ 
+        int mid= low+(high-low)/2; //calculate mid
+        if(reader.get(mid)==target) //if the mid element is equal to the target 
+        {
+               return mid; //return mid 
+        }
+        else if(reader.get(mid)>target) //else if mid element is greater than the target
+        {
+            high=mid-1; //reduce the search space by moving the high to mid-1
+        }
+        else
+        {
+            low=mid+1; // else move the low to mid+1
+        }
+        }
+        return -1; // return -1 if element not found
+    }
+}

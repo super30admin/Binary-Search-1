@@ -1,6 +1,10 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        # start from top right most element
+        """ 
+        : start from top right most element
+        : time complexity : O(n+m)
+        : space complexity : O(1)
+        """
         m = len(matrix)
         n=len(matrix[0])
         i=0

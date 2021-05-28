@@ -11,10 +11,14 @@ class Solution:
         :type reader: ArrayReader
         :type target: int
         :rtype: int
+        : time complexity : O(log(n))
+        : space complexity : O(1)
         """
-        # set low and high at index 0 and 1 
+        # initially set low and high at index 0 and 1 
+        # then chnage low to high and high to 2*high
         low =0
         high =1
+    
         while reader.get(high) < target:
             low=high
             high=high*2

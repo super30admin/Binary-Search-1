@@ -8,43 +8,27 @@
 
 class SearchRotatedSortedArray {
     public int search(int[] nums, int target) {
-        if (nums == null && nums.length == 0) return -1;
-
-        int l = 0;
-        int r = nums.length - 1;
-
-        //finding the minimum element in the array
-        while (l < r) {
-            int m = l + (r - l) / 2;
-            if (nums[m] > nums[r]) {
-                l = m + 1;
-            } else {
-                r = m;
+        if(nums==null && nums.length == 0) return -1;
+        int left=0;
+        int right=nums.length-1;
+        while(left<=right){
+            int mid= left + (right - left)/2;
+            if(nums[mid]==target)
+                return mid;
+            else if(nums[left]<=nums[mid]){
+                if(nums[left]<=target && nums[mid]>target){
+                    right=mid-1;
+                } else{
+                    left=mid+1;
+                }
+            } else{
+                if(nums[mid]<target && nums[right]>=target){
+                    left=mid+1;
+                } else{
+                    right=mid-1;
+                }
             }
         }
-
-        int start = l;
-        l = 0;
-        r = nums.length - 1;
-
-        //finding the correct side of the array where the element must be present
-        if (target >= nums[start] && target <= nums[r]) {
-            l = start;
-        } else {
-            r = start;
-        }
-
-        //doing the binary search on the correct side of the pivot element
-        while (l <= r) {
-            int m = l + (r - l) / 2;
-            if (nums[m] == target) {
-                return m;
-            } else if (nums[m] < target) {
-                l = m + 1;
-            } else
-                r = m - 1;
-        }
-
         return -1;
     }
 }

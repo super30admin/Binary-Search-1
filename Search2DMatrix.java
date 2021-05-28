@@ -1,5 +1,5 @@
 // Time Complexity : O(log m + log n)
-// Space Complexity :O(n)
+// Space Complexity :O(m*n)
 // Did this code successfully run on Leetcode :yes
 // Any problem you faced while coding this : no
 

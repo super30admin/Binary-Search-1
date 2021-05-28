@@ -1,3 +1,5 @@
+//time complexity: O(m+n)
+// space complexity: O (m+n)  {not sure} 
 class Search2dMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
         int n = matrix.length;

@@ -1,11 +1,10 @@
-# Time Complexity : O(1)
-# Space Complexity : O(logN)
+# Space Complexity : O(1)
+# Time Complexity : O(log N)
 # Did this code successfully run on Leetcode : Y
 # Any problem you faced while coding this : N
 
 
 # Your code here along with comments explaining your approach
-
 
 
 class Solution:
@@ -43,3 +42,5 @@ class Solution:
             else:
                 start = mid + 1
         return -1
+
+

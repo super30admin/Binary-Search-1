@@ -2,6 +2,7 @@
 // so the time complexity will be O(logn).
 /* --------------------------------------------------------*/
 // Space Complexity: the space complexity will be O(1).
+
 class Solution {
     public int search(int[] nums, int target) {
         if(nums == null || nums.length == 0)
@@ -11,23 +12,26 @@ class Solution {
             int mid = low + (high - low)/2;
             if(nums[mid] == target){
                 return mid;
-            // check whether left sorted
-            }else if(nums[mid] >= nums[low]){
-                // check which interval the target locates.
-                if(nums[low] <= target && nums[mid] > target){
-                    high = mid -1;
-                }else{
-                    low = mid + 1;
-                }
-            // check whether right sorted
             }else{
-                // check which interval the target locates.
-                if(nums[high] >= target && nums[mid] < target){
-                    low = mid + 1;
-                }else{
-                    high = mid - 1;
+                // check whether left sorted
+                if(nums[mid] >= nums[low]){
+                    // check which interval the target locates.
+                    if(nums[low] <= target && nums[mid] > target){
+                        high = mid -1;
+                    }else{
+                        low = mid + 1;
+                    }
                 }
-            }
+                // check whether right sorted
+                else{
+                    // check which interval the target locates.
+                    if(nums[high] >= target && nums[mid] < target){
+                        low = mid + 1;
+                    }else{
+                        high = mid - 1;
+                    }
+                }
+            } 
         }
         return  -1;
     }

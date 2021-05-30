@@ -11,11 +11,9 @@ public class SearchRotate {
             }
             else if (nums[l]<=nums[mid])
             {
-                if(nums[l] <= target && nums[mid] > target)
-                {
-                    h=mid-1;
+                if(nums[l] <= target && nums[mid] > target) {
+                    h = mid - 1;
                 }
-
                 else
                     l=mid+1;
             }
@@ -27,12 +25,11 @@ public class SearchRotate {
         }
         return -1;
     }
-    public void static main(String args[])
+    public static void main(String args[])
     {
         SearchRotate obj = new SearchRotate();
-        int[] nums = [4,5,6,7,0,1,2];
+        int[] nums = {4,5,6,7,0,1,2};
         int target = 0;
-        obj.search(nums,target);
+        System.out.println(obj.search(nums,target));
     }
-
 }

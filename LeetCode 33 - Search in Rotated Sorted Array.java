@@ -11,7 +11,7 @@ class Solution {
             int mid = low + (high - low)/2;
             if(nums[mid] == target){
                 return mid;
-            // check whether right sorted
+            // check whether left sorted
             }else if(nums[mid] >= nums[low]){
                 // check which interval the target locates.
                 if(nums[low] <= target && nums[mid] > target){
@@ -19,7 +19,7 @@ class Solution {
                 }else{
                     low = mid + 1;
                 }
-            // check whether left sorted
+            // check whether right sorted
             }else{
                 // check which interval the target locates.
                 if(nums[high] >= target && nums[mid] < target){

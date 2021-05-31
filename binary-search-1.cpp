@@ -6,7 +6,7 @@ public:
         
         int rsize = matrix.size();
         int csize = matrix[0].size();
-        
+        //O(log(m) + log(n)) approach, same as one discussed by sir in class later
         int min = 0;
         int max = rsize * csize - 1;
         

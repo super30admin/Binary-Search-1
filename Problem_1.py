@@ -1,3 +1,5 @@
+# 2D matrix search
+
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         if matrix == None or len(matrix) == 0:

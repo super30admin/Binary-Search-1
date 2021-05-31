@@ -1,3 +1,5 @@
+//I still can't see this problem, so I interpreted it as per written in CTCI, TC is log(n) SC is O(1)
+
 int binarySearch(int arr[], int l, int r, int x)
 {
     while(l<=r){

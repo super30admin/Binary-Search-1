@@ -1,0 +1,19 @@
+// Time Complexity :O(R+C) where R is number of rows and C is number of columns
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int i=0,j=matrix[0].length-1;//initializing i to the first and j to the last column
+        while(j>=0&&i<matrix.length){//while loop till we reach to the first column or we reach to the last row
+            if(matrix[i][j]==target) return true;
+            else if(target<matrix[i][j]) j--;//if target is less than the value of last column we decrease the column
+            else i++;//else increase the row
+
+        }
+        return false;
+    }
+}

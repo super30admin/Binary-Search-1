@@ -16,6 +16,8 @@ class Solution:
             else:
                 right=pivot-1
         return False
-    #time complexity: O(log n)
+    #time complexity: O(log n)-where n is total number of elements
     #space: o(1)
     #Leetcode : https://leetcode.com/submissions/detail/512711913/
+    # formula os row*num of columns+col=index
+    # so, we get row number by division and col number by mod.

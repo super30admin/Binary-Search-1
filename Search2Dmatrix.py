@@ -21,3 +21,6 @@ class Solution(object):
                 low = mid + 1
         
         return False
+    
+    # TC: O(log mn)
+    # SC: O(1)

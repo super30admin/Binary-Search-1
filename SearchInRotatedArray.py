@@ -28,3 +28,6 @@ class Solution:
                     high = mid -1 
                     
         return -1
+    
+    # TC: O(log n)
+    # SC: O(1)

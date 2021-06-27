@@ -1,36 +1,30 @@
 class Solution:
-    
-    def getPivot(self, nums, l, r):
-        while l<r:
-            mid = (l+r)//2 
-
-            if (nums[mid]>nums[mid+1]):
-                return mid
-            elif (nums[mid]>nums[l]):
-                l = mid + 1
-            elif (nums[mid]<nums[l]):
-                r = mid - 1
-    
-    def binarySearch(self, arr, l, r, x):
-        while l<r:
-            mid_point = (l+r)//2
-
-            if (x == arr[mid_point]):
-                return mid_point
-            elif (x < arr[mid_point]):
-                r = mid_point - 1
-            else:
-                l = mid_point + 1
-
-        return -1
-        
-    def search(self, nums, target):
-        pivotValue = self.getPivot(nums, 0, len(nums)-1)
-        if (nums[pivotValue]>target):
-            self.binarySearch(nums, 0, pivotValue -1, target)
-        elif(nums[pivotValue]<target):
-            self.binarySearch(nums, pivotValue+1, len(nums) - 1, target)
-        elif(nums[pivotValue] == target):
-            return pivotValue
-        else:
+    def search(self, nums, target: int) -> int:
+        if not nums:
             return -1
+        
+        low = 0
+        high = len(nums) - 1
+        
+        while (low<=high):
+            mid = low + (high - low)//2
+            
+            if (nums[mid] == target):
+                return mid
+            
+            # check if left sorted
+            if (nums[low]<=nums[mid]):
+                # check if target is on sorted side
+                if (nums[low]<= target and nums[mid]>target):
+                    high = mid -1 
+                else:
+                    low = mid + 1 
+            
+            # check if right side is sorted
+            elif (nums[mid] <= nums[high]):
+                if (nums[mid]<target and nums[high]>=target):
+                    low = mid + 1
+                else:
+                    high = mid -1 
+                    
+        return -1

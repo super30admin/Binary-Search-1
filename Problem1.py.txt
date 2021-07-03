@@ -1,0 +1,30 @@
+class Solution(object): # Time 99.71%; Time - O(logn); Space - O(1)
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        if len(nums) <= 1:
+            if nums == []:
+                return -1
+            return 0 if nums[0] == target else -1
+        
+        start, end = 0, len(nums) - 1
+        
+        while start <= end:
+            midIndex = start + (end-start)//2
+            if target == nums[midIndex]:
+                return midIndex
+            elif nums[start] <= nums[midIndex]:
+                if target >= nums[start] and target < nums[midIndex]:
+                    end = midIndex - 1
+                else:
+                    start = midIndex + 1
+            elif nums[midIndex] <= nums[end]:
+                if target > nums[midIndex] and target <= nums[end]:
+                    start = midIndex + 1
+                else:
+                    end = midIndex - 1
+        
+        return -1

@@ -1,0 +1,21 @@
+def search(self, reader, target):
+    if reader.get(0)==target:
+                return 0
+    left,right=0,1
+    while target>reader.get(right):
+        left=right
+        right=right*2
+    while left<=right:
+        mid=left+(right-left)//2
+        if target==reader.get(mid):
+            return mid
+        elif target>reader.get(mid):
+            left=mid+1
+        else:
+            right=mid-1
+    return -1
+
+# // Time Complexity : O(logn)
+# // Space Complexity : O(1)
+# // Did this code successfully run on Leetcode : yes
+# // Any problem you faced while coding this :

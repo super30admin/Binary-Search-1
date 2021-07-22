@@ -1,6 +1,9 @@
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-        
+      /*
+       * Space complexity: O(1) i.e. constant as we are only using variable for index values and element value.
+       * Time complexity: O(log(mn)) for standard binary search tree. Here m*n defines the actual length(in linear array terms).
+       * */
       // Solution Binary search using a pivot element
       int r = matrix.length;
       if(r==0) return false;

@@ -1,3 +1,10 @@
+// Time Complexity : O(log N) for binary search implemented.
+// Space Complexity : O(1) is constant.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
 class Solution {
     public int search(int[] nums, int target) {
         //Algorithm used:
@@ -8,10 +15,7 @@ class Solution {
         // for step 2- If element is not in between start-mid OR mid-end
         // means that it's on other side - so handle it by either updating
         // left index or right index around mid idx
-        // & continue on binary search. Implementation below:
-    	//Time Complexity: O(log N) for binary search implemented
-    	//Space complexity: O(1) is constant
-                               
+        // & continue on binary search. Implementation below:                              
         int l = 0;
         int r = nums.length-1;
         int mid = -1;

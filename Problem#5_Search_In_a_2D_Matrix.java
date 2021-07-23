@@ -1,3 +1,11 @@
+// Time Complexity : O(log(mn)) for standard binary search tree. Here m*n defines the actual length(in linear array terms).
+// Space Complexity : O(1) i.e. constant as we are only using variable for index values and element value.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
       /*

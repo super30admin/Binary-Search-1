@@ -1,7 +1,7 @@
 public class SearchA2DMatrix {
 
 
-    //As it is sorted, for lograthimic time, we can do binary search.
+    //As the given array is sorted, for log time, we can do binary search.
     //But We need to assume that given matrix into a 1D array.
     //If an index / column length - gives row  and index % column length - gives column
     //TC: O(logMN) where M is number of rows, and N is numer of columns

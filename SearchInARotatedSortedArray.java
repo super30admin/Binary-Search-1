@@ -1,12 +1,12 @@
 public class SearchInARotatedSortedArray {
 
     // We can use modified binary search. As one of the half must be a sorted array.
-    // Find the mid and check if the left element is sorted then check if the
-    // elements is present in there or not. If it in range , move left, else move
+    // Find the mid and check if the left elements are sorted then check if the
+    // target is present in there or not. If it in range , move left, else move
     // right.
     // Else the remaining gonna be sorted, Again check if the element between the
     // range or not. If it range, move righ side. else move left side.
-    
+
     // TC: O(logN) - Where N is number of elements in the given array.
     // SC: O(1) - Not using any extra space
     public int search(int[] nums, int target) {

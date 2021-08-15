@@ -3,7 +3,7 @@ import java.util.*;
 public class SearchInInfinite {
 
     // Since we don't know the size of the array. Until we cross the target keep on
-    // multiple by 2(could be anything by 2 will give log time.)
+    // multiple by 2(could be anything but 2 will give log time. As it reduced the range.)
     // We know both low and high so we can do the normal binary search.
     // TC:O(logN) where N is number of elements in the ArrayReader
     // SC: O(1) We are not using any extra space.

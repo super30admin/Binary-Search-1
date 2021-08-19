@@ -3,6 +3,7 @@
 // SUCCESS on LeetCode
 
 public class Search2dMatrix {
+    // Its simply using binary search on a m*n size array.
     public boolean searchMatrix(int[][] matrix, int target) {
         int start = 0;
         int arrLength = matrix[0].length;

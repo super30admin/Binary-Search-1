@@ -3,6 +3,8 @@
 // SUCCESS on LeetCode
 
 public class SearchSecretArray {
+    // Checking the start and end bounds by doubling the end pointer if the target is greater than the end.
+    // Once the bounds are set, then used binary search to find the target element. 
     public int search(ArrayReader reader, int target) {
         int start = 0;
         int end = 1;

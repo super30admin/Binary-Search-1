@@ -1,7 +1,70 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity :O(logmn)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this :calculating time compplexity
 
 
 // Your code here along with comments explaining your approach
+in each row search by getting mid of row . 
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        int start;
+        int end;
+        int n ;
+        for(int m = 0 ; m < matrix.length ; m++)
+        {
+            n = matrix[m].length;
+            int mid = findMiddle(matrix[m] );
+            if(target ==  matrix[m][mid])
+                return true;
+           else if(target < matrix[m][mid])
+            {
+                start = 0;
+                if(n>2 && mid >= n)
+                end = mid-1;
+                else
+                     end = mid;
+                if(search(matrix, target,start,end,m) == true)
+                    return true;
+            }
+             else if(target > matrix[m][mid])
+            {
+                 if(n>2)
+                start = mid+1;
+                 else 
+                     start = mid;
+                end = n;
+                 if(search(matrix, target,start,end,m) == true)
+                    return true;
+            }
+             
+        }
+        return false;
+    }
+    
+    public boolean search(int[][] matrix, int target , int start, int end , int row)
+    {
+        for(int i = start ; i < end; i++)
+        {
+            if(target == matrix[row][i])
+                return true;
+        }
+        
+        return false;
+    }
+    
+    public int findMiddle(int[] nums)
+    {
+       int mid = nums.length/2;
+           
+        if(nums.length >2 && nums.length%2 == 0)
+        {
+           mid++; 
+
+        }
+       
+       return mid;
+    }
+}

@@ -1,0 +1,57 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : while finding limit for the array
+
+
+// Your code here along with comments explaining your approach
+
+
+1. Find the limit for an array
+2. Portion the array until the right element is smaller or equal to the target 
+3. And then perform the binary search on the new left and right of an array.
+/**
+ * // This is the ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * function ArrayReader() {
+ *
+ *     @param {number} index
+ *     @return {number}
+ *     this.get = function(index) {
+ *         ...
+ *     };
+ * };
+ */
+
+/**
+ * @param {ArrayReader} reader
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (reader, target) {
+    
+    if(reader.get(0)===target){
+        return 0;
+    }
+    var left=0,right=1;
+    
+    while(reader.get(right)<target){
+        left=right;
+        right=right*8;
+        
+    }
+
+    while(left<=right){
+        let mid=Math.floor((left+right)/2);
+        if(reader.get(mid)===target) return mid;
+        
+        if(reader.get(left)<=target && target < reader.get(mid)){
+            right=mid-1;
+        }
+        else{
+            left=mid+1;
+        }
+        
+    }
+  return -1;  
+};

@@ -1,44 +1,24 @@
-// Time Complexity : flatten arary - O(n) binary Search - O(log(n))
-// Space Complexity : O(n)
+// Time Complexity : log(m) + log(n)
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 
 
 var searchMatrix = function (matrix, target) {
-    let newArr = flatten(matrix);
+    if (!matrix || matrix.length === 0) return false;
 
-    return binarySearch(newArr, target);
+    let m = matrix.length, n = matrix[0].length
+    let low = 0, high = (m * n) - 1;
+
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        let r = Math.floor(mid / n), c = mid % n;
+        if (matrix[r][c] === target) return true;
+        else if (matrix[r][c] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return false;
 
 };
-
-var binarySearch = function (arr, target) {
-    let left = 0;
-    let right = arr.length - 1;
-    let mid;
-    while (left <= right) {
-        mid = Math.floor((left + right) / 2)
-
-        if (arr[mid] === target) {
-            return true;
-        }
-
-        if (arr[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return arr[mid] === target ? true : false;
-}
-
-
-var flatten = function (arr) {
-    let newArr = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (Array.isArray(arr[i])) {
-            newArr = newArr.concat(flatten(arr[i]));
-        } else {
-            newArr.push(arr[i]);
-        }
-    }
-    return newArr
-}

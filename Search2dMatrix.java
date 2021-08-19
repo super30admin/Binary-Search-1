@@ -1,3 +1,7 @@
+// TIME: O(logn)
+// SPACE: O(1)
+// SUCCESS on LeetCode
+
 public class Search2dMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
         int start = 0;

@@ -1,7 +1,39 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(log(mn))
+// Space Complexity : O(mn)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
 
+//Problem to search in a 2D array
 
 // Your code here along with comments explaining your approach
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        
+        m=len(matrix)              #num of rows
+        n=len(matrix[0])            #num of columns
+        
+        low=0
+        high = m*n -1
+        mid=(high+low)/2
+        flag=0
+        
+        while(low<=high):
+            mid=(high+low)/2
+            r=mid/n             #row of element
+            c=mid%n             #column of element
+            if(target<matrix[r][c]):           #target may be left side
+                high=mid-1
+                
+            elif(target>matrix[r][c]):           #target may be right side
+                low=mid+1
+            
+            else:         #target found
+                return True
+            
+        
+        return False

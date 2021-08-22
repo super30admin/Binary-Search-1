@@ -1,13 +1,5 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
-
-
-// Your code here along with comments explaining your approach
 //time o(logmn)
 //space o(1)
-
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if(matrix == null || matrix.length == 0) {

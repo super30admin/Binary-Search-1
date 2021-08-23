@@ -1,7 +1,88 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+problem 1
+Search a 2D Matrix
+
+// Time Complexity : O()
+// Space Complexity :O(log(mn))
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : This was really difficult to implement.
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length == 0){
+            return false;
+        }
+        
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+        
+        int left = 0;
+        int right = rows*columns-1;
+        
+        while(left <= right){
+            int midpoint = left + (right - left)/2; //This prevent number overfloW
+            int midpointElement = matrix[midpoint/columns][midpoint%columns];//We use this method because its a matrix and so we can't do the normal binary search.
+            if(midpointElement == target){
+                return true;
+            }
+            else if(target < midpointElement){
+                right = midpoint - 1;
+            }
+            else if(target > midpointElement){
+                left = midpoint + 1;
+            }
+        }
+        return false;
+        
+    }
+}
+
+problem 1
+Search in a Rotated Sorted Array
+
+// Time Complexity : O()
+// Space Complexity : O(log(n))
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : This was really difficult to implement.
 
 
-// Your code here along with comments explaining your approach
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0){
+            return -1;
+        }  
+        
+        int leftPoint = 0;
+        int rightPoint = nums.length-1;
+        
+        while(leftPoint < rightPoint){
+            int midpoint = leftPoint + (rightPoint - leftPoint)/2;
+            if(nums[midpoint] > nums[rightPoint]){
+                leftPoint = midpoint + 1;
+            }else{
+                rightPoint = midpoint;
+            }
+        }
+        
+        int start = leftPoint;
+        leftPoint = 0;
+        rightPoint = nums.length-1;
+        
+        if(target >= nums[start] && target <= nums[rightPoint]){
+            leftPoint = start;
+        }else{
+            rightPoint = start;
+        }
+        
+        while(leftPoint <= rightPoint){
+            int midpoint = leftPoint + (rightPoint - leftPoint)/2;
+            if(nums[midpoint] == target){
+                return midpoint;
+            }else if(nums[midpoint] < target){
+                leftPoint = midpoint + 1;
+            }else{
+                rightPoint = midpoint - 1;
+            }
+        }
+        return -1;
+    }
+}

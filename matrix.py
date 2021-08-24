@@ -1,5 +1,5 @@
 """
-Time Complexity-: o(logn)
+Time Complexity-: o(logmn)
 Space complexity- O(1)
 For finding the target element in the matrix, we will image the matrix as a 1 dimensional array, and for finding the consecutive position
 of a an element we will compute the row of that element as element/columns and we will compute the column of the element as element%columns.

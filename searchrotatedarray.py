@@ -1,3 +1,16 @@
+# // Time Complexity :O(logN).
+# // Space Complexity :O(1)
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : No
+
+# // Your code here along with comments explaining your approach
+#
+
+# Find a rotation index rotation_index, i.e. index of the smallest element in the array. Binary search works just perfect here.
+
+# rotation_index splits array in two parts. Compare nums[0] and target to identify in which part one has to look for target.
+
+# Perform a binary search in the chosen part of the array
 class Solution:
     def search(self, nums, target):
         def find_rotate_index(left, right):

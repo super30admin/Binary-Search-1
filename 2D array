@@ -1,0 +1,33 @@
+// Time Complexity : O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : --
+
+
+// Your code here along with comments explaining your approach
+// checking the last element of each row against the target and if its greter than the last element, go to next row. traverse the row only if target in smaller than last  element
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+         int row=0;
+		 
+			 while( row < matrix.length)
+		  {
+				 int col=0;
+				 while(col<matrix[row].length)
+				 {
+					int col_length=matrix[row].length;
+					if(target>matrix[row][col_length-1]) {
+				  
+						break;
+					}else if(target==matrix[row][col]) {
+						return true;
+					}
+						col++;
+					}
+                   row=row+1;
+
+				} 
+		 return false;
+    }
+}

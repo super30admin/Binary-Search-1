@@ -30,4 +30,5 @@ class Solution {
 //Approach : Binarysearch tree
 //time : O(log(mn))
 //space : O(1) // doubt here  ----- 
-//
+//ran successfully on leetcode but faced a problem while getting the row and column-- struggled for that logic
+

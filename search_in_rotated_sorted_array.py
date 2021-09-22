@@ -1,17 +1,22 @@
 class Solution:
-
-    def find_rotation_index(self, nums, l, r):
+    def find_rotation_index(self, nums, l, r, target):
         if nums[l] < nums[r]:
             return 0
         while l <= r:
             pi = (l+r)//2
-            if nums[pi] > nums[pi+1]:
-                return pi+1
-            else:
-                if nums[pi] < nums[l]:
-                    r = pi - 1
-                elif nums[pi] > nums[r]:
+            if nums[pi] == target:
+                return pi
+            elif nums[l] <= nums[pi]:
+                if nums[l] <= target and target <= nums[pi]:
+                    r = pi-1
+                else:
                     l = pi + 1
+            else:
+                if nums[pi] <= target and target <= nums[r]:
+                    l = pi+1
+                else:
+                    r = pi-1
+        return -1
 
     def find_index_of_target(self, nums, l, r, target):
         while l <= r:
@@ -31,12 +36,10 @@ class Solution:
         n = len(nums)
         if n == 1 and nums[0] == target:
             return 0
-        else:
+        if n == 1 and nums[0] != target:
             return -1
-
-        rotation_index = self.find_rotation_index(nums, 0, n-1)
-        print("rotation_index", rotation_index)
-
+        rotation_index = self.find_rotation_index(nums, 0, n-1, target)
+        # print("rotation_index", rotation_index)
         if nums[rotation_index] == target:
             return rotation_index
         if rotation_index == 0:

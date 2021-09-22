@@ -8,7 +8,7 @@ class Solution {
         
         while(low<=high) 
         {
-            int mid = (low + high)/2; //mid value index
+            int mid = low + (high-low)/2; //changed as to avoid overthrown exception as discussed in class
             if(target==matrix[mid/n][mid%n]) //mid/n-->row num && min%n --> column num
             {
                 return true;

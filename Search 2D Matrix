@@ -1,0 +1,33 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int n = matrix.length;     // n means no of rows
+        int m = matrix[0].length;   //m means no of columns 
+        
+        int low = 0;               //the low pointer in the array
+        int high = n * m - 1;      //the high pointer in the array
+        
+        while( low <= high){
+            int mid = low + (high-low)/2; // To prevent overflow
+            
+            int i = mid / m;
+            int j = mid % m;
+            
+            if(matrix[i][j] == target) //The best case where the mid point is target
+            {
+                return true;
+            }
+            else if(matrix[i][j] < target) //Midpoint 
+            {
+                low = mid + 1;
+                
+            }
+            else
+            {
+                high = mid -1;
+            }
+            
+            
+        }
+        return false;
+    }
+}

@@ -1,3 +1,6 @@
+# time complexity : O(log m + log n)
+# space complexity: O(1)
+
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         m = len(matrix)

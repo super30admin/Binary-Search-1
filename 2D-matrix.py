@@ -1,3 +1,9 @@
+"""
+Time Complexity: O(log)
+Space Complexity: O(1)
+Did your code run on leetcode? : yes
+issues faced: 
+"""
 class Solution:
     def searchMatrix(self, matrix, target: int) -> bool:
         m = len(matrix[0])

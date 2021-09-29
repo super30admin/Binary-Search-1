@@ -1,3 +1,10 @@
+"""
+Time Complexity: O(n + logn)
+Space Complexity: O(1)
+Did your code run on leetcode?: yes
+Issues Faced: calling the API interface
+"""
+
 # """
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation

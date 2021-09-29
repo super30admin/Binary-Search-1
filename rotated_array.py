@@ -1,3 +1,9 @@
+"""
+Time Complexity: O(logn)
+Space Complexity: O(1)
+Did your code run on leetcode?: yes
+issues faced: finding edge cases
+"""
 class Solution:
     def search(self, nums, target: int) -> int:
         l=0

@@ -11,7 +11,7 @@
 
 
 // Your code here along with comments explaining your approach
-class Seach2DMatrix {
+class Seach2DMatrix_74 {
     
     public boolean searchMatrix(int[][] matrix, int target) {
  

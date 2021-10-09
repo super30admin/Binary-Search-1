@@ -5,7 +5,7 @@
 
 
 // Your code here along with comments explaining your approach
-class Solution {
+class SearchInASortedArrayUnknownSize_702 {
     public  int search(ArrayReader reader, int target) {
     	// we dont know size of array so we will assume highest integer possible values
         int l =0;

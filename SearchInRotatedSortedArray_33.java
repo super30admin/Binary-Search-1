@@ -6,7 +6,7 @@
 
 // Your code here along with comments explaining your approach
 
-class SearchInRotatedSortedArray {
+class SearchInRotatedSortedArray_33 {
     public int search(int[] nums, int target) {
         //Inti low and high for indexes
         int high = nums.length -1;

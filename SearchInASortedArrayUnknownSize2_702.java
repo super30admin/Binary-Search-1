@@ -13,7 +13,7 @@
  * }
  */
 
-class Solution {
+class SearchInASortedArrayUnknownSize2_702 {
     public int search(ArrayReader reader, int target) {
         int low = 0;
         int high = 1;

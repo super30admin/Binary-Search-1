@@ -1,3 +1,6 @@
+# Time Complexity: O(n + log m)
+# Space Complexity: O(1)
+
 class Solution:
     def binarySearch(self,arr,target):
         start, last = 0, len(arr)-1

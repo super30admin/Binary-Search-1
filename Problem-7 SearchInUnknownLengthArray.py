@@ -8,6 +8,9 @@
 # Time Complexity: O(log n)
 # Space Complexity: O(1)
 
+# Logic: set an initial range & find whether target is within the range or not. If not then double the range
+# finally when we have the range, search for the target element if present return index else return -1
+
 class Solution:
     def search(self, reader, target):
         """

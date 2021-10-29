@@ -1,6 +1,10 @@
 # Time Complexity: O(log n)
 # Space Complexity: O(1)
 
+# Logic: find the middle element, due to rotation either left or mid would be sorted or right of mid would be sorted
+# locate in which region target lies & discard the other region. Keep on searching for the element in the sorted part
+# keep on changing the range for the middle element. If found return index else -1
+
 class Solution:
     def search(self, nums, target) -> int:
         if len(nums) == 0:

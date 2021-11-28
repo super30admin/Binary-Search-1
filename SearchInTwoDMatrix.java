@@ -10,7 +10,7 @@ public class SearchInTwoDMatrix {
 
     public boolean searchMatrix(int[][] matrix, int target) 
     {
-        if(matrix == null || matrix[0].length == null)
+        if(matrix == null || matrix[0].length == 0)
             return false;
 
         int m = matrix.length, n = matrix[0].length;

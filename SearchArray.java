@@ -1,3 +1,8 @@
+//Time Complexity: O(logn)
+//Space Complexity: constant
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
 class Solution {
     public int search(ArrayReader reader, int target) {
         if(reader.get(0) == target) return 0;

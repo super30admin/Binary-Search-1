@@ -5,7 +5,7 @@
 // Your code here along with comments explaining your approach
 /* Use binary search.
  * 
- * To find higher bound of array keep multiplying high by two till we reach to a point where higher bound is greater than target.
+ * To find higher bound of array keep multiplying high by two till we reach to a point where higher bound is greater than or equal to target.
  * And before updating high make new low set to old high. 
  * After getting higher bound of array, apply binary search using current low and high.
  *

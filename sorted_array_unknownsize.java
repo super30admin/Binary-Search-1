@@ -1,5 +1,5 @@
 class Solution{
-    public int search(ArrayReader reader, int target){
+    public int search( ArrayReader reader, int target ){
         int low = 0, high = 1;
         while(reader.get(high)<target){
             low = high + 1;

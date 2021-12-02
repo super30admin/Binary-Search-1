@@ -18,7 +18,7 @@ public:
             
             if(nums[low]<=nums[mid]) // left half is sorted
             {
-                if(target>= nums[low] && nums[mid] > target) // mid between low and high
+                if(target>= nums[low] && nums[mid] > target) // target between low and high
                     high=mid-1;
                 else
                     low = mid+1; // ele in unsorted half
@@ -26,7 +26,7 @@ public:
             
             else // right half is sorted
             {
-                if(nums[high] >= target && target > nums[mid]) // mid between low and high
+                if(nums[high] >= target && target > nums[mid]) // target between low and high
                     low = mid+1;
                 else
                     high = mid-1; // ele in unsorted half

@@ -1,7 +1,141 @@
-// Time Complexity :
-// Space Complexity :
+
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach
+
+
+Problem 1:
+
+// Time Complexity :O(log(mn))
+// Space Complexity :o(1)
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        if(matrix == null || matrix.length == 0 ) return false;
+        int m=matrix.length;
+        int n=matrix[0].length;
+        
+         int low=0,high=m*n-1;
+        
+        while(low<=high){
+            
+            int mid=low+(high-low)/2; // to prevent integer overflow
+            int r=mid/n;
+            int c=mid%n;
+            
+            if(matrix[r][c] == target)
+            {
+                return true;
+            }
+            else if (target < matrix[r][c])
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low  = mid + 1 ;
+            }
+            
+        }
+      return false;  
+    }
+}
+
+Problem 2:
+
+// Time complexity == o(log n)
+//Space Complexity ==o(1)
+
+class Solution {
+    public int search(int[] nums, int target) {
+    if(nums == null || nums.length == 0) return -1;
+     int low=0;
+     int high=nums.length-1;
+     while(low<=high){
+       int mid=low+(high-low)/2; // prevent integer overflow
+       if(target == nums[mid]){
+           return mid;
+       }
+     else
+     {
+         if(nums[low]<= nums[mid]){
+             if(target >= nums[low] && target < nums[mid]){
+                 high=mid-1;
+             }
+             else
+             {
+                 low=mid+1;
+             }
+         }
+         else
+         {
+             if(target > nums[mid] && target <= nums[high])
+             {
+                 low=mid+1;
+             }
+             else
+             {
+                 
+                 high=mid-1;
+             }
+          
+         }
+           
+           
+      }
+        
+         
+     }
+        
+       return -1; 
+    }
+}
+
+
+//Problem 3
+
+//Time Complexity: o(log n)
+//space o(1)
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        
+    int low=0,high=1;
+    while (reader.get(high)<target)   {
+        low = high;
+        high = 2 * high;
+    } 
+        
+    while(low<=high)
+    {
+        int mid=low+(high-low)/2;
+        if( target == reader.get(mid))
+           
+        {
+            return mid;
+        }
+        
+        else if(target < reader.get(mid)){
+            
+            high=mid-1;
+        }
+        else
+        {
+            low=mid+1;
+        }
+        
+    }
+        return -1;
+    }
+}

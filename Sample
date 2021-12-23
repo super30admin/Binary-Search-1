@@ -1,7 +1,22 @@
 // Time Complexity :
 // Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int maxLength = matrix[0].length;
+        for(int i=0;i<matrix.length;i++){
+            if(matrix[i][0]<=target&&matrix[i][matrix[i].length-1]>=target){
+                for(int j=0;j<maxLength;j++){
+                    if(matrix[i][j] == target){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}

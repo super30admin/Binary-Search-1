@@ -13,8 +13,9 @@ n == matrix[i].length
 -10^4 <= matrix[i][j], target <= 10^4
 
 """
-# Time Complexity : O(n)
-# Space Complexity : O(n)
+
+# Time Complexity : O(log m*n)
+# Space Complexity : O(1)
 # Did this code successfully run on VScode : Yes
 # Any problem you faced while coding this : No
 

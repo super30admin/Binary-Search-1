@@ -3,6 +3,8 @@
 
 ## Problem1 
 Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
+Time complexity - O(logmn)
+Space complexity - O(1)
 
 class Solution:
 
@@ -27,6 +29,9 @@ class Solution:
 
 ## Problem1 
 Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
+Time complexity - O(logn)
+space complexity - O(1)
+
 class Solution:
     
     def search(self, nums: List[int], target: int) -> int:

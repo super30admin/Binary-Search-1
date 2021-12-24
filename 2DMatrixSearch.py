@@ -26,14 +26,16 @@ class Solution:
         
         # In this function, first get the size of matrix from m and n as per constraints in the question
         m = len(matrix)         #rows
+        print(m)
         n = len(matrix[0])      #columns
+        print(n)
 
         if m == 0 or n > 100:   # As per the constraints in the question
             return False
 
         l, r = 0 , (m * n) - 1      # Converts matrix into a sorted array in the range of [l,r]
         
-        while l <= r:
+        while l < r:
             
             # finding the mid index for binary search
             mid = (l + r) // 2  

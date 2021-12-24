@@ -1,4 +1,4 @@
-# space complecity O(1)
+# space complexity O(1)
 # time comlexity O(logn)
 
 

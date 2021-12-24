@@ -1,0 +1,25 @@
+//Unknown Size Sorted Array:
+//Time Complexity: O(logn)
+//Space Complexity: O(1)
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int hi = 1;
+        while (reader.get(hi)<target) {
+            low = hi;
+            hi = 2*hi;
+        }
+        while (low<=hi){
+            int mid = low + (hi-low)/2;
+            if (reader.get(mid) < target) {
+                low = mid +1;
+            }
+            else if (reader.get(mid) > target) {
+                hi = mid -1;
+            }
+            else return mid; 
+        }
+        return -1;
+    }
+}

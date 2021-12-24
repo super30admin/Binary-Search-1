@@ -14,7 +14,7 @@ class Solution:
         right=1
         
         while reader.get(right)<target:
-            left =righta
+            left =right
             right =2*right
             
         

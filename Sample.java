@@ -81,6 +81,8 @@ class Solution {
 //        Executed in leet code : no
     //infinite Array
     class Solution {
+
+        public int search(ArrayReader reader,int target){
         int low = 0;
         int high = 1;
         while(reader.get(high)<target)

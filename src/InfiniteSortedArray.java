@@ -22,12 +22,8 @@ class InfiniteSortedArray {
                 l=h;
                 h=2*h;
             }
-            else if(reader.get(h) > target && reader.get(h) != 2147483647)
+            else if(reader.get(h) > target)
             {
-                break;
-            }
-            else{
-                h=l+(h-l)/2;
                 break;
             }
         }

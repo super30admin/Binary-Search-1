@@ -13,8 +13,8 @@ n == matrix[i].length
 -10^4 <= matrix[i][j], target <= 10^4
 
 """
-# Time Complexity : O(log n) (best case O(1))
-# Space Complexity : O(1)
+# Time Complexity : O(n)
+# Space Complexity : O(n)
 # Did this code successfully run on VScode : Yes
 # Any problem you faced while coding this : No
 
@@ -39,8 +39,7 @@ class Solution:
             mid = (l + r) // 2  
 
             # finding the mid element (to know what element to compare the target with)
-            # mid // n gives the row number 
-            mid_element = matrix[mid // n][mid // m] 
+            mid_element = matrix[mid // n][mid % n] 
 
             if target <= 10000:                 # as per constraint
                 if mid_element > target:

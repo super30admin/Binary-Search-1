@@ -1,3 +1,5 @@
+# time complexity O(1)
+# avg space complexity O(n)
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         if len(nums) <= 3:

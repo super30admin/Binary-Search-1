@@ -1,3 +1,5 @@
+# Time complexity O(logn * logn)
+# Space complexity O (1)
 from typing import List
 
 

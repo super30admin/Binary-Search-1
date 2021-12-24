@@ -1,3 +1,7 @@
+# space complecity O(1)
+# time comlexity O(logn)
+
+
 def find_element( arr, target ):
     high = 1
     while high < len(arr):

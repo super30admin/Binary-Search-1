@@ -2,10 +2,11 @@
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation(
 
-"""
+'''
 TC: O(logn)
 SC: O(1)
-"""
+Intuition: Reverse Binary Search - bottom-up.
+'''
 
 # """
 #class ArrayReader:
@@ -18,25 +19,20 @@ class Solution:
         :type target: int
         :rtype: int
         """
+        start, end = 0, 1
         ar = reader
-        maxLen = int(10 ** 4)
 
-        start, end = 0, maxLen
-        
         while start <= end:
             mid = start + (end - start) // 2
-            if ar.get(mid) == 2**31 - 1:
-                end = mid - 1
-                continue
-            if ar.get(start) == 2**31 - 1:
-                return -1
-            if ar.get(mid) == target:
+            midval = ar.get(mid)
+            if target == midval:
                 return mid
-            if ar.get(mid) > target:
+            if target < midval:
                 end = mid - 1
+            elif ar.get(start) > target:
+                return -1
             else:
                 start = mid + 1
+                end *= 2
         
         return -1
-        
-        

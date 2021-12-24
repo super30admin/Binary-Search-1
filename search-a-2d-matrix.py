@@ -1,6 +1,7 @@
 '''
-TC: O(log(mn))
+TC: O(log(m + n))
 SC: O(1)
+Intuition: Start from top-right, eliminate rows and cols
 '''
 
 class Solution:

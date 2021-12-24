@@ -69,19 +69,19 @@ space complexity: O(1)
 
 class solution:
 
-  def search(self,reader,target):
-    low = 0
-    high = 1
-    while high < target:
-      low = high
-      high = 2*high
-    while low<=high:
-      mid = low+(high-low)//2
-      if reader[mid]==target:
-        return mid
-      elif reader[mid]>target:
-        high = mid-1
-      else:
-        low = mid+1
+    def search(self,reader,target):
+        low = 0
+        high = 1
+        while high < target:
+            low = high
+            high = 2*high
+        while low<=high:
+            mid = low+(high-low)//2
+            if reader[mid]==target:
+                return mid
+            elif reader[mid]>target:
+                high = mid-1
+            else:
+                low = mid+1
     return -1
 

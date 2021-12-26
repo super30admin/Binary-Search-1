@@ -1,7 +1,93 @@
-// Time Complexity :
-// Space Complexity :
+// Time Complexity :O(logmn)
+// Space Complexity :O(1)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
 
-
+//Search a 2D Matrix
 // Your code here along with comments explaining your approach
+
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix.length == 0) {
+            return false;
+        } 
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+            
+        int low = 0;
+        int high = (rows * columns - 1);
+            
+        while(low <= high) {
+            int mid = (low + (high - low) / 2);
+            int value = matrix[mid / columns][mid % columns];
+                
+            if (value == target) {
+                return true;
+            } else if (value < target) {
+                low = mid + 1; 
+            } else {
+                high = mid - 1;
+            }
+        }
+        return false;
+    }
+}
+
+
+//Search in Rotated Sorted Array
+//Time complexity: O(log N)
+//Space complexity: O(1)
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        int low = 0,high = nums.length-1;
+        
+        while(low <= high)
+        {
+            int mid = (low+high)/2;
+            if(nums[mid] == target)
+                return mid;
+            if(nums[low] <= nums[mid])
+            {
+                if(target >= nums[low] && target <= nums[mid])
+                    high = mid-1;
+                else    low = mid+1;
+            }
+            else
+            {
+                if(target >= nums[mid] && target <= nums[high])
+                    low = mid+1;
+                else    high = mid-1;
+            }
+        }
+        return -1;
+    }
+}
+
+
+//Search-in-a-sorted-array-of-unknown-size
+//Time complexity: O(log T) where T is is the index of the target value
+//Space complexity: O(1)
+public int search(ArrayReader reader, int target) {
+        
+        int low = 0;
+        int high = Integer.MAX_VALUE; 
+        
+        while(low<=high){
+            int mid = low + (high-low)/2 ; 
+			// check if out of bound or greater than target, condition is same for both.
+            if(reader.get(mid) == Integer.MAX_VALUE || reader.get(mid) > target){
+                high = mid-1;
+            } else if(reader.get(mid) < target){
+                low = mid+1;
+            } else{
+                return mid;
+            }
+        }
+        
+        return -1;
+        
+    }

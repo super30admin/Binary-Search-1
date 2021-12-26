@@ -3,6 +3,7 @@ TC: O(logn)
 SC: O(1)
 Intuition: when finding pivot / mid, atleast one half is always sorted.
 '''
+
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         # when finding pivot / mid, atleast one half is always sorted.

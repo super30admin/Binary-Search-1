@@ -1,0 +1,39 @@
+// Time Complexity :O(log n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+
+//We surely know that in a rotated sorted aray one part from mid is definitely going to be sorted, based upon thos we can search for the target
+//we check if left part is sorted if it is we will check if it is, we check if target falls under the range of that half. if yes we go t left else right
+//if right is sorted we do this for right
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
+        
+        while(start<=end){
+            
+            int mid = start +(end-start)/2;
+            
+            if(nums[mid]==target) return mid;//return if target found
+            else if(nums[start]<=nums[mid]){//if left part is sorted
+                if(nums[start]<=target && nums[mid]> target){//if target is in left
+                    end = mid-1;//go to left
+                }else{
+                    start= mid+1;//else go to right
+                }
+            }else{
+                if(nums[mid]< target && nums[end]>=target){//if right is sorted
+                    start=mid + 1;//go to right
+                }else{
+                    end= mid -1;//else go to left
+                }
+            }
+        }
+        return -1;
+    }
+}

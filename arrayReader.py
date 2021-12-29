@@ -1,7 +1,7 @@
 #   ques: 702. Search in a Sorted Array of Unknown Size
 
 #   Time Complexity :
-#   O(log(mn))
+#   O(log n)
 
 #  Space Complexity :
 #  O(1)

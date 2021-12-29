@@ -2,6 +2,9 @@
 """
 Use binary search algo
 refer to middle, compare to target
+
+Time: OlogN
+space: O1
 """
 
 

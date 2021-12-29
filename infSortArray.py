@@ -4,6 +4,11 @@ Time complex: O1
 
 search array of unknown length
 """
+"""
+
+Time: OlogN
+space: O1
+"""
 
 class Solution:
     def search(self, reader, target):

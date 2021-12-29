@@ -1,3 +1,9 @@
+"""
+
+Time: OlogN
+space: O1
+"""
+
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
        

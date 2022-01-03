@@ -1,3 +1,7 @@
+/*
+Time complexity : O(log2N)
+Space complexity: O(1)
+*/
 public class searchInSortedArray {
     public int search(ArrayReader reader, int target) {
         int low = 0, high = 1;

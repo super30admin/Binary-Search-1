@@ -1,3 +1,6 @@
+# // Time Complexity : O(logN) 
+ # // Space Complexity :O(1)
+ # // Did this code successfully run on Leetcode : Yes
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         if(matrix == None or len(matrix)==0): return False

@@ -1,3 +1,6 @@
+# Time Complexity : O(logN)
+ # // Space Complexity :O(1)
+ # // Did this code successfully run on Leetcode : Yes
 class InfiniteArray:
      def __init__(self,reader,target):
          self.reader = reader

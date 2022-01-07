@@ -1,4 +1,4 @@
-// Time complexity  = log(m*n) where m,n are no of rows and columns. Space complexity is O(1) as no new space is utilized
+// Time complexity  = O(log(m*n)) where m,n are no of rows and columns. Space complexity is O(1) as no new space is utilized
 
 // Approach
 // The matrix is converted into a 1D array and Binary search is used to search elements

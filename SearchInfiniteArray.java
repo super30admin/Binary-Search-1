@@ -1,4 +1,4 @@
-//  Time Complexity O(m)+O(n) where m & n are steps moved by right pointer and length of interval on which we do binary search. Space complexity O(1)
+//  Time Complexity O(n). Space complexity O(1)
 
 // Approach 
 // We will be accomplishing this using two stacks

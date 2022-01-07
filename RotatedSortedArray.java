@@ -1,4 +1,4 @@
-// Time Complexity O(n). Space complexity O(1)
+// Time Complexity O(log(n)). Space complexity O(1)
 
 // Appproach
 // For Rotated sorted arrays we should always keep in mind that one of the side is always sorted

@@ -1,0 +1,35 @@
+// Time Complexity :O(log2 M + log2N) = O(log2 MN) or if any of them is higher order TC = O(log2M) or O(log2N)
+// M - steps - 2 * high
+// N - window size
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0, high = 1;
+        
+        while(reader.get(high) < target)
+            {
+                low = high;
+                high = 2 * high;
+            }
+        
+        while(low <= high)
+        {
+            int mid = low + (high - low) / 2;
+            if(reader.get(mid) == target)
+                return mid;
+            else if(reader.get(mid) < target)
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }

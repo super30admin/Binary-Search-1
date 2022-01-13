@@ -1,0 +1,48 @@
+// Time Complexity :O(log n) 
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach
+In Rotated sorted array, atleast one part will always be sorted. So find out sorted part, check if element lies in that part and apply binary search accordingly.
+
+Solution - Binary Search - TC - O(log n)  SC - O(1)
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+        
+        while(low <= high)
+        {
+            int mid = low + (high - low)/2;                     //to prevent integer overflow
+            if(nums[mid] == target)
+            {
+                return mid;
+            }
+            else if(nums[low] <= nums[mid])                     // left part is sorted
+            {
+                if(nums[low] <= target && nums[mid] > target)   // target lies in left side
+                {
+                    high = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
+                }
+            }
+        else                                                        // right is sorted
+            {
+                if(nums[mid] < target && nums[high] >= target)      // target lies in right side
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    high = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+}

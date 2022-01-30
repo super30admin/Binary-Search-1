@@ -1,0 +1,29 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public boolean check(int[][] matrix,int min,int max,int target){
+        if(min>max){
+            return false;
+        }
+        else{
+           if(matrix[Math.floorDiv(min+max,2)/matrix[0].length][Math.floorDiv(min+max,2)%matrix[0].length]==target){
+              return true;
+           }
+           else if(matrix[Math.floorDiv(min+max,2)/matrix[0].length][Math.floorDiv(min+max,2)%matrix[0].length] > target){
+              return check(matrix,min,Math.floorDiv(min+max,2)-1,target);
+           }
+           else{
+              return check(matrix,Math.floorDiv(min+max,2)+1,max,target);
+           }
+        }
+    }
+    
+    public boolean searchMatrix(int[][] matrix, int target) {
+        return check(matrix,0,matrix.length*matrix[0].length-1,target);
+    }
+}

@@ -1,0 +1,43 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+// In a rotated sorted array one half is always sorted. First check if target 
+// is in the range of sorted half. If present perform binary search on sorted
+// half, otherwise perform binary search on unsorted half.
+
+class Solution {
+    int mid;
+    private int binarySearch(int[] arr, int begin, int end, int tar){
+        if(begin>end){
+            return -1;
+        }
+        mid = begin+(end-begin)/2;
+        if(arr[mid] == tar){
+            return mid;
+        }
+        else if(arr[mid] < arr[end] ){
+            if(arr[mid] < tar && arr[end] >= tar){
+                return binarySearch(arr, mid+1, end, tar);
+            }
+            else{
+                return binarySearch(arr, begin, mid-1, tar);  
+            }
+            
+        } 
+        else{
+            if(arr[mid] > tar && arr[begin] <= tar){
+                return binarySearch(arr, begin, mid-1, tar);
+            }
+            else{
+                return binarySearch(arr, mid+1, end, tar);
+            }   
+        }
+    }
+    public int search(int[] nums, int target) {
+        return binarySearch(nums, 0, nums.length-1, target);
+    }
+}

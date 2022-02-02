@@ -41,7 +41,7 @@ public class SearchInA2DMatrix {
         int[][] grid  = {
                 {1,2,3,4},
                 {5,6,7,8},
-                {9,10,11,12,13}
+                {9,10,11,12}
         };
         // Should return true
         System.out.println(searchInA2DMatrix(grid, 8));

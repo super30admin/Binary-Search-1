@@ -1,0 +1,24 @@
+// Time Complexity :couldnt think of correct answer
+// Space Complexity :couldnt think correct answer
+// Did this code successfully run on Leetcode :no
+// Any problem you faced while coding this :yes, dont have leetcode subscription 
+
+
+// Your code here along with comments explaining your approach
+
+class solution{
+
+public int  search(ArrayReader reader,int target){
+
+if(reader.get(0)>target)return -1;
+
+
+int range=Math.abs(target-reader.get(0));
+for (int i=0;i<=range;i++{
+if(reader.get(i)==target) return i;
+
+}
+return -1;
+}
+
+}

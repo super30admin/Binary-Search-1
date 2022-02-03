@@ -14,14 +14,15 @@ public class RotatedSortedArray {
             if (nums[0] > nums[lastIdx]) {
                 isRotated = true;
             }
-            // BS search variables
+            // BinSearch  variables
             int start = 0, end = lastIdx, mid = 0;
             // If rotated then find pivot else do the normal B.S
             if (isRotated) {
                 int idx = 0;
                 int firstElem = nums[idx];
                 while (firstElem < nums[++idx]) {}
-                System.out.println("Pivot rotated at : " + idx);
+                //System.out.println("Pivot rotated at : " + idx);
+                // Checking the range, target fits in range then check
                 if(target <= nums[idx] || target <= nums[lastIdx]){
                     start = idx;
                     end = lastIdx;
@@ -30,10 +31,10 @@ public class RotatedSortedArray {
                     end = idx-1;
                 }
             } 
-            // Binary search iterative way
+            // // Traditional iterative binary search
             while (start <= end) {
                 mid = start + (end - start) / 2;
-                 System.out.println("Value of start,end,mid " + start + "," + end + "," + mid);
+                 //System.out.println("Value of start,end,mid " + start + "," + end + "," + mid);
                 if (target == nums[mid]) {
                     return mid; // returing idx of elem found
                 } else if (target < nums[mid]) {

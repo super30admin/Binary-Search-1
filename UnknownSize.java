@@ -30,8 +30,7 @@ class UnknownSize {
     }
 
     public int search(ArrayReader reader, int target) {
-        int start = 0;
-        int end = 1;
+        int start = 0, end = 1;
 
         // The loop wont enter if the value present in first two index
         // Find the end and store start with previous end
@@ -41,8 +40,8 @@ class UnknownSize {
         }
         System.out.println(" search range start,end " + start + "," + end);
 
-        // Binary search iterative way
         int mid = 0;
+        // Traditional iterative binary search
         while (start <= end) {
             mid = start + (end - start) / 2;
             // System.out.println("Value of start,end,mid " + start + "," + end + "," + mid);

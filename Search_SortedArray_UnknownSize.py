@@ -5,6 +5,7 @@
 
 # Approach: Binary Search
 
+
 def search_sorted_unknownsize(self, reader, target):
     """
     :type reader: ArrayReader

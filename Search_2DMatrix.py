@@ -1,5 +1,5 @@
 # Time Complexity : O(logmn); where m and n are rows and coloums in matrix
-# Space Complexity : O(i)
+# Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 

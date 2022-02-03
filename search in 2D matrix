@@ -1,0 +1,26 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;   //length of row
+        int n = matrix[0].length;  //length of column
+        
+        int s = 0; int e = (m*n)-1;  //two pointers start and end
+        
+        while(s<=e){
+            int mid = s + (e - s)/2;
+            
+            int i = mid/n;
+            int j = mid%n;
+            
+            if(matrix[i][j] == target){
+                return true;
+            }
+            else if(target > matrix[i][j]){
+                s = mid + 1;
+            }
+            else{
+                e = mid - 1;
+            }
+        }
+        return false;
+    }
+}

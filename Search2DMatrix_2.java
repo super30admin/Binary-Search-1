@@ -1,3 +1,7 @@
+/*
+Time Complexity = O(logn)
+* */
+
 class Search2DMatrix_2{
     int m = matrix.length, n = matrix[0].length;
 

@@ -14,7 +14,7 @@ class Solution:
             low = high+1
             high *=2
 
-        while low < high:
+        while low <= high:
             mid = low + (high-low)//2
             if reader.get(mid) == target:
                 return mid

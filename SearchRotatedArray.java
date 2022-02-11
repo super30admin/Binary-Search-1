@@ -44,3 +44,31 @@ class Solution {
         return -1;
     }
 }
+
+
+
+
+//Brute Force Approach:
+//Search each and every element iof the given 2D Matrix:
+    public int search(int[] nums, int target) {
+        if(nums==null || nums.length==0) return -1;
+        
+        int low=0;
+        int high=nums.length-1;
+        int mid=0;
+        while(low<=high){
+            mid=(low+high)/2;
+            if(target==nums[mid]){
+                return mid;
+            }else if(target>nums[mid]){
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+        return -1;
+    }
+//TC: O(m*n);
+
+//Less Optimized check first and last element of each row and apply binary search on that row:
+//So, TC: O(m*logn);

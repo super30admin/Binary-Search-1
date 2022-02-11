@@ -45,8 +45,11 @@ class Solution {
     }
 }
 
-
-
+//TC: O(m*n);
+//Less Optimized check first and last element of each row and apply binary search on that row:
+//So, TC: O(m+logn);
+//Can perform Binary Search on first Coulumn to find the number range and to perform BSearch on that row;
+//that way O(logM+logN);
 
 //Brute Force Approach:
 //Search each and every element iof the given 2D Matrix:
@@ -68,7 +71,6 @@ class Solution {
         }
         return -1;
     }
-//TC: O(m*n);
 
-//Less Optimized check first and last element of each row and apply binary search on that row:
-//So, TC: O(m*logn);
+
+

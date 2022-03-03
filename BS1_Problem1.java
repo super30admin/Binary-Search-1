@@ -1,5 +1,4 @@
-// Time Complexity : O(N)
-
+// Time Complexity : O(Log N * M) // N rows and M Cols
 // Space Complexity : O(1)
 
 // Did this code successfully run on Leetcode : Yes
@@ -7,7 +6,62 @@
 
 
 // Your code here along with comments explaining your approach
+/*
+Creating a imaginary 1d array - with length N*M
 
+Creating low = 0 and high = N*M - 1
+
+Finding Mid element usng low and high
+
+Checking the element at [mid/m][mid%m] is target or not ? 
+If it is, return true;
+If that element is less or greater than target -- Set low and high accordingly
+*/
+
+class twoDMatrix {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int l = 0;
+        
+        int h = matrix.length * matrix[0].length - 1;
+        
+        while(l <= h){
+            int mid = l + (h - l) / 2;
+            
+            if(matrix[mid / matrix[0].length][mid % matrix[0].length] == target){
+                return true;
+            }
+            else if(matrix[mid / matrix[0].length][mid % matrix[0].length] < target){
+                l = mid + 1;
+            }
+            else{
+                h = mid - 1;
+            }
+        }
+        
+        return false;
+    }
+}
+
+
+
+
+
+
+public class BS1_Problem1{
+    public static void main(String[] args){
+        twoDMatrix M = new twoDMatrix();
+        int[][] matrix = { {1,3,5,7 },{ 10,11,16,20 },{ 23,30,34,60 } };
+        int target = 3;
+        System.out.println("Is target " + target + " in the Matrix ? " + M.searchMatrix(matrix, target));
+    }
+}
+
+
+
+
+//Another solution
+
+// Time Complexity : O(N)
 /*
     As in the matrix are stored from left to right in row and top to bottom in column as increasing order
 
@@ -21,8 +75,7 @@
     Return false at last //If target not found
 
 */
-
-
+/*
 class Matrix{
     public boolean searchMatrix(int[][] matrix, int target) {
         int i = 0; int j = matrix[0].length - 1;
@@ -43,12 +96,5 @@ class Matrix{
         return false;
     }
 }
+*/
 
-public class BS1_Problem1{
-    public static void main(String[] args){
-        Matrix M = new Matrix();
-        int[][] matrix = { {1,3,5,7 },{ 10,11,16,20 },{ 23,30,34,60 } };
-        int target = 3;
-        System.out.println("Is target " + target + " in the Matrix ? " + M.searchMatrix(matrix, target));
-    }
-}

@@ -1,3 +1,8 @@
+/**
+ * O(log(n)) time complexity as it takes 2 binary searches to search through the matrix
+ * 
+ * no additional space was allocated to perform the computation, so O(1)
+ */
 public class MatrixSearch {
     private int target;
 

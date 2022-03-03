@@ -1,3 +1,9 @@
+/**
+ * O(log(n)) time complexity.
+ * 
+ * no additional space was allocated to perform the computation, so O(1)
+ */
+
 public class RotatedSortedArraySearch {
     public int search(int[] nums, int target) {
         int left = 0;

@@ -1,3 +1,8 @@
+/**
+ * O(log(n)) time complexity as it is binary search of the array followed by int max values
+ * 
+ * no additional space was allocated to perform the computation, so O(1)
+ */
 public class SecretArraySearch {
     public int search(ArrayReader reader, int target) {
         return search(reader, 0, Integer.MAX_VALUE, target);

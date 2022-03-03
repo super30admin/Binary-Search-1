@@ -1,0 +1,35 @@
+//Time complexity: O(Log n)
+//Tested on leetcode
+class SearchIn2DMatrix {
+    public static boolean searchMatrix(int[][] matrix, int target) {
+
+        for (int i = 0; i < matrix.length; i++) {
+            if(matrix[i][0]<=target && target <= matrix[i][matrix[i].length-1]){
+                int result= binSearch(matrix[i],target,0,matrix[i].length-1);
+                //System.out.println(result+" result value");
+                if(result > -1)
+                    return true;
+                else
+                    return false;
+            }
+        }
+        //System.out.println("After loop");
+        return false;
+    }
+
+    public static int binSearch(int[] nums,int target,int l, int u){
+        if(u>=l){
+            int mid=l+((u-l)/2);
+            if(nums[mid]==target){
+                return mid;
+            }
+            if(nums[mid]>target){
+                return binSearch(nums,target,l,mid-1);
+            }
+            if(nums[mid]<target){
+                return binSearch(nums,target,mid+1,u);
+            }
+        }
+        return -1;
+    }
+}

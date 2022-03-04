@@ -23,6 +23,7 @@ public class UnknownSizeArraySearch {
     int left = 0, right = 1;
 
     while(reader.get(right) < target){
+      left = right;
       right = right * 2; // Doubling the size each time allows us to keep our search still be in logarithmic complexity.
     }
 

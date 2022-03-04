@@ -26,7 +26,7 @@ public class SearchInRotatedArray {
         
         if(nums[mid] == target) return mid;
         else if (nums[mid] < nums[right]){ // Array is right sorted
-            if(nums[mid+1] <= target && target <= nums[right]){
+            if(nums[mid+1] <= target && target <= nums[right]){ // and target lies in between
                 left = mid + 1;
             } else {
                 right = mid - 1;

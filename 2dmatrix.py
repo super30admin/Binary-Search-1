@@ -1,3 +1,6 @@
+## Time Complexity: O(lgn)
+## Space Compexity O(1)
+
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
     

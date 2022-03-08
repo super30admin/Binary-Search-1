@@ -1,3 +1,10 @@
+# Time Complexity : O(logT) where T is the index of target
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : No
+
+# Incremented the end pointer by going on multiplying it by 2 until we found that the target is now within the array and performed binary search on the same.
+
 # """
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation

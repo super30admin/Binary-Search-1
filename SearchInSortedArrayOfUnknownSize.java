@@ -14,7 +14,7 @@ public class SearchInSortedArrayOfUnknownSize {
         while(reader.get(right)<target)
         {
             left = right;
-            right<<=1;
+            right++;
         }
         
         int middle,num;

@@ -1,4 +1,13 @@
-class Solution {
+// Time Complexity : O(log (m x n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes 
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach : Using binary search using hashing to get the indices
+
+
+class MatrixSearch {
     public boolean searchMatrix(int[][] matrix, int target) {
         int low = 0;
         int m = matrix.length;
@@ -29,7 +38,7 @@ class Solution {
     }
 
     public static void main(String args[]){
-        Solution solution = new Solution();
+        MatrixSearch solution = new MatrixSearch();
 
        int[][] matrix = {{1,2},{3,4}} ;
        System.out.println(solution.searchMatrix(matrix, 4)); 

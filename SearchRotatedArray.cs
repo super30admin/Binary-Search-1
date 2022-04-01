@@ -5,7 +5,7 @@
 
 
 // Your code here along with comments explaining your approach
-public int Search(int[] nums, int target) {
+public int SearchRotatedArray(int[] nums, int target) {
 
     if(nums == null || nums.Length == 0)
             return -1;

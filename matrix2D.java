@@ -1,5 +1,6 @@
 package binarySearch1;
-
+//Time Complexity : O(log (m x n))
+//Space Complexity : O(1)
 public class matrix2D {
 	
     public int search(int[] nums, int target) {

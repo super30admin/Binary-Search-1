@@ -1,30 +1,25 @@
-//time - O(m log n)
+//time - O(log m*n)
 //space - O(1)
 
 class Solution {
-
     public boolean searchMatrix(int[][] matrix, int target) {
 
-        for(int i=0; i<matrix.length; i++){
+        int m = matrix.length, n = matrix[0].length;
 
-            if(matrix[i][0] <= target && target <= matrix[i][matrix[i].length-1]){
+        int low=0, high = m*n-1;
 
-                int[] array = matrix[i];
+        while(low<=high){
+            int mid = low + (high - low)/2;
+            int row = mid / n;
+            int col = mid % n;
 
-                int low = 0, high = matrix[i].length-1;
+            if(matrix[row][col]==target) return true;
 
-                while(low <= high){
+            else if(matrix[row][col] < target) low = mid+1;
 
-                    int mid = (high+low)/2;
-
-                    if(array[mid] == target) return true;
-
-                    else if(array[mid] < target) low = mid+1;
-
-                    else high = mid-1;
-                }
-            }
+            else high = mid-1;
         }
+
         return false;
     }
 }

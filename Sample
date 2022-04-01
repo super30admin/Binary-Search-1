@@ -1,7 +1,73 @@
 // Time Complexity :
 // Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : Yes I used Raj sir technique to proceed with binary search
 
 
 // Your code here along with comments explaining your approach
+
+
+
+//====================
+// class Solution {
+//     //T.C = O(logn) as binary seach
+//     //S.C = O(1)
+//     public int search(int[] nums, int target) {
+//         if(nums == null||nums.length ==0) return -1;
+
+
+//         int low = 0;
+//         int high = nums.length -1;
+
+//         while(low<=high){
+//         int mid = low + (high - low)/2;
+//             if(nums[mid]==target){return mid;}
+
+
+//         if(nums[low]<=nums[mid]){
+//             if(nums[low]<=target && target<nums[mid]){
+//                 high = mid -1;
+//             }else {low = mid +1;}
+
+//         }else {
+//             if(nums[mid]<target && target<=nums[high]){
+//                 low = mid+1;
+
+//             } else {high = mid -1;}
+
+//         }
+//     }
+//         return -1;
+// }
+
+// }
+
+
+//=========
+
+
+
+
+// class Solution {
+//     public boolean searchMatrix(int[][] matrix, int target) {
+//         if(matrix.length==0||matrix==null) return false;
+
+//         int m = matrix.length;
+//         int n = matrix[0].length;
+//         int low =0;
+//         int high = (m*n) -1;
+
+//         while (low<=high){
+//             int mid = low + (high - low)/2;
+//             int row = mid/n;
+//             int col = mid%n;
+//             if(matrix[row][col] == target)return true;
+//             else if(target<matrix[row][col]){
+//                 high = mid -1;
+//             }else{
+//                 low = mid+1;
+//             }
+//         }return false;
+//     }
+
+//     }

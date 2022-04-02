@@ -5,8 +5,10 @@ Accessing an element out of bounds throws exception.
 If the number occurs multiple times, return the index of any occurrence. 
 If it isn’t present, return -1.
 '''
-
-from re import I
+# Time Complexity : O(Log(N)) where N are actual elements
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : Could not try - needs Premium
+# Any problem you faced while coding this : No
 
 
 class Solution:
@@ -17,14 +19,15 @@ class Solution:
         i = 0
         low = 0
         high = 2**i - 1
-        
+        found_upper_bound = False
         while low <= high:    
             try:
-                if target > nums[high]:
+                if target > nums[high] and not found_upper_bound: # search for high
                     i += 1
                     low = high
                     high = 2**i-1
-                else:
+                else: # binary search
+                    found_upper_bound = True
                     mid = int(low + (high-low)/2)
                     if nums[mid] == target:
                         return mid
@@ -39,16 +42,16 @@ class Solution:
         
         return -1
         
-        # try:
-        #     while target > nums[high]:
-        #         i += 1
-        #         high = 2**i - 1
-        # except IndexError:
 
-        #     pass
+#####  test cases #####
 s = Solution()
 arr = [1, 2, 3, 4, 5, 7]
+for i in range(0, len(arr)):
+    print(s.search(arr, arr[i]))
+
+print(s.search(arr, -2))
 print(s.search(arr, 6))
+print(s.search(arr, 8))
 
 
 

@@ -2,6 +2,7 @@ interface ArrayReader {
     int get(int index);
 }
 
+
 public class SearchInUnknownArray {
 
     public int search(ArrayReader reader, int target) {

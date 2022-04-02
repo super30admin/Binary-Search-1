@@ -31,7 +31,7 @@ public int SearchInfiniteSortedArray(ArrayReader reader, int target) {
         if(val == target)
             return mid;
         
-        if(target < val) //left portion of array is sorted
+        if(target < val)
             high = mid - 1;
         else
             low = mid + 1;

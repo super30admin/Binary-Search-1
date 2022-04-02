@@ -1,29 +1,40 @@
-""" Search in 2D Matrix """
-# Time Complexity : O(Log(m*n)) where m: #rows and n: #cols
+""" 33. Search in Rotated Sorted Array """
+# Time Complexity : O(Log(N)) where N: # of elements in nums
 # Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : 
-#   Initially, I did binary search on 1st column to get a row,
-#   and then on that row again binary Search.
+#   Yes, Got confused on when to use '<=' or '<' 
+#   L23: nums[low] <= target < nums[mid] works but
+#   nums[low] <= target <= nums[mid-1] does not work (index out if bound)
+
 
 class Solution:
-        
-    def searchMatrix(self, matrix: 'list[list[int]]', target: int) -> bool:
-        num_rows = len(matrix)
-        num_cols = len(matrix[0])
-        
+    def search(self, nums: 'list[int]', target: int) -> int:
+        if len(nums) == 0: return -1
         low = 0
-        high = num_rows * num_cols - 1
+        high = len(nums)-1
         
         while low <= high:
-            mid = int(low + (high-low)/2)
-            r = int(mid / num_cols)
-            c = int (mid % num_cols)
-            if matrix[r][c] == target:
-                return True
-            elif matrix[r][c] > target:
-                high = mid - 1
-            else:
-                low = mid + 1
+            mid = int(low+(high-low)/2)
+            if nums[mid] == target:
+                return mid
+            
+            if nums[low] <= nums[mid]: # if left half is sorted  IMP (cond <=)
+                if nums[low] <= target < nums[mid]: # if target in left half IMP (cond <)
+                    high = mid-1
+                else: # target is in right half
+                    low = mid+1
+            else: # right half is sorted
+                if nums[mid] < target <= nums[high]: # if target in right half
+                    low = mid+1
+                else: # target is in left half
+                    high = mid-1
         
-        return False
+        return -1
+                    
+                    
+                
+                
+                
+        
+        

@@ -6,7 +6,7 @@
  * }
  */
 
-class Solution {
+class Solution2 {
     public int search(ArrayReader reader, int target) {
         int low = 0;
         int high = 1;

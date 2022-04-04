@@ -45,7 +45,8 @@
 
 //=========
 
-
+//     //T.C = O(logn) as binary seach
+//     //S.C = O(1)
 
 
 // class Solution {
@@ -69,5 +70,45 @@
 //             }
 //         }return false;
 //     }
+
+//     }
+
+//==============================
+//T.C. O(log n)
+//S.C O(1)
+//T.C. O(log n)
+// //S.C O(1)
+// class Solution {
+//     public int search(ArrayReader reader, int target) {
+
+//         int low = 0;
+//         int high = 1;
+//       while(reader.get(high)<target){
+//           low = high;
+//           high = high*2;
+//       }
+//         return binarysearch(low, high, reader, target);
+//   }
+
+//     private int binarysearch(int low, int high, ArrayReader reader, int target)  {
+//         while(low <= high){
+//             int mid = low + (high - low)/2;
+//                 if(reader.get(mid) == target){return mid;}
+
+//             else
+//             if(reader.get(mid)<target){
+//                 low = mid +1;
+
+//             }else if(reader.get(mid)>target){
+//                 high = mid -1;
+//             }
+
+
+//         }
+
+//         return -1;
+
+
+//         }
 
 //     }

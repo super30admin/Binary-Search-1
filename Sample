@@ -1,7 +1,116 @@
-// Time Complexity :
-// Space Complexity :
+// Time Complexity : log(m*n);
+// Space Complexity : o(1)
 // Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Any problem you faced while coding this : binary search
 
 
 // Your code here along with comments explaining your approach
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+        int n = matrix.size();
+        int m = matrix[0].size();
+        
+        int l = 0;
+        int r = n*m -1;
+        while(l<=r) {
+            int mid = l+(r-l)/2;
+            int i = mid/m;
+            int j = mid%m;
+            
+            if(matrix[i][j] == target) {
+                return true;
+            } else if(matrix[i][j] > target) {
+                r = mid -1;
+            } else {
+                l = mid +1;
+            }
+        }
+         return false;
+    }
+};
+
+// Time Complexity : log(n);
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this : binary search
+
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+         vector<int> results;
+        
+        if (nums.size() == 0)  {
+            results = {-1,-1};
+            return results;
+        }
+        
+        if(target < nums[0] || target > nums[nums.size()-1]) return {-1,-1};
+        
+        int n = nums.size();
+       
+        int first = firstOccurrence(nums,target);
+        if(first == -1) {
+            return {-1,-1};
+        }
+        int second = SecondOccurrence(nums,target);
+        results = {first,second};
+        
+        return results;
+        
+    }
+    
+    
+    int firstOccurrence(vector<int> &nums,int target) {
+        
+        int n = nums.size();
+        int l = 0;
+        int r = n-1;
+        
+        while(l<=r){
+            
+            int mid = l+(r-l)/2;
+            cout<<l<<mid<<r<<endl;
+            if(nums[mid] == target){
+                
+                if(mid == 0 || nums[mid] > nums[mid -1]){
+                    return mid;
+                }else {
+                    r = mid -1;
+                }
+                
+            } else if(nums[mid] > target) {
+                r = mid-1;
+            } else {
+                l = mid+1;
+            }
+        }
+        return -1;
+    }
+    
+    int SecondOccurrence(vector<int> &nums,int target) {
+       int n = nums.size();
+        int l = 0;
+        int r = n-1;
+        
+        while(l<=r){
+            
+            int mid = l+(r-l)/2;
+            if(nums[mid] == target){
+                
+                if(mid == n -1 || nums[mid] < nums[mid + 1]){
+                    return mid;
+                }else {
+                    l = mid +1;
+                }
+                
+            } else if(nums[mid] > target) {
+                r = mid-1;
+            } else {
+                l = mid+1;
+            }
+        } 
+        return -1;
+    }
+};

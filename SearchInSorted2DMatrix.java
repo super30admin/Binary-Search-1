@@ -1,7 +1,12 @@
-// Time Complexity : log (m * n)
-// Space Complexity : O(1)
-// Did this code successfully run on Leetcode : yes
-// Any problem you faced while coding this : No
+/**
+Problem: Search in a 2-D sorted matrix.
+https://leetcode.com/problems/search-a-2d-matrix/
+
+Time Complexity : log (m * n)
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : No
+*/
 
 class SearchInSorted2DMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {

@@ -1,7 +1,13 @@
-// Time Complexity : log (n)
-// Space Complexity : O(1)
-// Did this code successfully run on Leetcode : yes
-// Any problem you faced while coding this : No
+/**
+Problem: search in a sorted rotated array
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+
+Time Complexity : log (n)
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : No
+*/
 
 class SearchInSortedRotatedArray {
     public int search(int[] nums, int target) {

@@ -5,7 +5,7 @@ public class Search2DMatrix {
    * We are basically traversing column-wise starting at end of column and using 2
    * pointers to change (decrementing)column if element is ">" else row
    * incrementing if "<".
-   *
+   * Yes it ran successfully on LC.
    */
 
   public boolean searchMatrix(int[][] matrix, int target) {

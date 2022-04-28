@@ -1,5 +1,8 @@
 import java.util.*;
 
+//Time space Complexity : O(logn), space complexity is O(1)
+// Solved rotated sorted array using 3 pointer BS algo by dividing search space into 2 valid halfs so target is conditionally searched in either halfs based on true conditions
+// It passed the test on LC.
 public class RotatedSortedArray {
   public int search(int[] nums, int target) {
     int leftIdx = 0, rightIdx = nums.length - 1;

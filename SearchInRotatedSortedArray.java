@@ -10,7 +10,7 @@ class Solution {
             if (nums[left] == target) return left; 
             else if (nums[right] == target) return right; 
 
-            var mid = (left + right) / 2;
+            int mid = (left + right) / 2;
             if (nums[mid] == target) return mid;
 
             if (target > nums[mid] && target < nums[right]) left = mid+ 1; 

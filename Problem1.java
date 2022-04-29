@@ -3,12 +3,13 @@
 // Time Complexity : O(log n)
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
+// Any problem you faced while coding this : Yes, initially only used less-than for checking if target is in range
+// must use less-than-equal-to for checking if target is in range
 // Approach: Using binary search
 class Solution {
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
-        
+
         int low = 0;
         int high = nums.length-1;
         

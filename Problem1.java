@@ -1,4 +1,4 @@
-// s30 Problem #6
+// s30 Problem #6 - easy
 // Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
 // Time Complexity : O(log n)
 // Space Complexity : O(1)
@@ -7,6 +7,8 @@
 // Approach: Using binary search
 class Solution {
     public int search(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return -1;
+        
         int low = 0;
         int high = nums.length-1;
         

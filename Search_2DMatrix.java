@@ -1,5 +1,5 @@
 //SC: O(1)
-//TC: O()
+//TC: O(log m + log n) 
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         
@@ -12,14 +12,14 @@ class Solution {
         
         while(lowIndex <= highIndex){
             int mid = (lowIndex + (highIndex - lowIndex) / 2 );
-            if(matrix[mid/n][mid%n] == target) {
+            int r = mid/n;
+            int c = mid%n;
+            if(matrix[r][c] == target) {
                 return true;
                 
-            }
-            if(matrix[mid/n][mid%n] > target) {
+            } else if(matrix[r][c] > target){
                 highIndex = mid - 1;
-            }
-            else {
+            } else {
                 lowIndex = mid + 1;
             }
         }

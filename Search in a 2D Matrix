@@ -86,10 +86,11 @@ class Solution {
             
             if(matrix[row][col] == target)
                 return true;
-            else if (target > matrix[row][col])
+           else if(matrix[r][c] < target)
             {
                 low = mid + 1;
             }
+            
             else
             {
                 high = mid - 1;

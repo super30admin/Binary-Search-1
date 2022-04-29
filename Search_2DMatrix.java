@@ -1,42 +1,29 @@
-// Time Complexity : Worst Case (O(log N)), Best case (O(1))
-// Space Complexity : O(N)
-// Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
-
-
-// Your code here along with comments explaining your approach
-
+//SC: O(1)
+//TC: O()
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         
-        if(matrix.length == 0) return false; //checking if matrix exists, if no return false
+        if(matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0) return false;
+        int m = matrix.length;
+        int n = matrix[0].length;
         
-        //to know length of 2D matrix i order to consider it as one D
+        int lowIndex = 0;
+        int highIndex = (m*n)- 1;
         
-        int rows = matrix.length; 
-        int columns = matrix[0].length;
-        
-        //instantiating left and right indexes
-        int left = 0;
-        int right = rows*columns-1;
-        
-        
-        while(left <= right){
-            int midpoint = left +(right-left)/2; //calculate index of midpoint element
-            int midpoint_element = matrix[midpoint / columns][midpoint % columns]; //calculating midpoint element
-            //3 conditions to check if the target element is midpoint, > or < midpoint element
-            if(target == midpoint_element){
-            return true;
-        } else if(target > midpoint_element) {
-            left = midpoint+1; 
-        }else if(target<midpoint_element){
-            right = midpoint-1;
+        while(lowIndex <= highIndex){
+            int mid = (lowIndex + (highIndex - lowIndex) / 2 );
+            if(matrix[mid/n][mid%n] == target) {
+                return true;
+                
+            }
+            if(matrix[mid/n][mid%n] > target) {
+                highIndex = mid - 1;
+            }
+            else {
+                lowIndex = mid + 1;
+            }
         }
-     
         
-    }return false;
-} 
-    
+        return false;
+    }
 }
-
-    

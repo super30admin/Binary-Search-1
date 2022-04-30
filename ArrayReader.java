@@ -1,3 +1,5 @@
+//time comlexity: O(log(target)) 
+//space complexity: O(1)
 class ArrayReader {
     public int search(ArrayReader reader, int target) {
         

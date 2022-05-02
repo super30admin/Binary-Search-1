@@ -1,3 +1,6 @@
+//time complexity:O(logn + log m)  m->size of finalized array
+//space complexity:O(1)
+
 class InfiniteArray 
 { 
     // Simple binary search algorithm 

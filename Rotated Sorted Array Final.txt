@@ -1,0 +1,59 @@
+//[low-(mid]-high) need to be checked; as 2 main conditions; if correct then low-target-mid-target-high condition; and set low, high respectively;
+In regular: only checking target-mid; and setting low, high repectively;
+
+//[low-(mid]-high) need to be checked; as 2 main conditions; if correct then [low-target-(mid]-target-high) condition; and set low, high respectively;
+In regular: only checking target-mid; and setting low, high repectively;
+
+need to make low<=mid inclusive and target>=low inclusive also, target<=high inclusive along with low<=high to be inclusive;
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        //[7,0,1,2,3,4,5,6]
+        //[6,7,5]
+        //2conditions: nums[mid]>nums[low]
+        // or nums[high]>nums[mid]
+        
+        //one of the condition either low<mid or high>mid will be there;
+        //after this, need to check if target lies between low, mid;
+        
+        
+        //2 checks if array is sorted, inside which check if target between [low-mid] range; AND mid-target-high;
+        
+        
+        //2 main conditions:
+        //1st: if(low<mid){check if low-target-mid} and adjust low, high;
+        //2nd: if(high>mid) check target range [mid-(target]-high);
+        //In usual scenerio we only check if target> or < mid;
+        //here the high and low are oved so need to check within this range of high-low;
+        
+        //[low-(mid]-high) need to be checked; as 2 main conditions; if correct then low-target-mid-target-high condition; and set low, high respectively;
+//In regular: only checking target-mid; and setting low, high repectively;
+        
+        int low=0;
+        int high=nums.length-1;
+        
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            
+            if(target==nums[mid]){
+                return mid;
+            }else if(nums[low]<=nums[mid]){
+                if(target<nums[mid] && target>=nums[low]){
+                    high=mid-1;
+                }else{
+                    low=mid+1;        
+                }
+            }else{
+              if(target>nums[mid] && target<=nums[high]){
+                    low=mid+1;
+                }else{
+                    high=mid-1;        
+                }  
+            }
+        }
+        
+        return -1;
+        
+    }
+}

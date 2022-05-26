@@ -1,3 +1,8 @@
+# Time Complexity :  O(log n)
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : I had hard time finding the logic to perform binary search around pivot point
+
 class Solution(object):
     def search(self, nums, target):
         """

@@ -1,3 +1,8 @@
+# Time Complexity :  O(log mn)
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : Yes
+# Any problem you faced while coding this : 
+
 class Solution(object):    
     def searchMatrix(self, matrix, target):
         """

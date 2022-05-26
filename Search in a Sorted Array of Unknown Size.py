@@ -1,3 +1,8 @@
+# Time Complexity :  O(log(index of target))
+# Space Complexity : O(1)
+# Did this code successfully run on Leetcode : -
+# Any problem you faced while coding this : I do not have a LC Premium account
+
 # """
 # This is ArrayReader's API interface.
 # You should not implement it, or speculate about its implementation

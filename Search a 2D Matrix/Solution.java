@@ -1,20 +1,21 @@
-// time complexity = O(n)
-// space complexity = O(n^2)
+// time complexity = O(logn)
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
-
-
-        if(matrix[0][0]>target) return false;
-        int row=0;
-
-        for(int j=1;j<matrix.length;j++){
-            if(matrix[j][0]<=target) row=j;
-        }
-        System.out.println("row: "+row);
-        for(int i=0;i<matrix[row].length;i++){
-            if(matrix[row][i]==target) return true;
+        if(matrix.length==0) return false;
+        int l=0;
+        int n=matrix[0].length;
+        int h=matrix.length *n;
+        while(l<h){
+            int m=l+(h-l)/2;
+            int r= m/n;
+            int c= m%n;
+            if(matrix[r][c]==target) return true;
+            if(matrix[r][c]<target){
+                l=m+1;
+            } else {
+                h=m;
+            }                     
         }
         return false;
-
     }
 }

@@ -50,7 +50,7 @@ class Solution {
 }
 
 //****SEARCH IN ARRAY OF UNKNOWN LENGTH****
-// Time Complexity :
+// Time Complexity : o(logn);
 // Space Complexity :o(1);
 // Did this code successfully run on Leetcode :Y
 // Any problem you faced while coding this :N

@@ -3,7 +3,7 @@
 // Time Complexity :O(logN);
 // Space Complexity :o(1);
 // Did this code successfully run on Leetcode :Y
-// Any problem you faced while coding this :
+// Any problem you faced while coding this : N
 // Your code here along with comments explaining your approach
 
 class Solution {
@@ -46,5 +46,46 @@ class Solution {
         }
         return -1;
         
+    }
+}
+
+//****SEARCH IN ARRAY OF UNKNOWN LENGTH****
+// Time Complexity :
+// Space Complexity :o(1);
+// Did this code successfully run on Leetcode :Y
+// Any problem you faced while coding this :N
+
+class Solution{
+    public int search(Arrayreader reader, int target)
+    {
+        int low=0;
+        int high=1;
+        
+        while(reader.get(high)<target)
+        {
+            low=high;
+            high=2*high;
+        }
+        
+        //now searching in that range which we have found in first while loop;
+        while(low<=high)
+        {
+            int mid= low+(high-low)/2;
+            
+            if(reader.get(mid)==target)
+            {
+                return target;
+            }
+            else if(reader.get(mid) > target)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        //if it comes out of 2nd while loop that means we havent found target in the arrayreader so return -1
+        return -1;
     }
 }

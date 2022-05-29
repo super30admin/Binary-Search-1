@@ -1,7 +1,129 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+//**SEARCH IN ROTATED SORTED ARRAY**
 
-
+// Time Complexity :O(logN);
+// Space Complexity :o(1);
+// Did this code successfully run on Leetcode :Y
+// Any problem you faced while coding this : N
 // Your code here along with comments explaining your approach
+
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        if(nums.length==0 || nums==null) return -1;
+        
+        int low=0;
+        int high=nums.length-1;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            
+            if(nums[mid]==target) return mid;
+            
+            else if(nums[low]<=nums[mid])
+            {
+                if(nums[low]<=target && nums[mid]>target)
+                {
+                    high=mid-1;
+                }
+                else
+                {
+                    low=mid+1;
+                }
+            }
+            //nums[mid]<nums[high];
+            else
+            {
+                if(nums[mid]<target && nums[high]>=target)
+                {
+                    low=mid+1;
+                }
+                else
+                {
+                    high=mid-1;
+                }
+                
+            }
+        }
+        return -1;
+        
+    }
+}
+
+//****SEARCH IN ARRAY OF UNKNOWN LENGTH****
+// Time Complexity : o(logn);
+// Space Complexity :o(1);
+// Did this code successfully run on Leetcode :Y
+// Any problem you faced while coding this :N
+
+class Solution{
+    public int search(Arrayreader reader, int target)
+    {
+        int low=0;
+        int high=1;
+        
+        while(reader.get(high)<target)
+        {
+            low=high;
+            high=2*high;
+        }
+        
+        //now searching in that range which we have found in first while loop;
+        while(low<=high)
+        {
+            int mid= low+(high-low)/2;
+            
+            if(reader.get(mid)==target)
+            {
+                return target;
+            }
+            else if(reader.get(mid) > target)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        //if it comes out of 2nd while loop that means we havent found target in the arrayreader so return -1
+        return -1;
+    }
+}
+
+
+//**** SEARCH IN 2DMATRIX ****
+// Time Complexity : o(logn);
+// Space Complexity :o(1);
+// Did this code successfully run on Leetcode :Y
+// Any problem you faced while coding this :N
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix==null || matrix.length==0) return false;
+        int m= matrix.length;
+        int n=matrix[0].length;
+        int low=0;
+        int high=m*n-1;
+        
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            
+            int midpoint=matrix[mid/n][mid%n];
+            if(midpoint==target) 
+            {
+                return true;
+            }
+            else if(midpoint>target)
+            {
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
+            }
+        }
+        return false;
+    }
+}
+

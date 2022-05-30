@@ -1,3 +1,8 @@
+// Time Complexity: log(n)
+// Space Complexity: log(n)
+// Did this code successfully run on Leetcode: yes
+// Any problem you faced while coding this: No
+
 /**
  * SortedArrayInfinite
  */

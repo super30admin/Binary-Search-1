@@ -1,3 +1,9 @@
+// Time Complexity: log(m*n) = log(m) + log(n)
+// Space Complexity: log(m*n)
+// Did this code successfully run on Leetcode: yes
+// Any problem you faced while coding this: got issue for getting row & column
+
+
 public class searchMatrix {
     public static boolean searchMatrix(int[][] matrix, int target) {
 

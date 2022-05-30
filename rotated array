@@ -1,0 +1,20 @@
+# time complexity to search the target is o(log(n))
+# space complexity o(1)
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        low, high = 0, len(nums)-1
+        while (low<=high):
+            mid= low+ (high-low)//2
+            if(nums[mid]== target):
+                return mid
+            elif nums[low] <=nums[mid]:#check LHS sorted
+                if(nums[low]<= target and nums[mid]>target): #check for target
+                    high= mid-1
+                else:
+                    low= mid+1
+            else: #check for RHS sorted
+                if(nums[mid]< target and nums[high]>=target): #check for target
+                    low=mid+1
+                else:
+                    high= mid-1
+        return -1

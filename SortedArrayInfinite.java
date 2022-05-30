@@ -3,21 +3,25 @@
  */
 public class SortedArrayInfinite {
 
-    int sortArray(int[] arr, int target) {
+    int sortArray(ArrayReader reader, int target) {
         int start = 0;
         int end = 1;
 
+        while (reader.get(end) < target) {
+            start = end;
+            end = 2 * end;
+        }
+
         while (start <= end) {
-           
+
             int mid = start + (end - start) / 2;
-            if (arr[mid] == target) {
+            if (reader.get(mid) == target) {
                 return mid;
-            } else if (arr[mid] > target) {
+            } else if (reader.get(mid)] > target) {
                 end = mid - 1;
             } else {
                 start = mid + 1;
             }
-            end = end * 2;
         }
         return -1;
     }

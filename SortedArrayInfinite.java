@@ -7,6 +7,7 @@ public class SortedArrayInfinite {
         int start = 0;
         int end = 1;
 
+        // Increasing end pointer by 2 times
         while (reader.get(end) < target) {
             start = end;
             end = 2 * end;

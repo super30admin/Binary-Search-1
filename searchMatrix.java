@@ -10,10 +10,15 @@ public class searchMatrix {
 
         while (start <= end) {
             int mid = start + (end - start) / 2;
+            // Row is mid devide by numbers
             int r = mid / n;
+            // Column is mid modulo by numbers
             int c = mid % n;
+
+
             if (matrix[r][c] == target)
                 return true;
+            // target is less than target then increase the start
             else if (matrix[r][c] < target) {
                 start = mid + 1;
             } else {

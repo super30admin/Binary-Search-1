@@ -1,5 +1,5 @@
 /* Time Complexity : O(m*logn) , where m is rows and n is columns
- * Space Complexity : O(m*n) size
+ * Space Complexity : O(1
  * Did this code successfully run on Leetcode : Yes
  * Any problem you faced while coding this : No
 */

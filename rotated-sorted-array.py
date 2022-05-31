@@ -6,19 +6,19 @@ class Solution:
         high=len(nums)-1
         while(low<=high):
             mid=low+(high-low)//2
-            
             if nums[mid]==target:
                 return mid
             elif nums[low]<=nums[mid]:
-                if nums[low]<=target and nums[mid]>=target:
+                if nums[low]<=target and target<=nums[mid]:
                     high=mid-1
+                    print("1")
                 else:
                     low=mid+1
-                # print("low=", low,"high=", high,"mid=", mid)
+                    print("2")
             else:
-                print("low=", low,"high=", high,"mid=", mid)
-                if nums[mid]<=target and nums[high]>=target:
+                if nums[mid]<=target and target<=nums[high]:
                     low=mid+1
+                    print("3")
                 else:
                     high=mid-1
                 

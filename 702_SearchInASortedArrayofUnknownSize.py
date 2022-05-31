@@ -48,44 +48,46 @@ Constraints:
 '''
 Idea - binary search. The window for binary search will start as of l,h=0,1 and move l=h+1 and h = 2h. 
 Index out of bond situation will be handled because the value of out of bond will be very high for the target to be in
-that active window, then binary search will shrunk it down and find the right window and the target eventually.
+that active window.
+Then apply binary search once you have the low and high of the bit with value in it
 '''
+
+
 class Solution:
     def search(self, reader, target):
         if reader.get(0) == target:
             return 0
-        else:
-            low, high = 0, 1
-            while low <= high:
-                mid = low + (high - low) // 2
-                # target found
-                if reader.get(mid) == target:
-                    return mid
-                # target greater than window
-                elif target > reader.get(high):
-                    low = high + 1
-                    high = high * 2
-                # target in window - run binary search, high and low will cross each other if target < low (edge case)
-                else:
-                    if target < reader.get(mid):
-                        high = mid - 1
-                    else:
-                        low = mid + 1
-            return -1
+        low, high = 0, 1
+        while reader.get(high) != 2 ** 31 - 1 and target > reader.get(high):
+            low = high + 1
+            high = high * 2
+        while low <= high:
+            mid = low + (high - low) // 2
+            # target found
+            if reader.get(mid) == target:
+                return mid
+            # target greater than window
+            elif target > reader.get(mid):
+                low = mid + 1
+            # target in window - run binary search, high and low will cross each other if target < low (edge case)
+            else:
+                high = mid - 1
+        return -1
 
-#driver code
+
+# driver code
 class Reader:
     def __init__(self, arr):
         self.arr = arr
 
     def get(self, key):
         if key >= len(arr):
-            return 2 ** 31 -1
+            return 2 ** 31 - 1
         else:
             return self.arr[key]
 
 
-arr = [-1,0,3,5,9,12]
+arr = [-1, 0, 3, 5, 9, 12]
 target = 9
 reader = Reader(arr)
 search = Solution().search(reader, target)

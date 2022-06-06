@@ -1,7 +1,89 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+
+//problem-1;
+// Time Complexity :O(m+logn)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : Trying to optimise it to the optimal solution.
 
 
 // Your code here along with comments explaining your approach
+/*Here the basic approach is to findout in which row do we have our target. We find out which row by binary search and we
+apply binary search on that row
+*/
+
+class Solution {
+    private int helper(int[]nums,int left,int right, int mid, int target){
+        while(left<=right){
+            if(nums[mid]==target) return mid;
+            else if(nums[mid]>target){
+                right=mid-1;
+                mid=left+(right-left)/2;
+            }
+            else{
+                left=mid+1;
+                mid=left+(right-left)/2;
+            }
+        }
+        return -1;
+
+    }
+
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int row=matrix.length;
+        int temp=0;
+        int column=matrix[0].length;
+        if(row==1 && column==1) { if(target==matrix[0][0]) return true;
+            return false;}
+        for(int i=0;i<row;i++){
+           temp=helper(matrix[i],0,matrix[0].length-1,0+(matrix[0].length-1-0)/2,target);
+            if(temp!=-1) break;
+        }
+         if(temp==-1) return false;
+        else return true;
+    }
+}
+//problem-2;
+// Time Complexity :O(n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this : Trying to optimise it to the optimal solution.
+
+
+// Your code here along with comments explaining your approach
+/*Here the basic approach is to find the pivot at which the order of elements of the array is changing.If we get the pivot
+try to check if the target exists in the sorted array(lower and upper bound). If it exists apply binary search to it , if
+it does nort exist apply binary search to other half.
+*/
+
+class Solution {
+    private int helper(int[] nums,int left,int right,int mid,int target){
+        while(left<=right){
+            if(nums[mid]==target) return mid;
+            else if(nums[mid]<target){
+                left=mid+1;
+                mid=left+(right-left)/2;
+            }
+            else{
+                right=mid-1;
+                mid=left+(right-left)/2;
+            }
+        }
+        return -1;
+
+    }
+    public int search(int[] nums, int target) {
+        int temp=0;
+        if(nums.length==1){
+            if(nums[0]==target) return 0;
+            else return -1;
+        }
+        for(int i=0;i<nums.length-1;i++){
+            if(nums[i]>nums[i+1]) temp=i;
+        }
+        if(target>=nums[0]&&target<=nums[temp]){
+       return  helper(nums,0,temp,0+(temp-0)/2,target);
+        }
+        else return helper(nums,temp+1,nums.length-1,temp+1+(nums.length-1-temp-1)/2,target);
+
+}
+}

@@ -1,3 +1,7 @@
+/*
+* Time Complexity : O(NlogN)
+* Space Complexity: O (1)
+* */
 public class Search_2D_Matrix {
     public boolean searchMatrix(int[][] matrix, int target) {
         for(int i = 0; i < matrix.length; i++){

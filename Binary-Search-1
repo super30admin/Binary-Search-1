@@ -1,0 +1,77 @@
+// Time Complexity : O(log(m)) + O(log(n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length == 0) return true;
+        
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int low = 0;
+        int high = m*n-1;
+        
+        while(low <= high) {
+            int mid = low + (high - low)/2; //To avoid Integer overflow
+            int row = mid/n;
+            int col = mid%n;
+            if(matrix[row][col] == target) {
+                return true;
+            } else if(target < matrix[row][col]) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return false;
+
+
+
+//Other approaches:
+
+        // O(Max(m, n))
+        
+//         int i = 0; 
+//         int j = matrix[0].length-1;
+        
+//         while(i<matrix.length && j>=0) {
+//             System.out.println(matrix[i][j] + " --- " + i + " " + j);
+//             if(matrix[i][j] == target) {
+//                 return true;
+//             } else if(matrix[i][j] < target) {
+//                 i++;
+//             } else if(matrix[i][j] > target) {
+//                 j--;
+//             }
+//         }
+//         return false;
+        
+        
+        
+//         int j = 0;
+//         int newRow = 0;
+//         for(int row=0;row<matrix.length-1;row++) {
+//             System.out.println(matrix[row].length);
+            
+//            if(matrix[row][j] <= target) {
+//                if(matrix[row+1][j] > target) {
+//                     newRow = row;
+//                } else if (matrix[row+1][j] <= target) {
+//                    newRow = row+1;
+//                }
+//             } 
+//         }
+        
+//         for(int col = 0;col<matrix[newRow].length;col++) {
+//             if(matrix[newRow][col] == target) {
+//                 return true;
+//             }
+//         }
+//         return false;
+
+    }
+}

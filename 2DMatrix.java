@@ -1,3 +1,7 @@
+// Time Complexity : O(m+n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if(matrix == null || matrix.length==0){

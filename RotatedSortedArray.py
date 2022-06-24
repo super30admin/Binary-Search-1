@@ -24,4 +24,5 @@ class Solution:
                     high = mid-1
         return -1
 
-        
+s = Solution()
+print(s.search([4,5,6,7,1,2,3],7))

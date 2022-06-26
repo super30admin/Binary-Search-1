@@ -1,35 +1,27 @@
-// o(logn)
-// o(1)
 class Solution {
-    public int search(int[] nums, int target) {
-        if (nums == null || nums.length ==0) return -1 ;
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length ==0) return false;
         
-        int n = nums.length;
-        int low = 0;
-        int high = n - 1;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int low=0;
+        int high = m*n-1;
         
-        while(low <= high) {
-            int mid = low + (high-low)/2 ;
-            if (nums[mid] == target){
-                return mid;
+        while (low<=high) {
+            int mid = low+(high-low)/2; //to prevent integer overflow
+            int row = mid/n;
+            int column = mid % n;
+            if (matrix[row][column] == target){
+                return true;
             }
-            else if (nums[low] <=nums[mid]) {
-                if (target >= nums[low] && target < nums[mid]){
-                    high = mid - 1;
-                }
-                else{
-                    low = mid+1;
-                }
+            else if (target < matrix[row][column]){
+                high = mid-1;
             }
-            else{
-                if (target > nums[mid] && target <= nums[high]) {
-                    low = mid+1;
-                }
-                    else{
-                        high = mid-1;
-                    }
+            else {
+                low = mid+1;
             }
+            
         }
-         return -1;
+        return false;
     }
 }

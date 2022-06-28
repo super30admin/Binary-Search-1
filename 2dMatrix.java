@@ -53,7 +53,7 @@ class Solution {
 
 //The second apporach is an approach which further reduces the time and space complexity by following certain math principles. 
 
-//Time Complexity:O(logn)
+//Time Complexity:O(logm) + O(logn)
 //Space Complexity: No extra space required. 
 //Does this code run on Leetcode: Yes
 //Any difficulties faced during this execution : No in brute force approach. 

@@ -5,7 +5,7 @@
 # Any problem you faced while coding this : No
 #  Imagine a flattened array as the rows and columns are sorted
 # The approach to image that the array is sorted works very well
-# and gives the complxity
+# and gives the complexity
 from typing import List
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:

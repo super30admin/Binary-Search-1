@@ -19,14 +19,15 @@ class Solution:
         :type target: int
         :rtype: int
         """
-
+        #Define upper and lower bound as the upper bound is unkown we declare it with 1
         left = 0
         right = 1
         
-        #Do binary serach to acquire the desired index
+        #Do binary serach to acquire the desired result with help of get function
         while (target > reader.get(right)):
             left = right
-            right = right * 2
+            right = right * 2 #taking the double of the current upper bound
+
         #This is to prevent integer overflow
         while  left <=right:
             mid = left + (right-left) // 2

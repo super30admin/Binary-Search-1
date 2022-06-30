@@ -1,0 +1,27 @@
+// Time Complexity : O(log X) where X is the index of the target value.
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no 
+
+
+// Your code here along with comments explaining your approach
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int start=0, end=start+1;
+        while(start<=end){
+            if(target<= reader.get(end)){
+                int mid=start+(end-start)/2;
+                if(target==reader.get(mid)) return mid;
+                else if(target<reader.get(mid)) end=mid-1;
+                else start=mid+1;
+            } else{
+                int n=end-start+1;
+                start=end+1;
+                end=2*n+start-1;
+        }
+                
+            }
+        return -1;
+    }
+}

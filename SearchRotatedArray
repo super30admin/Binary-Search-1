@@ -1,0 +1,44 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+class Solution {
+    public int search(int[] nums, int target) {
+        
+        int low = 0;
+        int high = nums.length - 1;
+        
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            
+            if(nums[mid] == target){
+                return mid;
+            }
+            // Check which part is sorted
+            else if(nums[low] <= nums[mid]){
+                //Left is sorted. Check if the element is in this range
+                if(nums[low] <= target && target < nums[mid]){
+                    // Element lies in the left half, hence discard the right
+                    high = mid - 1;
+                }
+                else{
+                    // Discard left half
+                    low = mid + 1;
+                }
+            }
+            else{
+                //Right is sorted
+                if(nums[mid] < target && target <= nums[high]){
+                    low = mid + 1;
+                }
+                else{
+                    high = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+}

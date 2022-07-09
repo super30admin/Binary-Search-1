@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+
 Array length is unknown so cannot use length function or for loop (in Java).
 Method 1: Use Java Reader Interface and read the entire array. Use while loop. While true --> iterate from i=0 and
 search for element. Keep on iterating till we find the element and break or put an exception case if element cannot be
@@ -18,7 +20,7 @@ Method 3: Make the high point as Integer.MAX or 10^4 which is given as the highe
 
 
 Method 2:
-Runtime Complexity: O(logn) + ~O(log(logn))
+Runtime Complexity: O(logn) + ~O(log(logn))**
 Space Compelxity: O(1)
 
 Yes it worked on Leetcode

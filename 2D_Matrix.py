@@ -1,5 +1,5 @@
-# Time complexity : O(1)
-# Space Complexity : O(n*m)
+# Time complexity : O(log n)
+# Space Complexity : O(1)
 # Leetcode : Solved and submitted
 
 class Solution:

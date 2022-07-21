@@ -1,7 +1,7 @@
 // Time Complexity : O(log(n))
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : Not a problem, but I came up with a brute force solution but that was O(n) and question stated to do it in log(n)
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach

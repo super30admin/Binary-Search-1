@@ -21,10 +21,10 @@ class Solution:
             high = high*2
             
         #now implement the binary search as we constantly know the low and high pointers     
-        
+
         while low<=high: 
             mid  = low + (high-low)//2 
-            mid_element = reader.get(mid) 
+            mid_element = reader.get(mid) #get the middle element by API call
 
             if mid_element == target: 
                 return mid 

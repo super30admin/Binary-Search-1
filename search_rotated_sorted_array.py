@@ -1,7 +1,8 @@
 
 # Time complexity : O(logn)
 # Space complexity: O(1)
-# 
+#  Did this code successfully run on Leetcode : Yes
+#  Any problem you faced while coding this : No 
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:

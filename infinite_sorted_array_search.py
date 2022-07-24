@@ -1,3 +1,10 @@
+# Time Complexity : log(n)
+# Space Complexity : log(1)
+# Did this code successfully run on Leetcode : No, Premium is Required
+# Any problem you faced while coding this : Yes, don't know how to handle array out of bound exception
+
+# Approach: Take two pointers, at consecutive positions from start and check for the range in which the target exists
+# by rapidly increasing the search space by doubling the high pointer
 from typing import List
 
 

@@ -1,0 +1,25 @@
+// Time Complexity : O(logmn) where m is the no of rows and n is the no of columns. 
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no 
+
+
+// Your code here along with comments explaining your approach
+
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m=matrix.length, n=matrix[0].length;
+        //loop through elements as if it is a sorted array.
+        int start=0,end=n*m-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            //row= elements divided as per the count in each row(n) 
+            //column= elements left after dividing as per cound in each row(n)
+            if(target==matrix[mid/n][mid%n]) return true;
+            else if(target<matrix[mid/n][mid%n]) end=mid-1;
+            else start=mid+1;
+        }
+        return false;
+    }
+}

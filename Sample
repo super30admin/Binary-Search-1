@@ -1,5 +1,12 @@
-// Time Complexity :
+// Time Complexity : 
+Search Sorted Unknown Length: O(log(n))
+2D Matrix Search: O(m+n)
+Rotated Sorted Array: O(log(n))
+
 // Space Complexity :
+Search Sorted Unknown Length: O(1)
+2D Matrix Search: O(1)
+Rotated Sorted Array: O(1)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
 

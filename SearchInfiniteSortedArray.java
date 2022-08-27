@@ -12,7 +12,7 @@ public class SearchInfiniteSortedArray {
             low = high;
             high = 2 * high;
         }
-        while (low<high) {
+        while (low<=high) {
             int mid = low + (high-low) / 2;
             if (reader.get(mid) == target ) return mid;
             else if (reader.get(mid) > target) {

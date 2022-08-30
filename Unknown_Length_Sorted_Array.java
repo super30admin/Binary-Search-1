@@ -7,7 +7,7 @@ class Solution {
     public int search(int[] reader, int target) {
         int low = 0;
         int high = 1;
-        while(reader[high] > target) {
+        while(reader[high] < target) {
             low = high;
             high = high*2;
         }

@@ -1,7 +1,7 @@
 
 class Solution {
     // Time complexity is O(logn)
-    // Space complexity is O(n)
+    // Space complexity is O(1)
     // This solution is not submitted on leetcode since I do not have leetcode premium
     
     public int search(int[] reader, int target) {

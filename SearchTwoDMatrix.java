@@ -1,5 +1,5 @@
-//Technique 1: Binary Search 
-//Time Complexity :  O(mlogn)
+//Technique 1: Binary Search
+//Time Complexity :  O(m + logn)
 //Space : Complexity : O(1)
 
 
@@ -41,3 +41,18 @@ class Solution {
         return false;
     }
 }
+
+
+//Technique 2: Find Mid, row, col and Binary Search
+//Time Complexity :  O(log(mn))
+//Space : Complexity : O(1)
+
+
+
+//Technique 3: Binary Search on Last Column and Binary Search on that particular row
+//Time Complexity :  O(log(m) + log(n))
+//Space : Complexity : O(1)
+
+//Technique 4: Brute Force 
+//Time Complexity :  O(mn)
+//Space : Complexity : O(1)

@@ -1,5 +1,5 @@
 //Technique 1: Binary Search
-//Time Complexity :  O(m + logn)
+//Time Complexity :  O(mlogn)
 //Space : Complexity : O(1)
 
 

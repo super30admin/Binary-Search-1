@@ -9,7 +9,6 @@ public:
             int mid = low + ((high-low)/2);
             int i = mid/c;
             int j= mid%c;
-            
             if(matrix[i][j] == target)
                 return true;
             else if(matrix[i][j] >= target){

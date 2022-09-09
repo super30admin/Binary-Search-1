@@ -10,7 +10,7 @@ Approach --
 - run a binary search and compare target to mid_val
 - if low, search the left. if high, search the right
 
-Time complexity - O(log n)
+Time complexity - O(log mn)
 Space complexity - O(1)
 """
 

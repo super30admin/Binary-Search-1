@@ -1,3 +1,4 @@
+import javax.imageio.plugins.tiff.ExifInteroperabilityTagSet;
 
 /*
  * Leetcode 702: (Medium) Given an Integer array sorted in ascending order,
@@ -11,5 +12,34 @@
  * 2147483647.
  * 
  */
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        if (reader.get(0) == Integer.MAX_VALUE)
+            return -1;
 
-// yet to be discussed in class.
+        int low = 0;
+        int high = 1;
+
+        while (reader.get(high) < target) {
+            low = high;
+            high = high * 2;
+        }
+        return binarySearch(reader, target, low, high);
+    }
+
+    private int binarySearch(ArrayReader reader, int target, int low, int high) {
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (reader.get(mid) == target)
+                return mid;
+
+            else if (reader.get(mid) < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+}

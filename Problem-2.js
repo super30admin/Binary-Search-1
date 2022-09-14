@@ -1,4 +1,5 @@
-//Time: O(log(mn)), Space O(1)
+//Ran Successfully on leetCode - solution accepted
+//Time: O(log(n)) n is the length of the array, Space O(1)
 var search = function(nums, target) {
     let low = 0, high = nums.length-1;
     while(low<=high){

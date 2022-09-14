@@ -1,4 +1,5 @@
-//Time: O(log(mn)), Space O(1)
+//Ran Successfully on leetCode - solution accepted
+//Time: O(logk), where k is an index of target value, Space O(1)
 var search = function (reader, target) {
     // if(reader.get(0) == Integer.MAX_VALUE) return -1;
     let low = 0, high = 1;

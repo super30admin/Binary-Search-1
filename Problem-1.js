@@ -1,4 +1,5 @@
-//Time: O(log(mn)), Space O(1)
+//Ran Successfully on leetCode - solution accepted
+//Time: O(log(mn)) where m is no. of rows and n is no. of columns! O(log(mn)) since it's a standard binary search., Space O(1)
 var searchMatrix = function(matrix, target) {
     let row = matrix.length, col = matrix[0].length;
     let low = 0, high = (row * col) - 1;

@@ -1,4 +1,4 @@
-// Time Complexity : O(log n)
+// Time Complexity : O(log n) where n is number of elemnets in given array.
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this :

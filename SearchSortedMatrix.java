@@ -1,4 +1,4 @@
-// Time Complexity : O(log n)
+// Time Complexity : O(log mn) - m is # of rows and n is # of columns
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No

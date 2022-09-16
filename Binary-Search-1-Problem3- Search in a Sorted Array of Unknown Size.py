@@ -1,5 +1,5 @@
 """
-S30 FAANMG Problem #7 {Easy}
+ FAANMG Problem #7 {Easy}
 
 Problem 3
 702. Search in a Sorted Array of Unknown Size

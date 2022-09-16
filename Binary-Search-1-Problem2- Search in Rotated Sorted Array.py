@@ -1,10 +1,10 @@
 """
-S30 FAANMG Problem #6 {Easy}
+ FAANMG Problem #6 {Easy}
 
 Problem 2
 33. Search in Rotated Sorted Array
 
-Time Complexity : O(NlogN)
+Time Complexity : O(N+logN)
  
 Space Complexity : O(N)
 

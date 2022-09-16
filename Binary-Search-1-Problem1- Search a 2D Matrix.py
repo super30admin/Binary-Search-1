@@ -1,9 +1,9 @@
 """
-S30 FAANMG Problem #5 {Medium}
+ FAANMG Problem #5 {Medium}
 Problem 1
 74. Search a 2D Matrix
 
-Time Complexity : O(M * logN)
+Time Complexity : O( n + log M )
  As for the Searching the wordt case would be the target is in last row (of size M)
  And logN binary search to find the value
 

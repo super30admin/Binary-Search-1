@@ -5,46 +5,57 @@
 
 
 // Your code here along with comments explaining your approach
-public class SearchInSortedInfiniteArray {
-	
-	public int search(int[] nums, int key) {
-		int low = 0;
-		int high = 1;
-		
-		/*
-		 * find bounds by increasing high twice
-		 * not using the length function for bounds check assuming 
-		 * array is an infinite array
-		 */
-		while(nums[high] <= key) {
-			if (key == nums[high]) {
-				return high;
-			} else
-			{
-				low = high;
-				high = high * 2;
-			}
-		}
-		return binarySearch(nums, low, high, key);
-	}
-	
-	//iterative binary search
-	public int binarySearch(int[] nums, int low, int high, int key) {
-		
-		while(low <= high) {
-			int mid = low + (high - low) / 2;
-			
-			if(nums[mid] == key) {
-				return mid;
-			} else {
-				if(key > nums[mid]) {
-					low = mid + 1;
-				} else {
-					high = mid - 1;
-				}
-			}
-		}
-		return -1;
-	}
+"/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
 
+class Solution {
+    int l = 0;
+    int r = -1;
+    public int search(ArrayReader reader, int target) {
+        
+        if(reader.get(0) == target) {
+            return 0;
+        }
+        
+       int cnt = 1;
+       boolean keepMoving = true;
+       
+       // find upper bound(r) for b search by increasing range by 2 
+       while(keepMoving) {
+           int num = reader.get(cnt);
+           if(num == target) {
+               return cnt;
+           }
+           
+           // when num more than target found, that will be r
+           if(num > target) {
+               r = cnt;
+               keepMoving = false;
+           }   
+           cnt = cnt * 2;
+       } 
+        
+      //run binary search on array between l and r  
+      while(l <= r) {
+          int mid = l + (r - l) / 2;
+          int midNum = reader.get(mid);
+          
+          if(midNum == target) {
+              return mid;
+          }
+          
+          if(midNum < target) {
+              l = mid + 1;
+          } else {
+              r = mid - 1;
+          }
+      }
+        
+        return -1;
+    }
 }

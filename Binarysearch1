@@ -1,0 +1,89 @@
+#Search a 2D Matrix
+#timecomplexity:O(logn)
+#spacecomplexity:O(1)
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        row = len(matrix)
+        col = len(matrix[0])
+        
+        left = 0
+        right = col
+        cur_row = 0
+        
+        while cur_row < row:
+            if target > matrix[cur_row][-1]:
+                cur_row += 1
+                continue
+            
+            if target < matrix[cur_row][0]:
+                return False
+            
+            while right > left:
+                mid = (left + right)//2
+                if matrix[cur_row][mid] > target:
+                    right = mid
+                elif matrix[cur_row][mid] < target:
+                    left = mid + 1
+                else:
+                    return True
+            
+            return False
+            
+#Search in Rotated Sorted Array
+#TC O(nlog(n))
+#Sc O(1)
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        def find_pivot():
+            low = 0
+            high = len(nums) - 1
+            
+            while high > low + 1:
+                mid = (high + low) // 2
+                if nums[mid] < nums[low]:
+                    high = mid
+                    continue
+                if nums[high] < nums[mid]:
+                    low = mid
+                    continue
+                break
+            return high         
+        
+        def binary_search(target, start, end):
+            if start == end and nums[start] == target: return start
+            while 0 <= start <= end < len(nums):
+                mid = (start + end) // 2
+                if nums[mid] == target: return mid
+                if nums[mid] > target:
+                    end = mid - 1
+                elif nums[mid] < target:
+                    start = mid + 1
+            return -1
+        
+        # main part
+        pivot = find_pivot()
+        print(pivot)
+        find1 = binary_search(target, 0, pivot-1)
+        find2 = binary_search(target, pivot, len(nums)-1)
+        return max(find1, find2)
+
+#Search in a Sorted Array of Unknown Size
+class Solution:
+    #TC O(logn)
+    #SC O(1)
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+                
+        left = 0
+        right = 10**4
+        
+        while left <= right:
+            
+            mid = (left+right) // 2
+            
+            if reader.get(mid) == target:
+                return mid
+            elif reader.get(mid) > target:
+                right = mid -1
+            else:
+                left = mid + 1
+        return -1

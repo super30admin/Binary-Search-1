@@ -1,5 +1,6 @@
 # 33. Search in Rotated Sorted Array
 # Time Complexity: O(log(n))
+# Space Complexity: O(1)
 # Aproach: first find the pivot position then call binarysearch in the two halves.
 class Solution:
     def search_pivot(self,nums):

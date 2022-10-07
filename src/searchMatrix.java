@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+// Time Complexity : log(n)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 public class searchMatrix {
 
     public boolean searchMatrix(int[][] matrix, int target){

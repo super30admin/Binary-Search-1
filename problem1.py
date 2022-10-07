@@ -1,31 +1,14 @@
-# 33. Search in Rotated Sorted Array
-# Time Complexity: O(log(n))
-# Aproach: first find the pivot position then call binarysearch in the two halves.
+# 74. Search a 2D Matrix
+# Time Complexity: O(log(n)*log(m))
+# Approach: First Do horizontal binary search on mid row then in binary fashion move to the
+# next row until element is found or indexes reach their bounds. 
 class Solution:
-    def search_pivot(self,nums):
-        l = 0
-        r = len(nums)-1
-        pivot = -1
-        while l < r:
-            mid = (r+l)//2
-            if nums[mid] > nums[mid+1]:
-                pivot = mid
-                break
-            elif nums[mid-1] > nums[mid]:
-                pivot =  mid-1
-                break
-            elif nums[mid] > nums[l]:
-                l = mid+1
-            else:
-                r = mid-1
-        return pivot
-    
-    def b_search(self,nums,left,right,target):
+    def h_b_search(self,nums,left,right,target):
         res = -1
         while left <= right:
-            mid = (left + right) // 2
+            mid = (right + left)//2
             if nums[mid] == target:
-                res =  mid
+                res = mid
                 break
             elif nums[mid] > target:
                 right = mid - 1
@@ -33,14 +16,22 @@ class Solution:
                 left = mid + 1
         return res
     
-    def search(self, nums: List[int], target: int) -> int:
-        if self.search_pivot(nums) == -1:
-            return self.b_search(nums,0,len(nums)-1,target)
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        top = 0
+        bottom = len(matrix)-1
+        answer = -1
+        while top <= bottom:
+            mid = (bottom+top)//2
+            if self.h_b_search(matrix[mid],0,len(matrix[mid])-1,target) == -1:
+                if matrix[mid][0] > target:
+                    bottom = mid - 1
+                else:
+                    top = mid + 1
+            else:
+                answer = self.h_b_search(matrix[mid],0,len(matrix[mid])-1,target)
+                print(mid,answer)
+                break
+        if answer == -1:
+            return False
         else:
-            pivot = self.search_pivot(nums)
-            l_res = self.b_search(nums,0,pivot,target)
-            r_res = self.b_search(nums,pivot+1,len(nums)-1,target)
-            return max(l_res,r_res,-1)
-            
-        
-        
+            return True

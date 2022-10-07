@@ -1,0 +1,18 @@
+// Time Complexity : O(n)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this No
+class Solution {
+    int n=-1;
+    public int search(int[] nums, int target) {
+        int l = nums.length;
+        for(int i=0; i<l; i++){
+            if(nums[i] == target){
+                n=i;
+            }
+
+        
+    }
+        return n;
+}
+}

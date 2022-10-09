@@ -1,0 +1,26 @@
+class Solution:
+    # leetcode URL : https://leetcode.com/problems/search-a-2d-matrix/
+    # Problem : 74. Search a 2D Matrix
+	# Time Complexity : O(log n)
+	# Space Complexity : O (1)
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        row = len(matrix)
+        col = len(matrix[0])
+        
+        s = 0
+        e = row*col -1
+        
+        while (s<=e):
+            m = int((s+e)/2)
+            if matrix[int(m/col)][m%col] == target: # Flatify matrix with row and column conversion
+                return True
+            if matrix[int(m/col)][m%col] < target:
+                s = m+1
+            else:
+                e = m-1
+        return False

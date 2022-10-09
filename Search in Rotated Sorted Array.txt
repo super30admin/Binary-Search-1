@@ -1,0 +1,23 @@
+class Solution:
+    # leetcode URL : https://leetcode.com/problems/search-in-rotated-sorted-array/
+    # Problem : 33. Search in Rotated Sorted Array
+	# Time Complexity : O(log n)
+	# Space Complexity : O (1)
+    def search(self, nums: List[int], target: int) -> int:
+        s = 0
+        e = len(nums)-1
+        while(s<=e):
+            m = int((s+e)/2)
+            if nums[m] == target:
+                return m
+            if nums[m]<=nums[e]: # to check if right sorted
+                if nums[m]<target and target<=nums[e]:
+                    s = m+1
+                else:
+                    e = m-1
+            else:
+                if nums[s]<=target and target<nums[m]:
+                    e = m-1
+                else:
+                    s = m+1
+        return -1

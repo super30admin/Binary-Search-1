@@ -1,0 +1,39 @@
+class Solution:
+    # leetcode URL : https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/ replicated in https://leetcode.com/problems/binary-search/submissions/
+    # Problem : 702. Search in a Sorted Array of Unknown size replicated in 704. Binary Search
+	# Time Complexity : O(log n)
+	# Space Complexity : O (1)
+    def get(self, nums: List[int], index: int) -> int: # funtion to replicate arrayreader in original question here: https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+        try:
+            return nums[index]
+        except:
+            return None
+    def search(self, nums: List[int], target: int) -> int: # assuming we can't find length here
+        s = 0
+        e = 5
+        if self.get(nums,0)<0: # to find initial window size
+            e = target - self.get(nums,0)
+        
+        try:
+            while target>self.get(nums,e): #move and increase the window if target is greater than the last value current window
+                s = e+1
+                e = e*2
+        except:
+            pass
+        
+        while(s<=e): # once target is lesser, apply regular bsearch
+            m = int((s+e)/2)
+            if self.get(nums,m) == target:
+                return m
+            try:
+                if target<self.get(nums,m): # if none type then need to make end one less than mid hoping it wot be none
+                    e = m - 1
+                else:
+                    s = m+1
+            except:
+                e = m-1          
+        return -1
+            
+        
+        
+        

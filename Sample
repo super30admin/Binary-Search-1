@@ -1,7 +1,73 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity :o(logn)
+// Space Complexity :o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
 
 
 // Your code here along with comments explaining your approach
+problem1
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int i = 0;
+        int m = matrix.length;
+        int n = matrix[i].length;
+        while(matrix[i][n-1] < target && i<m-1){
+            i++;}
+            int s = 0;
+            int e = n-1;
+             while(s<=e){
+                int mid = s+(e-s)/2;
+            if (target == matrix[i][mid]){
+                return true;
+            }
+           if (target<matrix[i][mid]){
+                e=mid-1;
+            }
+            else{
+                s=mid+1;
+            }}
+            return false;}
+    }
+    problem 2
+class Solution {
+    public int search(int[] nums, int target) {
+        int s = 0;
+        int e = nums.length-1;
+        while(s<=e){
+            int m = s+(e-s)/2;
+            if(target == nums[m])
+            {
+                return m;
+            }
+            if(nums[s]<=nums[m] && target<nums[s]){
+                    s=m+1;}
+           else if(nums[m]<=nums[e]){
+            if(target>nums[m]){
+                s=m+1;
+            }else{
+                e=m-1;
+            }
+        }}
+    return -1;}
+    }
+Problem 3
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int l = 0;
+        int h = 10;
+        while (target > reader.get(h)){
+            l = h+1;
+            h = h*2;}
+        while(l<=h){
+            int m = l+(h-l)/2;
+            if ( target == reader.get(m)){
+                return m;
+            }
+            if ( target < reader.get(m)){
+                h=m-1;
+            }
+            else {l=m+1;}
+        
+        }
+       return -1;}
+    }

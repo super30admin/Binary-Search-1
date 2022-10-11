@@ -3,7 +3,7 @@
 
 //We need to  keep moving right until we find number that is less than target
 //Then use binary search algo
-public class class UnknownSizeArray {
+class UnknownSizeArray {
     public int search(ArrayReader reader, int target) {
 
         int low  = 0;
@@ -16,7 +16,7 @@ public class class UnknownSizeArray {
             if(reader.get(mid) == target)
                 return mid;
             // binary search
-            if(reader.get(low) < target <= reader.get(high)){
+            if(reader.get(low) < target && target <= reader.get(high)){
                 if(reader.get(mid) < target)
                     low = target +1;
 
@@ -33,6 +33,24 @@ public class class UnknownSizeArray {
 
 
         }
+
         return -1;
 
+
+
     }
+
+    public static void main(String[] args){
+
+    }
+
+    interface ArrayReader {
+
+        public int get(int index);
+
+
+    }
+
+
+
+}

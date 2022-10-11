@@ -1,7 +1,7 @@
 // TC : O(log n)
 // SC :  log(1)
 
-//We need to  keep moving right until we find number that is less than target
+//We need to  keep moving right until we find number that is greater than target
 //Then use binary search algo
 class UnknownSizeArray {
     public int search(ArrayReader reader, int target) {

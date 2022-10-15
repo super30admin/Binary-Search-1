@@ -1,8 +1,9 @@
 package S30_Codes.Binary_Search_1;
 
+
 // Time Complexity : O(log n)
 // Space Complexity : O(1)
-// Binary-Search-1
+// Binary-Search-1 (v 2)
 
 class SearchInRotatedSortedArray {
     public int search(int[] nums, int target) {
@@ -16,14 +17,18 @@ class SearchInRotatedSortedArray {
             if(arr[mid] == target)
                 return mid;
 
-            if(arr[start] < arr[mid]){
+            // Left part is sorted properly
+            if(arr[start] <= arr[mid]){
+                // If target is in first part
                 if(arr[start] <= target && target < arr[mid])
                     end = mid-1;
                 else
                     start = mid+1;
             }
+
+            // Right part is sorted properly
             else{
-                if(mid+1<=end && arr[mid+1] <= target && target <= arr[end])
+                if(arr[mid] < target && target <= arr[end])
                     start = mid+1;
                 else
                     end = mid-1;

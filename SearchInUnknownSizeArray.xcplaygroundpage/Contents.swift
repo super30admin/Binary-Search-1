@@ -1,4 +1,5 @@
 // Time complexity log(n)
+// Space complexity O(1)
 
 func search(_ reader: ArrayReader, _ target: Int) -> Int {
     var low = 0, high = 10

@@ -1,5 +1,6 @@
 
-
+// Time complexity: O(logN)
+// Space complexity: O(n)
 
 func searchMatrix(_ matrix: [[Int]], _ target: Int) -> Bool {
     var row = 0, column = matrix[row].count - 1

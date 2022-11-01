@@ -1,3 +1,12 @@
+#Time Complexity
+# O(n*m) where n and m are rows and columns of the 2D matrix respectively
+#Space Complexity
+# O(1) - No extra space used
+
+#Accepted on Leetcode
+
+#Approach: Execute binary search on 2D Array, at each step convert 1D index into 2D index of the 2D Array and check result
+
 class Solution:
     def getMatrixRowsAndCols(self, matrix: List[List[int]]):
         return len(matrix), len(matrix[0])

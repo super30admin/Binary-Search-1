@@ -1,0 +1,39 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+class Solution {
+    public int searchRotated(int[] nums, int target) {
+        int l=0;
+        int h=nums.length-1;
+        while(l<=h){
+            //avoid integer overflow
+            int mid= l + (h-l)/2;
+            if(target==nums[mid]){
+                return mid;   
+            }
+            //check if left half is sorted
+            else if(nums[l]<=nums[mid]){
+                //check if target lies btwn the left sorted half
+                if(target>=nums[l] && target<nums[mid]){
+                    h=mid-1;
+                }
+                //if target does not lie in first half check in second half
+                else{
+                    l=mid+1;
+                }
+            }else{
+                //check if target lies in second half
+                if(target>nums[mid] && target<=nums[h]){
+                    l=mid+1;
+                }
+                //if target does not lie in second half, check in first half
+                else{
+                    h=mid-1;
+                }
+            }
+        }
+    return -1;
+    }
+    
+}

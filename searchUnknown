@@ -1,0 +1,27 @@
+// Time Complexity : O(log T) -> T is index of array
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+class Solution {
+    public int searchUnknown(ArrayReader reader, int target) {
+        int l=0;
+        int r=1;
+        //first check whether target is between index 0 and 1
+        while(target>=reader.get(r)){
+            //if target is greater than r index increment the index by 2 to achieve log time complexity
+            r= r*2;
+        }
+        
+        //once the index is found run normal binary search on that
+        while(l<=r){
+            int mid= l+ (r-l)/2;
+            if(target==reader.get(mid)) return mid;
+            if(target>=reader.get(mid)){
+                l=mid+1;
+            }else{
+                r=mid-1;
+            }
+        }
+        return -1;
+    }
+}

@@ -1,5 +1,8 @@
 # Binary-Search-1
-
+<!-- // Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : -->
 
 ## Problem1 
 Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)

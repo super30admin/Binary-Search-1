@@ -8,6 +8,7 @@ class Solution:
     def search(self, reader: 'ArrayReader', target: int) -> int:
         low:int = 0
         high:int = 1
+        # defining the search space to conduct binary seach
         while target > reader.get(high):
             low = high + 1
             high *= 2

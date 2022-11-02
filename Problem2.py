@@ -1,5 +1,5 @@
 #Time complexity:
-# O(n) where n is the total number of elements in the array
+# O(log(n)) where n is the total number of elements in the array
 
 #Space complexity:
 # O(1) - no extra space used

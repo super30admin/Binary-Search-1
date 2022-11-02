@@ -1,5 +1,5 @@
 #Time complexity:
-# O(n) where n is the total number of elements in the array (for setting the bounds)
+# O(log(n)) where n is the total number of elements in the array (for setting the bounds)
 
 #Space complexity:
 # O(1) - no extra space used

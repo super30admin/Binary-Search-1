@@ -1,5 +1,5 @@
 #Time Complexity
-# O(n*m) where n and m are rows and columns of the 2D matrix respectively
+# O(log(n*m)) where n and m are rows and columns of the 2D matrix respectively
 #Space Complexity
 # O(1) - No extra space used
 

@@ -33,25 +33,26 @@ public class SearchArrayUnkownSize implements ArrayReader{
 
 class Solution2 {
     public int search(ArrayReader reader, int target) {
-
         int low = 0;
-        int high = 9999;
-        int mid;
-        Integer err = 2147483647;
+        int high = 1;
+        while(target > reader.get(high)){
+            low = high;
+            high = high * 2; // increasing high in power of two making it logN
+        }
 
+        return binarySearch(reader, target, low, high);
+    }
+
+    private int binarySearch(ArrayReader reader, int target, int low, int high){
         while(low <= high){
-            mid = low + (high - low)/2; //to prevent integer overflow
-
-            if(target == reader.get(mid)){
+            int mid = low + (high - low)/2;
+            if(reader.get(mid) == target){
                 return mid;
-            }
-
-            if(reader.get(mid) == err || target <= reader.get(mid)){
-                high = mid - 1;
+            }else if(target < reader.get(mid)){
+                high = mid -1;
             }else{
                 low = mid + 1;
             }
-
         }
 
         return -1;

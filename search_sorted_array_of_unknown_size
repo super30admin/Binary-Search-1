@@ -1,0 +1,35 @@
+// Time Complexity : O(logN)
+// Space Complexity : O(1)
+// Did this code successfully run on leetcode : No premium access
+// Any problems faced : No
+
+//Approach
+/*
+Set low and hign indeces as long as the current element is not greater than target element.
+low value becomes high value and high value is multiplied by 2 for each iteration
+for this low and high values, binary search is performed
+*/
+
+class Solution {
+public:
+    int search(const ArrayReader& reader, int target) {
+        int low = 0;
+        int high = 1;
+        while(reader.get(high) < target) {
+            low = high;
+            high *= 2;
+        }
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if(reader.get(mid) == target) {
+                return mid;
+            } else if(reader.get(mid) < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+};

@@ -23,7 +23,7 @@ class Solution:
 
         #setting bounds
 
-        while self.arrayReader(nums, high) < float('inf'):
+        while self.arrayReader(nums, high) < target:
             low = high
             high = high * 2
         

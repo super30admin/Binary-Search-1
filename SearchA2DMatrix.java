@@ -1,4 +1,4 @@
-// Time Complexity : nlog(n)
+// Time Complexity : m+log(n)
 // Space Complexity : O(1)
 class Solution {
     private boolean binarySearch(int arr[],int low,int high, int key) {

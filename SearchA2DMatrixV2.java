@@ -1,6 +1,7 @@
 // Time Complexity - O(logn)
 //Space Complexity - O(1)
 // Considering the 2D matrix as a 1D array. As the array elements a re sorted, applying Binary search on the elments
+//https://leetcode.com/problems/search-a-2d-matrix/
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if(matrix ==null || matrix.length==0)return false;

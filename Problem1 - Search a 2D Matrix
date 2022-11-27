@@ -1,0 +1,84 @@
+// Time Complexity : O(logn)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : yes, after taking approach 2, its was difficult to grasp the concept of 
+// conversion of the index to corresponding rows and columns
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+
+/*
+
+Approach 1: we can apply binary search on the first column to check which row the target can belong to , after finding the column, we can apply binary search on 
+that specific row to find out the target
+*/
+//Approach 2: 
+    /*
+    Lets imagine that we have a flattened array, we will perform the search on that array and convert its indices to corresponding rows and columns
+    */
+class Solution {
+
+        public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null)
+        return false;
+
+        int rowLen = matrix.length;
+        int colLen = matrix[0].length;
+
+        // imagine the array as a flaten array
+        int low =0;
+        int high = (rowLen * colLen) -1; // This would be the last index of the flatten array, as last index is len -1;
+        int mid =0;
+        while(low<=high){
+            mid = low + (high-low)/2;
+            // convert the mid to the appropriate row and column index
+
+            int rowIndex = mid / colLen; // to get the row divide by colLen
+            int colIndex = mid % colLen; // to get the column , take modulo with colLen
+
+            if(target == matrix[rowIndex][colIndex]) return true;
+            else if (target > matrix[rowIndex][colIndex]) low = mid+1; // if target is bigger, then it would most probably lie in the right side
+            else high = mid -1; // if target is lower, than it would most probably lie on the left side
+        }
+
+        return false;
+    }
+    // Approach 1
+    public boolean searchMatrix2(int[][] matrix, int target) {
+
+        if(matrix == null)
+        return false;
+
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+
+        // We will search in first column to find out if there is any particular row where we can find the elemeny
+        int low = 0; // Point low to start of the column
+        int high = rows-1; // point high to the end of the colum
+        int mid = 0;
+        while(low<=high){
+            mid = low + (high-low)/2; // this would prevent overflow
+            if(target >= matrix[mid][0] && target<= matrix[mid][(columns-1)]) break; //check if the target is in between the range in the row
+            else if (target > matrix[mid][0]) low = mid+1; // move low to mid 
+            else high = mid -1; // move back high to ione place before mid
+        }
+
+        // mid now points to the row where target could be present
+        int rowIndex = mid;
+        low = 0; // pointing low to start of the index of the row
+        high = columns-1;  // point high to the 
+
+        while(low<=high){
+            mid = low + (high-low)/2; // this would prevent overflow
+            if(target == matrix[rowIndex][mid]) return true;
+            else if (target > matrix[rowIndex][mid]) low = mid+1; // move low to mid 
+            else high = mid -1; // move back high to ione place before mid
+
+        }
+
+        return false;
+
+    
+    }
+}

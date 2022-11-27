@@ -1,0 +1,59 @@
+// Time Complexity : O(logn)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : yes, the concept of one side of the array being sorted was difficult to grasp at 
+// first
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+/*
+The questions states that a SORTED array is rotated, which means some part of the array has been taken and placed on the front or the end This means that part of the array is sorted, also since it was rotated from sorted array, some part in that subarray is also sorted. We have to check which side is sorted and make it use to our advantage
+
+
+*/
+
+class Solution {
+    public int search(int[] nums, int target) {
+
+        //edge cases
+        if(nums == null || nums.length==0) return -1;
+
+        int low = 0;
+        int high = nums.length-1;
+        int mid = 0;
+
+        while(low<=high){
+            mid = low + (high-low)/2; // calcualting mid while preventing overflow
+
+            if(target == nums[mid]) return mid; // if element found then return the index
+
+            // As its rotated sorted array, and will have for sure one side sorted, we will first check which side
+
+            // check if left sorted
+            if(nums[low] <= nums[mid]){
+                // check if target in range
+                if(target>=nums[low] && target<nums[mid]){
+                    // reduce the search space by half as target maybe in range
+                    high = mid-1;
+                }
+                else{ // ignore that left part and check in right ,as we are for sure that its not on left
+                low = mid +1;
+                }
+            }
+            else{ // right sorted
+
+            // check in range
+            if(target>nums[mid] && target<=nums[high]){
+                //reduce the search space by half as target maybe (if so ) on the right side
+                low = mid+1;
+            }
+            else{ // target not on that side , check other side
+                high = mid-1;
+            }
+
+        }
+    }
+    return -1;
+    }
+}

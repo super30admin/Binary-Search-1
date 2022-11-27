@@ -1,0 +1,56 @@
+// Time Complexity : O(logn)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : yes, the concept of one side of the array being sorted was difficult to grasp at 
+// first
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// Since the questions states that the array is sorted, this means that we can apply binary search to find the element
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+
+        int low=0;
+        int high = 1;
+
+        // keep on increasing the search space until the target is in the range
+        // if array is out of bounds then stop
+
+        
+
+        /// find the range first
+
+        // handle low null check as well
+
+        // O(logn) , where n is the numbers from original low to latest high
+        while(low<=high){
+            
+            //overflow check 
+            if(reader.get(high) == Integer.MAX_VALUE) break;
+
+            if (target <= reader.get(high) && target>=reader.get(low)){
+                break; // we have found the range
+            }
+
+            low = high;
+            high = high * 2;
+        }
+
+
+        // apply binary search to the range
+        while(low<=high){ //O(logk) , where k is the range from low to high
+        // We are doing  this to prevent overflow, imagine low = 2^30 and high = 2^31 , then adding it would cause overflow nad value can become negative
+            int mid = low + ((high - low)/2); 
+
+            if(target == reader.get(mid)){
+                return mid;
+            }
+            // if target is bigger than mid, then move the low pointer to mid+1
+            if(target > reader.get(mid)) low = mid + 1;
+            else if (target < reader.get(mid)) high = mid-1;
+        }
+
+        return -1;
+    }
+}

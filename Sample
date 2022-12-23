@@ -68,7 +68,7 @@ class Solution {
 // Time Complexity : O(log(n))
 // Space Complexity :O(1)
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : Time Limit exceeded when compared 
+// Any problem you faced while coding this : Time Limit exceeded when compared low <= high instead of low < high
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
        if(matrix.length == 0) return false;

@@ -1,0 +1,38 @@
+// Time Complexity : O(log N)
+// Space Complexity : O{1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+//First the bounds of the binary search need to be determined . For that, the low pointer is set to the first element and high to the second element .
+//After that, we check if high is equal to the target .If so then return it .
+//If not , then we assign high to low and make high=highx2 . 
+//Continue this until we find the bounds where the element is present and then perform binary search
+
+public int search(ArrayReader reader, int target)
+	{
+	int left=0,int right=1;
+	while (reader.get(right) < target) {
+		right*=2;
+	}
+	while (left+1<right) {
+	
+	int mid=left + (right-left)/2;
+	int val= reader.get(mid);
+	if (val >= target)
+	{
+	  right=mid;
+	}
+	else {
+	  left=mid;
+	}
+	
+	if (reader.get(left) == target){
+	return left;
+	}
+	
+	return reader.get(right) == target? right:-1;
+	}
+}
+	

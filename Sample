@@ -1,7 +1,97 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(log(n))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1;
+        while(reader.get(high) < target){
+            low = high;
+            high = high*2;
+        }
+        while(low <= high){
+            int mid = low + (high - low) / 2 ;
+            if(reader.get(mid) == target)  return mid;
+            else if(reader.get(mid) < target) {
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
+        }
+        return -1;
+        
+    }
+}
+
+// Time Complexity : O(log(n))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return -1;
+        int low = 0; 
+        int high = nums.length - 1;
+        while (low <= high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] == target) return mid;
+            else if(nums[low] <= nums[mid]){
+                if(nums[low] <= target && nums[mid] > target){
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+            } else{
+                if(target <= nums[high] && nums[mid] < target){
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+        }
+    } return -1;
+}
+}
+
+// Time Complexity : O(log(n))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Time Limit exceeded when compared low <= high instead of low < high
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+       if(matrix.length == 0) return false;
+       int n = matrix[0].length;
+       int m = matrix.length;
+       int low = 0;
+       int high = m*n-1;
+       int r = 0; int c = 0;
+       while(low < high){
+           int mid = low + (high - low) / 2;
+           r = mid / n;
+           c = mid % n;
+           if(r > m || c > n) return false;
+           if(matrix[r][c] == target) return true;
+           else if(matrix[r][c] < target){
+               low = mid + 1;
+           }else{
+               high = mid ;
+           }
+       }
+       r = low/n;
+       c = low%n; 
+       if(matrix[r][c] == target) return true;
+       return false;
+    }
+}

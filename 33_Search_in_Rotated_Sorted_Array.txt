@@ -1,0 +1,44 @@
+// Time Complexity : o(log n)
+// Space Complexity : o(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+*  binary search in rotated part of array first
+*  if not search other part
+*
+* */
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+
+
+        while( left <= right){
+            int mid = left + (right - left) /2;
+            if(nums[mid] == target){
+                return mid;
+            }
+
+            if(nums[left] <= nums[mid]){
+                //left sorted
+                if(nums[left] <= target && target <= nums[mid]){
+                    right = mid -1;
+                } else {
+                    left = mid+1 ;
+                }
+            } else {
+                // right sorted
+                if(nums[mid] <=target && target <= nums[right]){
+                    left = mid+1;
+                } else {
+                    right = mid -1;
+                }
+            }
+        }
+        return -1;
+    }
+}

@@ -1,0 +1,36 @@
+// Time Complexity : O(log MN)
+// Space Complexity : O{1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+'''
+Find the mid element row and column 
+row= mid/col_num
+col=mid%col_num
+'''
+Continue doing binary search on the matrix using the mid element 
+public boolean searchMatrix(int[][] matrix, int target) {
+	
+	int row_num = matrix.length;
+	int col_num = matrix[0].length;
+	
+	int begin = 0, end = row_num * col_num - 1;
+	
+	while(begin <= end){
+		int mid = (begin + end) / 2;
+		int mid_value = matrix[mid/col_num][mid%col_num];
+		
+		if( mid_value == target){
+			return true;
+		
+		}else if(mid_value < target){
+			//Should move a bit further, otherwise dead loop.
+			begin = mid+1;
+		}else{
+			end = mid-1;
+		}
+	}
+	
+	return false;
+}

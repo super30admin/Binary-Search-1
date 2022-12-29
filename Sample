@@ -1,7 +1,37 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity = O(n)
+// Space Complexity = O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+            int low=0;
+            int high=1;
+            while (target > reader.get(high)){ //O(n) time complexity to go through each set of highs and lows
+            low = high;
+            high = 2 * high;
+            }
+            while(low <= high) {
+                int mid = low + (high - low)/2;
+                if (target == reader.get(mid)) 
+                    return mid;
+                else if (target > reader.get(mid))
+                    low = mid + 1;
+                else
+                    high = mid - 1;
+            }
+            if(reader.get(low) == target) return low; //if high and low point to the same element in the ArrayReader
+            return -1;
+    }
+}
 
 
 // Your code here along with comments explaining your approach in three sentences only

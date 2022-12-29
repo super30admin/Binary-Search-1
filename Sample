@@ -1,7 +1,40 @@
-// Time Complexity :
-// Space Complexity :
+//---------------------------------------------------------------74. Search a 2D Matrix---------------------------------------------------------------------------------------------------------------------------------
+// Time Complexity : O(logm + logn)
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int low = 0;
+        int high = row-1;
+    //BS for selecting the row - O(logm)
+        while (low <= high) {
+                int mid = low + (high - low)/2;
+                if (target == matrix[mid][col - 1]) return true;
+                else if ( target < matrix[mid][col - 1]) high = mid - 1;
+                else low = mid + 1;
+            }
+        if (low >= row) return false;
+        row = low;
+        low = 0; 
+        high = col-1;
+    //BS on selected row - O(logn)
+            if(target <= matrix[row][col-1]){
+                while(low <= high){
+                int mid = low + (high - low)/2;
+                if(target == matrix[row][mid]) return true;
+                else if ( target < matrix[row][mid] ){
+                high = mid - 1;
+                }
+                else low = mid +1;
+                }    
+            }
+        
 
+        return false;
+}
+}
 
 // Your code here along with comments explaining your approach in three sentences only

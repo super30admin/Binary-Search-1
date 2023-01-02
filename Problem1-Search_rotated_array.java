@@ -1,3 +1,8 @@
+// Time Complexity : O(log n)
+// Space Complexity :
+// Did this code successfully run on Leetcode : O(1)
+// Any problem you faced while coding this : no
+
 class Solution {
     public int search(int[] nums, int target) {
         if(nums == null || nums.length == 0) return -1;
@@ -16,7 +21,7 @@ class Solution {
                 }
             }
             else{       // right sorted
-                if(nums[mid] < target &&target <= nums[high]){
+                if(nums[mid] < target && target <= nums[high]){
                 low = mid +1;
                 }
                 else{

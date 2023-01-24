@@ -40,6 +40,11 @@ class Solution {
 	 * return false. The formula to find the row and column using column length is
 	 * Row = mid / n, Col = mid % n
 	 */
+	
+	// Time Complexity : O(log(MN))
+	// Space Complexity : O(1)
+	// Did this code successfully run on Leetcode : Yes
+	// Any problem you faced while coding this : None
 	public boolean searchMatrix(int[][] matrix, int target) {
         int m = matrix.length, n = matrix[0].length;
         int l = 0, r = m * n - 1;

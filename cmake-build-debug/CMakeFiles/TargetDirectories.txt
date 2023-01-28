@@ -1,0 +1,3 @@
+/Users/tanuja/Desktop/s30/Binary-Search-1/cmake-build-debug/CMakeFiles/Binary_Search_1.dir
+/Users/tanuja/Desktop/s30/Binary-Search-1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/tanuja/Desktop/s30/Binary-Search-1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

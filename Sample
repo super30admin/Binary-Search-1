@@ -1,7 +1,122 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+//PROBLEM 1 @D Matrix
+// Time Complexity : O(Log(m*n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+// Considering 2D matrix as single array and then applying binary search
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+
+        if(matrix ==null|| matrix.length==0){
+            return false;
+        }
+         int row = matrix.length;
+         int col = matrix[0].length;
+
+        int low = 0;
+        int high = row*col-1;
+
+         while(low<=high){
+            int mid = low+(high-low)/2;
+            int midR = mid/col;
+            int midC = mid%col;
+
+            if((midR>(row-1)) || (midC > (col-1))){
+                break;
+            }
+            int midVal = matrix[midR][midC];
+            if(midVal==target){
+                return true;
+            }else if(midVal<target){
+                low = mid+1;
+            } else {
+                high = mid-1;
+            }
+
+         }
+         return false;
+    }
+}
+//PROBLEM 2 Search in Rotated sorted array
+// Time Complexity : O(Log(n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// applying binary search and divide and conquer by checking in sorted part if element lies.
+
+class Solution {
+    public int search(int[] nums, int target) {
+
+        if(nums.length ==0 || nums ==null){
+                return -1;
+        }
+        int low = 0;
+        int high = nums.length-1;
+        while(low<=high){
+
+            int mid = low + (high-low)/2;
+            if(target == nums[mid]){
+            return mid;
+            }
+            else if(nums[low]<=nums[mid]){
+                if(target<nums[mid] && target>=nums[low]){
+                    high = mid -1;
+                } else low = mid+1;
+                } else {
+                    if(target > nums[mid] && target<= nums[high] ) {
+                    low = mid +1;
+                    } else high = mid -1;
+                }
+        }
+
+        return -1;
+    }
+}
+
+
+
+//PROBLEM 3 Search in a sorted array of unknown size
+// Time Complexity : O(Log n )+O(log m) where m is number of iterations on main array to locate the subarray to perfrom binary search. n is number of elements in subarray on which binary search will be done.
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// Iterating first on unknown array with i & j pointer and trying to locate the subset array. In order to do this we are increasing i & j by twice everytime until I will find the subset which contains my target. Then on the subset will perform binary search.
+
+class Solution {
+
+
+    public int search(ArrayReader reader, int target) {
+        int iIndex = 0;
+        int jIndex = 1;
+        int midIndex = (iIndex+ jIndex)/2 ;
+
+        while(reader.get(jIndex)<target){
+            iIndex = jIndex;
+            jIndex = jIndex*2;
+        }
+        while(iIndex<=jIndex){
+            midIndex = iIndex+ (jIndex-iIndex)/2;
+            if(reader.get(midIndex)==target){
+                return midIndex;
+            }
+            if(reader.get(midIndex)<target){
+                iIndex = midIndex+1;
+            }
+            if(reader.get(midIndex)>target){
+                jIndex = midIndex -1;
+            }
+            }
+        return -1;
+    }
+}
+

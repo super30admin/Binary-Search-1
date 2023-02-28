@@ -1,26 +1,28 @@
-162. Find Peak Element
+702. Search in a Sorted Array of Unknown Size
 
-
-TC O(logn) 
-SC O(1)
+TC = O2(logn) = O(logn)
+SC = O(1)
 
 
 class Solution {
 public:
-    int findPeakElement(vector<int>& nums) {
-        int n = nums.size();
+    int search(const ArrayReader& reader, int target) {
         int low = 0;
-        int high = nums.size()-1;
-        while(low <= high){
-            int mid = low + (high-low)/2;
-            if (((mid == 0) || nums[mid] > nums[mid-1]) && ((mid == n-1) || nums[mid] > nums[mid+1])) {
-                return mid;
-            } else if ((mid > 0) && (nums[mid-1] > nums[mid])) {
-                high = mid -1;
-            } else {
-                low = mid + 1;
-            }
+        int high = 1;
+
+        while(reader.get(high) < target) { // O(logn)
+            low = high;
+            high = high*2;
         }
-        return 5353;
+        while (low < high) { // O(logn)
+            int mid = low + (high - low)/2;
+            if (reader.get(mid) == target) return mid;
+            else if (reader.get(mid) < target) low = mid +1;
+            else high = mid;
+        }
+        if (reader.get(low) == target) return low;
+        return -1;
     }
 };
+
+

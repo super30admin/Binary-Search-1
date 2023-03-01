@@ -10,7 +10,7 @@
  Store result array as -1,-1 initially. 
  If nums[mid] == target, store into the result array. 
  */
-public class searchRange {
+public class search {
     public int[] searchRange(int nums[],int key){
         int result[]={-1,-1};
         int low = 0; 

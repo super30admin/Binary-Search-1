@@ -1,3 +1,5 @@
+// Space Complexity: O(1)
+// Time Complexity: O(m + n); worst case it would do (m + n - 2) comparisons which is O(m+n).
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix == null || matrix[0] == null) {

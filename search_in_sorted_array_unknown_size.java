@@ -6,6 +6,9 @@
  * }
  */
 
+// Space Complexity: O(1)
+// Time Complexity: O(log(N))
+// Did this code successfully run on Leetcode : Yes
  class Solution {
     public int search(ArrayReader reader, int target) {
         int left = 0;

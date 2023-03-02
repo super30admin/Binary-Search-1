@@ -1,7 +1,71 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
+// Time Complexity : O(logn)
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach in three sentences only
+// 1. 
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int count = Integer.MAX_VALUE;
+        for(int i=matrix.length-1; i>=0; i--){
+            if(matrix[i][0]==target){
+                return true;
+            }else if(matrix[i][0]>target){
+                if(count>i){
+                    count = i;
+                }
+            }else{
+                count = i;
+                break;
+            }
+        }
+        int start = 0;
+        int end = matrix[0].length-1; 
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(matrix[count][mid]>target){
+                end = mid-1;
+            }else if(matrix[count][mid]<target){
+                start = mid+1;
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+//2. 
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low=0;
+        int high=nums.length-1;
+        
+        while(low<=high){
+        int mid= (low + high) /2;
+        if(nums[mid]==target) return mid;
+        //check if left half is sorted
+        if(nums[low]<=nums[mid]){
+            //check if target lies on the left half
+            if(target<=nums[mid] && target>=nums[low]){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+        //check if right half is sorted
+        else{
+            if(target>=nums[mid] && target<=nums[high]){  
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+        }
+        return -1;
+    }
+}

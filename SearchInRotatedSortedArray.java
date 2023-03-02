@@ -1,3 +1,8 @@
+/*
+Time Complexity - O(Log N) where N is the size of the input array "nums".
+Space Complexity - O(1)
+*/
+
 class Solution {
   public int search(int[] nums, int target) 
   {

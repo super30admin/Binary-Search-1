@@ -1,5 +1,6 @@
 #Time complexity : Find smallest takes O(logn) time. binary_search takes O(logn) time. Search method takes O(logn+logn) =O(logn) time
 #Space complexity : No extra space used. Hence O(1)
+#
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:

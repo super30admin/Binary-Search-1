@@ -1,7 +1,70 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+## Time complexcity: o(log n)
+## space compexcity : o(1)
+## It ran successfully on leetcode
+## This we have the minimum element in the unsorted array for max cases . So, we check if the mid is less than previous and before element . If it is return mid . or check for unsorted part in teh array
+# https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+       if  len (nums) == None or len(nums)==0:
+           return int(sys.maxsize)
 
+       low = 0
+       high = len(nums)-1
+       while low <= high:
+            if nums[low] <= nums[high]:
+                return nums[low]
+            mid = low + (high-low)//2
+            if (mid == 0 or nums[mid] < nums[mid -1]) and (mid == len(nums)-1 or nums[mid] < nums[mid + 1]):
+                return nums[mid]
+            if nums[low] <= nums[mid]: # array is sorted
+                low = mid + 1
+            else:
+                high = mid - 1
+       return 123
 
-// Your code here along with comments explaining your approach in three sentences only
+## Time complex: O(logm*n)
+## space complexcity : O(1)
+## we do binary search in the matrix as the elements are sorted 
+## https://leetcode.com/problems/search-a-2d-matrix/description/
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+         m= len(matrix) # rows
+         n = len(matrix[0]) # columns
+
+         left = 0
+         right = m*n-1 ## m*n -1
+         while left <= right:
+             mid = left + (right-left) //2 ## pointer overflow
+             row = mid // n
+             col = mid % n
+             if matrix[row][col] == target:
+                 return True
+             elif matrix[row][col] > target:
+                     right = mid -1
+             else:
+                 left = mid+1
+         return False
+
+## Time complexcity :o(log n)
+## Space complexcity : o(1)
+## It did not run successfully in leetcode: Time limit exceeded
+## we get the elements  till getter than target and then do binary search in the array
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        left = 0
+        right = 1
+        while reader.get(right) < target:
+            left = right
+            right = left * 2
+        return self.binarysearch(reader, target, left, right)
+        
+    def binarysearch(self, reader, target, left, right):
+        mid = left + (right - left)//2
+        while left <= right:
+            if reader.get(mid) == target:
+                return mid
+            elif target > reader.get(mid):
+                left = mid + 1
+            else:
+                right = mid -1
+        return -1

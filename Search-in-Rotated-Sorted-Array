@@ -1,0 +1,30 @@
+#Author: Bhavika
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        low=0
+        high=len(nums)-1
+        mid=low+(high-low)//2
+        #here nums is already rotated at k index and hence unsorted
+        #if array mid val is less than end val then that half is sorted and the first half is unsorted. if unsorted
+        while low <= high:
+            mid=low+(high-low)//2
+            if target == nums[mid]:
+                return mid
+            if nums[mid] <= nums[high]:#checking if this is sorted
+                if target >= nums[mid] and target <= nums[high]:
+                    low = mid+1
+                else:
+                    high = mid-1
+            elif nums[mid] >= nums[low]:#checking if this is sorted
+                 if target <= nums[mid] and target >= nums[low]:
+                    high = mid-1
+                 else:
+                    low=mid+1
+           
+            
+        return -1

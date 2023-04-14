@@ -5,3 +5,92 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+## Problem1 
+Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
+
+// Time Complexity : O(log(m * n)) because algorithm is Binary Search that divides the search space in half on each iteration
+// Space Complexity : O(1) because the memory used by the algorith remain constant with size of the matrix
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix.length == 0 || matrix == null) {            // base case
+            return false;
+        }
+        int m = matrix.length;                         // row length
+        int n = matrix[0].length;                      // column length
+        int low = 0;                                   // lower bound 
+        int high = m * n - 1;                          // high bound
+ 
+        while (low <= high) {                          // initializing the binary search
+            int mid = low + (high - low) / 2;          // calculating mid while taking care of Integer overflow
+            int row = mid / n;                         // get the row
+            int col = mid % n;                         // get the column
+            if (target == matrix[row][col]) {          // true case where target is equal 
+                return true;
+            }
+            else if (target < matrix[row][col]) {      // if target is smaller that decrease mid from higher bound
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;                        // if target is greater that increase mid from lower bound
+            }
+        }
+        return false;                                 // target not present in the matrix
+    }
+}
+
+
+## Problem1 
+Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+// Time Complexity : O(logn) because algorithm is Binary Search and it reduces the search space by half on each iteration.
+// Space Complexity : O(1) because the memory used by the algorith remain constant with size of the array
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {                        // base case
+            return -1;
+        }
+        int low = 0;                                                   // since its a binary search we need low and high bounds
+        int high = nums.length - 1;
+
+        while (low <= high) {                                          // initialize the binary search
+            int mid = low + (high - low) / 2;                          // find mid so that we prevent integer overflow
+            if (nums[mid] == target) {                                 // is the target is equal to mid return index
+                return mid;
+            }
+            if (nums[low] <= nums[mid]) {                              // check which side is sorted   
+                if (target >= nums[low] && target < nums[mid]) {       // check if the target lies in the sorted side
+                    high = mid - 1;                                    // moving left 
+                }
+                else {
+                    low = mid + 1;                                     // moving right
+                }
+            }
+            else {                                                     // if the other side is sorted
+                if (target > nums[mid] && target <= nums[high]) {      // check for the target in this side
+                    low = mid +1;                                      // moving right that is target is present 
+                }
+                else{
+                    high = mid - 1;                                     // moving left if target not present
+                }
+            }
+        }
+        return -1;                                                      // the target does not exist in the array
+    }
+}
+
+
+## Problem2
+Search in Infinite sorted array: 
+
+https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+
+This is for the next class.

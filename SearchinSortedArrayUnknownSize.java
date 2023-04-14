@@ -6,10 +6,10 @@
 
 // Your code here along with comments explaining your approach in three sentences only
 /*
- * We could try imagining 2D matrix as 1d matrix and then map the indexes to 2D row and col.
-We are given that last element of row i < first element of row i+1 and thus we could use mod and 
-div to get the row and col in range.
+ * We find high bound that's bigger than target
+then we can use low = 0, high to start binary search to check.
  */
+
 public class SearchinSortedArrayUnknownSize {
     public int search(ArrayReader reader, int target) {
         if(reader == null) {

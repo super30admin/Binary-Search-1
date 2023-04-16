@@ -12,10 +12,13 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
+
         if not nums:
             return -1
+
         low = 0
         high = len(nums) - 1
+
         while low <= high:
             mid = low + (high - low)//2
             if nums[mid] == target:

@@ -1,3 +1,6 @@
+// Time Complexity :O(log(n))
+// Space Complexity :O(1)
+
 class Solution {
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) {

@@ -1,4 +1,4 @@
-// Time Complexity : O(m*n)
+// Time Complexity : O(log(m*n))
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 

@@ -5,15 +5,15 @@
 public class Search2DMatrix {
 
     public boolean searchMatrix(int[][] matrix, int target) {
-        int col = matrix.length;
-        int row = matrix[0].length;
+        int row = matrix.length;
+        int col = matrix[0].length;
         int i = 0;
         int j=0;
-        while(i<col && j<row){
+        while(i<row && j<col){
             if(matrix[i][j]==target){
                 return true;
             }
-            if(target<=matrix[i][row-1]){
+            if(target<=matrix[i][col-1]){
                 j++;
             }
             else{

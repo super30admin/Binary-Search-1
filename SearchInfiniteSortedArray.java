@@ -1,10 +1,10 @@
 // Time Complexity : O(log(n)base2)
-    //n is Integer.MAX_VALUE
+    //n is the size of the array.
 
 // Space Complexity : O(1)
 
 // Did this code successfully run on Leetcode :
-    //Yes. It beats 100% of all Java submissions in terms of Time complexity and 5.7% of them in terms of Space Complexity
+    //Yes. It beats 100% of all Java submissions in terms of TC and 5.7% of them in terms of SC.
 
 // Any problem you faced while coding this :
     //How do I reduce the space taken to run the program?

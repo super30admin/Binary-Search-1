@@ -1,10 +1,18 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(log(n)base2)
+    //n is the size of the array.
 
+// Space Complexity : O(1)
+
+// Did this code successfully run on Leetcode :
+    //Yes. It beats 100% of all Java submissions in terms of TC and 99.7% of them in terms of SC.
+
+// Any problem you faced while coding this :
+    //No.
 
 // Your code here along with comments explaining your approach in three sentences only
+    //We first find out the smallest number in the array.
+    //Then we perform binary searches on all the numbers to the left of the smallest number and to the right of it.
+    //If the target is present on the array, it must be in either the first sorted part or the second sorted part of the array partitioned by the smallest number.
 
 class Solution {
     public int search(int[] nums, int target) 

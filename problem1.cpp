@@ -1,5 +1,5 @@
-# Time Complexity : O(n/k) for all operations, where n is the number of keys and k is the number of buckets.
-# Space Complexity : O(n) where n is the number of keys present in the hashset
+# Time Complexity : O(log r * log c) where r = number of rows and c = number of columns
+# Space Complexity : O(1)
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 

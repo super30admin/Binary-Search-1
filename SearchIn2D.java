@@ -1,3 +1,8 @@
+// Time Complexity : O(log(m*n))
+// Space Complexity :
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
 class SearchIn2D {
     public boolean searchMatrix(int[][] matrix, int target) {
         int i = 0;

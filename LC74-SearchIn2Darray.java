@@ -8,7 +8,7 @@
 
 /**
 Consider 2d array as 1d array with index  x = i*col + j for i as row index(0 to r-1), j is column index(0,c-1)
- */
+*/
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
 
@@ -22,6 +22,7 @@ class Solution {
         while(l<=r) {
             int mid = (l+r)/2;
             int i = mid/col; // will give row index for mid
+            // int j = mid % col; // Another way to get j
             int j = mid - i*col; //will give col index for mid
 
             if (matrix[i][j] == target) return true;

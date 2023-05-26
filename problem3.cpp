@@ -10,7 +10,8 @@
 class Solution{
     public int search(ArrayReader reader, int target)
     {
-        int low = 0, high =1;
+        int low = 0;
+        int high =1;
         while(reader.get(high)<target)
         {
             low = high;

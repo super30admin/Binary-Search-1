@@ -1,7 +1,123 @@
 // Time Complexity :
 // Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
-
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 // Your code here along with comments explaining your approach in three sentences only
+
+<!-- ## Problem1
+Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/) -->
+
+<!-- The code implements a binary search algo to search for the target value in the matrix. It initializes the left and right indices based on the size of the matrix and performs binary search iterations by adjusting the mid index and corresponding row and column indices.  -->
+<!-- // Time Complexity : O(log (m*n))
+// Space Complexity : O(1), a bit unsure. Logic: As integer variables (m, n, left, right, mid, row, col, target) are independent of size of input matrix.
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No -->
+
+class Solution {
+public boolean seaxrchMatrix(int[][] matrix, int target) {
+int m = matrix.length;
+int n = matrix[0].length;
+int left = 0;
+int right = m\*n-1;
+while(left<=right){
+int mid = left + (right -left)/2;
+int row = mid/n;
+int col = mid%n;
+if(matrix[row][col]== target){
+return true;
+}
+else if (matrix[row][col]<target){
+left++;
+}
+else{
+right--;
+}
+}
+return false;
+}
+}
+
+<!-- ## Problem2
+Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/) -->
+
+<!-- Perform binary search, since it is sorted and rotated, one of the two subarray left-to-mid or mid-to-right will be already sorted, this would reduce the search space by half. Next, we check if the target is within the sorted array. It it is not then move the left/right accordingly  -->
+
+<!-- // Time Complexity :O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No -->
+
+class Solution {
+public int search(int[] nums, int target) {
+int left =0, right = nums.length-1;
+while(left<=right){
+int mid = left + (right-left)/2;
+if(nums[mid]== target){
+return mid;
+}
+else if (nums[mid]>=nums[left]){ //4 5 6 7 0 1 2
+if(target >= nums[left] && target < nums[mid]){ // say 5
+right = mid -1;
+}
+else{ //0 or 1
+left = mid +1;
+}
+}
+else{ // 6 7 0 1 2 4 5
+if (target > nums[mid] && target <= nums[right]){
+left = mid+1;
+}
+else{
+right = mid -1;
+}
+}
+}
+return -1;
+}
+}
+
+<!-- ## Problem3
+Search in Infinite sorted array:
+
+https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+
+Given a sorted array of unknown length and a number to search for, return the index of the number in the array. Accessing an element out of bounds throws exception. If the number occurs multiple times, return the index of any occurrence. If it isn’t present, return -1. -->
+
+<!-- // Time Complexity :O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No -->
+
+<!-- Use the reader to first find the space within which binary search needs to be applied, increment right by a multiplication factor of 2 and assign previous right to left. Once search space is found, apply traditional binary search algorithm  -->
+
+<!-- /**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */ -->
+
+class Solution {
+public int search(ArrayReader reader, int target) {
+int left =0, right =1;
+while(reader.get(right) <target){
+left = right;
+right \*= 2;
+}
+while(left<=right){
+int mid = left + (right - left)/2;
+if(reader.get(mid) == target){
+return mid;
+}
+else if (reader.get(mid)<target){
+left = mid+1;
+}
+else{
+right = mid-1;
+}
+}
+return -1;
+}
+}

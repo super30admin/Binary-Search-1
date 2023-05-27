@@ -1,0 +1,20 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        row=len(matrix)
+        col=len(matrix[0])
+        print(row)
+        print(col)
+        lp=0
+        i=0
+        hp= (row*col)-1
+        while(lp<=hp):
+            mid=lp+ (hp-lp)//2
+            row_p=mid//col
+            col_p=mid%col
+            if(matrix[row_p][col_p] == target):
+              return True
+            elif(matrix[row_p][col_p] < target):
+                lp = mid+1
+            else:
+                hp = mid-1
+        return False   

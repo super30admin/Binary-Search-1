@@ -1,5 +1,6 @@
 # Time Complexity : O(log(n))
 # Space Complexity :O(1)
+# Leet Code: Yes
 
 def binarySearch(arr, l, r, t):
     while l <= r:

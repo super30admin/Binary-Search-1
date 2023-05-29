@@ -13,8 +13,10 @@ class Solution:
             h=len(matrix[i])-1
             while l<=h:
                 mid=l+(h-l)//2
+                #Compare matrix and check if its equal item
                 if(matrix[i][mid]==target):
                   return True
+                #Check if the number is less than the target.
                 elif (matrix[i][mid]<target):
                   l=mid+1
                 else:

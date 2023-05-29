@@ -1,0 +1,42 @@
+
+// Time Complexity :O(log n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+class Solution {
+    public int search(int[] nums, int target) {
+        //null
+        if(nums==null || nums.length==0)return -1;
+
+     int start=0,end=nums.length-1;
+
+    while(start<=end){
+        int mid = start+(end-start)/2;
+        if(nums[mid]==target){
+            return mid;
+        }
+        else if(nums[start]<=nums[mid]){
+            //left side sorted
+            if(nums[mid]>target && nums[start]<=target){
+                end=mid-1;
+            }else{
+                start=mid+1;
+            }
+        }else{//4,5,6,7,0,1,2
+             if(nums[mid]<target && nums[end]>=target){
+                start=mid+1;
+            }else{
+                end=mid-1;
+            }
+        }
+
+    }
+
+return -1;
+
+    }
+}

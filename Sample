@@ -1,7 +1,170 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+//Problem1 Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
+// Time Complexity : O(m+logn)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach in three sentences only:
+// Here it has been given that the last element of every row is lesser that the first element of next row. So first we need to find the row in which the target lies
+//To find the row we can iterate through the last element of each row until we find the row where target is lesser than the last element of that particular row. Then we can apply binary search on that row.
 
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m=matrix.length;
+        int n=matrix[0].length;
+        int low=0,high=n-1,row=0;
 
+        for(int i=0;i<m;i++)
+        {
+            if(target<=matrix[i][n-1])
+            {
+                row=i;   
+                break;
+            }   
+        }
+// Now that we have row,high and low, we can apply binary search to find the element
+
+ System.out.println(row);
+while(low<=high)
+{
+    int mid=low+(high-low)/2;
+    System.out.println(mid);
+    if(target==matrix[row][mid])
+    {
+        System.out.println(matrix[row][mid]);
+
+        return true;
+    }
+    if(target<matrix[row][mid])
+    {
+        high=mid-1;
+    }
+    else
+    {
+        low=mid+1;
+    }
+}
+
+return false;
+        
+    }
+}
+
+// Problem1 Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 // Your code here along with comments explaining your approach in three sentences only
+//If it falls in the range of start and mid we keep updating the value of end to mid-1, else start to mid+1
+//When we search from mid to end, either it is right sorted side of the array or it has bigger elements is the start and smaller in the end which means it is rotated. 
+//if the target falls in the range of mid and end we assign mid+1 to start else end with mid-1
+
+class Solution {
+    public int search(int[] nums, int target) {
+
+        int start=0, end=nums.length-1;
+        
+        if (nums==null)
+        {
+            return 0;
+        }
+
+        if (nums.length==1)
+        {
+            if(nums[0]==target)
+                return 0;
+            
+            else
+                return -1;
+        }
+
+
+        while(start<=end)
+        {
+            int mid=(start+end)/2;
+            if(nums[mid]==target)
+                return mid;
+            
+             if (nums[start]<=nums[mid])
+            {
+                if(nums[start]<=target && nums[mid]>target)
+                    end=mid-1;
+                else
+                    start=mid+1;
+            }
+
+            else 
+            {
+
+                 if (nums[end]>=target && nums[mid]<target)
+                    start=mid+1;      
+ 
+                 else
+                    end=mid-1;
+
+            }
+
+                
+        }
+                         
+   return -1; 
+
+    }
+}
+
+
+
+//Problem2 Search in Infinite sorted array: https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach in three sentences only
+//we need to find the first element of the array from where the search needs to be started. 
+//We can iterate through the array to find an index where the element is less than the target and assign that value to left. Here we use shift operator to shift right by two places. 
+//Once we find the range we apply binary search and return the index
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+//ArrayReader.get(i)=secret[i]
+int left=0, right=1;
+
+//
+while(reader.get(right)<target)
+{
+
+        left=right;
+        right<<=1;
+}
+
+while(left<=right)
+{
+    int mid=left+(right-left)/2;
+System.out.println(mid);
+    if(target==reader.get(mid)) 
+    {
+        return mid;   
+    }
+    else if(target<reader.get(mid))
+    {
+        right=mid-1;
+    }
+    else
+    {
+        left=mid+1;
+    }
+
+}
+
+return -1;
+    }
+
+}

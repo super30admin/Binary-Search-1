@@ -1,3 +1,4 @@
+1.
 #Time Complexity : O(log(M+N))
 #Space Complexity : O(1)
 #Did this code successfully run on Leetcode : Yes
@@ -21,4 +22,38 @@ class Solution:
             else:
                 col-=1
         return False
+
+
+2.
+#Time Complexity : O(log(n))
+#Space Complexity : O(1)
+#Did this code successfully run on Leetcode : Yes
+#Any problem you faced while coding this : No
+
+
+# binary serch in rotated array. if target is greater than mid element or less than first, then find
+# element in right part, and vice versa
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        low = 0 
+        high = n-1
+        while(low<=high):
+            mid = ( high + low ) // 2
+            if(nums[mid]==target):
+                return mid
+            if(nums[low]<=nums[mid]):
+                #left sorted
+                if target > nums[mid] or target < nums[low]:
+                    low = mid + 1
+                else:
+                    high = mid - 1   
+            else:
+                #right sorted
+                if target < nums[mid] or target > nums[high]:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+        return -1
 

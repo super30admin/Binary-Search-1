@@ -1,7 +1,24 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+#Time Complexity : O(log(M+N))
+#Space Complexity : O(1)
+#Did this code successfully run on Leetcode : Yes
+#Any problem you faced while coding this : No
 
 
-// Your code here along with comments explaining your approach in three sentences only
+# started from first row last column. increased row if current element is less 
+# than target and decresed column if it's greater than.
+
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        row = 0
+        col = len(matrix[0]) - 1
+        
+        while(row<len(matrix) and col>=0):
+            if(matrix[row][col])==target:
+                return True
+            elif(matrix[row][col]<target):
+                row+=1
+            else:
+                col-=1
+        return False
+

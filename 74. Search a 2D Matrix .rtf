@@ -1,0 +1,32 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red25\green25\blue25;}
+{\*\expandedcolortbl;;\cssrgb\c12941\c12941\c12941;}
+\margl1440\margr1440\vieww28600\viewh15300\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+class Solution:\
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:\
+        \
+        m = len(matrix)\
+        n = len(matrix[0])\
+        \
+        l = 0\
+        r = m * n - 1\
+        \
+        while l <= r:\
+            mid = r + l // 2\
+            r = mid // n\
+            c = mid % n\
+            if matrix[r][c] == target:\
+                return True\
+            elif matrix[r][c] > target:\
+                r = mid - 1\
+            else:\
+                l = mid + 1\
+                print(l)\
+                \
+                \
+        return False}

@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red255\green255\blue255;\red0\green0\blue0;
+\red0\green0\blue255;\red32\green108\blue135;\red101\green76\blue29;\red0\green0\blue109;\red144\green1\blue18;
+\red19\green118\blue70;\red157\green0\blue210;}
+{\*\expandedcolortbl;;\cssrgb\c0\c50196\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
+\cssrgb\c0\c0\c100000;\cssrgb\c14902\c49804\c60000;\cssrgb\c47451\c36863\c14902;\cssrgb\c0\c6275\c50196;\cssrgb\c63922\c8235\c8235;
+\cssrgb\c3529\c52549\c34510;\cssrgb\c68627\c0\c85882;}
+\margl1440\margr1440\vieww28600\viewh15300\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # """\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 # This is ArrayReader's API interface.\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 # You should not implement it, or speculate about its implementation\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 # """\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 #class ArrayReader:\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 #    def get(self, index: int) -> int:\cf0 \cb1 \strokec4 \
+\
+\cf5 \cb3 \strokec5 class\cf0 \strokec4  \cf6 \strokec6 Solution\cf0 \strokec4 :\cb1 \
+\cb3     \cf5 \strokec5 def\cf0 \strokec4  \cf7 \strokec7 search\cf0 \strokec4 (\cf8 \strokec8 self\cf0 \strokec4 , \cf8 \strokec8 reader\cf0 \strokec4 : \cf9 \strokec9 'ArrayReader'\cf0 \strokec4 , \cf8 \strokec8 target\cf0 \strokec4 : \cf6 \strokec6 int\cf0 \strokec4 ) -> \cf6 \strokec6 int\cf0 \strokec4 :\cb1 \
+\cb3         l, r = \cf10 \strokec10 0\cf0 \strokec4 , \cf10 \strokec10 1\cf0 \cb1 \strokec4 \
+\
+\cb3         \cf11 \strokec11 while\cf0 \strokec4  reader.get(r) < target:\cb1 \
+\cb3             l = r\cb1 \
+\cb3             r = \cf10 \strokec10 2\cf0 \strokec4  * r\cb1 \
+\cb3         \cb1 \
+\cb3         \cf11 \strokec11 while\cf0 \strokec4  l <= r:\cb1 \
+\cb3             mid = l + (r - l)//\cf10 \strokec10 2\cf0 \cb1 \strokec4 \
+\cb3             \cf11 \strokec11 if\cf0 \strokec4  reader.get(mid) == target:\cb1 \
+\cb3                 \cf11 \strokec11 return\cf0 \strokec4  mid\cb1 \
+\cb3             \cf11 \strokec11 elif\cf0 \strokec4  reader.get(mid) < target:\cb1 \
+\cb3                 l = mid + \cf10 \strokec10 1\cf0 \cb1 \strokec4 \
+\cb3             \cf11 \strokec11 else\cf0 \strokec4 :\cb1 \
+\cb3                 r = mid - \cf10 \strokec10 1\cf0 \cb1 \strokec4 \
+\cb3         \cf11 \strokec11 return\cf0 \strokec4  -\cf10 \strokec10 1\cf0 \cb1 \strokec4 \
+}

@@ -2,6 +2,8 @@
 // Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 
+// Convert 2D matrix to 1D in a virtual sense and not literal sense and apply binary search
+
 #include <iostream>
 #include <vector>
   

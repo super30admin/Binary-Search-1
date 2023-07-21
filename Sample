@@ -1,7 +1,167 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity :  O(1)
+// Space Complexity : O(log(n)+log(m))
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :  No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+//Problem 1: Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
+
+class Solution {
+public:
+int row=-1;
+bool check=false;
+void binary_search_col(vector<vector<int>>& matrix,int low,int high,int target){
+   
+   if(low>high){
+       //  row=mid;
+       return;
+   }
+   int mid = low+(high-low)/2;
+   if(matrix[mid][0]<=target && matrix[mid][matrix[0].size()-1]>=target){
+       row=mid;
+       return;
+   } 
+
+   if(target>matrix[mid][0]){
+   binary_search_col(matrix,mid+1,high,target);    
+   }
+   else{
+   binary_search_col(matrix,low,mid-1,target);
+   }
+}
+
+void binary_search_row(vector<vector<int>>& matrix,int low,int high,int target){
+    if(low>high){
+        return;
+    }
+   int mid = low+(high-low)/2;
+   if(matrix[row][mid]==target){
+       check= true;
+       return;
+   }
+   if(matrix[row][mid]>target){
+   binary_search_row(matrix,low,mid-1,target);
+   }
+   else{
+   binary_search_row(matrix,mid+1,high,target);
+   }
+}
+
+
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        binary_search_col(matrix,0,matrix.size()-1,target);
+        if(row==-1){
+            return false;
+        }
+        binary_search_row(matrix,0,matrix[0].size()-1,target);
+        return check;
+    }
+};
+
+
+// Time Complexity :  O(log(n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+//Problem 2: Search in a Rotated Sorted Array (https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+class Solution {
+public:
+int pivot=-1;
+int index=-1;
+void pivot_search(vector<int>& nums,int low,int high){
+  if(low>=high){
+    pivot=low;
+    return;
+  }
+  int mid=low+(high-low)/2;
+  if(mid<nums.size()-1 && nums[mid+1]<nums[mid]){
+    pivot=mid;
+     return;
+  }
+  if(mid>0 && nums[mid-1]>nums[mid]){
+    pivot=mid-1;
+     return;
+  }
+  if(nums[mid]<nums[low]){
+    pivot_search(nums,low,mid-1);
+  }
+  else{
+     pivot_search(nums,mid+1,high);
+  }
+}
+void binary_search(vector<int>& nums,int low,int high,int target){
+  if(low>high){
+    return;
+  }
+   int mid=low+(high-low)/2;
+
+  if(nums[mid]==target){
+    index=mid;
+     return;
+  }
+ 
+  if(target<nums[mid]){
+    binary_search(nums,low,mid-1,target);
+  }
+  else{
+     binary_search(nums,mid+1,high,target);
+  }
+}
+    int search(vector<int>& nums, int target) {
+pivot_search(nums,0,nums.size()-1);
+if(nums[0]<=target && target<=nums[pivot]){
+  binary_search(nums,0,pivot,target);
+}
+else{
+binary_search(nums,pivot+1,nums.size()-1,target);
+}
+return index;
+    };
+};
+
+
+
+// Time Complexity :  O(1)
+// Space Complexity : O(log(n))
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach in three sentences only
+//Problem 3: Search in Infinite sorted array: (https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/)
+
+class Solution {
+public:
+int index=-1;
+void binary_search(const ArrayReader& reader,int low,int high, int target){
+
+    if(low>high){
+        return;
+    }
+    int mid = low+(high-low)/2;
+    if(reader.get(mid)!=(pow(2,31)-1)){
+        if(target==reader.get(mid)){
+            index=mid;
+return;
+        }
+        if(target<reader.get(mid)){
+            binary_search(reader,low,mid-1,target);
+        }
+        else{
+         binary_search(reader,mid+1,high,target);    
+        }
+    }
+    else{
+                 binary_search(reader,low,mid-1,target); 
+    }
+}
+    int search(const ArrayReader& reader, int target) {
+        binary_search(reader,0,10000,target);
+        return index;
+    }
+};

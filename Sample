@@ -1,7 +1,87 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
+//Problem 1-> Search in 2d Matrix
+// Time Complexity :O(m*n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this : flattening the matrix
+
+
+// Your code here along with comments explaining your approach in three sentences only
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m=matrix.length;
+        int n=matrix[0].length;
+        int low=0,high=m*n -1;
+        //here we can flatten the matrix because the matrix is a sorted 1D array. so binary search would work
+        while(low<=high){
+            int mid= low+(high-low)/2;
+            int r=mid/n; //flaten the matrix -> row= element/rowNum
+            int c=mid%n; // col= col%colNum
+            if(matrix[r][c]==target) return true;
+            else if(matrix[r][c]>target)
+                high=mid-1;
+            else
+                low=mid+1;
+        }
+        return false;
+    }
+}
+
+//Problem 2-> Search in rotated sorted array
+// Time Complexity :O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :yes
 // Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach in three sentences only
+class Solution {
+    public int search(int[] nums, int target) {
+        int low=0, high=nums.length-1;
+
+        while(low<=high){
+            int mid= low+ (high-low)/2;
+            if(nums[mid]==target) //base condition
+                return mid; 
+            //logic
+            if(nums[low]<=nums[mid]){  // if left side is sorted
+                if(nums[low]<=target && target< nums[mid]) //if target lies within range, 
+                    high=mid-1; //move high
+                else
+                    low=mid+1; //target not in range -> move low
+            }
+            else if(target> nums[mid] && target<=nums[high]) // target in mid-high range
+                low=mid+1; //move low
+            else 
+                high=mid-1; // if not in range, move high.
+        }
+        return -1; //if target not found.
+    }
+}
+
+//Problem 3-> Search in rotated sorted array of Unkown size
+// Time Complexity :O(n) in worst case
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :
+
+// Your code here along with comments explaining your approach in three sentences only
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low=0;
+        int high=1;
+        while(reader.get(high)<target){ //as ArrayReader is sorted, there wont be a problem. increase high untill target comes in range.
+            low=high;
+            high=2*high; //apt multiplying factor for less computations.
+        }
+
+        while(low<=high){
+            int mid=low + (high-low)/2; //avoid integer overflow
+            if(reader.get(mid)==target) return mid; //base condition
+            else if(reader.get(mid)>target) //if we mid is greater than target, move high
+                high=mid-1;
+            else
+                low=mid+1; //else move low
+        }
+        return -1; // -1 if target not found. mostly wont happen
+    }
+}

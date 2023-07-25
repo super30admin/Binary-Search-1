@@ -6,7 +6,9 @@
 
 // Your code here along with comments explaining your approach in three sentences only
 /*
- * 
+ * I set low as 0 and high as 1 initially. I traverse through the array until reader.get(high)>target. I set low = high and double the
+ * size of high in every iteration. Once I reach an index of high for which reader.get(high)>target, I perform binary search to obtain the
+ * index of the target element. If the element is not present, I return -1.
  */
 
 

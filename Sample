@@ -1,7 +1,29 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+# // Time Complexity :
+# // Space Complexity :
+# // Did this code successfully run on Leetcode :
+# // Any problem you faced while coding this :
 
 
-// Your code here along with comments explaining your approach in three sentences only
+# // Your code here along with comments explaining your approach in three sentences only
+# By creating loop over the columns running columns to row which will time complexity O(log (m*n)). 
+
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+# Initializing with defining m and n 
+        start = 0
+        m = len(matrix)
+        n = len(matrix[0])
+        end = m * n
+       # while looping start should to less than end     
+        while start < end:
+            mid = start + (end - start)//2 # calculating mid
+            val = matrix[mid//n][mid % n] # Value that get value from actual matrix
+            if val == target:
+                return True
+            if val < target:
+                start = mid + 1
+            else:
+                end = mid
+        
+        return False

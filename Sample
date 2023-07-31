@@ -1,7 +1,64 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+# Problem 1
+# // Time Complexity :
+# // Space Complexity :
+# // Did this code successfully run on Leetcode :
+# // Any problem you faced while coding this :
 
 
-// Your code here along with comments explaining your approach in three sentences only
+# // Your code here along with comments explaining your approach in three sentences only
+# By creating loop over the columns running columns to row which will time complexity O(log (m*n)). 
+
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+# Initializing with defining m and n 
+        start = 0
+        m = len(matrix)
+        n = len(matrix[0])
+        end = m * n
+       # while looping start should to less than end     
+        while start < end:
+            mid = start + (end - start)//2 # calculating mid
+            val = matrix[mid//n][mid % n] # Value that get value from actual matrix
+            if val == target:
+                return True
+            if val < target:
+                start = mid + 1
+            else:
+                end = mid
+        
+        return False
+
+# Problem 2
+
+# // Time Complexity :
+# // Space Complexity :
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this :
+#Got logic after attending lecture and implemented in leet code
+
+
+# // Your code here along with comments explaining your approach in three sentences only
+# By using approach of binary search , using mid element, check mid element is target, left side with target then right side.
+
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        n = len(nums)
+        low = 0
+        high = n-1
+        while low <= high:
+            mid = low + (high-low)//2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] >= nums[low]:
+                if target >= nums[low] and target < nums[mid]:
+                    high = mid-1
+                else:
+                    low = mid+1
+            else:
+                if target <= nums[high] and target > nums[mid]:
+                    low = mid+1
+                else:
+                    high = mid-1
+        return -1

@@ -1,0 +1,89 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="46">
+            <item index="0" class="java.lang.String" itemvalue="mysqlclient" />
+            <item index="1" class="java.lang.String" itemvalue="django-environ" />
+            <item index="2" class="java.lang.String" itemvalue="django-filter" />
+            <item index="3" class="java.lang.String" itemvalue="Django" />
+            <item index="4" class="java.lang.String" itemvalue="django-tables2" />
+            <item index="5" class="java.lang.String" itemvalue="django-cors-headers" />
+            <item index="6" class="java.lang.String" itemvalue="rlextra" />
+            <item index="7" class="java.lang.String" itemvalue="reportlab" />
+            <item index="8" class="java.lang.String" itemvalue="django-rest-auth" />
+            <item index="9" class="java.lang.String" itemvalue="PyExcelerate" />
+            <item index="10" class="java.lang.String" itemvalue="django-audit-log" />
+            <item index="11" class="java.lang.String" itemvalue="djangorestframework-datatables" />
+            <item index="12" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="13" class="java.lang.String" itemvalue="requests" />
+            <item index="14" class="java.lang.String" itemvalue="numpy" />
+            <item index="15" class="java.lang.String" itemvalue="django-storages" />
+            <item index="16" class="java.lang.String" itemvalue="deepdiff" />
+            <item index="17" class="java.lang.String" itemvalue="django-bootstrap4" />
+            <item index="18" class="java.lang.String" itemvalue="redis" />
+            <item index="19" class="java.lang.String" itemvalue="django-queryset-csv" />
+            <item index="20" class="java.lang.String" itemvalue="pygeohash" />
+            <item index="21" class="java.lang.String" itemvalue="django-user-agents" />
+            <item index="22" class="java.lang.String" itemvalue="googlemaps" />
+            <item index="23" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="24" class="java.lang.String" itemvalue="pillow-heif" />
+            <item index="25" class="java.lang.String" itemvalue="django-simple-history" />
+            <item index="26" class="java.lang.String" itemvalue="croniter" />
+            <item index="27" class="java.lang.String" itemvalue="sms-counter" />
+            <item index="28" class="java.lang.String" itemvalue="pypika" />
+            <item index="29" class="java.lang.String" itemvalue="botocore" />
+            <item index="30" class="java.lang.String" itemvalue="Pyrebase4" />
+            <item index="31" class="java.lang.String" itemvalue="django-crispy-forms" />
+            <item index="32" class="java.lang.String" itemvalue="django-bootstrap-datepicker-plus" />
+            <item index="33" class="java.lang.String" itemvalue="npm" />
+            <item index="34" class="java.lang.String" itemvalue="psutil" />
+            <item index="35" class="java.lang.String" itemvalue="simplejson" />
+            <item index="36" class="java.lang.String" itemvalue="pandas" />
+            <item index="37" class="java.lang.String" itemvalue="pyyaml" />
+            <item index="38" class="java.lang.String" itemvalue="django-mysql" />
+            <item index="39" class="java.lang.String" itemvalue="boto3" />
+            <item index="40" class="java.lang.String" itemvalue="django-crontab" />
+            <item index="41" class="java.lang.String" itemvalue="django-excel-response" />
+            <item index="42" class="java.lang.String" itemvalue="pytz" />
+            <item index="43" class="java.lang.String" itemvalue="openpyxl" />
+            <item index="44" class="java.lang.String" itemvalue="Pillow" />
+            <item index="45" class="java.lang.String" itemvalue="tenantclient" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="chat_manager.models.Tag.objects" />
+          <option value="chat_manager.models.Tag.DoesNotExist" />
+          <option value="chat_manager.models.ChatData.*" />
+          <option value="fieldvisit.models.Form.objects" />
+          <option value="fieldvisit.models.FormEntityTypes.objects" />
+          <option value="fieldvisit.models.FormField.objects" />
+          <option value="fieldvisit.models.UserAttributeValue.objects" />
+          <option value="fieldvisit.models.Activity.objects" />
+          <option value="fieldvisit.models.ActivityEntityTypes.objects" />
+          <option value="fieldvisit.models.TaskEntityTypes.objects" />
+          <option value="fieldvisit.models.Employ.objects" />
+          <option value="fieldvisit.models.ActivityConfig.objects" />
+          <option value="fieldvisit.models.Task.objects" />
+          <option value="activity_manager.models.Form.objects" />
+          <option value="activity_manager.models.JobData.objects" />
+          <option value="activity_manager.views.TaskFormConfig.objects" />
+          <option value="object.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

@@ -1,3 +1,6 @@
+// time complexity = logmn
+// space complexity =0(1)
+
 public class SortedArrayOfUnknownSize {
 
     public static void main(String[] args) {

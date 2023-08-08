@@ -1,3 +1,6 @@
+//time complexity = 0(logm*n) 
+// space compelexity = 0(1)
+
 public class TwoDMatrix {
 
         public static void main(String[] args) {

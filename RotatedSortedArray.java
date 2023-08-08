@@ -1,3 +1,6 @@
+//time complexity = 0(logn)
+//space complexity = 0(1)
+
 public class RotatedSortedArray {
 
     public static void main(String[] args) {

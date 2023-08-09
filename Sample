@@ -1,7 +1,122 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+//Problem 1: 2d matrix
+// Time Complexity : 0(lognm)
+// Space Complexity : 0(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :None
 
 
 // Your code here along with comments explaining your approach in three sentences only
+// The main idea of this solution is to treat the 2d matrix as just a regular array.
+// Esentially, the code for the solution of the problem is the exact same code of
+// an implimentation of binary search on a regular array, except we calcuate the
+// row and column based on the mid point. 
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length == 0){
+            return false;
+        }
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int low = 0;
+        int high = (m*n)-1;
+        while(low <= high){
+            int mid = low + (high-low)/2;
+            int r = mid/n;
+            int c = mid%n;
+            if(matrix[r][c] == target){
+                return true;
+            }
+            else if(target >= matrix[r][c]){
+                low = mid+1;
+            }
+            else{
+                high = mid-1;
+            }
+        }
+        return false;
+    }
+}
+
+
+//Problem 2: Search in rotated sorted array
+// Time Complexity : log(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :None
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// The main idea behind this solution is to split the array into two, and to study
+// the left side of the array and the right side. If the array is left sorted,
+// examine the right half. Else, examine the left half. 
+class Solution {
+    public int search(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length-1;
+        while(left <= right){
+            int mid = left + (right-left)/2;
+            if (nums[mid] == target){
+                return mid;
+            }
+            //left sorted
+            else if(nums[left] <= nums[mid]){
+                if(nums[left] <= target && nums[mid] >= target){
+                    right = mid-1;
+                }
+                else{
+                    left = mid+1;
+                }
+            }
+            //right sorted
+            else{
+                if(nums[mid] <= target && nums[right] >= target){
+                    left = mid+1;
+                }
+                else{
+                    right = mid-1;
+                }
+            }
+        }
+        return -1;
+    }
+}
+
+
+
+
+//Problem 3: Search in sorted array of unknown size
+// Time Complexity : O(logn+m)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+
+// Your code here along with comments explaining your approach in three sentences only
+// The main idea of this solution is that we try to create a window where the 
+// target element is in. Once we figure out the window by comparing the end of the 
+// window's element to target, we can perform a simple binary search on the window.
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1;
+        //System.out.println("here0");
+        while (reader.get(high) < target) {
+            low = high;
+            high = 2*high;
+        }
+        System.out.println("low is "+reader.get(low)+" high is "+reader.get(high));
+        while (low <= high) {
+            int mid = low + (high - low)/ 2;
+            System.out.println("mid is " +mid);
+            if (reader.get(mid) == target) {
+                return mid;
+            } else if (target > reader.get(mid)) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+}

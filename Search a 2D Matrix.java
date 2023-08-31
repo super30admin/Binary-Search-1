@@ -1,5 +1,6 @@
 class Solution {
     // As the question mentions that we need to complete the search in O(log(m*n)) time which indicates that we need to perfrom Binary search.
+    // Time Complexity: O(log(m*n)) as we are performing Binary Search on the matrix
     public boolean searchMatrix(int[][] matrix, int target) {
 
 // Edge case is the matrix is null or empty then we wont get target value.

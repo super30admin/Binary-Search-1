@@ -2,7 +2,7 @@
 // Space Complexity :o(1)
 // Did this code successfully run on Leetcode :yes
 // Any problem you faced while coding this :no
-lass Solution {
+Class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if(matrix==null||matrix.length==0)
         {

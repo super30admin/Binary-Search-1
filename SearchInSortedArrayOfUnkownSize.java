@@ -1,3 +1,4 @@
+//Time complexity is O(n)
 public class SearchInSortedArrayOfUnkownSize {
     public int search(ArrayReader reader, int target) {
         int low  = 0, high = 1;

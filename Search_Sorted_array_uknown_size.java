@@ -12,7 +12,9 @@ class Solution {
 
         //finding max size
        while (reader.get(r) < target){
-                r = r * 2;
+           //adding l= r missing condition
+           l = r;
+           r = r * 2;
               }
 
         //finding minimum

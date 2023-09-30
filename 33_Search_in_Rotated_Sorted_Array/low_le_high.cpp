@@ -1,10 +1,14 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(log(n))
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+// Technique: Binary Search
+// By pivoting property, we know that at any point in the array, either the left or right subarray will be sorted.
+// Take mid of 0 to n-1. If the first half is sorted, then check if the target can lie in this range. If yes search in this half else in second half.
+// Similarly, if second half is sorted and the target lies in this half then search their else in first half.
 
 #include<bits/stdc++.h>
 using namespace std;

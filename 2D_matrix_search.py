@@ -1,4 +1,8 @@
+# Time complexity : O(log(mn))
+# Space Complexity : O(1)
 
+# Approach to solve the problem - By considering the 2D matrix as 1D array/list,
+# we can implement binary search to search for the given value in O(log(mn))
 
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:

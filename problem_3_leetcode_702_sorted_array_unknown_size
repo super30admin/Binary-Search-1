@@ -1,0 +1,51 @@
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader(object):
+#    def get(self, index):
+#        """
+#        :type index: int
+#        :rtype int
+#        """
+
+class Solution(object):
+    def search(self, reader, target):
+        """
+        :type reader: ArrayReader
+        :type target: int
+        :rtype: int
+
+        Time Complexity: O(log (n))
+        Space Complexity: O(1)
+        Did this code successfully run on Leetcode: Yes
+
+        Approach:
+        Part 1: Define search boundary by increasing the space by factor of 2 each time. This makes sure we stick within log(n) complexity
+        
+        Part 2: Do the binary search in between the search boundary
+        """
+        low, high = 0, 1
+        # Sub-problem A: Define search boundary by increasing the space by factor of 2 each time.
+        while reader.get(high) <= target:
+            low = high
+            high = 2*high 
+      
+        #print ("low=", low)
+        #print ("high=", high)
+        # Sub-problem B: Do the binary search in between the search boundary
+        while low <= high:
+            mid = low + (high-low)//2
+            # return here
+            if reader.get(mid) == target:
+                return mid
+            # reset low if the target is to the right of the mid 
+            elif reader.get(mid) <= target:
+                low = mid + 1
+            # reset high if the target is to the left of the mid
+            else:
+                high = mid - 1
+            
+        return -1
+
+        

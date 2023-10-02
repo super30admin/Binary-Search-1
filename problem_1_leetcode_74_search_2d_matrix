@@ -1,0 +1,45 @@
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+
+        Part A: Binary search for the correct row.
+                Do this by going through first and last element in each row.
+                First column is matrix[i][0] where the value of i indicates the row.
+        Part B: Then do a binary search within that row for the target.
+        """
+        # Get the size of matrix
+        m = len(matrix)    # rows 
+        n = len(matrix[0]) # columns
+        low, high = 0, m - 1  # Use the count of rows as the range for low, high search space
+
+        # Part A: Identify the row. It will always have SOME value.
+        row = 0
+        while (low <= high):
+            mid = low + (high-low)//2
+            # is the target present in this row?
+            if matrix[mid][0] <= target  and matrix[mid][n-1] >= target:
+                row = mid # this identifies the row                
+                break
+            elif matrix[mid][0] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+
+        # Part B: Binary search on the row, and identify the column
+        low, high = 0, n - 1  # Use the count of columns as the range for low, high search space
+        while (low <= high):
+            mid = int(low + (high - low)/2)
+            if matrix[row][mid] == target:
+                return True  # Target found
+            elif matrix[row][mid] < target:
+                low = mid + 1
+            else: 
+                high = mid - 1
+                
+        return False 
+
+        

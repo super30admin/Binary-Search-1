@@ -1,0 +1,48 @@
+class Solution:
+    """
+    Time complexity: O (log n)
+
+    Space complexity: O(1)
+    
+    Did this code successfully run on Leetcode: Yes
+    
+    Any problem you faced while coding this: No
+    
+    Intuition: This aproach is without finding the pivot value explicitly. 
+                Since we only need to find if the target value is present, do we really care about the explicit pivot value here? 
+
+                All we try and find is if the TARGET value is in LEFT or RIGHT array 
+                (by checking if it's value is between nums[low] and nums[high] which is the binary search area),
+                then we can combine the "implicit" PIVOT and actual binary search logic together.  
+    """
+    def search(self, nums , target ):
+        # Solution based on Jaspinder's approach
+        if (nums==None or len(nums) == 0):
+            return -1
+    
+        low, high = 0, len(nums) - 1
+
+        while low <= high:
+            mid = low + (high - low) // 2
+            # target is at mid
+            if nums[mid] == target:
+                return mid
+            # left sorted  
+            elif nums[low] <= nums[mid]:
+                # Careful. Use <= with nums[low]
+                if (nums[low] <= target) and (nums[mid] > target):
+                    high = mid - 1
+                else:
+                    low = mid + 1
+            # right sorted        
+            else: 
+                # Careful. Use >= with nums[high]
+                if (nums[mid] < target) and (nums[high] >= target):
+                    low = mid + 1
+                else:
+                    high = mid - 1
+            
+        return -1
+
+        
+        

@@ -5,3 +5,118 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+//search in rotated sorted array
+
+//Time Complexity -> O(logn)
+//Space -> O(1)
+class Solution {
+    //With < sign in low<high
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length == 0) return -1;
+        int length = nums.length;
+         int low = 0;
+        int high = length - 1;
+        while(low<high){
+            int mid = low +(high-low)/2; //Caluclate mid
+           
+             if(nums[low]<=nums[mid]){ //means let side is sorted
+                 if(nums[mid] == target) return mid;
+                   if(nums[low]<=target && nums[mid]>target){ //means mid is greater than target make high = mid -1
+                     high = mid - 1;
+                } 
+                else{
+                    low = mid + 1;
+                }
+            }
+            else{ //means right side is sorted
+                 if(nums[mid] == target) return mid;
+                if(nums[mid]<target && nums[high]>=target){ //means mid is greater than target make high = mid -1
+                    
+                     low = mid + 1;
+                } 
+                else{
+                    high = mid - 1;
+                }
+
+            }
+        }
+        if(nums[low] == target) return low;
+
+        return -1;
+    }
+}
+
+//search in a sorted array of unknown size
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+//Time Complexity -> O(logm) +(logK) -> where Log(m) is to find the range and O(logK) of binary search in the found array
+//Time Complexity 2 ->O(long) where we make high = INTEGEr.max
+//Space Complexity ->O(1)
+class Solution {
+    //Using INFINITY_MAX
+    public int search(ArrayReader reader, int target) {
+
+        int low = 0;
+        int high = Integer.MAX_VALUE;
+        // while(reader.get(high)<=target){
+        //        low = high;
+        //        high = high*2;
+        // }
+
+        while(low<=high){
+            int mid = low + (high - low)/2; //To avoid integer overflow
+            if(reader.get(mid) == target){
+                return mid;
+            }
+            else if(reader.get(mid)>=target){ //Doing binary search
+                high = mid - 1;
+            }
+            else{
+                low =mid + 1;
+            }
+        }
+
+        return -1;
+        
+    }
+}
+
+//Search in a Sorted 2D matrix
+//Time complexity -> Log(mn) or Log(m) +log(n)
+//Space Complexity -> O(1)
+class Solution {
+    //Using Binary Search
+    public boolean searchMatrix(int[][] matrix, int target) {
+       int n = matrix.length; //Number of roews;
+       int m = matrix[0].length; //these are number of columns
+       int low = 0;
+       int high = n*m - 1;
+       while(low<= high){
+           int mid = low + (high - low)/2;
+           int currRow = mid/m; //calculating the row number
+           int currCol = mid % m; //calculating the column number
+           if(matrix[currRow][currCol] == target) {
+               return true;
+           }
+           else if(matrix[currRow][currCol] < target){
+               low = mid + 1;
+           }
+           else{
+               high = mid - 1;
+           }
+
+       }
+
+       return false;
+
+
+        
+    }
+}

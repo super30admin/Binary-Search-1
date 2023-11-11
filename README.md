@@ -1,7 +1,7 @@
 # Binary-Search-1
 
 
-## Problem1 
+## Problem3 
 Search a 2D Matrix(https://leetcode.com/problems/search-a-2d-matrix/)
 
 ## Problem2 

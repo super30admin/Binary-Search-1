@@ -1,3 +1,7 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Method used : Binary Search
+
 class Solution {
     public int search(int[] nums, int target) {
         

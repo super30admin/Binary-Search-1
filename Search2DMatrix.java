@@ -1,3 +1,7 @@
+// Time Complexity : O(log(rows * cols))
+// Space Complexity : O(1)
+// Method used : Binary Search
+
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         

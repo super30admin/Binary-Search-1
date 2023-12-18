@@ -1,3 +1,7 @@
+// Time Complexity : O(logn)
+// Space Complexity : O(1)
+// Method used : Binary Search
+
 /**
  * // This is ArrayReader's API interface.
  * // You should not implement it, or speculate about its implementation

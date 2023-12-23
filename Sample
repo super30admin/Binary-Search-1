@@ -1,7 +1,34 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
 
+Problem Statement : Search a 2D Matrix
+Time Complexity : O(log(M) * log(N))
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : no
 
-// Your code here along with comments explaining your approach in three sentences only
+Your code here along with comments explaining your approach in three sentences only :
+I'm perform binary search on 1st column of the matrix to find the row we need to search our target, then perform binary
+search on the row we got from the previous.
+
+Problem Statement : Search in a Rotated Sorted Array
+Time Complexity : O(log n)
+Space Complexity : O(n), where n is the length of the input array (nums)
+Did this code successfully run on Leetcode : Yes
+Any problem you faced while coding this : Nope
+
+Your code here along with comments explaining your approach in three sentences only :
+In case of a rotated array at least left or right side of the array is sorted, we find the mid point of the array
+and traverse the array with low point at the start and high point at the end of the array.
+If the left side is sorted we check if the target lies in that half else
+right side is sorted we check if the target lies in right half
+If not both the low and high cross each other and we return -1.
+
+Problem Statement : Search in Infinite sorted array:
+Time Complexity : O(log n)
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : no
+
+Your code here along with comments explaining your approach in three sentences only :
+In this as we do not know the end of the list, we initiate the range for Binary search as 0-1 then try to find our
+target. If the target does not lie in that range we take the jumps of 2x making high twice and bringing low pointer to
+high. Thus we are able to find the element.

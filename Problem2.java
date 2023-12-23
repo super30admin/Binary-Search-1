@@ -3,6 +3,9 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
+
+// binary search algorithm on a rotated sorted array to find the target value's index ,
+// continuously narrow down search space until the target element is found
 class Problem2 {
     public int search(int[] nums, int target) {
         int low = 0;

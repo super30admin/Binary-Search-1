@@ -3,7 +3,8 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
-
+//  identifying a feasible search range exponentially by factor of 2 to fond the probable high value and
+//  using binary search to locate the target
 /**
  * // This is ArrayReader's API interface.
  * // You should not implement it, or speculate about its implementation

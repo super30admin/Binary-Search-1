@@ -3,6 +3,7 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
+// binary search on a 2D matrix treated as a sorted 1D array to find the target value, returning true if found
 class Problem1 {
     public boolean searchMatrix(int[][] matrix, int target) {
         int n = matrix.length;

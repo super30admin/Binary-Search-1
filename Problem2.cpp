@@ -1,7 +1,9 @@
-// Space Complexity : yes
+// Time Complexity : O(log(N * M))
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : No
 
+//Search a 2D Matrix
 
 // Your code here along with comments explaining your approach in three sentences only : 
 

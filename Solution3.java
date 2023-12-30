@@ -12,31 +12,31 @@
  */
 class Solution {
     public int search(ArrayReader reader, int target) {
-        int low = 0, high = 1;
-        while(reader.get(high)<target)
+        int start = 0, end = 1;
+        while(reader.get(end)<target)
         {
-            low = high;
-            high *=2;
+            start = end;
+            end = end*2;
         }
-        return bsearch(reader,target,low,high);
+        return bSearch(reader,target,start,end);
     }
 
-    public int bsearch(ArrayReader reader, int target, int low, int high)
+    public int bSearch(ArrayReader reader, int target, int start, int end)
     {
-        while(low<=high)
+        while(start<=end)
         {
-            int mid = low + (high-low)/2;
+            int mid = start + (end-start)/2;
             if(reader.get(mid)==target)
             {
                 return mid;
             }
-            else if(reader.get(mid)<target)
+            else if (reader.get(mid)<target)
             {
-                low=mid+1;
+                start = mid + 1;
             }
-            else
+            else 
             {
-                high=mid-1;
+                end = mid - 1;
             }
         }
         return -1;

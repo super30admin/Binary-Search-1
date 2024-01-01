@@ -1,0 +1,39 @@
+T.C : o(logn)
+Class Solution {
+
+
+  public int searchReader(ArrayReader reader, int target)
+  {
+	  
+	  int low =0;
+	  int high = 1;
+	  
+	  while(reader.get(high) < target)
+	  {
+		  low = high;
+		  high = high * 2;
+		  
+	  }
+	  
+	  while( low <= high)
+	  {
+		  // find mid
+		  int mid = low + (high - low)/2;
+		  
+		  if(reader.get(mid) == target) return mid;
+		  
+		  if(reader.get(mid) < target )
+		  {
+			  low = mid +1;
+		  }else{
+			  
+			  high = mid-1;
+		  }
+	  }
+	  
+	  return -1;
+	  
+
+
+
+}

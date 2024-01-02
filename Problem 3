@@ -1,0 +1,39 @@
+# Search in a sorted array of unknown size
+
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+# class ArrayReader(object):
+#     def get(self, index):
+#         """
+#         :type index: int
+#         :rtype int
+#         """
+
+class Solution(object):
+    def search(self, reader, target):
+        """
+        :type reader: ArrayReader
+        :type target: int
+        :rtype: int
+        """
+        # Find the potential range of the array
+        low, high = 0, 1
+
+        while reader.get(high) < target:
+            low, high = high, high * 2
+
+        # Perform binary search in the potential range
+        while low <= high:
+            mid = low + (high - low) // 2
+            mid_value = reader.get(mid)
+
+            if mid_value == target:
+                return mid
+            elif mid_value < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        return -1

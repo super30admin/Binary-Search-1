@@ -1,0 +1,21 @@
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+ 	ERR = 2 ** 31 - 1
+        l = 0
+        r = 10000
+
+        while l <= r:
+            m = (l + r) // 2
+            v = reader.get(m)
+            
+            if v == ERR:
+                r = m-1
+            else:
+                if v < target:
+                    l = m+1
+                elif v > target:
+                    r = m-1
+                else:
+                    return m
+
+        return -1

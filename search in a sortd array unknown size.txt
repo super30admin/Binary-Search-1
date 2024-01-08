@@ -1,0 +1,47 @@
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+ 	ERR = 2 ** 31 - 1
+        l = 0
+        r = 10000
+
+        while l <= r:
+            m = (l + r) // 2
+            v = reader.get(m)
+            
+            if v == ERR:
+                r = m-1
+            else:
+                if v < target:
+                    l = m+1
+                elif v > target:
+                    r = m-1
+                else:
+                    return m
+
+        return -1
+
+# """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        low=0
+        high=1
+        while reader.get(high)< target:
+            low=high
+            high=high *2
+        return self.binarysearch(low,high,reader,target)
+    def binarysearch(self,low:int,high:int,reader: 'ArrayReader', target: int)-> int:
+        while low<=high:
+            mid=low+(high-low)//2
+            if reader.get(mid)==target:
+                return mid
+            elif target> reader.get(mid):
+                low=mid+1
+            else:
+                high=mid-1
+        return -1

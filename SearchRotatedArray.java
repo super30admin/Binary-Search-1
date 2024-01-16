@@ -1,5 +1,5 @@
 // Time Complexity : log(n)
-// Space Complexity :
+// Space Complexity : O(1)
 // Did this code successfully run on Leetcode : Yes
 
 public class SearchRotatedArray {

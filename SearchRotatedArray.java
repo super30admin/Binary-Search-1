@@ -15,8 +15,8 @@ class Solution {
         int mid;
 
         while (low <= high) {
-            mid = Math.round((low + high) / 2);
-            System.out.printf("%d %d %d", low, mid, high);
+            // prevent memory overflow
+            mid = low + (high - low) / 2;
             if (target == nums[mid])
                 return mid;
 

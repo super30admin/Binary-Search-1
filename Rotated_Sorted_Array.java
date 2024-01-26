@@ -1,3 +1,6 @@
+//Time Complexity: O(logn)
+//Space Complexity : O(1)
+
 class Solution {
     public int search(int[] nums, int target) {
         int low = 0;

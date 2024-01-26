@@ -25,34 +25,19 @@ class Solution {
             if (nums[low] <= nums[mid]) {
                 // target exists in the range
                 if (target >= nums[low] && target < nums[mid]) {
-                    return binarySearch(nums, low, mid, target);
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
                 }
-                low = mid + 1;
             } else {
                 // right side is sorted
                 if (target <= nums[high] && target > nums[mid]) {
-                    return binarySearch(nums, mid, high, target);
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
                 }
-                high = mid - 1;
             }
 
-        }
-        return -1;
-    }
-
-    // nums need to be sorted
-    public int binarySearch(int[] nums, int low, int high, int target) {
-        int mid;
-        while (low <= high) {
-            mid = Math.round((low + high) / 2);
-            if (target == nums[mid])
-                return mid;
-
-            if (target < nums[mid]) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
         }
         return -1;
     }

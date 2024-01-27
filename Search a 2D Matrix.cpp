@@ -15,7 +15,7 @@ public:
         int lo = 0, hi = m*n;
 
         while(lo<hi){
-          int mid = (lo+hi)/2;
+          int mid = lo+(hi-lo)/2;
 
           int row = mid/n, col = mid%n;
 

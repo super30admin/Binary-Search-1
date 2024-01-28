@@ -1,7 +1,117 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(log(m+n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
-// Your code here along with comments explaining your approach in three sentences only
+// Converted the 2-D matrix into 1D matrix using / and % with row length and performed binary search
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+
+        if(matrix == null)
+            return false;
+
+        int row = matrix.length;
+        int column = matrix[0].length;
+
+        int low = 0, high = row * column - 1;
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+
+            int currRow = mid/column;
+            int currCol = mid%column;
+
+            if(matrix[currRow][currCol] == target) {
+                return true;
+            } else if(matrix[currRow][currCol] > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return false;
+    }
+}
+
+// Time Complexity : O(log(n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Checked what portion of the array is sorted to search the element via binary search
+// If the target is not found, moved the pointers to the other half of the array and repeat the process.
+
+class Solution {
+    public int search(int[] nums, int target) {
+        if(nums == null || nums.length <= 0)
+            return -1;
+
+        int low = 0, high = nums.length - 1;
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if(nums[mid] == target) {
+                return mid;
+            }
+
+            if(nums[low] <= nums[mid]) {
+                if(nums[low] <= target && nums[mid] > target) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            } else {
+                if(nums[mid] < target && nums[high] >= target) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+}
+
+// Time Complexity : O(log(m) + log(n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : No (Don't have subscription)
+// Any problem you faced while coding this : No
+
+// First, I found the search range by increasing the search range and checking
+// if the target is there in the range or not
+
+// Once I found the target, applied Binary Search
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+
+        if(reader.get(0) == target) {
+            return 0;
+        }
+
+        int low = 1, high = 1;
+
+        while(reader.get(high) < target) {
+            low = high;
+            high = high * 2;
+        }
+
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if(reader.get(mid) == target) {
+                return mid;
+            } else if(target > reader.get(mid)) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+}

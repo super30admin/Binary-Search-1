@@ -9,6 +9,11 @@
 
 class Solution {
 public:
+    // Time Complexity : O(logn)
+    // Space Complexity :  O(1)
+    // Did this code successfully run on Leetcode :  Yes
+    // Any problem you faced while coding this :  No
+
     /*
     The array size is unknown, but the highest size can be 10^4
     We can just binary search in this range.

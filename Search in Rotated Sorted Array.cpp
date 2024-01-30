@@ -1,5 +1,10 @@
 class Solution {
 public:
+    // Time Complexity : O(logn)
+    // Space Complexity :  O(1)
+    // Did this code successfully run on Leetcode :  Yes
+    // Any problem you faced while coding this :  No
+
     int search(vector<int>& a, int target) {
      int n = a.size();
      int lo = 0, hi = n-1;

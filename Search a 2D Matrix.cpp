@@ -1,5 +1,9 @@
 class Solution {
 public:
+    // Time Complexity : O(logn)
+    // Space Complexity :  O(1
+    // Did this code successfully run on Leetcode :  O(logn)
+    // Any problem you faced while coding this :  No
 
     /*
     We can consider the 2D array as a flattened 1D array

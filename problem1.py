@@ -1,5 +1,5 @@
 class Solution:
-    # Question : Problem 74, Link - https://leetcode.com/problems/search-a-2d-matrix/description/
+    # Problem 74, Link - https://leetcode.com/problems/search-a-2d-matrix/description/
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         """
         Approach :

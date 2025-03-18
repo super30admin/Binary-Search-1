@@ -1,0 +1,35 @@
+//Search a 2D Matrix
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        // I would like to apply binary search on the entire array 
+            // everytime i'm @ the mid I check for target mid[0] & mid[n] and make a decision
+                // no possibility -- repeat the rowindex Binary search
+                // yes jump to the regular array binary search
+        return binarySearch(matrix,0, matrix.length-1, target);
+    }
+        
+    public boolean binarySearch(int[][] matrix, int left, int right, int target){
+        if(left <= right){
+            int mid  = left + (right-left) / 2;
+            int lastIndex = matrix[mid].length - 1; 
+            if(matrix[mid][0] <= target && matrix[mid][lastIndex] >= target)  return targetSearch(matrix[mid],0,lastIndex, target);
+            else if(target < matrix[mid][0]) return binarySearch(matrix, left, mid-1, target);// mid = mid-1 
+                return binarySearch(matrix, mid+1, right, target);
+        }
+        return false;
+    }
+
+    public boolean targetSearch(int[] matrix, int left, int right, int target){
+        System.out.println("target search ");
+        if(left <= right){
+            int mid = left +(right-left) /2 ;
+            System.out.print("left - " +left + " right - " + right + " mid - " +mid);
+            System.out.print(" mid == target" + matrix[mid] );
+            if(matrix[mid] == target) return true;
+            if(matrix[mid] > target) return targetSearch(matrix, left, mid-1, target);
+                else return targetSearch(matrix, mid+1, right, target);
+        }
+        return false;
+    }
+}

@@ -1,0 +1,26 @@
+//Search in Rotated Sorted Array
+
+class Solution {
+public int search(int[] nums, int target) {
+int left = 0 ;
+int right = nums.length-1;
+//Binary Search to identify the target - wrong assumption || Aim is to identify the Sorted Array first -- which can either be on the left or right  
+ while(left <= right){
+int mid = left +(right-left) /2;
+if(nums[mid] == target) return mid;
+if(nums[mid] >= nums[left] ){
+if(target <= nums[mid] && target >= nums[left]) right = mid-1;
+else left = mid+1;
+}else{
+//[4,5,6,7,0,1,2] l = [4]0 , r =[6] 2 , m =[5] 1 mid != target
+if(target <= nums[right] && target > nums[mid]) left = mid+1;
+else right = mid-1;
+}
+}
+return -1; //If our Binary search fails to identify the target we return 0
+
+    }
+
+}
+
+// [4,5,6,7,0,1,2]

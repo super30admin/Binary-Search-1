@@ -1,7 +1,37 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : (log(n*m)) //because we are exploring entire array with binary search
+// Space Complexity : O(1) // just traversing the matrix and we do not store anything
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+//Problem 1: Search a 2D Matrix
+//Since it is sorted array we can use binary search
+// So we can consider the 2D array as virtual 1D array and run binary search over it
+// To get the exact middle element we are taking advantage of the fact that rows are sorted and had to refer the video to get the logic
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        //We consider the 2D matrix as a virtual 1D matrix
+        int low = 0, high = n*m -1; // hence considering all the elements of 2D
+        int ele;
+
+
+        while(low <= high){
+            int mid = (low+high)/2;
+            //Note: Had to refer S30 uploaded video to get the below logic
+            ele = matrix[mid/n][mid%n]; //so we have a sorted row , so we can literally check the element in each row
+            if(ele == target){
+                return true;
+            } else if (ele > target){
+                high --;
+            }else{
+                low++;
+            }
+        }
+        return false;
+    }
+}

@@ -1,0 +1,6 @@
+# Ignore below files
+out/
+.idea/
+*.xml
+*.iml
+.DS_Store

@@ -1,7 +1,121 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : Search O(log(n))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode :Yes
 
+// Here we need to find out which side is sorted and move to that side and check whether the target
+//lies in the range or not and based up on that move low and high
+// Search in Rotated Sorted Array
 
-// Your code here along with comments explaining your approach in three sentences only
+class Solution {
+    public int search(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length - 1;
+        while(low <= high)
+        {
+            int mid = low + (high - low)/2;
+            if(nums[mid] == target){ return mid;}
+            else if(nums[low]<= nums[mid])
+                {
+                    if(nums[low]<= target && nums[mid]> target)
+                    {
+                        high = mid-1;
+                    }
+                    else{
+                        low = mid+1;
+                    }
+                }
+                else
+                {
+                    if(nums[mid]< target && nums[high]>=target)
+                    {
+                        low = mid + 1;
+                    }
+                    else{
+                        high = mid - 1;
+                    }
+                }
+        }
+        return -1;
+    }
+}
+// Time Complexity : Search O(log(m*n))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode :Yes
+//search in 2D Matrix
+//here instead of going over 2 d array will take this as 1 d array and then by using BST will find the
+//element and if element found will convert the index in to row and column
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length ==0)
+        {
+            return false;
+        }
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int high = m*n -1;
+        int low = 0;
+        while(low<= high)
+        {
+            int mid = low +(high - low)/2;
+            int r = mid/n;
+            int c = mid%n;
+            if(matrix[r][c] == target)
+            {
+                return true;
+            }
+            else if(matrix[r][c]> target)
+            {
+                high = mid -1;
+            }
+            else
+            {
+                low = mid + 1;
+            }
+        }
+        return false;
+    }
+}
+
+// Time Complexity : Search O(log(n))
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode :Yes
+//Search in a Sorted Array of Unknown Size
+
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+ //here the input is infinite(sorted), so we can't keep high as fixed.. so first will keep low at 0 and high at 1
+ //now i will check if target lies inside the arr[high] if not will increment the high by twice the size
+ //until we find the target lies inside the high mean while during this iteration will also move low to high and move high by twice
+ //and until we find the element move low and high pointers
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1;
+        while(reader.get(high) < target)
+        {
+            low = high;
+            high = 2*high;
+        }
+        while(low <= high)
+        {
+        int mid = low + (high-low)/2;
+        if(reader.get(mid) == target){return mid;}
+        else if(reader.get(mid)> target && reader.get(low)<= target)
+        {
+            high = mid - 1;
+        }
+        else{
+            low = mid + 1;
+        }
+        }
+        return -1;
+    }
+}

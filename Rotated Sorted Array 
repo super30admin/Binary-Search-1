@@ -1,0 +1,37 @@
+//time complexity ->O(logn)
+//space->O(n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+//At any given time one side of the mid will be sorted and to identify that we can compare low with mid if low is less<= mid means that side is sorted then check if target is in that range if it is then update high if not update low. If right side is sorted same check for the range and if it in that range target greater then mid and less then high then low=mid+1
+class Solution {
+    public int search(int[] nums, int target) {
+        int high=nums.length-1;
+        int low=0;
+        int mid;
+        while(low<=high){
+            mid = low+(high-low/2);
+            if(nums[mid] == target){
+                return mid;
+            }else if(nums[low]<= nums[mid]){ //left sorted
+                if(nums[low]<=target && nums[mid]>target){ // becs mid == target we already checked above
+                    high = mid -1;
+                }else{
+                    low=mid+1;
+                }
+            }else{
+                //right is sorted
+                if(nums[mid]<target && nums[high]>=target){
+                    low = mid+1;
+                }else{
+                    high =mid-1;
+                }
+            }
+        }
+        return -1;
+
+    }
+}

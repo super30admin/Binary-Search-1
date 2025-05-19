@@ -1,0 +1,31 @@
+
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this : no
+//time complexity - O(log(m*n));
+//space complexity- O(1);
+//We will be considering it as a 1d array so in 1d array if we convert in into matrix row of a given element will be given by number/n and col will be number/n. once we get the mid value we can check if target is greater or less then the mid.
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length ==0){
+            return false;
+        }
+        int m = matrix.length; //no of rows
+        int n = matrix[0].length;
+        int low =0; int high = m*n-1;
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            int r = mid/n;
+            int c = mid%n;
+            if(matrix[r][c] == target){
+                return true;
+            }
+            else if(matrix[r][c]< target){
+                low = mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }//while
+        return false;
+    }
+}

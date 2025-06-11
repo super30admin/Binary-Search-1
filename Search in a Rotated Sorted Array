@@ -1,0 +1,8 @@
+class Solution(object):
+    def search(self, nums, target):
+        count = 0
+        for i in nums:
+            if i == target:
+                return count
+            count += 1
+        return -1

@@ -1,0 +1,46 @@
+//TC - O(log n)
+//SC - O(1)
+
+// Approach - We will find the mid and find where the target lies - left or right side.
+// We consider the fact that either the left side or right side of mid will be sorted.
+class RotatedSortedArray {
+    public int search(int[] nums, int target) {
+        // base case
+        if(nums==null || nums.length==0){
+            return -1;
+        }
+
+        int low = 0;
+        int high = nums.length-1;        
+        int mid;
+
+        while(low<=high){
+            mid = low + (high-low)/2; // this is to handle integer overflow
+
+            // lucky case. We can return from here.
+            if(nums[mid]==target){
+                return mid;
+            }
+
+            // check if left side is sorted
+            if(nums[low]<=nums[mid]){
+                if(target>=nums[low] && target < nums[mid]){
+                    high = mid-1;
+                }
+                else{
+                    low = mid+1;
+                }                
+            }
+            // right side sorted
+            else{
+                if(target> nums[mid] && target<=nums[high]){
+                    low = mid+1;
+                }
+                else{
+                    high = mid-1;
+                }
+            }
+        } 
+        return -1;
+    }
+}

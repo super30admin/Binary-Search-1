@@ -1,0 +1,40 @@
+//TC - O(log(m*n))
+//SC - O(1)
+
+// We consider this 2d matrix as single array because of important properties defined in question.
+// So apply binary search to find target
+class searchMatrix {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        //base case
+        if(matrix==null || matrix.length==0){
+            return false;
+        }
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int low=0;
+        int high=(m*n)-1;
+
+        while(low<=high){
+        int mid = low + (high-low) / 2; // this high-low is to prevent integer overflow.
+        // to find row index i take quotient
+        int rowIndex = mid/n;
+        // to find column index i take remainder
+        int colIndex = mid%n;
+
+        // check if eleemnt found else ajust low and high bounds
+        if(matrix[rowIndex][colIndex]==target){
+            return true;
+        }
+        else if(target<=matrix[rowIndex][colIndex]){
+            high = mid-1;
+        }
+        else{
+            low = mid+1;
+        }
+        }
+
+        return false;
+
+    }
+}

@@ -1,0 +1,25 @@
+// Time Complexity : O(N)
+// Space Complexity : O(N)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+
+// Your code here along with comments explaining your approach in three sentences only
+Like the other problem, I took advantage of python's ability to find elements within a subarray and combined that with a binary search approach. If the target was equal to the mid pointer, then we'd return the index of the
+mid pointer, if it was between the left and mid pointer, then I'd shift the right pointer left. If it was between the mid and right pointer, then I'd shift the left pointer right. If all else fails, return -1. I took this
+approach instead of normal binary search because the array is rotated and sorted, so normal binary search wouldn't necessarily work the same as it  would on a regularly sorted array.
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        l=0
+        r=len(nums)-1
+        while l<=r:
+            m = (l+r)//2
+            if target==nums[m]:
+                return m
+            elif target in nums[l:m]:
+                r=m-1
+            elif target in nums[m:r+1]:
+                l=m+1
+            else:
+                return -1

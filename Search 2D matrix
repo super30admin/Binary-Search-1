@@ -1,0 +1,15 @@
+// Time Complexity : O(N*M)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : N/A
+
+
+// Your code here along with comments explaining your approach in three sentences only
+I simply checked every row of the matrix then checked if the target exists in that row by using python's native functionality for checking if a given element exists within a list.
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        for matrice in matrix:
+            if target in matrice:
+                return True
+        return False

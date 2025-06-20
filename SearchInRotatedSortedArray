@@ -1,0 +1,36 @@
+// Time Complexity : log(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : It took me a while to understand how is BS implemented here.
+
+
+// Your code here along with comments explaining your approach in three sentences only
+class SearchInRotatedSortedArray {
+    public int search(int[] nums, int target) {
+        int low = 0; 
+        int high = nums.length-1;
+        while(low<=high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            if(nums[low]<=nums[mid]){   // check if the left side of the array is sorted, as we could only perform actual BS on sorted array
+                if(target>=nums[low] && target<nums[mid]){      //now check if the target is present in the sorted half of the array
+                    high = mid - 1;                                 //perform actual BS by adjusting high index
+                }
+                else{
+                    low = mid + 1;      //otherwise move to the unsorted half of the array where the target is present
+                }
+            }
+            else{               //this else means that the right half of the array is sorted and we could perform BS here...
+                if(target>nums[mid] && target<=nums[high]){         //check if the target is present here
+                    low = mid + 1;          //if it is, adjust low and perform BS
+                }
+                else{                       //else go to other unsorted half of the array and check the target over there
+                    high = mid - 1;
+                }
+            }
+        }
+        return -1;      //return -1 in case theres no target in the array.
+    }
+}

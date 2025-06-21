@@ -1,0 +1,40 @@
+class binary_search_infinite
+{
+    public static void nserach(int arr[],int key){
+        int low=1;
+        int high=2;
+        while(arr[high]<key){
+            low = high;
+            high = 2*low;
+        }
+
+        System.out.println(bs(arr,low,high,key));
+    }
+
+
+    public static int bs(int arr[],int low,int high,int key){
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(arr[mid]==key){
+                return mid;
+            }
+            else if(arr[mid]<key){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return -1;
+    }
+
+
+    public static void main(String[] args) {
+        int arr[]=new int[1000];
+        for(int i=0;i<1000;i++){
+            arr[i]=i*29;
+        }
+        int key = 996;
+        nserach(arr,key);
+    }
+}

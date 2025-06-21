@@ -1,7 +1,182 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
+// Time Complexity : O(log(m*n))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : YES
 // Any problem you faced while coding this :
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+//PROBLEM -1
+// class Solution {
+//     public boolean searchMatrix(int[][] matrix, int target) {
+//         // Check for edge case: null matrix or empty matrix
+//         if(matrix == null || matrix.length == 0 ) {
+//             return false;
+//         }
+
+//         // Get the number of rows (m)
+//         int m = matrix.length;
+//         // Get the number of columns (n)
+//         int n = matrix[0].length;
+        
+//         int low = 0;//lower bound
+//         int high = m * n - 1;//higher bound
+
+//         // Standard binary search loop
+//         while(low <= high) {
+//             // Find the mid index (of the virtual 1D array)
+//             int mid = low + (high - low) / 2;
+//             // Convert mid to corresponding row index in the 2D matrix
+//             int row = mid / n;
+//             // Convert mid to corresponding column index in the 2D matrix
+//             int column = mid % n;
+
+//             // Check if the current element matches the target
+//             if(matrix[row][column] == target) {
+//                 return true;
+//             }
+//             // If target is smaller, move to the left half
+//             else if(target < matrix[row][column]) {
+//                 high = mid - 1;
+//             }
+//             // If target is greater, move to the right half
+//             else {
+//                 low = mid + 1;
+//             }
+//         }
+
+//         // Target not found in the matrix
+//         return false;
+//     }
+// }
+
+//PROBLEM - 2
+// Time Complexity : O(log(n)))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : YES
+// Any problem you faced while coding this :
+
+
+// Your code here along with comments explaining your approach in three sentences only
+
+// class Solution {
+//     public int search(int[] nums, int target) {
+//         //  check if array is null or empty
+//         if(nums == null || nums.length == 0) {
+//             return -1;
+//         }
+
+//         // Store the size of the array
+//         int n = nums.length;
+
+//         int low = 0;
+//         int high = n - 1;
+
+//         // Start binary search loop
+//         while(low <= high) {
+//             // Find mid index
+//             int mid = low + (high - low) / 2;
+
+//             // If mid element is the target, return its index
+//             if(nums[mid] == target) {
+//                 return mid;
+//             }
+
+//             // Check if left half is sorted (or if there's only one element)
+//             else if(nums[low] <= nums[mid]) {
+//                 // If target is in the range of the sorted left half
+//                 if(target >= nums[low] && target < nums[mid]) {
+//                     // Move to the left half
+//                     high = mid - 1;
+//                 } else {
+//                     // Otherwise, move to the right half
+//                     low = mid + 1;
+//                 }
+//             }
+
+//             // If right half is sorted
+//             else {
+//                 // Check if target is in the range of the sorted right half
+//                 if(target > nums[mid] && target <= nums[high]) {
+//                     // Move to the right half
+//                     low = mid + 1;
+//                 } else {
+//                     // Otherwise, move to the left half
+//                     high = mid - 1;
+//                 }
+//             }
+//         }
+
+//         // If target not found, return -1
+//         return -1;
+//     }
+// }
+
+//PROBLEM -3
+// Time Complexity : O(log(n)))
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : NO, asking for premium
+// Any problem you faced while coding this : is there any other way of doing it better. will be helpful if explained in class as well
+
+// Class that contains the search logic for unknown-length array
+// public class ex {
+
+//     // Method to search for a target in an array of unknown length
+//     public int search(int[] arr, int target) {
+//         int low = 0;            // Initialize low pointer for binary search
+//         int high = 1;           // Start with a small high pointer
+
+//         // Step 1: Exponentially expand the search window until target is <= arr[high] or exception is thrown
+//         while (true) {
+//             try {
+//                 if (get(arr, high) < target) {
+//                     low = high;     // Narrow down the low
+//                     high *= 2;      // Double the high to expand search range
+//                 } else {
+//                     break;          // Stop expanding when current value >= target
+//                 }
+//             } catch (Exception e) {
+//                 break;              // Out of bounds encountered, stop expanding
+//             }
+//         }
+
+//         // Step 2: Apply binary search between low and high
+//         while (low <= high) {
+//             int mid = low + (high - low) / 2;  // Compute mid index
+//             int val;
+
+//             try {
+//                 val = get(arr, mid);           // Safely access the element
+//             } catch (Exception e) {
+//                 high = mid - 1;                // If out of bounds, shrink search window to the left
+//                 continue;
+//             }
+
+//             if (val == target) return mid;     // Target found
+//             else if (val < target) low = mid + 1;  // Search right half
+//             else high = mid - 1;                   // Search left half
+//         }
+
+//         return -1;  // Target not found
+//     }
+
+//     // Helper method that throws an exception if index is out of array bounds
+//     private int get(int[] arr, int index) throws Exception {
+//         if (index >= arr.length) throw new Exception("Index out of bounds");
+//         return arr[index]; // Otherwise return value
+//     }
+// }
+
+// // Main class to run the program
+// class Main {
+//     public static void main(String[] args) {
+//         ex sol = new ex();    // Create an object of the ex class
+//         int[] arr = {2, 4, 6, 8, 10, 12, 15, 18, 20};  // Sorted input array
+
+//         int target = 12;      // Target to be searched
+//         int index = sol.search(arr, target);   // Call search method
+
+//         // Print the result
+//         System.out.println("Index of " + target + " is: " + index); // Expected Output: 5
+//     }
+// }

@@ -5,3 +5,106 @@
 
 
 // Your code here along with comments explaining your approach in three sentences only
+// search in rotated sorted array
+class Solution {
+    //idea is based on the fact that one half of the search space is always sorted. We try to find the 
+    // element in that space. If element does not lie in that space, we repeatedly perform this process
+    // until element is found
+    public int search(int[] nums, int target) {
+        int low = 0, high = nums.length-1;
+
+        while(low<=high)
+        {
+            int mid = low + (high-low)/2;
+
+            if(nums[mid] == target) return mid;
+            else if(nums[mid]>=nums[low])
+            {
+               if(target<nums[mid] && nums[low]<=target)
+               {
+                 high = mid-1;
+               }
+               else
+               {
+                 low = mid+1;
+               }
+            }
+            else if(nums[mid]<=nums[high])
+            {
+               if(target>nums[mid] && nums[high]>=target)
+               {
+                 low = mid+1;
+               }
+               else
+               {
+                 high = mid-1;
+               }
+            }
+
+        }
+        return -1;
+    }
+}
+
+
+//Search in a Sorted array of unknown size
+//Idea is to find the nearest value possible to target . 
+//This can be done by starting the search from left side and both moving and doubling the search space towards right side
+//Once nearest target is found, do a binary search in this search space for the target element
+
+//Time Complexity: O(log(m)+log(k)), log(m) - firstloop runtime, log(k) - secondloop runtime(k: no of elements in the second half)
+//Space Complexity: O(1)
+class Solution{
+    public int search(ArrayReader reader, int target)
+    {
+        int low = 0, high = 1;
+        while(reader.get(high)<target)
+        {
+            low = high;
+            high = high * 2;
+        }
+        while(low <= high)
+        {
+            int mid = low+ (high-low)/2;
+            if(reader.get(mid) == target) return mid;
+            else if(reader.get(mid)> target) high = mid-1;
+            else low = mid+1;
+        }
+        return -1;
+    }
+}
+
+
+//Idea is to assume the 2d matrix flattened into 1d matrix. 
+//For Binary Search, calculate the mid point index of 1d matrix and convert into respective 2d matrix indices for comparision
+// Time Complexity : O(log(m)+ log(n))
+// Space Complexity : O(1)
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int low = 0, high = m*n-1;
+
+        while(low<=high)
+        {
+             int mid = low+(high-low)/2;
+             int r = mid/n;
+             int c = mid%n;
+             
+             if(matrix[r][c]==target)
+             {
+                return true;
+             }
+             else if(matrix[r][c]>target)
+             {
+                low = mid + 1;
+             }
+             else
+             {
+              high   = mid-1;
+             }
+        }
+        return false;
+        }
+}

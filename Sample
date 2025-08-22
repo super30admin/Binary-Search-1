@@ -1,7 +1,50 @@
-// Time Complexity :
+// Time Complexity : log(n)
 // Space Complexity :
 // Did this code successfully run on Leetcode :
 // Any problem you faced while coding this :
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int left=-10000; //max=-10000 because max can not be less than -10,000
+        int idxleft=-1; //finding the idx where the max value is at
+        int right=10000; // min=10,000 because there can;t be min greater than 10,000
+        int idxright=-1; //finding the idx where the min value is at.
+        for(int i=0; i<nums.length;i++){ //finding the max and the min and their idx
+            if(nums[i]>left){  // finding if the current value is > max
+                left=nums[i];
+                idxleft=i;
+            }
+            if(nums[i]<right){ //finding if the current value is < min
+                right=nums[i];
+                idxright=i;
+            }
+        }
+        return findidx(nums,idxleft,idxright,target); //ask helper function to find the index of the target
+    }
+    private int findidx(int[] nums,int idxleft, int idxright, int target){//idxmax=0, idxmin+1=2, target=3
+        if(0<=idxleft && idxleft<=nums.length-1 && 0<=idxright && idxright<=nums.length-1){
+            //check to make sure idxmax and idxmin are valid and are inside the nums.length
+            if(target==nums[idxleft]){//check if target is idxmax
+                return idxleft;
+            }else if(target==nums[idxright]){ //check if target idxmin
+                return idxright;
+            }else if(target<nums[idxleft] && idxleft!=0){ //if target <nums[idxmax] and idxmax !=0 then decrease idxmax-1
+                return findidx(nums,idxleft-1,idxright,target);
+            }else if(target>nums[idxright] && idxright != nums.length-1){
+                return findidx(nums,idxleft,idxright+1,target); 
+            }else if(target>nums[idxright] && idxright==nums.length-1 || target<nums[idxleft] && idxleft==0){
+                return -1;
+            }else{
+                return -1;
+            }
+        }else{
+            return -1;
+        }
+       
+        
+    }
+}
+
 
 
 // Your code here along with comments explaining your approach in three sentences only

@@ -1,0 +1,27 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        //base case
+        if(matrix[0].length == 0 || matrix == null){
+            return false;
+        }
+
+        int m = matrix.length;// number of rows
+        int n = matrix[0].length; // number of columns
+        int low = 0;
+        int high = (n * m) -1;
+
+        while (low <= high){
+            int mid = low+(high-low)/2;
+            int r = mid / n;
+            int c = mid % n;
+            if(matrix[r][c] == target){
+                return true;
+            }else if(matrix[r][c] > target){
+                high = mid - 1;
+            }else{
+                low = mid + 1;
+            }
+        }
+        return false;
+    }
+}

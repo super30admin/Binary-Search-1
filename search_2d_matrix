@@ -1,0 +1,22 @@
+class Solution:
+    def searchMatrix(self, matrix, target):
+        m = len(matrix)
+        if (m == 0):
+            return False
+        n = len(matrix[0])
+        low=0
+        high=(m*n)-1
+        while(low<=high):
+            mid=low+((high-low)//2)
+            r=mid//n
+            c=mid%n
+            val=matrix[r][c]
+            if (val==target):
+                return True
+            else:
+                if(val<target):
+                    low=mid+1
+                else:
+                    high=mid-1
+        
+        return False

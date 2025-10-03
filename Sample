@@ -1,7 +1,134 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 
 
 // Your code here along with comments explaining your approach in three sentences only
+
+//Find mid, verify if both arrays are sorted, if not again find mid, verify if arrays, sorted, then search left array if target < mid, or right //search if target > mid
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        low = 0
+        high = len(nums) - 1
+        while low <= high:
+            mid = (low + high)//2 # O(1)
+            if nums[mid] == target:
+                return mid
+
+            # check first half
+            elif nums[low] <= nums[mid]: # O(1)
+                if (nums[low] <= target) and (target < nums[mid]):  # Line 12 and 19 shrink search in half so O(log n)
+                    high = mid - 1
+                else:
+                    low = mid + 1
+
+            # Check second half
+            else:
+                if (nums[mid] < target) and (target <= nums[high]):
+                    low = mid + 1
+                else:
+                    high = mid - 1
+
+        return -1
+
+
+// Time Complexity : O (m) + O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+// Similar to the previous approach, but this time iterating over the rows. And then doing binary search only if we find if target is present in the row. Handling //boundary case of nums = [[1]] and target = 1
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+
+        def search(nums: List[int], target: int) -> int: # Binary search O(log n)
+            if len(nums)==1:
+                return nums[0] == target
+
+            low = 0
+            high = len(nums) - 1
+            while low <= high:
+                    mid = low + (high - low)//2
+                    if target == nums[mid]:
+                        return True
+                    
+                    elif target < nums[mid]: # Check left
+                        high = mid - 1
+
+                    else: # Check right
+                        low = mid + 1
+                    
+            return False
+
+        for row in matrix:  #O(m)
+            if (target <= row[-1]):
+                if search(row,target):
+                    return True
+        return False
+
+
+
+Another approach:
+
+// Convert 2D matrix to 1D matrix, find the row and column of the mid value, compare with target, if target less than matrix[row][col] then move //low to mid + 1 , else move high to mid - 1
+// Runs in O(log m * n) time and O(1) space time
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        if not matrix or len(matrix) == 0:
+            return False
+        
+        m = len(matrix)
+        n = len(matrix[0])
+        low = 0
+        high = m*n - 1
+        while (low <= high):
+            mid = low + (high - low)//2
+            r = mid // n
+            c = mid % n
+            if matrix[r][c] == target:
+                return True
+            elif matrix[r][c] > target:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return False
+
+
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this : Yes, Leetcode down for maintainence
+
+ # """
+# This is ArrayReader's API interface.
+# You should not implement it, or speculate about its implementation
+# """
+#class ArrayReader:
+#    def get(self, index: int) -> int:
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        
+        low = 0
+        high = 1
+
+        while reader.get(high)< target:
+        	low = high
+            high = 2 * high
+
+        while low <= high:
+                mid = (low + high)//2
+                val = reader.get(mid)
+                if val == target:
+                    return mid
+                elif target < val:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+        return -1
+        
+
+
+
+        

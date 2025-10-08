@@ -1,26 +1,6 @@
-def binary_search_unknown_len(A, tgt, s, e):
-    '''
-    Perform binary search if length is unknown
-    '''
-    if not A:
-        return -1
-
-    while s <= e:
-        try:
-            mid = s + (e-s)//2 # same as int((e+s)/2) but prevents overflow
-            if A[mid] == tgt:
-                return mid
-            elif A[mid] > tgt:
-                e = mid-1
-            else: # A[mid] < tgt:
-                s = mid+1
-        except IndexError:
-            e = mid-1
-    return -1 # not found
-
 def search_sorted_infinite(A, tgt):
     '''
-        Search in Infinite sorted array
+        702 Search in Infinite sorted array
         https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
 
         Given a sorted array of unknown length and a number to search for, return the index of the number in the array. Accessing an element out of bounds throws exception. If the number occurs multiple times, return the index of any occurrence. If it isn't present, return -1.
@@ -48,6 +28,27 @@ def search_sorted_infinite(A, tgt):
 
     index = binary_search_unknown_len(A, tgt, s, e) # O(log L)
     return index
+
+def binary_search_unknown_len(A, tgt, s, e):
+    '''
+    Perform binary search if length is unknown
+    '''
+    if not A:
+        return -1
+
+    while s <= e:
+        try:
+            mid = s + (e-s)//2 # same as int((e+s)/2) but prevents overflow
+            if A[mid] == tgt:
+                return mid
+            elif A[mid] > tgt:
+                e = mid-1
+            else: # A[mid] < tgt:
+                s = mid+1
+        except IndexError:
+            e = mid-1
+    return -1 # not found
+
 
 def run_search_sorted_infinite():
     A = [0, 3, 5, 7, 9, 11, 15, 17]

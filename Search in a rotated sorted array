@@ -1,0 +1,50 @@
+// First we find the index of the smallest element — the pivot — using binary search.
+// Then we decide which sorted half of the array the target lies in.
+// Finally we do a normal binary search in that half.
+
+// time o(log n)
+// space o(1)
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        int low = 0, high = n - 1;
+
+        // Step 1: Find the index of the minimum (pivot)
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (nums[mid] > nums[high]) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+
+        int pivot = low;
+
+        // Step 2: Determine which half to search
+        if (nums[pivot] == target) return pivot;
+
+        if (pivot == 0) {
+            low = 0;
+            high = n - 1;
+        } else if (target >= nums[0] && target <= nums[pivot - 1]) {
+            low = 0;
+            high = pivot - 1;
+        } else {
+            low = pivot;
+            high = n - 1;
+        }
+
+        // Step 3: Standard binary search
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] == target) return mid;
+            else if (nums[mid] < target) low = mid + 1;
+            else high = mid - 1;
+        }
+
+        return -1;
+    }
+}

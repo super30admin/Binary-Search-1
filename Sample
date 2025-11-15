@@ -1,7 +1,43 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
-
-
+// Time Complexity : O(log n)
+// Space Complexity :O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : during the binary search implementation, I had to be careful with the mid calculation to avoid overflow.
 // Your code here along with comments explaining your approach in three sentences only
+class Solution {
+    public int search(int[] nums, int target) {
+        int low =0;
+        int high= nums.length-1;
+        int mid;
+        while(low<high){
+            mid=low+ (high-low)/2;
+            if(nums[mid]==target) return mid;
+
+            else if(nums[low]<nums[mid]){
+                //leftsorted
+                if(nums[low]<=target&&nums[mid]>target){
+                    high=mid;
+                }else{
+                    low=mid+1;
+                }
+
+            } else{
+                //rightSorted
+                if(nums[mid]<target&&nums[high]>=target){
+                    low=mid+1;
+                }else{
+                    high=mid;
+                }
+            }
+
+
+        }
+        if(low==high && nums[low]==target){
+            return low;
+        }
+        return -1;
+
+    }
+}
+//The first approach divide the array into left sorted or right sorted
+//then check if the target is present left or right by adjusting the pointers accordingly.
+//Finally, when the pointers become equal, we check if the target is at that position.

@@ -1,0 +1,41 @@
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+//Travel to a index till we find the value at that particular index is greater than target by making low to high and increasing high value to twice every time. Then do a binary search on reader from low to high to find the target.
+//TC: O(M)+O(Log m)
+//SC: O(1)
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low=0;
+        int high=1;
+
+        while(true){
+           if(reader.get(high)==target){
+            return high;
+           }else if(reader.get(high)>target){
+            break;
+           }else{
+            low=high;
+            high=high*2;
+           }
+        }
+
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(reader.get(mid)==target) return mid;
+            else if(reader.get(mid)>target){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+
+        return -1;
+
+
+    }
+}

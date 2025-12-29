@@ -1,7 +1,46 @@
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
-
+// Time Complexity : O(logm+logn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+// https://leetcode.com/problems/search-a-2d-matrix/
 
 // Your code here along with comments explaining your approach in three sentences only
+// First we will do binary search on the last column of the matrix to check in which row the target lies then we will apply binary search again to find the
+// target in that row.
+ public boolean searchMatrix(int[][] matrix, int target) {
+  int low = 0;
+  int high = matrix.length-1;
+  int m = matrix.length;
+  int n = matrix[0].length;
+  while(low<=high){
+    int mid = low + (high-low)/2;
+    if(matrix[mid][n-1]==target) return true;
+    if(matrix[mid][n-1]<target){
+      low = mid+1;
+    }else{
+      high = mid-1;
+    }
+ }
+if(low>=m) return false;
+return binarySearch(target, matrix[low]);
+}
+
+boolean binarySerach(int target,int[] matrix){
+  int low = 0;
+  int high = matrix[low].length-1;
+  while(low<=high){
+   int mid = low + (high-low)/2;
+   if(matrix[mid]==target) return true;
+   if(matrix[mid]<target){
+      low = mid+1;
+   }else{
+      high = mid-1;
+   }
+  } 
+  return false;
+}
+
+
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+

@@ -6,14 +6,15 @@ class Solution {
 
         int m = matrix.length;
         int n = matrix[0].length;
-
+       //imagine of having 1d erray
         int low = 0;
         int high = m*n-1;
 
         while(low <= high) {
             int mid = low+(high-low)/2;
-            int r = mid/n;
-            int c = mid%n;
+            int r = mid/n;  // find out the row index
+            int c = mid%n;  // find out the column index
+            //apply binary search and check if the target resides in corresponding matrix row.
             if(matrix[r][c] == target) {
                 return true;
             } else if(matrix[r][c] > target) {

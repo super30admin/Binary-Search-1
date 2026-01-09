@@ -12,8 +12,9 @@ class Solution {
         int high = 1;
         while(reader.get(high) < target) {
             low = high;
-            high = 2*high;
+            high = 2*high;  // we don't know the end of the stream , so considering high as double of low
         }
+        //once we find the range and apply the binary search and keep move the high and low pointers.
         while(low <= high) {
             int mid = low + (high - low) / 2;
             if(reader.get(mid) == target) {

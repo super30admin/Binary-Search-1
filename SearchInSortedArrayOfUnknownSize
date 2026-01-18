@@ -1,0 +1,30 @@
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int low = 0;
+        int high = 1;
+        while(reader.get(high) < target) {
+            low = high;
+            high = 2*high;  // we don't know the end of the stream , so considering high as double of low
+        }
+        //once we find the range and apply the binary search and keep move the high and low pointers.
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if(reader.get(mid) == target) {
+                return mid;
+            } else if(reader.get(mid) < target) {
+                low = mid+1;
+            } else {
+                high = mid-1;
+            }
+        }
+        return -1;
+    }
+}

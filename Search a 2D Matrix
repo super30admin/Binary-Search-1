@@ -1,0 +1,42 @@
+# I’m basically doing two binary searches: the first one helps me figure out which row could possibly contain the target.
+# Once I lock onto the correct row, I run a normal binary search inside that row to see if the target actually exists.
+# It feels like splitting the problem into two smaller searches, which keeps everything fast and still O(log m + log n).
+
+from typing import List
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        # find the correct row
+        left, right = 0, len(matrix) - 1
+        while left < right:
+            mid = (right + left) // 2
+
+            #target is larger than last element in row
+            if matrix[mid][-1] < target:
+                left = mid + 1
+            else:
+                right = mid 
+
+        # row where target could be
+        row = left 
+
+        # target is beyond matrix bounds
+        if row >= len(matrix):
+            return False
+        # find correct index in the row 
+        left, right = 0, len(matrix[row]) - 1
+
+        # binary search within the identified row
+        while left < right:
+            mid = (right + left) // 2
+
+            # target is to the right
+            if matrix[row][mid] < target:
+                left = mid + 1
+            else:
+                right = mid 
+        
+        # check if target matches the final candidate
+        return True if matrix[row][left] == target else False
+        
+        

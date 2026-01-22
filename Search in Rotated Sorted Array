@@ -1,0 +1,33 @@
+# I’m basically using binary search, but I first check which half of the array is actually sorted because the rotation breaks the normal order.
+# Once I know which side is sorted, I can decide whether the target should be in that half or the other half, so I shrink the search space correctly.
+# It feels like a puzzle where I keep figuring out which side is “normal” and then move my pointers until I either find
+
+from typing import List
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        #Edge cases
+        left, right =0, len(nums)-1
+
+        while left <=right:
+            mid = left + (right - left) // 2 #to take care of integer overflow in other languages
+
+            if nums[mid]==target:
+                return mid
+
+            #check if left side is sorted
+            if nums[left] <= nums[mid]:
+                if nums[left] <= target < nums[mid]:
+                    right = mid -1
+
+                else:
+                    left = mid +1
+
+            #if right side is sorted
+            else:
+                if nums[mid] < target <= nums[right]:
+                    left = mid +1
+                else:
+                    right = mid -1
+        return -1
+        

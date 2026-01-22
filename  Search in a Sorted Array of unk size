@@ -1,0 +1,30 @@
+
+from typing import List
+
+class ArrayReader: 
+    def get(self, index: int) -> int: 
+        return 0 
+
+class Solution:
+    def search(self, reader: 'ArrayReader', target: int) -> int:
+        # Step 1: expand the search boundary exponentially 
+        left, right = 0, 1
+
+        # Keep expanding until reader.get(right) >= target 
+        while reader.get(right) < target: 
+            left = right 
+            right *= 2
+        
+         #Step 2: binary search inside [left, right]
+        while left <= right:
+            mid = left + (right - left) // 2
+            val = reader.get(mid)
+            
+            if val == target:
+                return mid
+            elif val < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        
+        return -1

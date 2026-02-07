@@ -14,7 +14,7 @@ class SearchUnknownSize {
             LEFT = RIGHT;
             RIGHT = RIGHT * factor;
         }
-        // Use left and right to find the mid
+        // Use left and right to find the target
         while (LEFT < RIGHT) {
             MID = (LEFT + RIGHT + 1)/2;
             if (reader.get(MID) == target) {

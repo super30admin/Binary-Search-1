@@ -1,0 +1,49 @@
+/*
+// Time Complexity :O(log n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+*/
+
+/**
+ * // This is the ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * function ArrayReader() {
+ *
+ *     @param {number} index
+ *     @return {number}
+ *     this.get = function(index) {
+ *         ...
+ *     };
+ * };
+ */
+
+/**
+ * @param {ArrayReader} reader
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (reader, target) {
+  let lo = 0,
+    hi = 1;
+
+  while (reader.get(hi) < target) {
+    lo = hi;
+    hi *= 2;
+  }
+
+  while (lo <= hi) {
+    let mid = lo + ((hi - lo) >>> 1); // to avoid overflow issue.
+    const val = reader.get(mid); // to avoid repeated calling
+    if (target === val) return mid;
+
+    if (target < val) {
+      hi = mid - 1;
+    } else {
+      lo = mid + 1;
+    }
+  }
+  return -1;
+};

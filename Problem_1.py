@@ -1,51 +1,40 @@
 '''
-First we search the first column to find appropriate row.
-If the mid row has numbers that can contain the target then we return the mid to do a second searh 
-to find the target in the row.
+The rotated sorted array will always have one part that is fully sorted.
 
-Then we perform the binary search on the row to find the target and return True if present or False if absent.
+Finding the mid and then see which side of the mid is sorted.
+In the sorted side try to see in the numbers are in the range of target or it contains target by checking the first 
+and the last item of the side.
+
+If the target is not in the sorted side, do further binary search in the other side.
+If target is in the sorted side, do the further binary search in the sorted side.
 '''
 
 class Solution:
+    def search_helper(self, nums: List[int], l: int, r: int, target: int):
+        if l > r:
+            return -1
 
-    def searchRow(self, matrix, target):
-        l = 0
-        r = len(matrix)-1
+        m = l + (r-l)//2
 
-        while l <= r:
-            m = l + (r-l)//2
+        if nums[m] == target:
+            return m
 
-            if matrix[m][0] <= target <= matrix[m][-1]:
-                return m
-
-            if matrix[m][0] > target:
-                r = m-1
+        # Left of mid is sorted array
+        if nums[l] <= nums[m]:
+            # If target lies in the sorted array
+            if nums[l] <= target < nums[m]:
+                return self.search_helper(nums, l, m-1, target)
             else:
-                l = m+1
+                return self.search_helper(nums, m+1, r, target)
 
-        return -1
-
-    def searchCol(self, matrix, row, target):
-        l = 0
-        r = len(matrix[row]) - 1
-
-        while l <= r:
-            m = l + (r-l)//2
-
-            if matrix[row][m] == target:
-                return True
-
-            if matrix[row][m] > target:
-                r = m-1
+        # Right of mid is sorted array
+        else:
+            # If target lies in the sorted array
+            if nums[m] < target <= nums[r]:
+                return self.search_helper(nums, m+1, r, target)
             else:
-                l = m+1
+                return self.search_helper(nums, l, m-1, target)
+            
 
-        return False
-
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        row = self.searchRow(matrix, target)
-        print(row)
-        if row == -1:
-            return False
-
-        return self.searchCol(matrix, row, target)
+    def search(self, nums: List[int], target: int) -> int:
+        return self.search_helper(nums, 0, len(nums)-1, target)

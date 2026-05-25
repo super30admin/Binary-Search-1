@@ -1,26 +1,52 @@
 '''
-We start with a search size of 1 and see if the array of search space can contain the target.
-If not we move the search window to high and move the high to 2*high meaning increase the search window by
-2 times.
+First we search the first column to find appropriate row.
+If the mid row has numbers that can contain the target then we return the mid to do a second searh 
+to find the target in the row.
 
-Once we get the search window where the target lies, we then do a binary search in the window to get the index.
+Then we perform the binary search on the row to find the target and return True if present or False if absent.
 '''
 
 class Solution:
-    def search(self, reader: 'ArrayReader', target: int) -> int:
-        low, high = 0, 1
 
-        while reader.get(high) < target:
-            low = high
-            high = high * 2
+    def searchRow(self, matrix, target):
+        l = 0
+        r = len(matrix)-1
 
-        while low <= high:
-            mid = low + (high - low) // 2
-            if reader.get(mid) == target:
-                return mid
-            if reader.get(mid) > target:
-                high = mid - 1
+        while l <= r:
+            m = l + (r-l)//2
+
+            if matrix[m][0] <= target <= matrix[m][-1]:
+                return m
+
+            if matrix[m][0] > target:
+                r = m-1
             else:
-                low = mid + 1
+                l = m+1
 
         return -1
+
+    def searchCol(self, matrix, row, target):
+        l = 0
+        r = len(matrix[row]) - 1
+
+        while l <= r:
+            m = l + (r-l)//2
+
+            if matrix[row][m] == target:
+                return True
+
+            if matrix[row][m] > target:
+                r = m-1
+            else:
+                l = m+1
+
+        return False
+
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        row = self.searchRow(matrix, target)
+        print(row)
+        if row == -1:
+            return False
+
+        return self.searchCol(matrix, row, target)
+

@@ -4,14 +4,14 @@ class Solution{
         int right = 1;
 
         //expanding search rage
-        while(.get(right)< target){
+        while(reader.get(right) < target){
             left = right + 1;
             right = right * 2;
         }
             //the binary search
             while(left <= right){
-                int mid = left + (right - left)/2;
 
+                int mid = left + (right - left)/2;
                 int value = reader.get(mid);
 
                 if(value == target){
@@ -22,6 +22,6 @@ class Solution{
                     right = mid - 1;
                 }
             }
-            return -1;
+        return -1;
     }
 }

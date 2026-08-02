@@ -1,3 +1,14 @@
+
+
+// Time Complexity : o(log(mxn) )
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : Intially thought of running on  m + log n and struggled implementing and then changed it to o(logmxn)
+
+// Your code here along with comments explaining your approach in three sentences only
+
+// assuming matrix asa as flattened array , do a binary search normally
+
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
     //treat matrix like an array 

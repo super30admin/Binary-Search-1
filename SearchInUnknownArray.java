@@ -1,7 +1,13 @@
 //Search in a sorted array of unknown size
 
 
-since we dont know the upper boundary , lets start with low= 0 and high as 1 and double high every time we di not find high
+// Time Complexity : o(log(n) )
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : used if loop on increasing the serach space but later understood and made changes
+
+// Your code here along with comments explaining your approach in three sentences only
+
 
 
 class Solution {

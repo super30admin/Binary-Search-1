@@ -24,7 +24,7 @@ class Solution {
             if(target == nums[mid]){ 
                 return mid;
             }
-            if(nums[low] <= nums[mid]){ //left sorted array 
+            if(nums[low] <= nums[mid]){ //right sorted array 
  if(target < nums[mid] && target >= nums[low]){
                     high = mid -1;
                 } else {
@@ -32,7 +32,7 @@ class Solution {
                 }
                 
 
-            } else {  //right sorted array
+            } else {  //left sorted array
 
                
 if(target > nums[mid] && target <= nums[high] ){

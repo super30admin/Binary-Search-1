@@ -51,6 +51,9 @@ Any problem you faced while coding this:
 Yes, at first I thought. I could just do < instead of <=, but I realized how silly that was for _is_in_range, because if my value was contained
 by the boundary, it would unintentionally return false.
 '''
+from typing import List
+
+
 class Solution:
     def _is_in_range(self, nums: List[int], target: int, low: int, high: int) -> bool:
         return nums[low] <= target <= nums[high]
